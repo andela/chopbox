@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use App\Follower;
+use App\Chop;
+use App\Comment;
+use App\Role;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -32,4 +36,29 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+
+
+    public function followers() {
+        return $this->hasMany('Follower');
+
+    }
+
+    public function chops() {
+
+        return $this->hasMany('Chop');
+
+    }
+
+    public function comments() {
+
+        return $this->hasMany('Comment');
+
+    }
+
+    public function roles() {
+
+        return $this->belongsToMany('Role');
+        
+    }
 }
