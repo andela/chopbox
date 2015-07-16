@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableUploads extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,23 +12,21 @@ class CreateTableUploads extends Migration
      */
     public function up()
     {
-        Schema::create('uploads', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('mime_type');
-            $table->string('file_uri');
-            $table->integer('chops_id')->unsigned();
+            $table->string('comment');
             $table->integer('user_id')->unsigned();
+            $table->integer('chops_id')->unsigned();
             $table->timestamps();
 
-
-            $table->foreign('chops_id')
-                    ->references('id')
-                    ->on('chops');
 
             $table->foreign('user_id')
                     ->references('id')
                     ->on('users');
+
+            $table->foreign('chops_id')
+                    ->references('id')
+                    ->on('chops');
         });
     }
 
@@ -39,6 +37,6 @@ class CreateTableUploads extends Migration
      */
     public function down()
     {
-        Schema::drop('uploads');
+        Schema::drop('comments');
     }
 }

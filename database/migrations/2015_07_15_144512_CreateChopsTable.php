@@ -14,11 +14,15 @@ class CreateChopsTable extends Migration
     {
         Schema::create('chops', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->string('chops_name');
             $table->integer('upload_id');
             $table->integer('likes');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users');
         });
     }
 
