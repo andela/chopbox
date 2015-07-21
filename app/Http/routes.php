@@ -11,19 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('test', function(){
-  return 'this is a test.';
-});
+Route::get('/', 'WelcomeController@index');
 
-Route::get('register', function(){
-  return view('pages.register');
-});
-Route::post('create', 'RegisterController@create');
+Route::get('home', 'HomeController@index');
 
-Route::get('find/{id}', 'UserController@show');
-
-Route::resource('users', 'UserController');
+Route::controllers([
+		'auth' => 'Auth\AuthController',
+		'password' => 'Auth\PasswordController',
+]);

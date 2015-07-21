@@ -1,20 +1,18 @@
 @extends('app')
 
 @section('content')
-<div class="intro-header">
+<div class="">
     <div class="container">
             <div class="col-lg-12">
-                <div style="margin-top: 60px;">&nbsp;</div>
                 <div class="container" >
                     <div class="row ">
-                        <h3>Why not Create an account and just have fun</h3>
-                        <hr class="intro-divider">
+                        <h3></h3>
                     </div>
                     <div class="row">
                         <div class="col-lg-6 col-md-3 col-md-offset-3">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <strong>Signing Up is Simple. Get Started</strong>
+                                    <strong>Complete Your Profile</strong>
                                 </div>
                                 <div class="panel-body">
                            			<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
@@ -43,8 +41,24 @@
 		                                                <span class="input-group-addon">
 		                                                    <i class="glyphicon glyphicon-user"></i>
 		                                                </span>
-		                                                	<input type="text" class="form-control" required="required" placeholder="Username" name="name" value="{{ old('name') }}">
-                                                        </div>
+		                                                	<input type="text" class="form-control" required="required" placeholder="Firstname" name="firstname" value="{{ old('firstname') }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-group">
+		                                                <span class="input-group-addon">
+		                                                    <i class="glyphicon glyphicon-user"></i>
+		                                                </span>
+		                                                	<input type="text" class="form-control" required="required" placeholder="Firstname" name="name" value="{{ old('name') }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-group">
+		                                                <span class="input-group-addon">
+		                                                    <i class="glyphicon glyphicon-user"></i>
+		                                                </span>
+		                                                	<input type="text" class="form-control" required="required" placeholder="Location" name="name" value="{{ old('name') }}">
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="input-group">
@@ -79,10 +93,6 @@
                                     </fieldset>
                                     </form>
 
-                                </div>
-                            	 <div class="panel-footer ">
-                                    <span class="pull-left">Already Registered! <a href="{{ url('/auth/login') }}" onClick=""> Login Here </a></span>
-                                    <span class="pull-right"><a href="{{ url('/password/email') }} onClick=""> Forgot Password </a></span>
                                 </div>
                             </div>
                         </div>
