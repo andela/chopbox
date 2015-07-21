@@ -1,7 +1,8 @@
 <?php
-
 namespace ChopBox;
-
+/*
+ * @author Dugeri, Verem
+ */
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -29,13 +30,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $fillable = [
-                            'firstname',
-                            'lastname', 
-                            'email', 
-                            'password',
-                            'location', 
-                            'best_food',
-                            'username'
+        'firstname',
+        'lastname',
+        'email',
+        'password',
+        'location',
+        'best_food',
+        'username'
     ];
 
     /**
@@ -46,8 +47,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $hidden = ['password', 'remember_token'];
 
 
-    private $firstname;
-    private $lastname;
+    private $firstName;
+    private $lastName;
     private $username;
     private $password;
     private $email;
@@ -56,26 +57,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     private $about;
     private $gender;
     private $status;
-    private $created_at;
-    private $updated_at;
 
 
     protected $fillables = [
-            'location',
-            'best_food',
-            'about',
-            'gender'
+    // 'location',
+    // 'best_food',
+    // 'about',
+    // 'gender',
+    'username', 
+    'password',
+    'email'
     ];
-
-
-    public function __construct( $username, $password,$email)
-    {
-        $this->username = $username;
-        $this->password = $password;
-        $this->email = $email;
-    }
-
-
 
 
     public function followers() {
@@ -101,16 +93,55 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     }
 
-
-    public function saveToDb()
+    public function setFirstNameAttribute($first)
     {
-        $this->save();
+        $this->firstName = $first;
     }
 
-
-    public function findWith($id)
+    public function setLastNameAttribute($last)
     {
-        return $this->find($id)->get();
+        $this->lastName = $last;
+    }
+
+    public function setLocationAttribute($location)
+    {
+        $this->location = $location;
+    }
+
+    public function setBestFoodAttribute($best_food)
+    {
+        $this->best_food = $best_food;
+    }
+
+    public function setAbout($about)
+    {
+        $this->about = $about;
+    }
+
+    public function setGenderAttribute($gender)
+    {
+        $this->gender = $gender;
+    }
+
+    public function setStatusAttribute($status)
+    {
+        $this->status = $status;
+    }
+
+    public function findWithUsername($param)
+    {
+        return $this::where('username', $param)->get();
+    }
+
+    // public function findWithUsername($username)
+    // {
+    //     return $this::find($username)->get();
+    // }
+
+
+    public function persist($request)
+    {
+        $this::create(['username'=>$request['username'], 'password' =>bcrypt($request['password']), 'email' =>$request['email']]);
     }
 
 

@@ -1,7 +1,8 @@
 <?php
-
 namespace ChopBox;
-
+/*
+ * @author Dugeri, Verem
+ */
 use Illuminate\Database\Eloquent\Model;
 Use App\User;
 
@@ -11,7 +12,7 @@ class Role extends Model
   private $role_name;
 
 
-  protected $fillable = ['role_name']
+  protected $fillable = ['role_name'];
 
 
   public function __construct($role)

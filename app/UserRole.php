@@ -1,7 +1,8 @@
 <?php
-
 namespace ChopBox;
-
+/*
+ * @author Dugeri, Verem
+ */
 use Illuminate\Database\Eloquent\Model;
 
 class UserRole extends Model
@@ -16,7 +17,7 @@ class UserRole extends Model
   public function __construct($user_id, $role_id)
   {
     $this->role_id = $role_id;
-    $tjis->user_id = $user_id;
+    $this->user_id = $user_id;
   }
 
 

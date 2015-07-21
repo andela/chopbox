@@ -18,3 +18,12 @@ Route::get('/', function () {
 Route::get('test', function(){
   return 'this is a test.';
 });
+
+Route::get('register', function(){
+  return view('pages.register');
+});
+Route::post('create', 'RegisterController@create');
+
+Route::get('find/{id}', 'UserController@show');
+
+Route::resource('users', 'UserController');

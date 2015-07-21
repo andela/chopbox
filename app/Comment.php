@@ -1,7 +1,8 @@
 <?php
-
 namespace ChopBox;
-
+/*
+ * @author Dugeri, Verem
+ */
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Chop;
@@ -13,17 +14,19 @@ class Comment extends Model
 
     private $user_id;
     private $comment;
+    private $chops_id;
 
 
 
      protected $fillable = ['comment'];
 
 
-    public function __construct($user_id, $comment)
+    public function __construct($user_id, $comment, $chops_id)
     {
 
-      $this->user_id = $user_id;
-      $this->comment = $comment;
+        $this->user_id = $user_id;
+        $this->comment = $comment;
+        $this->chops_id = $chops_id;
 
     }
 

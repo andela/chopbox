@@ -1,7 +1,9 @@
 <?php
-
 namespace ChopBox;
 
+/*
+ * @author Dugeri, Verem
+ */
 use Illuminate\Database\Eloquent\Model;
 use App\Chop;
 
@@ -23,13 +25,13 @@ class Upload extends Model
 
 
 
-    public function __construct($$filename, $uri, $mime_type)
+    public function __construct($filename, $uri, $mime_type)
     {
-
+        $this->filename = $filename;
+        $this->file_uri = $uri;
+        $this->mime_type = $mime_type;
     }
-
-     
-    public function chop() {
+    public function chop(){
 
       return $this->belongsTo('Chop');
 

@@ -1,7 +1,8 @@
 <?php
-
 namespace ChopBox;
-
+/*
+ * @author Dugeri, Verem
+ */
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 
@@ -15,7 +16,7 @@ class Follower extends Model
     public function __construct($follower, $followee)
     {
 
-      $this->Follower_id = $Follower;
+      $this->Follower_id = $follower;
       $this->followee_id = $followee;
     }
 
