@@ -132,11 +132,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this::where('username', $param)->get();
     }
-    
-    // public function findWithUsername($username)
-    // {
-    //     return $this->find($username);
-    // }
 
     public function persist($request)
     {
