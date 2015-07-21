@@ -59,17 +59,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     private $status;
 
 
-    protected $fillables = [
-    // 'location',
-    // 'best_food',
-    // 'about',
-    // 'gender',
-    'username', 
-    'password',
-    'email'
-    ];
-
-
     public function followers() {
         return $this->hasMany('Follower');
 
