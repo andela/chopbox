@@ -122,10 +122,4 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this::where('username', $param)->get();
     }
 
-    public function persist($request)
-    {
-        $this::create(['username'=>$request['username'], 'password' =>bcrypt($request['password']), 'email' =>$request['email']]);
-    }
-
-
 }
