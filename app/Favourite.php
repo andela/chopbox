@@ -9,15 +9,7 @@ class Favourite extends Model
     
 
 
-    private $user;
-    private $chops;
-
-
-    public function __construct($user_id, $chops_id)
-    {
-      $this->user = $user_id;
-      $this->chops = $chops_id;
-    }
+    protected $fillable = ['chops_id'];
 
 
     public function chops()

@@ -6,17 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    
-
-    private $user;
-    private $comment;
+  
 
 
-    public function __construct($user_id, $comment)
-    {
-      $this->user = $user_id;
-      $this->comment = $comment;
-    }
+    protected $fillable = ['comment'];
 
 
     public function user()

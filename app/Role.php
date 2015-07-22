@@ -8,12 +8,7 @@ class Role extends Model
 {
     
 
-    private $role;
-
-    public function __construct($role)
-    {
-      $this->role = $role;
-    }
+  
 
 
     public function users()

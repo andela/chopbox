@@ -8,20 +8,13 @@ class Upload extends Model
 {
     
 
-    private $name;
-    private $mime;
-    private $uri;
-    private $chops_id;
-    private $user_id;
 
-
-
-    public function __construct($name, $mime, $uri)
-    {
-      $this->name = $name;
-      $this->mime = $mime;
-      $this->uri = $uri;
-    }
+    protected $fillable = [
+          'name', 
+          'mime_type',
+          'file_uri',
+          'created_at'
+    ];
 
     public function chops()
     {

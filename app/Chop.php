@@ -6,21 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chop extends Model
 {
-    
-
-    private $chops_name;
-    private $iamge_uri;
-    private $user;
-    private $likes;
 
 
-    public function __construct($name, $uri, $user_id, $likes)
-    {
-      $this->chops_name = $name;
-      $this->image_uri = $uri;
-      $this->users = $user_id;
-      $this->likes = $likes;
-    }
+    protected $fillable = [  
+          'chops_name',
+          'image_uri',
+          'likes'
+
+    ];
 
 
     public function user()
