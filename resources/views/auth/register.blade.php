@@ -1,5 +1,7 @@
 @extends('app')
-
+@section('title')
+Register
+@stop
 @section('content')
 <div class="intro-header">
     <div class="container">
@@ -17,7 +19,7 @@
                                     <strong>Signing Up is Simple. Get Started</strong>
                                 </div>
                                 <div class="panel-body">
-                           			<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
+                           			<form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <fieldset>
                                         <div class="row">

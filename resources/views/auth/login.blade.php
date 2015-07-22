@@ -1,41 +1,7 @@
-<<<<<<< HEAD
-
-
-@extends('layout')
-
-@section('content')
-
-{!!Form::open(['url'=>'login'])!!}
-
-  
-    <div>
-        <p>Email</p>
-        <input type="email" name="email">
-    </div>
-
-    
-    <div>
-        <p>Password</p>
-        <input type="password" name="password" id="password">
-    </div>
-    
-
-    <p>
-    <div>
-        <input type="checkbox" name="remember"> Remember Me
-    </div>
-    </p>
-
-    <div style="width:400px; ">
-        <button type="submit">Login</button>
-    </div>
-{!!Form::close()!!}
-
-@stop
-
-=======
 @extends('app')
-
+@section('title')
+Login
+@stop
 @section('content')
 <div class="intro-header">
     <div class="container">
@@ -53,7 +19,7 @@
                                     <strong> Sign in to ChopBox to Continue</strong>
                                 </div>
                                 <div class="panel-body">
-                           			<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
+                           			<form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <fieldset>
                                         <div class="row">
@@ -120,4 +86,3 @@
 
 </div>
 @endsection
->>>>>>> Implemented user authentification an registration

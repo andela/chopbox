@@ -1,5 +1,7 @@
 @extends('app')
-
+@section('title')
+Home
+@stop
 @section('content')
         <!-- Header -->
 
@@ -15,9 +17,9 @@
                         <h4>Signup or Register</h4>
                     </div>
 
-                    <div class="col-lg-4 intro-forms">
+                    <div class="col-lg-4 intro-forms"> 
                         <div class="login-forms">
-                       <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
+                       <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class = "form-group">
                                 <input type="text" class="form-control" required ="required" placeholder ="Username or Email" name="email" value="{{ old('email') }}">
@@ -41,7 +43,7 @@
                         </div>
 
                         <div class="signup-forms">
-                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class = "form-group">
                             	<input type="text" class="form-control" name="name" value="{{ old('name') }}" required ="required" placeholder ="Username" >
@@ -69,7 +71,7 @@
             </div>
 
         </div>
-        <!-- /.container -->
+        <!-- /.container --> 
 
     </div>
 @stop
