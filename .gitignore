@@ -4,3 +4,7 @@
 Homestead.yaml
 .env
 /nbproject/private/
+/database/.DS_Store
+/.idea
+/.settings
+.buildpath
