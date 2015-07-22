@@ -1,5 +1,0 @@
-suites:
-    main:
-        namespace: ChopBox
-        psr4_prefix: ChopBox
-        src_path: app
