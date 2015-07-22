@@ -1,6 +1,7 @@
-
 /vendor
+/.settings
 /node_modules
 Homestead.yaml
+/database/.DS_Store 
 .env
 /nbproject/private/

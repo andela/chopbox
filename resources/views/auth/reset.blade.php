@@ -15,7 +15,7 @@
 									<li>{{ $error }}</li>
 								@endforeach
 							</ul>
-						</div>
+			 			</div>
 					@endif
 
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
