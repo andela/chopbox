@@ -55,8 +55,9 @@
             }
 
             $credentials = $this->getCredentials($request);
-            $field = (filter_var($credentials['email'], FILTER_VALIDATE_EMAIL)) ? "email" : "name";
-            if (Auth::attempt([$field => $credentials['email'], 'password' => $credentials['password']])) {
+            $field = (filter_var($credentials['email'], FILTER_VALIDATE_EMAIL)) ? "email" : "username";
+            if (Auth::attempt([$field => $credentials['email'], 'password' => $credentials['password'],
+            		'status'=>TRUE ])) {
                 return $this->handleUserWasAuthenticated($request, $throttles);
             }
 
@@ -83,9 +84,9 @@
         protected function validator(array $data)
         {
             return Validator::make($data, [
-                'name' => 'required|max:255',
+                'name' => 'required|max:255|unique:users,username',
                 'email' => 'required|email|max:255|unique:users',
-                'password' => 'required|confirmed|min:6',
+                'password' => 'required|confirmed|min:8',
             ]);
         }
 
@@ -98,9 +99,11 @@
         protected function create(array $data)
         {
             return User::create([
-                'name' => $data['name'],
+                'username' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
+            		'status' =>TRUE,
+            		'profile_state' => FALSE
             ]);
         }
     }
