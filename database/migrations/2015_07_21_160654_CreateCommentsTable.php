@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFollowTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,20 +12,21 @@ class CreateFollowTable extends Migration
      */
     public function up()
     {
-        Schema::create('follows', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('follower_id')->unsigned();
-            $tabe->integer('followee_id')->unsigned();
-            $table->timestamp('created_at');
+            $table->string('comment');
+            $table->integer('user_id')->unsigned();
+            $table->integer('chops_id')->unsigned();
+            $table->timestamps();
 
 
-            $table->foreign('follower_id')
+            $table->foreign('user_id')
                     ->references('id')
                     ->on('users');
 
-            $table->foreign('followee_id')
+            $table->foreign('chops_id')
                     ->references('id')
-                    ->on('users');
+                    ->on('chops');
         });
     }
 
@@ -36,6 +37,6 @@ class CreateFollowTable extends Migration
      */
     public function down()
     {
-        Schema::drop('follows');
+        Schema::drop('comments');
     }
 }

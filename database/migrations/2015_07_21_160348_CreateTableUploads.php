@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFavouritesTable extends Migration
+class CreateTableUploads extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,23 @@ class CreateFavouritesTable extends Migration
      */
     public function up()
     {
-        Schema::create('favourites', function (Blueprint $table) {
+        Schema::create('uploads', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('mime_type');
+            $table->string('file_uri');
             $table->integer('chops_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
 
 
             $table->foreign('chops_id')
                     ->references('id')
                     ->on('chops');
+
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users');
         });
     }
 
@@ -31,6 +39,6 @@ class CreateFavouritesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('favourites');
+        Schema::drop('uploads');
     }
 }

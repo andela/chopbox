@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChopsTable extends Migration
+class CreateFavouritesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,18 +12,16 @@ class CreateChopsTable extends Migration
      */
     public function up()
     {
-        Schema::create('chops', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('chops_name');
-            $table->integer('user_id')->unsigned();
-            $table->integer('likes')->unsigned();
+        Schema::create('favourites', function (Blueprint $table) {
+            $table->increments('id')->unsigned();
+            $table->integer('chops_id')->unsigned();
             $table->timestamps();
 
 
-
-            $table->foreign('user_id')
+            $table->foreign('chops_id')
                     ->references('id')
-                    ->on('users');
+                    ->on('chops')
+                    ->onDelete('cascade');
         });
     }
 
@@ -34,6 +32,6 @@ class CreateChopsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('chops');
+        Schema::drop('favourites');
     }
 }

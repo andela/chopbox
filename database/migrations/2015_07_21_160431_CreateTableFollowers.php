@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserRoles extends Migration
+class CreateTableFollowers extends Migration
 {
     /**
      * Run the migrations.
@@ -12,20 +12,21 @@ class CreateUserRoles extends Migration
      */
     public function up()
     {
-        Schema::create('user_roles', function (Blueprint $table) {
+        Schema::create('follows', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id')->unsigned();
-            $table->integer('role_id')->unsigned();
-            $table->timestamps();
+            $table->integer('follower_id')->unsigned();
+            $table->integer('followee_id')->unsigned();
+            $table->timestamp('created_at');
 
 
-            $table->foreign('user_id')
+            $table->foreign('follower_id')
                     ->references('id')
                     ->on('users');
 
-            $table->foreign('role_id')
+            $table->foreign('followee_id')
                     ->references('id')
-                    ->on('roles');
+                    ->on('users')
+                    ->onDelete('cascade');
         });
     }
 
@@ -36,6 +37,6 @@ class CreateUserRoles extends Migration
      */
     public function down()
     {
-        Schema::drop('user_roles');
+        Schema::drop('followers');
     }
 }
