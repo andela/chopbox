@@ -32,4 +32,28 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+
+
+    private $firstname;
+    private $lastname;
+    private $username;
+    private $location;
+    private $best_food;
+    private $about;
+    private $gender;
+    private $profile_status;
+    
+
+
+
+
+    public function role()
+    {
+        return $this->belongsToMany('ChopBox\Role');
+    }
+
+    public function upload(){
+        return $this->hasMany('ChopBox\Upload');
+    }
 }
