@@ -9,7 +9,6 @@ class Chop extends Model
     //
 
   private $chops_name;
-  private $uplaod_id;
   private $likes;
 
 
@@ -21,6 +20,33 @@ class Chop extends Model
       'likes'
 
   ];
+
+  public function __construct($chops, $likes)
+  {
+    $this->chops_name = $chops;
+    $this->likes = $likes;
+  }
+
+
+  public function setChopsName($name)
+  {
+    $this->chops_name = $name;
+  }
+
+  public function getChopsName()
+  {
+    return $this->chops_name;
+  }
+
+  public function setLikes($like)
+  {
+    $this->likes = $like;
+  }
+
+  public function getLike()
+  {
+    return $this->likes;
+  }
 
 
 

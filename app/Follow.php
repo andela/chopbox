@@ -17,4 +17,10 @@ class Follow extends Model
     $this->follower = $follower_id;
     $this->followee = $Followee_id;
   }
+
+  public function user()
+  {
+    return $this->belongsToMany('ChopBox\User');
+  }
+
 }

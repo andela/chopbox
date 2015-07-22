@@ -20,6 +20,10 @@ class Role extends Model
     $return $this->role;
   }
 
+  public function setRole($role)
+  {
+    $this->role = $role;
+  }
   public function user()
   {
     return $this->hasMany('ChopBox\User');
