@@ -8,8 +8,6 @@
     use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
-    use Illuminate\Support\Facades\Lang;
-    use Illuminate\Support\Facades\Cache;
 
     class AuthController extends Controller
     {
@@ -26,6 +24,7 @@
 
         use AuthenticatesAndRegistersUsers, ThrottlesLogins;
         protected $loginPath = '/login';
+						  protected $registerPath = '/register';
         /**
          * Create a new authentication controller instance.
          *
@@ -74,6 +73,24 @@
                     $this->loginUsername() => $this->getFailedLoginMessage(),
             ]);
         }
+
+						/**
+							* Handle a registration request for the application.
+							*
+							* @param  \Illuminate\Http\Request  $request
+							* @return \Illuminate\Http\Response
+							*/
+						public function doRegister(Request $request)
+						{
+								$validator = $this->validator($request->all());
+
+								if ($validator->fails()) {
+										return redirect($this->registerPath())->withErrors($validator);
+								}
+
+								Auth::login($this->create($request->all()));
+								return redirect($this->redirectPath());
+						}
 
         /**
          * Get a validator for an incoming registration request.

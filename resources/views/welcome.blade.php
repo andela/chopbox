@@ -1,8 +1,4 @@
- @extends('app')
- @section('title')
- Home
- @stop
- @section('content')
+ @extends('app') @section('title') Home @stop @section('content')
 
 <div class="intro-header">
   <div class="container">
@@ -45,7 +41,6 @@
               </div>
             </form>
           </div>
-
           <div class="signup-forms">
             <form class="form-horizontal" role="form" method="POST"
               action="{{ url('/register') }}">

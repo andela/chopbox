@@ -18,7 +18,7 @@ class Upload extends Model
 
     public function chops()
     {
-      reutrn $this->belongsTo('ChopBox\Chop');
+      return $this->belongsTo('ChopBox\Chop');
     }
 
     public function user()
