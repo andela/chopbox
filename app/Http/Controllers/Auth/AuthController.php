@@ -85,7 +85,7 @@
 								$validator = $this->validator($request->all());
 
 								if ($validator->fails()) {
-										return redirect($this->registerPath())->withErrors($validator);
+										return redirect($this->registerPath)->withErrors($validator);
 								}
 
 								Auth::login($this->create($request->all()));
