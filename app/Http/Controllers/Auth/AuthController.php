@@ -57,7 +57,7 @@
             $credentials = $this->getCredentials($request);
             $field = (filter_var($credentials['email'], FILTER_VALIDATE_EMAIL)) ? "email" : "username";
             if (Auth::attempt([$field => $credentials['email'], 'password' => $credentials['password'],
-            		'status'=>TRUE ])) {
+            		'status'=>TRUE ],$request->has('remember'))) {
                 return $this->handleUserWasAuthenticated($request, $throttles);
             }
 
@@ -98,9 +98,9 @@
          */
         protected function create(array $data)
         {
-            return User::create([
-                'username' => $data['name'],
+        	  return User::create([
                 'email' => $data['email'],
+            		'username' => $data['name'],
                 'password' => bcrypt($data['password']),
             		'status' =>TRUE,
             		'profile_state' => FALSE
