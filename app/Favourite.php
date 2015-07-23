@@ -21,6 +21,4 @@ class Favourite extends Model
     {
       return $this->belongsTo('ChopBox\User');
     }
-
-    public func
 }

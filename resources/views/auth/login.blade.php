@@ -72,8 +72,8 @@ Login
 
                                 </div>
                                 <div class="panel-footer ">
-                                    <span class="pull-left">Don't have an account! <a href="{{ url('/auth/register') }}" onClick=""> Sign Up Here </a></span>
-                                    <span class="pull-right"><a href="{{ url('/password/email') }}" onClick=""> Forgot Password </a></span>
+                                    <span class="pull-left">Don't have an account! <a href="{{ url('/register') }}" onClick=""> Sign Up Here </a></span>
+                                    <span class="pull-right"><a href="{{ url('/password/email') }}"> Forgot Password </a></span>
                                 </div>
                             </div>
                         </div>

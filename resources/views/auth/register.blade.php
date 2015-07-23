@@ -95,9 +95,9 @@ Register
               </div>
               <div class="panel-footer ">
                 <span class="pull-left">Already Registered! <a
-                  href="{{ url('/auth/login') }}" onClick=""> Login Here
+                  href="{{ url('/login') }}" onClick=""> Login Here
                 </a></span> <span class="pull-right"><a
-                  href="{{ url('/password/email') }} onClick=""> Forgot
+                  href="{{ url('/password/email') }}"> Forgot
                     Password </a></span>
               </div>
             </div>
