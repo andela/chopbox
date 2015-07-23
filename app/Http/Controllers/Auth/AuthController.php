@@ -8,8 +8,6 @@
     use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
-    use Illuminate\Support\Facades\Lang;
-    use Illuminate\Support\Facades\Cache;
 
     class AuthController extends Controller
     {
@@ -26,6 +24,7 @@
 
         use AuthenticatesAndRegistersUsers, ThrottlesLogins;
         protected $loginPath = '/login';
+						  protected $registerPath = '/register';
         /**
          * Create a new authentication controller instance.
          *
@@ -55,8 +54,9 @@
             }
 
             $credentials = $this->getCredentials($request);
-            $field = (filter_var($credentials['email'], FILTER_VALIDATE_EMAIL)) ? "email" : "name";
-            if (Auth::attempt([$field => $credentials['email'], 'password' => $credentials['password']])) {
+            $field = (filter_var($credentials['email'], FILTER_VALIDATE_EMAIL)) ? "email" : "username";
+            if (Auth::attempt([$field => $credentials['email'], 'password' => $credentials['password'],
+            		'status'=>TRUE ],$request->has('remember'))) {
                 return $this->handleUserWasAuthenticated($request, $throttles);
             }
 
@@ -74,6 +74,24 @@
             ]);
         }
 
+						/**
+							* Handle a registration request for the application.
+							*
+							* @param  \Illuminate\Http\Request  $request
+							* @return \Illuminate\Http\Response
+							*/
+						public function doRegister(Request $request)
+						{
+								$validator = $this->validator($request->all());
+
+								if ($validator->fails()) {
+										return redirect($this->registerPath())->withErrors($validator);
+								}
+
+								Auth::login($this->create($request->all()));
+								return redirect($this->redirectPath());
+						}
+
         /**
          * Get a validator for an incoming registration request.
          *
@@ -83,9 +101,9 @@
         protected function validator(array $data)
         {
             return Validator::make($data, [
-                'name' => 'required|max:255',
+                'name' => 'required|max:255|unique:users,username',
                 'email' => 'required|email|max:255|unique:users',
-                'password' => 'required|confirmed|min:6',
+                'password' => 'required|confirmed|min:8',
             ]);
         }
 
@@ -97,10 +115,12 @@
          */
         protected function create(array $data)
         {
-            return User::create([
-                'name' => $data['name'],
+        	  return User::create([
                 'email' => $data['email'],
+            		'username' => $data['name'],
                 'password' => bcrypt($data['password']),
+            		'status' =>TRUE,
+            		'profile_state' => FALSE
             ]);
         }
     }

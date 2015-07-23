@@ -12,6 +12,6 @@ class UserRole extends Model
 
     public function users()
     {
-      $return $this->belongsToMany('ChopBox\User');
+      return $this->belongsToMany('ChopBox\User');
     }
 }
