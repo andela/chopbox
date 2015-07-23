@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bb9b34e56f0d7490239da801ca04049f",
+    "hash": "d8cc00fc26432901b1746562596559f4",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -458,6 +458,57 @@
                 "tokenizer"
             ],
             "time": "2015-03-11 20:06:43"
+        },
+        {
+            "name": "jrm2k6/cloudder",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jrm2k6/cloudder.git",
+                "reference": "9739092d94e572a02fb16546cf6ec2d4472509f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jrm2k6/cloudder/zipball/9739092d94e572a02fb16546cf6ec2d4472509f8",
+                "reference": "9739092d94e572a02fb16546cf6ec2d4472509f8",
+                "shasum": ""
+            },
+            "require": {
+                "cloudinary/cloudinary_php": ">=1.1",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "laravel/framework": "5.0.*",
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JD\\Cloudder": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Dagorn",
+                    "email": "jeremy.dagorn@gmail.com"
+                }
+            ],
+            "description": "Cloudinary API wrapper for Laravel",
+            "homepage": "https://github.com/jrm2k6/cloudder",
+            "keywords": [
+                "api",
+                "cloudinary",
+                "image",
+                "laravel",
+                "laravel4",
+                "upload"
+            ],
+            "time": "2015-06-23 16:18:52"
         },
         {
             "name": "laravel/framework",

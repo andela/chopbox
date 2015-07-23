@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use ChopBox\Http\Requests;
 use ChopBox\Http\Controllers\Controller;
 use Input;
+use Cloudder;
 class ChopsController extends Controller
 {
     /**
@@ -37,7 +38,9 @@ class ChopsController extends Controller
      */
     public function store(Request $request)
     {
-        dd(Input::all());
+        $file = Input::file('image');
+        $file_name = $file->getClientOriginalName();
+        Cloudder::upload($file_name, ['use_filename' => true]);
     }
 
     /**
