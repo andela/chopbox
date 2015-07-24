@@ -8,8 +8,11 @@ use ChopBox\Http\Requests;
 use ChopBox\Http\Controllers\Controller;
 use Input;
 use Cloudder;
+use ChopBox\Helpers\ShortenUrl;
+
 class ChopsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -38,9 +41,22 @@ class ChopsController extends Controller
      */
     public function store(Request $request)
     {
-        $file = Input::file('image');
-        $file_name = $file->getClientOriginalName();
-        Cloudder::upload($file_name, ['use_filename' => true]);
+        if(Input::hasfile('image'))
+        {
+            $file = Input::file('image');
+            $file_name = $file->getClientOriginalName();
+            Cloudder::upload($file);
+            
+            $result = Cloudder::getResult();
+            $url = $result['url'];
+            $shortener = new ShortenUrl();
+            $shortener->setLogin("o_4dlm5gnl5m");
+            $shortener->setKey( "R_639b43ad856942c79de4c843583e3a51");
+            $shortener->setFormat("json");
+            $shortened_url = $shortener->shortenUrl($url);
+            dd($shortened_url);
+
+        }
     }
 
     /**

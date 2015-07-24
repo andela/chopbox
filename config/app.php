@@ -138,6 +138,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
         JD\Cloudder\CloudderServiceProvider::class,
+        ChopBox\Providers\HelperServiceProvider::class,
 
 
         /*
