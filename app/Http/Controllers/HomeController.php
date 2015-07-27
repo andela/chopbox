@@ -33,9 +33,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{   
-		$complete = false;
-		
-		if ($complete) {
+		$user = Auth::user();
+		if ($user->profile_state) {
 			return view('home');
 		}else {
 			return view('first_profile');
