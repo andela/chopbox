@@ -6,7 +6,12 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*"
+        "laravel/framework": "5.1.*",
+        "samcrosoft/cloudinary": "^1.1",
+        "cloudinary/cloudinary_php": "^1.1",
+        "illuminate/html": "^5.0",
+        "jrm2k6/cloudder": "0.2.",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -14,6 +19,7 @@
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1"
     },
+    
     "autoload": {
         "classmap": [
             "database"

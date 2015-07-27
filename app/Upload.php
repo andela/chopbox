@@ -23,7 +23,7 @@ class Upload extends Model
 
     public function user()
     {
-      return $this->belongsTo('ChopBox\user');
+      return $this->belongsTo('ChopBox\User');
     }
 
 

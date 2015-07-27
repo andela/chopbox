@@ -17,8 +17,8 @@ class CreateTableUploads extends Migration
             $table->string('name');
             $table->string('mime_type');
             $table->string('file_uri');
-            $table->integer('chops_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->integer('chops_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->timestamps();
 
 
