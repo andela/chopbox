@@ -27,11 +27,7 @@ Route::get('logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
 Route::get('register', 'Auth\AuthController@getRegister');
-<<<<<<< HEAD
 Route::post('register', 'Auth\AuthController@postRegister');
 
 
 Route::resource('chops', 'ChopsController');
-=======
-Route::post('register', 'Auth\AuthController@doRegister');
->>>>>>> master
