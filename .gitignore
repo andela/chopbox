@@ -5,9 +5,3 @@
 Homestead.yaml
 .env
 .DS_Store
-<<<<<<< HEAD
-/.idea
-/.settings
-=======
-.gitignore
->>>>>>> master
