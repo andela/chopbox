@@ -16,6 +16,7 @@ class CreateChopsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('chops_name');
+            $table->text('about');
             $table->integer('likes');
             $table->timestamps();
 

@@ -12,15 +12,6 @@ class ShortenUrl
   private $api_key;
 
 
-
-  // public function __construct($login, $api_key)
-  // {
-  //   $this->api_key = $api_key;
-  //   $this->$login = $login;
-  //   $this->format = "json";
-  //   $this->api_version = "v3";
-  // }
-
   public function setKey($api_key)
   {
     $this->api_key = $api_key;
@@ -88,9 +79,10 @@ class ShortenUrl
   {
     //decode JSON to array
     $content = json_decode($content, true);
+   
 
     //check errors
-    if($content['errorCode'] != 0 || $content['statusCode'] != 200)
+    if($content['statusCode'] != 'OK')
     {
       echo $content['statusCode']. ":". $content['errorCode']. " ".$content['errorMessage'];
     }

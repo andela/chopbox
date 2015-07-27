@@ -9,7 +9,9 @@ use ChopBox\Http\Controllers\Controller;
 use Input;
 use Cloudder;
 use ChopBox\Helpers\ShortenUrl;
-use ChopBox\Helpers\Upload;
+use ChopBox\Helpers\UploadFile;
+use ChopBox\Chop;
+use ChopBox\Upload;
 
 class ChopsController extends Controller
 {
@@ -42,29 +44,48 @@ class ChopsController extends Controller
      */
     public function store(Request $request)
     {
-
+        $file = NULL;
+        $shortened_url = "";
         if(Input::hasfile('image'))
         {
-            $upload = new Upload();
+            $upload_file = new UploadFile();
             $file = Input::file('image');
-            $result =  $upload->uploadFile($file);
+            $result =  $upload_file->uploadFile($file);
             if($result) {
+                $url = $result['url']; //get the url from the cloudinary result;
 
-                $url = $result['url']; //get the hosted file url from the result;
-                $shortener = new ShortenUrl(); 
-
-                //set bitly credentials
+                $shortener = new ShortenUrl();
                 $shortener->setLogin(env('BITLY_LOGIN'));
                 $shortener->setKey(env('BITLY_API_KEY'));
                 $shortener->setFormat("json");
 
                 $shortened_url = $shortener->shortenUrl($url);
-                dd($shortened_url);
-            }else {
-                return 'file not uploaded';
-            }   
+            }
 
         }
+
+        // save chops details to database
+        $chops = new Chop();
+        $data = Input::all();
+        $chops->chops_name = $data['name'];
+        $chops->about = $data['about'];
+        $chops->likes = 0;
+        $chops->user_id = 1;
+
+        $chops->save();
+        
+
+        //save upload to database
+        $upload = new Upload();
+        $upload->name = $file->getClientOriginalName();
+        $upload->mime_type = $file->getMimeType();
+        $upload->file_uri = $shortened_url;
+        $upload->chops_id = $chops->id;
+
+        $upload->save();
+        return $upload->id;
+
+
     }
 
     /**

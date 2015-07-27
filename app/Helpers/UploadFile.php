@@ -2,7 +2,7 @@
 namespace ChopBox\helpers;
 use Cloudder;
 
-class Upload {
+class UploadFile {
 
 
 /*
