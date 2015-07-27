@@ -9,6 +9,7 @@ use ChopBox\Http\Controllers\Controller;
 use Input;
 use Cloudder;
 use ChopBox\Helpers\ShortenUrl;
+use ChopBox\Helpers\Upload;
 
 class ChopsController extends Controller
 {
@@ -41,20 +42,27 @@ class ChopsController extends Controller
      */
     public function store(Request $request)
     {
+
         if(Input::hasfile('image'))
         {
+            $upload = new Upload();
             $file = Input::file('image');
-            $file_name = $file->getClientOriginalName();
-            Cloudder::upload($file);
-            
-            $result = Cloudder::getResult();
-            $url = $result['url'];
-            $shortener = new ShortenUrl();
-            $shortener->setLogin("o_4dlm5gnl5m");
-            $shortener->setKey( "R_639b43ad856942c79de4c843583e3a51");
-            $shortener->setFormat("json");
-            $shortened_url = $shortener->shortenUrl($url);
-            dd($shortened_url);
+            $result =  $upload->uploadFile($file);
+            if($result) {
+
+                $url = $result['url']; //get the hosted file url from the result;
+                $shortener = new ShortenUrl(); 
+
+                //set bitly credentials
+                $shortener->setLogin(env('BITLY_LOGIN'));
+                $shortener->setKey(env('BITLY_API_KEY'));
+                $shortener->setFormat("json");
+
+                $shortened_url = $shortener->shortenUrl($url);
+                dd($shortened_url);
+            }else {
+                return 'file not uploaded';
+            }   
 
         }
     }

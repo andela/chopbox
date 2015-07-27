@@ -30,6 +30,4 @@ Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
 
 
-//routes for chops
-Route::get('create', 'ChopsController@create');
-Route::post('store', 'ChopsController@store');
+Route::resource('chops', 'ChopsController');

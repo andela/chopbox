@@ -75,30 +75,6 @@ class ShortenUrl
   }
 
 
-  public function expandUrlByHash($hash)
-  {
-    $expanded_url = "";
-    $bityl_url = "http://api.bit.ly/expand?" . 
-                     "version=" . $this->api_version . 
-                     "&format=" . $this->format . 
-                     "&hash=" . $hash . 
-                     "&login=" . $this->login . 
-                     "&apiKey=" . $this->api_key;
-    $content = file_get_contents($bityl_url);
-
-    try
-    {
-      $expanded_url = $this->parseContent($content, $hash);
-    }catch(Exception $e)
-    {
-      echo $e->getMessage()."<br/>";
-      exit;
-    }
-
-    return $expanded_url;
-  }
-
-
   /* returns a  bitly hash*/
   private function parseUrl($url)
   {
