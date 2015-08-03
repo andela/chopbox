@@ -14,6 +14,34 @@ class ExampleTest extends TestCase
     public function testBasicExample()
     {
         $this->visit('/')
-             ->see('Laravel 5');
+             ->see('ChopBox');
+    }
+
+    public function test_homepage_loads() {
+        $this->visit('/');
+    }
+
+
+    public function test_user_can_post_chops() {
+
+        $uploadedFile = Mockery::mock(
+            '\Symfony\Component\HttpFoundation\File\UploadedFile',
+            [
+                'getClientOriginalName'      => 'image-1.jpg',
+                'getClientOriginalExtension' => 'jpg',
+            ]
+        );
+
+        $this->call('POST', 'ChopsController@store', ['name', ['image' => $uploadedFile], 'about']);
+        $this->assertResponseOk();
+
+    }
+
+    public function test_user_can_post_chops_without_image() {
+        $this->visit('/chops/create')
+            ->type('a random chops', 'name')
+            ->type('a random about', 'about')
+            ->press('Post')
+            ->seeInDatabase('chops', ['name'=>'a random name']);
     }
 }

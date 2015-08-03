@@ -56,14 +56,14 @@ class ShortenUrl
   }
 
 
-  public function shorten($url)
-  {
-    $expanded_url = "";
-    $hash = $this->parseUrl($url);
-    $expanded_url = $this->expandUrlByHash($hash);
-
-    return $expanded_url;
-  }
+//  public function shorten($url)
+//  {
+//    $expanded_url = "";
+//    $hash = $this->parseUrl($url);
+//    $expanded_url = $this->expandUrlByHash($hash);
+//
+//    return $expanded_url;
+//  }
 
 
   /* returns a  bitly hash*/
@@ -75,7 +75,7 @@ class ShortenUrl
 
   /* parse content from bitly API */
 
-  private function parseContent($content, $key)
+  public function parseContent($content, $key)
   {
     //decode JSON to array
     $content = json_decode($content, true);

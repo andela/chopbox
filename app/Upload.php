@@ -27,13 +27,4 @@ class Upload extends Model
     }
 
 
-    public function setChopsIdAttribute($id)
-    {
-      $this->chops_id = $id;
-    }
-
-    public function setUserIdAttribute($id)
-    {
-      $this->user_id = $id;
-    }
 }

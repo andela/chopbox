@@ -12,15 +12,25 @@ use ChopBox\Helpers\ShortenUrl;
 use ChopBox\Helpers\UploadFile;
 use ChopBox\Chop;
 use ChopBox\Upload;
+use League\Flysystem\File;
 
 class ChopsController extends Controller
 {
 
+    private $file;
+    private $upload_file;
+    private $shortener;
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
+
+    public function __construct(UploadFile $uploadFile, ShortenUrl $shortenUrl) {
+        $this->upload_file = $uploadFile;
+        $this->shortener = $shortenUrl;
+        //$this->file = $file;
+    }
     public function index()
     {
         //
@@ -44,22 +54,21 @@ class ChopsController extends Controller
      */
     public function store(Request $request)
     {
-        $file = NULL;
         $shortened_url = "";
         if(Input::hasfile('image'))
         {
-            $upload_file = new UploadFile();
-            $file = Input::file('image');
-            $result =  $upload_file->uploadFile($file);
+
+            $this->file = Input::file('image');
+            $result =  $this->upload_file->uploadFile($this->file);
             if($result) {
                 $url = $result['url']; //get the url from the cloudinary result;
 
-                $shortener = new ShortenUrl();
-                $shortener->setLogin(env('BITLY_LOGIN'));
-                $shortener->setKey(env('BITLY_API_KEY'));
-                $shortener->setFormat("json");
+                $this->shortener = new ShortenUrl();
+                $this->shortener->setLogin(env('BITLY_LOGIN'));
+                $this->shortener->setKey(env('BITLY_API_KEY'));
+                $this->shortener->setFormat("json");
 
-                $shortened_url = $shortener->shortenUrl($url);
+                $shortened_url = $this->shortener->shortenUrl($url);
             }
 
         }
@@ -73,18 +82,20 @@ class ChopsController extends Controller
         $chops->user_id = 1;
 
         $chops->save();
+
+        //echo $chops->id;
+        //exit;
         
 
         //save upload to database
         $upload = new Upload();
-        $upload->name = $file->getClientOriginalName();
-        $upload->mime_type = $file->getMimeType();
+        $upload->name = $this->file->getClientOriginalName();
+        $upload->mime_type = $this->file->getMimeType();
         $upload->file_uri = $shortened_url;
         $upload->chops_id = $chops->id;
+        $upload->user_id = 1;
 
         $upload->save();
-        return $upload->id;
-
 
     }
 
