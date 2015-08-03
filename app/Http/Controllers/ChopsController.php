@@ -44,6 +44,15 @@ class ChopsController extends Controller
      */
     public function store(Request $request)
     {
+
+        //validate the incoming request for errors.
+        $this->validate($request, [
+            'name' => 'required|min:3|max:60',
+            'description' =>'required|max:255'
+            ]);
+
+        //proceed if validation passses.
+
         $file = NULL;
         $shortened_url = "";
         if(Input::hasfile('image'))
@@ -73,6 +82,7 @@ class ChopsController extends Controller
         $chops->user_id = 1;
 
         $chops->save();
+
         
 
         //save upload to database
@@ -81,7 +91,6 @@ class ChopsController extends Controller
         $upload->mime_type = $file->getMimeType();
         $upload->file_uri = $shortened_url;
         $upload->chops_id = $chops->id;
-
         $upload->save();
         return $upload->id;
 
