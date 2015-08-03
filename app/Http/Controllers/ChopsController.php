@@ -79,7 +79,8 @@ class ChopsController extends Controller
         $chops->chops_name = $data['name'];
         $chops->about = $data['about'];
         $chops->likes = 0;
-        $chops->user_id = 1;
+        $user = Auth::user();
+        $chops->user_id = $user->id();
 
         $chops->save();
 
