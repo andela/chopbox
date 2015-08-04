@@ -23,7 +23,7 @@
 # Dump of table chops
 # ------------------------------------------------------------
 
-CREATE TABLE `chops` (
+CREATE TABLE `cb_chops` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
   `chops_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `chops` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `chops_user_id_foreign` (`user_id`),
-  CONSTRAINT `chops_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `chops_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `cb_users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -41,7 +41,7 @@ CREATE TABLE `chops` (
 # Dump of table comments
 # ------------------------------------------------------------
 
-CREATE TABLE `comments` (
+CREATE TABLE `cb_comments` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `comment` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
@@ -51,8 +51,8 @@ CREATE TABLE `comments` (
   PRIMARY KEY (`id`),
   KEY `comments_user_id_foreign` (`user_id`),
   KEY `comments_chops_id_foreign` (`chops_id`),
-  CONSTRAINT `comments_chops_id_foreign` FOREIGN KEY (`chops_id`) REFERENCES `chops` (`id`),
-  CONSTRAINT `comments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `comments_chops_id_foreign` FOREIGN KEY (`chops_id`) REFERENCES `cb_chops` (`id`),
+  CONSTRAINT `comments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `cb_users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -60,14 +60,14 @@ CREATE TABLE `comments` (
 # Dump of table favourites
 # ------------------------------------------------------------
 
-CREATE TABLE `favourites` (
+CREATE TABLE `cb_favourites` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `chops_id` int(10) unsigned NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `favourites_chops_id_foreign` (`chops_id`),
-  CONSTRAINT `favourites_chops_id_foreign` FOREIGN KEY (`chops_id`) REFERENCES `chops` (`id`) ON DELETE CASCADE
+  CONSTRAINT `favourites_chops_id_foreign` FOREIGN KEY (`chops_id`) REFERENCES `cb_chops` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -75,7 +75,7 @@ CREATE TABLE `favourites` (
 # Dump of table follows
 # ------------------------------------------------------------
 
-CREATE TABLE `follows` (
+CREATE TABLE `cb_follows` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `follower_id` int(10) unsigned NOT NULL,
   `followee_id` int(10) unsigned NOT NULL,
@@ -83,8 +83,8 @@ CREATE TABLE `follows` (
   PRIMARY KEY (`id`),
   KEY `follows_follower_id_foreign` (`follower_id`),
   KEY `follows_followee_id_foreign` (`followee_id`),
-  CONSTRAINT `follows_followee_id_foreign` FOREIGN KEY (`followee_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `follows_follower_id_foreign` FOREIGN KEY (`follower_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `follows_followee_id_foreign` FOREIGN KEY (`followee_id`) REFERENCES `cb_users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `follows_follower_id_foreign` FOREIGN KEY (`follower_id`) REFERENCES `cb_users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -102,7 +102,7 @@ CREATE TABLE `migrations` (
 # Dump of table password_resets
 # ------------------------------------------------------------
 
-CREATE TABLE `password_resets` (
+CREATE TABLE `cb_password_resets` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -115,7 +115,7 @@ CREATE TABLE `password_resets` (
 # Dump of table roles
 # ------------------------------------------------------------
 
-CREATE TABLE `roles` (
+CREATE TABLE `cb_roles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `role_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
@@ -126,7 +126,7 @@ CREATE TABLE `roles` (
 # Dump of table uploads
 # ------------------------------------------------------------
 
-CREATE TABLE `uploads` (
+CREATE TABLE `cb_uploads` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `mime_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -138,8 +138,8 @@ CREATE TABLE `uploads` (
   PRIMARY KEY (`id`),
   KEY `uploads_chops_id_foreign` (`chops_id`),
   KEY `uploads_user_id_foreign` (`user_id`),
-  CONSTRAINT `uploads_chops_id_foreign` FOREIGN KEY (`chops_id`) REFERENCES `chops` (`id`),
-  CONSTRAINT `uploads_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `uploads_chops_id_foreign` FOREIGN KEY (`chops_id`) REFERENCES `cb_chops` (`id`),
+  CONSTRAINT `uploads_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `cb_users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -147,15 +147,15 @@ CREATE TABLE `uploads` (
 # Dump of table user_roles
 # ------------------------------------------------------------
 
-CREATE TABLE `user_roles` (
+CREATE TABLE `cb_user_roles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
   `role_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_roles_user_id_foreign` (`user_id`),
   KEY `user_roles_role_id_foreign` (`role_id`),
-  CONSTRAINT `user_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
-  CONSTRAINT `user_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `user_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `cb_roles` (`id`),
+  CONSTRAINT `user_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `cb_users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -163,7 +163,7 @@ CREATE TABLE `user_roles` (
 # Dump of table users
 # ------------------------------------------------------------
 
-CREATE TABLE `users` (
+CREATE TABLE `cb_users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
