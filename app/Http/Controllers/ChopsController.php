@@ -80,7 +80,7 @@ class ChopsController extends Controller
         $chops->about = $data['about'];
         $chops->likes = 0;
         $user = Auth::user();
-        $chops->user_id = $user->id();
+        $chops->user_id = $user->id;
 
         $chops->save();
 

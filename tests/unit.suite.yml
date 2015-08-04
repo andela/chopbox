@@ -7,3 +7,8 @@ modules:
     enabled:
         - Asserts
         - \Helper\Unit
+        - Laravel5:
+          part: ORM
+          environment_file: .env.testing
+          cleanup: false
+        - Db
