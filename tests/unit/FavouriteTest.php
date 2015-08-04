@@ -63,7 +63,4 @@ class FavouriteTest extends \Codeception\TestCase\Test
         return $user_id;
     }
 
-    private function createComment() {
-
-    }
 }
