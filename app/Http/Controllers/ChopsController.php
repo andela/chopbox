@@ -2,19 +2,39 @@
 
 namespace ChopBox\Http\Controllers;
 
+use ChopBox\Chop;
+use ChopBox\helpers\ShortenUrl;
+use ChopBox\helpers\UploadFile;
+use ChopBox\Upload;
 use Illuminate\Http\Request;
 
 use ChopBox\Http\Requests;
 use ChopBox\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Input;
 use Cloudder;
-use ChopBox\Helpers\ShortenUrl;
-use ChopBox\Helpers\UploadFile;
-use ChopBox\Chop;
-use ChopBox\Upload;
+
+
+
+
 
 class ChopsController extends Controller
 {
+
+    /*
+     * inject dependencies using the constructor
+     */
+    private $upload;
+    private $chops;
+    private $shortener;
+    private $upload_file;
+    public function __construct(Upload $upload, Chop $chop, ShortenUrl $shortener,
+                                UploadFile $upload_file){
+        $this->upload = $upload;
+        $this->chops = $chop;
+        $this->shortener =$shortener;
+        $this->upload_file = $upload_file;
+    }
 
     /**
      * Display a listing of the resource.
@@ -46,10 +66,10 @@ class ChopsController extends Controller
     {
 
         //validate the incoming request for errors.
-        $this->validate($request, [
-            'name' => 'required|min:3|max:60',
-            'description' =>'required|max:255'
-            ]);
+//        $this->validate($request, [
+//            'name' => 'required|min:3|max:60',
+//            'description' =>'required|max:255'
+//            ]);
 
         //proceed if validation passses.
 
@@ -57,43 +77,42 @@ class ChopsController extends Controller
         $shortened_url = "";
         if(Input::hasfile('image'))
         {
-            $upload_file = new UploadFile();
+
             $file = Input::file('image');
-            $result =  $upload_file->uploadFile($file);
+            $result =  $this->upload_file->uploadFile($file);
             if($result) {
                 $url = $result['url']; //get the url from the cloudinary result;
 
-                $shortener = new ShortenUrl();
-                $shortener->setLogin(env('BITLY_LOGIN'));
-                $shortener->setKey(env('BITLY_API_KEY'));
-                $shortener->setFormat("json");
+                $this->shortener = new ShortenUrl();
+                $this->shortener->setLogin(env('BITLY_LOGIN'));
+                $this->shortener->setKey(env('BITLY_API_KEY'));
+                $this->shortener->setFormat("json");
 
-                $shortened_url = $shortener->shortenUrl($url);
+                $shortened_url = $this->shortener->shortenUrl($url);
             }
 
         }
 
         // save chops details to database
-        $chops = new Chop();
-        $data = Input::all();
-        $chops->chops_name = $data['name'];
-        $chops->about = $data['about'];
-        $chops->likes = 0;
-        $user = Auth::user();
-        $chops->user_id = $user->id;
 
-        $chops->save();
+        $data = Input::all();
+        $this->chops->chops_name = $data['name'];
+        $this->chops->about = $data['about'];
+        $this->chops->likes = 0;
+        $user = Auth::user();
+        $this->chops->user_id = $user->id;
+
+        $this->chops->save();
 
         
 
         //save upload to database
-        $upload = new Upload();
-        $upload->name = $file->getClientOriginalName();
-        $upload->mime_type = $file->getMimeType();
-        $upload->file_uri = $shortened_url;
-        $upload->chops_id = $chops->id;
-        $upload->save();
-        return $upload->id;
+        $this->upload->name = $file->getClientOriginalName();
+        $this->upload->mime_type = $file->getMimeType();
+        $this->upload->file_uri = $shortened_url;
+        $this->upload->chops_id = $this->chops->id;
+        $this->upload->save();
+        return $this->upload->id;
 
 
     }
