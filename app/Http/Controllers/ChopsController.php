@@ -66,7 +66,7 @@ class ChopsController extends Controller
      */
     public function store(ChopsFormRequest $request)
     {
-        
+
         $file = NULL;
         $shortened_url = "";
         if($request->image)
