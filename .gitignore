@@ -1,7 +1,0 @@
-/vendor
-/node_modules
-/.settings
-/.idea
-Homestead.yaml
-.env
-.DS_Store

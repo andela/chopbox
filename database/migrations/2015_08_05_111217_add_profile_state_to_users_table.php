@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RenameNameColumnOnUserTable extends Migration
+class AddProfileStateToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class RenameNameColumnOnUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-             $table->renameColumn('name', 'username');
+            $table->boolean('profile_state')->nullable();
         });
     }
 
@@ -25,7 +25,7 @@ class RenameNameColumnOnUserTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-           $table->renameColumn('username', 'name');
+            $table->dropColumn('profile_state');
         });
     }
 }
