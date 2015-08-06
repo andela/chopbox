@@ -24,11 +24,13 @@ class CreateTableUploads extends Migration
 
             $table->foreign('chops_id')
                     ->references('id')
-                    ->on('chops');
+                    ->on('chops')
+                    ->onDelete('cascade');
 
             $table->foreign('user_id')
                     ->references('id')
-                    ->on('users');
+                    ->on('users')
+                    ->onDelete('cascade');
         });
     }
 
