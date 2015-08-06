@@ -78,7 +78,6 @@ class ChopsController extends Controller
 			if($result) {
 				$url = $result['url']; //get the url from the cloudinary result;
 
-				$this->shortener = new ShortenUrl();
 				$this->shortener->setLogin(env('BITLY_LOGIN'));
 				$this->shortener->setKey(env('BITLY_API_KEY'));
 				$this->shortener->setFormat("json");
