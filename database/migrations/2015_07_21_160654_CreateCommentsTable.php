@@ -26,7 +26,8 @@ class CreateCommentsTable extends Migration
 
             $table->foreign('chops_id')
                     ->references('id')
-                    ->on('chops');
+                    ->on('chops')
+                    ->onDelete('cascade');
         });
     }
 

@@ -26,14 +26,4 @@ class Upload extends Model
       return $this->belongsTo('ChopBox\User');
     }
 
-
-    public function setChopsIdAttribute($id)
-    {
-      $this->chops_id = $id;
-    }
-
-    public function setUserIdAttribute($id)
-    {
-      $this->user_id = $id;
-    }
 }
