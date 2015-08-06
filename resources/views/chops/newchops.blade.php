@@ -31,15 +31,15 @@
   {!! Form::close() !!}
 
 
-    {{--@if($errors->any())--}}
-        {{--<div class="has-error">--}}
-            {{--<ul>--}}
-                {{--@foreach($errors as $error)--}}
-                    {{--<li>{{$error}}</li>--}}
-                {{--@endforeach--}}
-            {{--</ul>--}}
-        {{--</div>--}}
-    {{--@endif--}}
+    @if($errors->any())
+        <div class="has-error">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
 </div>
 

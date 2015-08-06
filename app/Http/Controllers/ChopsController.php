@@ -5,12 +5,13 @@ namespace ChopBox\Http\Controllers;
 use ChopBox\Chop;
 use ChopBox\helpers\ShortenUrl;
 use ChopBox\helpers\UploadFile;
+use ChopBox\Http\Requests\ChopsFormRequest;
 use ChopBox\Upload;
 use Illuminate\Http\Request;
 
-use ChopBox\Http\Requests;
-use ChopBox\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Input;
 use Cloudder;
 
@@ -43,7 +44,8 @@ class ChopsController extends Controller
      */
     public function index()
     {
-        //
+        $chops = Chop::all()->toArray();
+        return view('chops.home', compact('chops'));
     }
 
     /**
@@ -62,23 +64,15 @@ class ChopsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(ChopsFormRequest $request)
     {
-
-        //validate the incoming request for errors.
-//        $this->validate($request, [
-//            'name' => 'required|min:3|max:60',
-//            'description' =>'required|max:255'
-//            ]);
-
-        //proceed if validation passses.
-
+        
         $file = NULL;
         $shortened_url = "";
-        if(Input::hasfile('image'))
+        if($request->image)
         {
 
-            $file = Input::file('image');
+            $file = $request->image;
             $result =  $this->upload_file->uploadFile($file);
             if($result) {
                 $url = $result['url']; //get the url from the cloudinary result;
@@ -95,12 +89,12 @@ class ChopsController extends Controller
 
         // save chops details to database
 
-        $data = Input::all();
-        $this->chops->chops_name = $data['name'];
-        $this->chops->about = $data['about'];
+
+        $this->chops->chops_name = $request->name;
+        $this->chops->about = $request->about;
         $this->chops->likes = 0;
-        $user = Auth::user();
-        $this->chops->user_id = $user->id;
+        //$user = Auth::User();
+        $this->chops->user_id = 1;//$user->id;
 
         $this->chops->save();
 
@@ -112,7 +106,7 @@ class ChopsController extends Controller
         $this->upload->file_uri = $shortened_url;
         $this->upload->chops_id = $this->chops->id;
         $this->upload->save();
-        return $this->upload->id;
+        return Redirect::route('chops.index')->with('message', 'your chops has been created');
 
 
     }
@@ -125,7 +119,7 @@ class ChopsController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

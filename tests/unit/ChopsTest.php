@@ -27,8 +27,12 @@ class ChopsTest extends \Codeception\TestCase\Test
        $chops = new Chop();
        $chops->chops_name = "Random";
        $chops->about = "A random chops";
-       $chops->image = "data\\julia.jpeg";
        $chops->user_id = $id;
+       $chops->likes = 0;
+
+       $chops->save();
+
+       $this->tester->seeRecord('chops',['chops_name'=>'Random']);
    }
 
     public function  testChopsCanBeDeleted() {
