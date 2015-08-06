@@ -2,145 +2,154 @@
 
 namespace ChopBox\Http\Controllers;
 
+use ChopBox\Http\Requests\ChopsFormRequest;
 use Illuminate\Http\Request;
-
-use ChopBox\Http\Requests;
-use ChopBox\Http\Controllers\Controller;
-use Input;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Cloudder;
-use ChopBox\Helpers\ShortenUrl;
-use ChopBox\Helpers\UploadFile;
-use ChopBox\Chop;
-use ChopBox\Upload;
+
 use League\Flysystem\File;
+
+
 
 class ChopsController extends Controller
 {
 
-    private $file;
-    private $upload_file;
-    private $shortener;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
+	/*
+	 * inject dependencies using the constructor
+	 */
+	private $upload;
+	private $chops;
+	private $shortener;
+	private $upload_file;
+	public function __construct(Upload $upload, Chop $chop, ShortenUrl $shortener,
+								UploadFile $upload_file){
+		$this->upload = $upload;
+		$this->chops = $chop;
+		$this->shortener =$shortener;
+		$this->upload_file = $upload_file;
+	}
 
-    public function __construct(UploadFile $uploadFile, ShortenUrl $shortenUrl) {
-        $this->upload_file = $uploadFile;
-        $this->shortener = $shortenUrl;
-        //$this->file = $file;
-    }
-    public function index()
-    {
-        //
-    }
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		$chops = Chop::all()->toArray();
+		return view('chops.home', compact('chops'));
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return view('chops.newchops');
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+		return view('chops.newchops');
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        $shortened_url = "";
-        if(Input::hasfile('image'))
-        {
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  Request  $request
+	 * @return Response
+	 */
+	public function store(ChopsFormRequest $request)
+	{
 
-            $this->file = Input::file('image');
-            $result =  $this->upload_file->uploadFile($this->file);
-            if($result) {
-                $url = $result['url']; //get the url from the cloudinary result;
+		$file = NULL;
+		$shortened_url = "";
+		if($request->image)
+		{
 
-                $this->shortener = new ShortenUrl();
-                $this->shortener->setLogin(env('BITLY_LOGIN'));
-                $this->shortener->setKey(env('BITLY_API_KEY'));
-                $this->shortener->setFormat("json");
+			$file = $request->image;
+			$result =  $this->upload_file->uploadFile($file);
+			
+			if($result) {
+				$url = $result['url']; //get the url from the cloudinary result;
 
-                $shortened_url = $this->shortener->shortenUrl($url);
-            }
+				$this->shortener->setLogin(env('BITLY_LOGIN'));
+				$this->shortener->setKey(env('BITLY_API_KEY'));
+				$this->shortener->setFormat("json");
 
-        }
+				$shortened_url = $this->shortener->shortenUrl($url);
+			}
 
-        // save chops details to database
-        $chops = new Chop();
-        $data = Input::all();
-        $chops->chops_name = $data['name'];
-        $chops->about = $data['about'];
-        $chops->likes = 0;
-        $chops->user_id = 1;
+		}
 
-        $chops->save();
+		// save chops details to database
 
-        //echo $chops->id;
-        //exit;
-        
 
-        //save upload to database
-        $upload = new Upload();
-        $upload->name = $this->file->getClientOriginalName();
-        $upload->mime_type = $this->file->getMimeType();
-        $upload->file_uri = $shortened_url;
-        $upload->chops_id = $chops->id;
-        $upload->user_id = 1;
+		$this->chops->chops_name = $request->name;
+		$this->chops->about = $request->about;
+		$this->chops->likes = 0;
+		$user = Auth::user();
+		$this->chops->user_id = $user->id;
 
-        $upload->save();
+		$this->chops->save();
 
-    }
+		
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
+		//save upload to database
+		$this->upload->name = $file->getClientOriginalName();
+		$this->upload->mime_type = $file->getMimeType();
+		$this->upload->file_uri = $shortened_url;
+		$this->upload->chops_id = $this->chops->id;
+		$this->upload->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+		//set a flash mesage to display on the page
+		$message = 'Your chops has been posted';
+		return redirect(route('chops.index', $message));
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id)
+	{
+
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
+		//
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  Request  $request
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update(Request $request, $id)
+	{
+		//
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy($id)
+	{
+		//
+	}
+
 }

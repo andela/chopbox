@@ -13,8 +13,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+        DB::table('chops')->delete();
+        $this->call(ChopsTableSeeder::class);
 
-        // $this->call(UserTableSeeder::class);
+        DB::table('users')->delete();
+        $this->call(UserTableSeeder::class);
+
+
+
 
         Model::reguard();
     }

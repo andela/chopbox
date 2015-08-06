@@ -37,6 +37,6 @@ class CreateTableFollowers extends Migration
      */
     public function down()
     {
-        Schema::drop('followers');
+        Schema::drop('follows');
     }
 }
