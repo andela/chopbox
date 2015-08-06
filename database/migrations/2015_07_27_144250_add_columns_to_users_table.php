@@ -21,7 +21,6 @@ class AddColumnsToUsersTable extends Migration
             $table->string('gender')->nullable();
             $table->boolean('status')->nullable();
             $table->string('image_uri')->nullable();
-            $table->boolean('profile_state');
         });
     }
 

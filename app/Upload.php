@@ -26,5 +26,4 @@ class Upload extends Model
       return $this->belongsTo('ChopBox\User');
     }
 
-
 }
