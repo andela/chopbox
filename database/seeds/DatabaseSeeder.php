@@ -33,6 +33,9 @@ class DatabaseSeeder extends Seeder
         DB::table('follows')->delete();
         $this->call(FollowsTableSeeder::class);
 
+        DB::table('uploads')->delete();
+        $this->call(UploadsTableSeeder::class);
+
         Model::reguard();
     }
 }
