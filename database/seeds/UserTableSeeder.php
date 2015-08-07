@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder {
 
     public function run() {
         $faker = Factory::create();
-        User::truncate();
+        //User::truncate();
         foreach(range(1,50) as $index) {
             User::create([
                 'username' => $faker->userName,
