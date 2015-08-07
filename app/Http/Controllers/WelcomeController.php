@@ -1,5 +1,6 @@
-<?php namespace ChopBox\Http\Controllers;
-
+<?php
+namespace ChopBox\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 class WelcomeController extends Controller {
 
 	/*
@@ -20,7 +21,7 @@ class WelcomeController extends Controller {
 	 */
 	public function __construct()
 	{
-		$this->middleware('guest');
+
 	}
 
 	/**
@@ -30,7 +31,17 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+			if(Auth::check()){
+					$user = Auth::user();
+					if ($user->profile_state) {
+							return view('home');
+					}else {
+							return view('first_profile');
+					}
+			}else{
+					return view('welcome');
+			}
+
 	}
 
 }

@@ -25,6 +25,7 @@
         use AuthenticatesAndRegistersUsers, ThrottlesLogins;
         protected $loginPath = '/login';
 						  protected $registerPath = '/register';
+						  protected $redirectPath = '/';
         /**
          * Create a new authentication controller instance.
          *
@@ -80,7 +81,7 @@
 							* @param  \Illuminate\Http\Request  $request
 							* @return \Illuminate\Http\Response
 							*/
-						public function doRegister(Request $request)
+						public function postRegister(Request $request)
 						{
 								$validator = $this->validator($request->all());
 
@@ -101,7 +102,7 @@
         protected function validator(array $data)
         {
             return Validator::make($data, [
-                'name' => 'required|max:255|unique:users,username',
+                'name' => 'required|max:255|unique:users,username|min:3',
                 'email' => 'required|email|max:255|unique:users',
                 'password' => 'required|confirmed|min:8',
             ]);
@@ -117,7 +118,7 @@
         {
         	  return User::create([
                 'email' => $data['email'],
-            		'username' => $data['name'],
+            		  'username' => $data['name'],
                 'password' => bcrypt($data['password']),
             		'status' =>TRUE,
             		'profile_state' => FALSE

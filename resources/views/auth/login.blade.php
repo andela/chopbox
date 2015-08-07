@@ -63,7 +63,7 @@ Login
 												</div>
 
                                                 <div class = "form-group">
-                                                	<button type="submit" class="btn btn-primary btn-block form-control">Login</button>
+                                                	<button name="submit" type="submit" class="btn btn-primary btn-block form-control">Login</button>
                                                 </div>
                                             </div>
                                         </div>
