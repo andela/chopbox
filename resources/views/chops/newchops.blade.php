@@ -8,6 +8,7 @@
 @section('content')
 <div class="container">
 
+
   <h2>What's that special meal you just ate today</h2>
   {!! Form::open(['url' => 'chops', 'files' => true, 'method'=>'post']) !!}
     <div class="form-group">

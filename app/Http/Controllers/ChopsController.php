@@ -8,14 +8,11 @@ use ChopBox\helpers\UploadFile;
 use ChopBox\Http\Requests\ChopsFormRequest;
 use ChopBox\Upload;
 use Illuminate\Http\Request;
-
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Input;
 use Cloudder;
 
-
+use League\Flysystem\File;
 
 
 
@@ -44,7 +41,7 @@ class ChopsController extends Controller
 	 */
 	public function index()
 	{
-		$chops = Chop::all()->toArray();
+		$chops = DB::table('chops')->paginate(15);
 		return view('chops.home', compact('chops'));
 	}
 
@@ -158,4 +155,5 @@ class ChopsController extends Controller
 	{
 		//
 	}
+
 }
