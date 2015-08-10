@@ -7,7 +7,6 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "samcrosoft/cloudinary": "^1.1",
         "cloudinary/cloudinary_php": "^1.1",
         "illuminate/html": "^5.0",
         "jrm2k6/cloudder": "0.2.",

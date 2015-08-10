@@ -2,13 +2,12 @@
 use ChopBox\User;
 use Illuminate\Support\Facades\Hash;
 class UserTest extends \Codeception\TestCase\Test {
-	
 	/**
 	 *
 	 * @var \UnitTester
 	 */
 	protected $tester;
-	
+
 	/**
 	 */
 	public function testRegister() {
@@ -17,18 +16,17 @@ class UserTest extends \Codeception\TestCase\Test {
 		$username = 'johndoe';
 		$status = TRUE;
 		$profile_state = FALSE;
-		
-		User::create ( [ 
+
+		User::create ( [
 				'email' => $email,
 				'password' => $password,
 				'username' => $username,
 				'status' => $status,
-				'profile_state' => $profile_state 
+				'profile_state' => $profile_state
 		] );
-		
-		$this->tester->seeRecord ( 'users', [ 
+
+		$this->tester->seeRecord ( 'users', [
 				'email' => $email,
 				'username' => $username, 'password' => $password]);
 		}
-
 }

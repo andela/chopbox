@@ -1,6 +1,11 @@
 <?php
+<<<<<<< HEAD
 return [ 
 		
+=======
+return [
+
+>>>>>>> master
 		/*
 		 * |--------------------------------------------------------------------------
 		 * | PDO Fetch Style
@@ -11,7 +16,11 @@ return [
 		 * | array format for simplicity. Here you can tweak the fetch style.
 		 * |
 		 */
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> master
 		'fetch' => PDO::FETCH_CLASS,
 
     /*
@@ -43,6 +52,7 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'connections' => [ 
 				
 				'sqlite' => [ 
@@ -52,6 +62,17 @@ return [
 				],
 				
 				'mysql' => [ 
+=======
+    'connections' => [
+
+				'sqlite' => [
+						'driver' => 'sqlite',
+						'database' => storage_path ( 'database.sqlite' ),
+						'prefix' => ''
+				],
+
+				'mysql' => [
+>>>>>>> master
 						'driver' => 'mysql',
 						'host' => env ( 'DB_HOST', 'localhost' ),
 						'database' => env ( 'DB_DATABASE', 'forge' ),
@@ -60,10 +81,17 @@ return [
 						'charset' => 'utf8',
 						'collation' => 'utf8_unicode_ci',
 						'prefix' => env ( 'DB_PREFIX', '' ),
+<<<<<<< HEAD
 						'strict' => false 
 				],
 				
 				'mysql_testing' => [ 
+=======
+						'strict' => false
+				],
+
+				'mysql_testing' => [
+>>>>>>> master
 						'driver' => 'mysql',
 						'host' => env ( 'DB_HOST_TESTING', 'localhost' ),
 						'database' => env ( 'DB_DATABASE_TESTING', 'forge' ),
@@ -72,10 +100,17 @@ return [
 						'charset' => 'utf8',
 						'collation' => 'utf8_unicode_ci',
 						'prefix' => env ( 'DB_PREFIX', '' ),
+<<<<<<< HEAD
 						'strict' => false 
 				],
 				
 				'pgsql' => [ 
+=======
+						'strict' => false
+				],
+
+				'pgsql' => [
+>>>>>>> master
 						'driver' => 'pgsql',
 						'host' => env ( 'DB_HOST', 'localhost' ),
 						'database' => env ( 'DB_DATABASE', 'forge' ),
@@ -83,18 +118,30 @@ return [
 						'password' => env ( 'DB_PASSWORD', '' ),
 						'charset' => 'utf8',
 						'prefix' => env ( 'DB_PREFIX', '' ),
+<<<<<<< HEAD
 						'schema' => 'public' 
 				],
 				
 				'sqlsrv' => [ 
+=======
+						'schema' => 'public'
+				],
+
+				'sqlsrv' => [
+>>>>>>> master
 						'driver' => 'sqlsrv',
 						'host' => env ( 'DB_HOST', 'localhost' ),
 						'database' => env ( 'DB_DATABASE', 'forge' ),
 						'username' => env ( 'DB_USERNAME', 'forge' ),
 						'password' => env ( 'DB_PASSWORD', '' ),
 						'charset' => 'utf8',
+<<<<<<< HEAD
 						'prefix' => env ( 'DB_PREFIX', '' ) 
 				] 
+=======
+						'prefix' => env ( 'DB_PREFIX', '' )
+				]
+>>>>>>> master
 		]
 		,
 
@@ -122,6 +169,7 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'redis' => [ 
 				
 				'cluster' => false,
@@ -133,5 +181,18 @@ return [
 				] 
 		]
 		 
+=======
+    'redis' => [
+
+				'cluster' => false,
+
+				'default' => [
+						'host' => '127.0.0.1',
+						'port' => 6379,
+						'database' => 0
+				]
+		]
+
+>>>>>>> master
 ]
 ;
