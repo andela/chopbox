@@ -1,11 +1,9 @@
 <?php
 namespace ChopBox\helpers;
-use ShortenUrl;
+
 
 class ExpandUrl
 {
-
-
 
     private $api_version = "v3";
     private $format;
@@ -14,11 +12,16 @@ class ExpandUrl
     private $shorten;
     //setter methods
 
+
+    //declare the constructor to initialise the ShortenUrl class
+    public function __construct(ShortenUrl $shorten) {
+        $this->shorten = $shorten;
+    }
+
     //bitly login for the application
     public function setLogin($login)
     {
         $this->login = $login;
-        $this->shorten = new ShortenUrl();
     }
 
     /* data return format for the api call
@@ -40,19 +43,16 @@ class ExpandUrl
     // Expand given url and returns expanded url
      public function expandUrl($url) 
      {
-        $expanded_url = "";
-         
+        $expanded_url = NULL;
         $hash = $this->url->parseUrl($url);
-         
         $expanded_url = $this->expandUrlByHash($hash);
-         
         return $expanded_url;
      }
      
      // Expand given hash and returns expanded url
      public function expandUrlByHash($hash) 
      {
-         $expanded_url = "";
+         $expanded_url = NULL;
          $bitly_url = "http://api.bit.ly/expand?" . 
          "version=" . $this->api_version . 
          "&format=" . $this->format . 
@@ -64,12 +64,12 @@ class ExpandUrl
      
          try 
          {
-            $expanded_url = $this->parseContent($content, $hash);
+            $expanded_url = $this->shorten->parseContent($content, $hash);
          }
          catch (Exception $e) 
          {
              echo "Caught exception: " . 
-             $e->getMessage() . $this->break;
+             $e->getMessage();
              exit;
           }
      
