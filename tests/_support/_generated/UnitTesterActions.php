@@ -17,7 +17,11 @@ trait UnitTesterActions
      */
     abstract protected function getScenario();
 
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -34,7 +38,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertEquals', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -49,7 +57,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertNotEquals', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -66,7 +78,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertSame', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -81,7 +97,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertNotSame', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -96,7 +116,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertGreaterThan', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -107,7 +131,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertGreaterThen', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -122,7 +150,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertGreaterThanOrEqual', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -133,7 +165,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertGreaterThenOrEqual', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -148,7 +184,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertLessThan', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -163,7 +203,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertLessThanOrEqual', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -178,7 +222,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertContains', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -193,7 +241,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertNotContains', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -208,7 +260,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertRegExp', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -223,7 +279,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertNotRegExp', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -237,7 +297,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertEmpty', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -251,7 +315,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertNotEmpty', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -265,7 +333,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertNull', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -279,7 +351,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertNotNull', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -293,7 +369,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertTrue', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -307,12 +387,20 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertFalse', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
      * Checks if file exists
+<<<<<<< HEAD
+     *  
+=======
      *
+>>>>>>> master
      * @param string $filename
      * @param string $message
      * @see \Codeception\Module\Asserts::assertFileExists()
@@ -321,12 +409,20 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertFileExists', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
      * Checks if file doesn't exists
+<<<<<<< HEAD
+     *  
+=======
      *
+>>>>>>> master
      * @param string $filename
      * @param string $message
      * @see \Codeception\Module\Asserts::assertFileNotExists()
@@ -335,7 +431,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('assertFileNotExists', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -348,6 +448,12 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('fail', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+    /**
+     * [!] Method is generated. Documentation taken from corresponding module.
+     *
+=======
 
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
@@ -572,6 +678,7 @@ trait UnitTesterActions
     public function seeSessionHasValues($bindings) {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeSessionHasValues', func_get_args()));
 =======
+>>>>>>> master
      * Inserts record into the database.
      *
      * ``` php
@@ -588,10 +695,16 @@ trait UnitTesterActions
      */
     public function haveRecord($tableName, $attributes = null) {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('haveRecord', func_get_args()));
+<<<<<<< HEAD
+    }
+
+ 
+=======
 >>>>>>> Implemented functional and unit test for login and auth
     }
 
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -632,7 +745,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeRecord', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -673,7 +790,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('dontSeeRecord', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
@@ -695,6 +816,58 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Action('grabRecord', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+    /**
+     * [!] Method is generated. Documentation taken from corresponding module.
+     *
+     * Inserts SQL record into database. This record will be erased after the test.
+     *
+     * ``` php
+     * <?php
+     * $I->haveInDatabase('users', array('name' => 'miles', 'email' => 'miles@davis.com'));
+     * ?>
+     * ```
+     *
+     * @param       $table
+     * @param array $data
+     *
+     * @return integer $id
+     * @see \Codeception\Module\Db::haveInDatabase()
+     */
+    public function haveInDatabase($table, $data) {
+        return $this->getScenario()->runStep(new \Codeception\Step\Action('haveInDatabase', func_get_args()));
+    }
+
+ 
+    /**
+     * [!] Method is generated. Documentation taken from corresponding module.
+     *
+     * Checks if a row with given column values exists.
+     * Provide table name and column values.
+     *
+     * Example:
+     *
+     * ``` php
+     * <?php
+     * $I->seeInDatabase('users', array('name' => 'Davert', 'email' => 'davert@mail.com'));
+     *
+     * ```
+     * Will generate:
+     *
+     * ``` sql
+     * SELECT COUNT(*) FROM `users` WHERE `name` = 'Davert' AND `email` = 'davert@mail.com'
+     * ```
+     * Fails if no such user found.
+     *
+     * @param       $table
+     * @param array $criteria
+     * Conditional Assertion: Test won't be stopped on fail
+     * @see \Codeception\Module\Db::seeInDatabase()
+     */
+    public function canSeeInDatabase($table, $criteria = null) {
+        return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeInDatabase', func_get_args()));
+=======
 
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
@@ -793,10 +966,58 @@ trait UnitTesterActions
      */
     public function canSee($text, $selector = null) {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('see', func_get_args()));
+>>>>>>> master
     }
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
+<<<<<<< HEAD
+     * Checks if a row with given column values exists.
+     * Provide table name and column values.
+     *
+     * Example:
+     *
+     * ``` php
+     * <?php
+     * $I->seeInDatabase('users', array('name' => 'Davert', 'email' => 'davert@mail.com'));
+     *
+     * ```
+     * Will generate:
+     *
+     * ``` sql
+     * SELECT COUNT(*) FROM `users` WHERE `name` = 'Davert' AND `email` = 'davert@mail.com'
+     * ```
+     * Fails if no such user found.
+     *
+     * @param       $table
+     * @param array $criteria
+     * @see \Codeception\Module\Db::seeInDatabase()
+     */
+    public function seeInDatabase($table, $criteria = null) {
+        return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeInDatabase', func_get_args()));
+    }
+
+ 
+    /**
+     * [!] Method is generated. Documentation taken from corresponding module.
+     *
+     * Asserts that found number of records in database
+     *
+     * ``` php
+     * <?php
+     * $I->seeNumRecords(1, 'users', ['name' => 'davert'])
+     * ?>
+     * ```
+     *
+     * @param int    $num      Expected number
+     * @param string $table    Table name
+     * @param array  $criteria Search criteria [Optional]
+     * Conditional Assertion: Test won't be stopped on fail
+     * @see \Codeception\Module\Db::seeNumRecords()
+     */
+    public function canSeeNumRecords($num, $table, $criteria = null) {
+        return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeNumRecords', func_get_args()));
+=======
      * Checks that the current page contains the given string.
      * Specify a locator as the second parameter to match a specific region.
      *
@@ -838,10 +1059,47 @@ trait UnitTesterActions
      */
     public function cantSee($text, $selector = null) {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('dontSee', func_get_args()));
+>>>>>>> master
     }
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
+<<<<<<< HEAD
+     * Asserts that found number of records in database
+     *
+     * ``` php
+     * <?php
+     * $I->seeNumRecords(1, 'users', ['name' => 'davert'])
+     * ?>
+     * ```
+     *
+     * @param int    $num      Expected number
+     * @param string $table    Table name
+     * @param array  $criteria Search criteria [Optional]
+     * @see \Codeception\Module\Db::seeNumRecords()
+     */
+    public function seeNumRecords($num, $table, $criteria = null) {
+        return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeNumRecords', func_get_args()));
+    }
+
+ 
+    /**
+     * [!] Method is generated. Documentation taken from corresponding module.
+     *
+     * Effect is opposite to ->seeInDatabase
+     *
+     * Checks if there is no record with such column values in database.
+     * Provide table name and column values.
+     *
+     * Example:
+     *
+     * ``` php
+     * <?php
+     * $I->dontSeeInDatabase('users', array('name' => 'Davert', 'email' => 'davert@mail.com'));
+     *
+     * ```
+     * Will generate:
+=======
      * Checks that the current page doesn't contain the text specified.
      * Give a locator as the second parameter to match a specific region.
      *
@@ -2668,6 +2926,7 @@ trait UnitTesterActions
      *
      * ```
      * Will generate:
+>>>>>>> master
      *
      * ``` sql
      * SELECT COUNT(*) FROM `users` WHERE `name` = 'Davert' AND `email` = 'davert@mail.com'
@@ -2712,7 +2971,11 @@ trait UnitTesterActions
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('dontSeeInDatabase', func_get_args()));
     }
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> master
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
