@@ -2,16 +2,28 @@
 
 namespace ChopBox\Http\Controllers;
 
+
 use League\Flysystem\File;
 
-
-
-
+use ChopBox\Comment;
+use ChopBox\Favourite;
+use Illuminate\Support\Facades\DB;
+use ChopBox\Chop;
+use ChopBox\helpers\ShortenUrl;
+use ChopBox\helpers\UploadFile;
+use ChopBox\Http\Requests\ChopsFormRequest;
+use ChopBox\Upload;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Cloudder;
 
 
 
 class ChopsController extends Controller
 {
+
+
 
 
 	/*
@@ -21,6 +33,7 @@ class ChopsController extends Controller
 	private $chops;
 	private $shortener;
 	private $upload_file;
+
 	public function __construct(Upload $upload, Chop $chop, ShortenUrl $shortener,
 								UploadFile $upload_file){
 		$this->upload = $upload;
@@ -36,8 +49,8 @@ class ChopsController extends Controller
 	 */
 	public function index()
 	{
-		$chops = Chop::all()->toArray();
-		return view('chops.home', compact('chops'));
+		$chops = Chop::paginate(8);
+		return view('chops.home')->with('chops', $chops);
 	}
 
 	/**

@@ -6,3 +6,6 @@ Homestead.yaml
 .env
 .DS_Store
 .gitignore.idea
+.env.testing
+
+

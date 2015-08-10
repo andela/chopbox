@@ -1,35 +1,32 @@
 <?php
-use ChopBox\User as User;
+use ChopBox\User;
+use Illuminate\Support\Facades\Hash;
+class UserTest extends \Codeception\TestCase\Test {
+	/**
+	 *
+	 * @var \UnitTester
+	 */
+	protected $tester;
 
-class UserTest extends \Codeception\TestCase\Test
-{
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
+	/**
+	 */
+	public function testRegister() {
+		$email = 'johndoe@example.com';
+		$password = Hash::make ( 'password' );
+		$username = 'johndoe';
+		$status = TRUE;
+		$profile_state = FALSE;
 
-    protected function _before()
-    {
-    }
+		User::create ( [
+				'email' => $email,
+				'password' => $password,
+				'username' => $username,
+				'status' => $status,
+				'profile_state' => $profile_state
+		] );
 
-    protected function _after()
-    {
-    }
-
-    // tests
-    public function testUserCanBeCreated() {
-       $user = new User();
-        $user->email = "danverem@gmail.com";
-        $user->username = "Mills";
-        $user->password = "verem";
-        $user->profile_state = 0;
-
-        $user->save();
-
-        $this->tester->seeRecord('users', ['username'=> 'Mills']);
-     }
-
-
-
-
+		$this->tester->seeRecord ( 'users', [
+				'email' => $email,
+				'username' => $username, 'password' => $password]);
+		}
 }
