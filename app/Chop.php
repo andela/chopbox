@@ -10,24 +10,28 @@ class Chop extends Model
 
     protected $fillable = [  
           'chops_name',
-          'image_uri',
+          'file_uri',
           'likes'
-
     ];
 
 
-    public function user()
-    {
+    public function user() {
+
       return $this->belongTo('ChopBox\User');
     }
 
-    public function uploads()
-    {
-      return $this->hasMany('ChopBox\Uploads');
+    public function uploads() {
+
+      return $this->hasMany('ChopBox\Upload');
     }
 
-    public function favourites()
-    {
+    public function favourites() {
+
       return $this->hasMany('ChopBox\Favourite');
+    }
+
+    public function comments() {
+
+        return $this->hasMany('ChopBox\Comment');
     }
 }
