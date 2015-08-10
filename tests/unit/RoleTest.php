@@ -36,15 +36,4 @@ class RoleTest extends \Codeception\TestCase\Test
 
         $this->tester->dontSeeRecord('roles', ['role_name'=>'user']);
     }
-
-
-    /*public function testRoleCanBeUpdated() {
-        $id = $this->tester->haveRecord('roles', ['role_name'=>'guest']);
-        $role = \ChopBox\Role::find($id);
-        $role->role_name  = "visitor";
-        $role->save();
-
-        $this->tester->seeRecord('roles', ['role_name' =>'visitor']);
-        $this->tester->dontSeeRecord('roles', ['role_name' => 'guest']);
-    }*/
 }

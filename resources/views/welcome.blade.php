@@ -13,7 +13,7 @@
 
         <div class="col-lg-4 intro-forms">
           <div class="login-forms">
-            <form class="form-horizontal" role="form" method="POST"
+            <form class="form-horizontal" role="form" method="POST" id="login"
               action="{{ url('/login') }}">
               <input type="hidden" name="_token"
                 value="{{ csrf_token() }}">
@@ -36,38 +36,38 @@
                   Password?</a>
               </div>
               <div class="form-group">
-                <button type="submit"
+                <button type="submit" name="login"
                   class="btn btn-primary form-control">Login</button>
               </div>
             </form>
           </div>
           <div class="signup-forms">
-            <form class="form-horizontal" role="form" method="POST"
+            <form class="form-horizontal" role="form" method="POST" id="register"
               action="{{ url('/register') }}">
               <input type="hidden" name="_token"
                 value="{{ csrf_token() }}">
               <div class="form-group">
-                <input type="text" class="form-control" name="name"
+                <input type="text" class="form-control" name="name" id="registername"
                   value="{{ old('name') }}" required="required"
                   placeholder="Username">
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" name="email"
+                <input type="email" class="form-control" name="email" id="registeremail"
                   value="{{ old('email') }}" required="required"
                   placeholder="Email">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control"
+                <input type="password" class="form-control" id="registerpassword"
                   name="password" required="required"
                   placeholder="Password">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control"
+                <input type="password" class="form-control" id="registerpconfirm"
                   name="password_confirmation" required="required"
                   placeholder="Confirm Password">
               </div>
               <div class="form-group">
-                <button type="submit"
+                <button type="submit" name="register"
                   class="btn btn-success form-control">Sign up for
                   ChopBox</button>
               </div>
