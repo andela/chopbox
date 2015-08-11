@@ -2347,15 +2347,7 @@
             ],
             "authors": [
                 {
-<<<<<<< HEAD
                     "name": "samuel Olowofela",
-=======
-<<<<<<< HEAD
-                    "name": "Samuel Olowofela",
-=======
-                    "name": "samuel Olowofela",
->>>>>>> Implemented functional and unit test for login and auth
->>>>>>> master
                     "email": "samuel_olowofela@yahoo.com"
                 }
             ],
