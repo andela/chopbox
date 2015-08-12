@@ -19,7 +19,7 @@ class CommentTableSeeder extends  Seeder {
             Comment::create([
                 'comment' => $faker->text,
                 'user_id' => $faker->numberBetween(1,50),
-                'chops_id' => $faker->numberBetween(21,50)
+                'chop_id' => $faker->numberBetween(21,50)
             ]);
         }
     }

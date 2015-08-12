@@ -10,6 +10,7 @@
             <div>
                 <div><h2>{{$chop->chops_name}}</h2></div>
                 @foreach($chop->uploads as $image)
+                    {{dd($image)}}
                     <div>
                         <img src="{{$image->file_uri}}" alt="chops image">
                     </div>
