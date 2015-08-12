@@ -8,8 +8,14 @@
 @section('content')
         @foreach($chops as $chop)
             <div>
-                <h2>{{$chop->name}}</h2>
-                <img src="{{$chop->uploads->file_uri}}" alt="chops image">
+                <div><h2>{{$chop->chops_name}}</h2></div>
+
+                @foreach($chop->uploads as $image)
+
+                    <div>
+                        <img src="{{$image->file_uri}}" alt="chops image" class="image-rounded">
+                    </div>
+                @endforeach
                 <p>
                     {{$chop->about}}
                 </p>

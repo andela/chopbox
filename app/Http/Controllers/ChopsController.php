@@ -1,6 +1,10 @@
 <?php
 
 namespace ChopBox\Http\Controllers;
+
+
+use League\Flysystem\File;
+
 use ChopBox\Comment;
 use ChopBox\Favourite;
 use Illuminate\Support\Facades\DB;
@@ -15,12 +19,12 @@ use Illuminate\Support\Facades\Redirect;
 use Cloudder;
 
 
-use League\Flysystem\File;
-
-
 
 class ChopsController extends Controller
 {
+
+
+
 
 	/*
 	 * inject dependencies using the constructor

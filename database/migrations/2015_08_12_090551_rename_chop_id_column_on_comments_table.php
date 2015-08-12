@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTimestamosColumnToUserRolesTable extends Migration
+class RenameChopIdColumnOnCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,8 @@ class AddTimestamosColumnToUserRolesTable extends Migration
      */
     public function up()
     {
-        Schema::table('user_roles', function (Blueprint $table) {
-            $table->timestamps();
+        Schema::table('comments', function (Blueprint $table) {
+            $table->renameColumn('chops_id', 'chop_id');
         });
     }
 
@@ -24,8 +24,8 @@ class AddTimestamosColumnToUserRolesTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_roles', function (Blueprint $table) {
-            $table->dropTimestamps();
+        Schema::table('comments', function (Blueprint $table) {
+            $table->renameColumn('chop_id', 'chops_id');
         });
     }
 }
