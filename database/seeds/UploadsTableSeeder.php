@@ -20,7 +20,7 @@ class UploadsTableSeeder extends Seeder {
             Upload::create([
                 'name' => $faker->name,
                 'file_uri' => $faker->imageUrl(),
-                'chops_id' => $faker->numberBetween(1,50),
+                'chop_id' => $faker->numberBetween(1,50),
                 'mime_type' => 'image/jpeg'
             ]);
         }

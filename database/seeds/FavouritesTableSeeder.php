@@ -17,7 +17,7 @@ class FavouritesTableSeeder extends Seeder {
 
         foreach(range(1,50) as $index) {
             Favourite::create([
-                'chops_id' => $faker->numberBetween(1,50)
+                'chop_id' => $faker->numberBetween(1,50)
             ]);
         }
     }

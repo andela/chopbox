@@ -17,7 +17,7 @@ class Chop extends Model
 
     public function user() {
 
-      return $this->belongTo('ChopBox\User');
+      return $this->belongsTo('ChopBox\User');
     }
 
     public function uploads() {

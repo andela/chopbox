@@ -1,4 +1,11 @@
 /vendor
+/node_modules
+/.settings
+/.idea
+Homestead.yaml
 .env
-.env.testing
 .DS_Store
+.gitignore.idea
+.env.testing
+
+
