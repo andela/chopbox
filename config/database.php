@@ -1,7 +1,5 @@
 <?php
-
 return [
-
 		/*
 		 * |--------------------------------------------------------------------------
 		 * | PDO Fetch Style
@@ -12,10 +10,6 @@ return [
 		 * | array format for simplicity. Here you can tweak the fetch style.
 		 * |
 		 */
-
-
-
-
 		'fetch' => PDO::FETCH_CLASS,
 
     /*
@@ -57,7 +51,6 @@ return [
 				],
 
 				'mysql' => [
-
 						'driver' => 'mysql',
 						'host' => env ( 'DB_HOST', 'localhost' ),
 						'database' => env ( 'DB_DATABASE', 'forge' ),
@@ -66,12 +59,10 @@ return [
 						'charset' => 'utf8',
 						'collation' => 'utf8_unicode_ci',
 						'prefix' => env ( 'DB_PREFIX', '' ),
-
 						'strict' => false
 				],
 
 				'mysql_testing' => [
-
 						'driver' => 'mysql',
 						'host' => env ( 'DB_HOST_TESTING', 'localhost' ),
 						'database' => env ( 'DB_DATABASE_TESTING', 'forge' ),
@@ -84,7 +75,6 @@ return [
 				],
 
 				'pgsql' => [
-
 						'driver' => 'pgsql',
 						'host' => env ( 'DB_HOST', 'localhost' ),
 						'database' => env ( 'DB_DATABASE', 'forge' ),
@@ -96,18 +86,14 @@ return [
 				],
 
 				'sqlsrv' => [
-
 						'driver' => 'sqlsrv',
 						'host' => env ( 'DB_HOST', 'localhost' ),
 						'database' => env ( 'DB_DATABASE', 'forge' ),
 						'username' => env ( 'DB_USERNAME', 'forge' ),
 						'password' => env ( 'DB_PASSWORD', '' ),
 						'charset' => 'utf8',
-
-
 						'prefix' => env ( 'DB_PREFIX', '' )
 				]
-
 		]
 		,
 
@@ -134,8 +120,6 @@ return [
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
     */
-
-
     'redis' => [
 
 				'cluster' => false,
@@ -146,7 +130,5 @@ return [
 						'database' => 0
 				]
 		]
-
-
 ]
 ;

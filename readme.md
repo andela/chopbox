@@ -1,5 +1,7 @@
 ## Laravel PHP Framework
 
+[![Circle CI](https://circleci.com/gh/andela/chopbox/tree/master.svg?style=svg&circle-token=09964224c7df8f47b80f0d998ae2a78d826735ed)](https://circleci.com/gh/andela/chopbox/tree/master)
+
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
 [![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
