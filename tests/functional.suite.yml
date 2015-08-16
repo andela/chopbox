@@ -1,4 +1,4 @@
-p# Codeception Test Suite Configuration
+# Codeception Test Suite Configuration
 #
 # Suite for functional (integration) tests
 # Emulate web requests and make application process them
@@ -7,13 +7,8 @@ p# Codeception Test Suite Configuration
 class_name: FunctionalTester
 modules:
     enabled:
-        # add framework module here
         - \Helper\Functional
         - Laravel5:
           environment_file: .env.testing
         - Asserts
-<<<<<<< HEAD
         - Db
-=======
-        - Db
->>>>>>> master
