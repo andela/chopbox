@@ -5,7 +5,7 @@
         'dsn' => 'mysql:host=' . getenv('DB_URL') . ';dbname=' . getenv('DB_NAME'),
         'user' => getenv('DB_USER'),
         'password' => getenv(''),
-        'dump' => '_data/dump.sql',
+        'dump' => 'tests/_data/dump.sql',
         'populate' => true,
         'cleanup' => true
     ]
