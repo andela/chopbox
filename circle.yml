@@ -24,7 +24,7 @@ dependencies:
     - echo "export DB_CONNECTION=$DB_CONNECTION" >> /etc/apache2/envvars
     - echo "export DB_PASS=$DB_PASS" >> /etc/apache2/envvars
     # Here we copy the SQL dump we want to test with
-    - mysql -u $DB_USER $DB_NAME < tests/_data/dump.sql
+    - mysql -u $DB_USER $DB_PASS $DB_NAME < tests/_data/dump.sql
   post:
     #- php artisan migrate --env=$ENVIRONMENT
     #- php artisan db:seed --env=$ENVIRONMENT
