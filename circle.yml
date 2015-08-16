@@ -32,9 +32,9 @@ dependencies:
     # install mod_rewrite used in public/.htaccess
     - sudo a2enmod rewrite
     # https://circleci.com/docs/language-php
-    - cp shell/msqi_apache.conf /etc/apache2/sites-available
-    - a2ensite msqi_apache.conf
-    - sudo service apache2 restart
+    # - cp shell/msqi_apache.conf /etc/apache2/sites-available
+    # - a2ensite msqi_apache.conf
+    # - sudo service apache2 restart
 
 test:
   override:
