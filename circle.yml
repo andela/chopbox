@@ -33,7 +33,6 @@ dependencies:
     - sudo find storage -type d -exec chmod 755 {} \; && sudo find storage -type f -exec chmod 644 {} \;
     # install mod_rewrite used in public/.htaccess
     - sudo a2enmod rewrite
-    # https://circleci.com/docs/language-php
     # - cp shell/msqi_apache.conf /etc/apache2/sites-available
     # - a2ensite msqi_apache.conf
     # - sudo service apache2 restart
