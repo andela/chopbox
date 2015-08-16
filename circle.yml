@@ -5,6 +5,37 @@ machine:
   php:
     version: 5.6.5
 
+  environment:
+    ENVIRONMENT: testing
+    DB_URL: 127.0.0.1
+    DB_NAME: circle_test
+    DB_USER: ubuntu
+    DB_CONNECTION: mysql_testing
+
+  dependencies:
+    pre:
+      # insert environment variables into apache
+      # http://phptest.club/t/environment-variables/137/2
+      - echo "export ENVIRONMENT=$ENVIRONMENT" >> /etc/apache2/envvars
+      - echo "export DB_URL=$DB_URL" >> /etc/apache2/envvars
+      - echo "export DB_NAME=$DB_NAME" >> /etc/apache2/envvars
+      - echo "export DB_USER=$DB_USER" >> /etc/apache2/envvars
+      - echo "export DB_CONNECTION=$DB_CONNECTION" >> /etc/apache2/envvars
+      # Here we copy the SQL dump we want to test with
+      - mysql -u $DB_USER $DB_NAME < tests/_data/dump.sql
+    post:
+      - php artisan migrate --env=$ENVIRONMENT
+      - php artisan db:seed --env=$ENVIRONMENT
+      # http://stackoverflow.com/questions/17020513/laravel-4-failed-to-open-stream-permission-denied
+      - sudo chown -R www-data:www-data storage
+      - sudo find storage -type d -exec chmod 755 {} \; && sudo find storage -type f -exec chmod 644 {} \;
+      # install mod_rewrite used in public/.htaccess
+      - sudo a2enmod rewrite
+      # https://circleci.com/docs/language-php
+      - cp shell/msqi_apache.conf /etc/apache2/sites-available
+      - a2ensite msqi_apache.conf
+      - sudo service apache2 restart
+
 test:
   override:
     - composer install --prefer-source --no-interaction --no-dev
