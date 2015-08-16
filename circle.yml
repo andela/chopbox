@@ -24,8 +24,8 @@ dependencies:
     # Here we copy the SQL dump we want to test with
     - mysql -u $DB_USER $DB_NAME < tests/_data/dump.sql
   post:
-    - php artisan migrate --env=$ENVIRONMENT
-    - php artisan db:seed --env=$ENVIRONMENT
+    #- php artisan migrate --env=$ENVIRONMENT
+    #- php artisan db:seed --env=$ENVIRONMENT
     # http://stackoverflow.com/questions/17020513/laravel-4-failed-to-open-stream-permission-denied
     - sudo chown -R www-data:www-data storage
     - sudo find storage -type d -exec chmod 755 {} \; && sudo find storage -type f -exec chmod 644 {} \;
