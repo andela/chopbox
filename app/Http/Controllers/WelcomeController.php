@@ -39,7 +39,7 @@ class WelcomeController extends Controller {
 				return view ( 'first_profile' );
 			}
 		} else {
-			return view ( 'welcome' );
+			return view ( 'welcometest' );
 		}
 	}
 }
