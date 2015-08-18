@@ -171,4 +171,31 @@ p.copyright {
     margin: 15px 0 0;
 }
 
+.form-shadow {
+    background-color: rgba(55,20,25,0.4);
+    padding: 10px 30px;
+    margin-top: 18px !important;
+    border-radius: 8px;
+}
+
+.push-down {
+    margin-top: 150px;
+    padding: 0 40px 0 0;
+    width: 600px;
+    height: 120px;
+    position: absolute;
+    top: 10px;
+    left:120px;
+}
+.shadow{
+    text-shadow: 2px 2px rgba(55,20,25,0.8);
+}
+
+.shift-right {
+    position: absolute !important;
+    top: 320px !important;
+    left:200px !important;
+
+}
+
 
