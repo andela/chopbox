@@ -5,8 +5,8 @@
       <div style="margin-top: 60px;">&nbsp;</div>
       <div class="container">
         <div class="row ">
-          <h3>Why not Login and just have fun</h3>
-          <hr class="intro-divider">
+          <h3 class="white-text"> Login and have some fun</h3>
+          <span class="some-space"></span>
         </div>
         <div class="row">
           <div class="col-lg-6 col-md-3 col-md-offset-3">
@@ -76,10 +76,10 @@
 
               </div>
               <div class="panel-footer ">
-                <span class="pull-left">Don't have an account! <a
-                  href="{{ url('/register') }}" onClick=""> Sign Up Here
-                </a></span> <span class="pull-right"><a
-                  href="{{ url('/password/email') }}"> Forgot Password </a></span>
+                <span class="pull-left white-text some-space big-text">Don't have an account? <a
+                  href="{{ url('/register') }}" onClick="">Sign Up Here
+                </a></span> <span class="pull-right some-space big-text"><a
+                  href="{{ url('/password/email') }}"> Forgot Password? </a></span>
               </div>
             </div>
           </div>

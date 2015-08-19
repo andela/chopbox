@@ -9,8 +9,8 @@ Register
       <div style="margin-top: 60px;">&nbsp;</div>
       <div class="container">
         <div class="row ">
-          <h3>Why not Create an account and just have fun</h3>
-          <hr class="intro-divider">
+          <h3 class="white-text text-info">Create an account and have fun</h3>
+            <span class="some-space"></span>
         </div>
         <div class="row">
           <div class="col-lg-6 col-md-3 col-md-offset-3">
