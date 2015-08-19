@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-    <div class="intro-header">
+    <div class="intro-header background-image">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -41,10 +41,10 @@
                             <div class="divider_container">
                                 <div class="vertical_line-2"></div>
                                 <div class="vertical_line"></div>
-                                <span class="text_above text-capitalize">or </span>
+                                <span class="text_above text-uppercase">or </span>
                             </div>
                             <div class="signup_email_text">
-                                <a href="#register" id="register" class="white-text">Sign up with your email!</a>
+                                <a href="#register" id="register" class="white-text text-capitalize">Sign up with your email!</a>
                             </div>
                             <div class="clear_both"></div>
                         </div>
@@ -113,7 +113,7 @@
                                            placeholder="Confirm Password..." id="registerpconfirm">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" name="register" class="form-control btn btn-success">Sign Up</button>
+                                    <button type="submit" name="register" class=" btn-primary form-control btn-info">Sign Up</button>
                                 </div>
                         </div>
                         </form>

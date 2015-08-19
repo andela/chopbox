@@ -74,7 +74,7 @@
                   </fieldset>
                 </form>
               </div>
-                <div class="row push-buttons-down">
+                <div class="row push-buttons-down" id="buttons">
                     <div class="content_bottom_v3 shift-right">
                         <div class="connect_btns_container logged_out_quote_btns">
                             <div class="google_btn_container">
@@ -96,7 +96,8 @@
                         </div>
                     </div>
                 </div>
-              <div class="login-last">
+
+              <div class="login-last" id="error">
                 <span class="pull-left some-space big-text shadow">Don't have an account? <a
                   href="{{ url('/register') }}" onClick="" class="white-text">Sign Up Here
                 </a></span> <span class="pull-right some-space big-text"><a
@@ -112,4 +113,10 @@
   <!-- /.container -->
 
 </div>
+@if(count($errors) > 0)
+    <script type="text/javascript">
+        $('div#buttons').removeClass('push-buttons-down').addClass('login-buttons-error');
+        $('div#error').removeClass('login-last').addClass('login-last-error');
+    </script>
+@endif
 @endsection
