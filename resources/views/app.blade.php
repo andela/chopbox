@@ -10,19 +10,22 @@
 
 <!-- Custom CSS -->
 <link href="{!! asset('css/landing-page.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/forms.css') !!}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('css/dropzone.css') !!}" rel="stylesheet" type="text/css" media="all">
 
 <!-- Custom Fonts -->
-<link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}"
-  rel="stylesheet" type="text/css">
-<link href="{!! asset('css/forms.css') !!}" rel="stylesheet">
+<link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
+
 <link
-  href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
-  rel="stylesheet" type="text/css">
+  href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
 	<![endif]-->
 </head>
 <body>
@@ -66,5 +69,6 @@
 
   <!-- Bootstrap Core JavaScript -->
   <script src="{!! asset('js/bootstrap.min.js') !!}"></script>
+
 </body>
 </html>
