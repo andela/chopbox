@@ -8,11 +8,11 @@ Register
     <div class="col-lg-12">
       <div style="margin-top: 60px;">&nbsp;</div>
       <div class="container">
-        <div class="row ">
-          <h3 class="white-text text-info">Create an account and have fun</h3>
+        <div class="row">
+          <h3 class="white-text pull-text-up">Create an account and have fun</h3>
             <span class="some-space"></span>
         </div>
-        <div class="row">
+        <div class="row move-up">
           <div class="col-lg-6 col-md-3 col-md-offset-3">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -82,7 +82,6 @@ Register
                               name="password_confirmation">
                           </div>
                         </div>
-
                         <div class="form-group">
                           <button type="submit"
                             class="btn btn-primary btn-block form-control">Register</button>
@@ -91,9 +90,30 @@ Register
                     </div>
                   </fieldset>
                 </form>
-
               </div>
-              <div class="panel-footer ">
+                <div class="row push-buttons-down">
+                    <div class="content_bottom_v3 shift-right">
+                        <div class="connect_btns_container logged_out_quote_btns">
+                            <div class="google_btn_container">
+                                <div class="connect">
+                                    <a href="/oauth/google" class="google google_login_click dib pr tal clearfix">
+                                        <span class="ico-wrap"><i class="google"></i></span>
+                                        <span class="btn_text google">Login with Google</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="fb_btn_container logged_out_quote_btns">
+                                <div class="connect">
+                                    <a href="/oauth/facebook" class="facebook facebook_login_click dib pr tal clearfix">
+                                        <span class="ico-wrap"><i class="facebook"></i></span>
+                                        <span class="btn_text facebook">Login with Facebook</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              <div class="login-last ">
                 <span class="pull-left">Already Registered! <a
                   href="{{ url('/login') }}" onClick=""> Login Here
                 </a></span> <span class="pull-right"><a

@@ -195,7 +195,30 @@ p.copyright {
     position: absolute !important;
     top: 320px !important;
     left:200px !important;
-
 }
 
+.move-up {
+    position: absolute !important;
+    top: 70px;
+    left:50px;
+}
+
+.pull-text-up {
+    position: absolute;
+    top:5px;
+    left:420px;
+    padding:2px;
+}
+
+.push-buttons-down {
+    position: absolute;
+    top:20px;
+    left:-50px;
+}
+
+.login-last {
+    position: absolute;
+    top:480px;
+    left: 20px;
+}
 
