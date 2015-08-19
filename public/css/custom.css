@@ -1954,7 +1954,7 @@ h3 {
     margin: 30px 0 0 0;
 }
 .content_bottom_v3 .text_above {
-    background-color: rgb(238, 126, 91) !important;
+    background: transparent !important;
     color: #ffffff !important;
     bottom: 45px;
     left: 0;
@@ -1982,13 +1982,23 @@ h3 {
     float: left;
     width: 80px;
     text-align: center;
-    margin-top: 24px;
+    margin-top: 68px !important;
 }
 .vertical_line {
-    height: 73px;
+    height: 25px !important;
     width: 1px;
-    border-right: 1px solid #45619d;
+    border-right: 5px solid #45619d !important;
     margin: 0 auto;
+}
+
+.vertical_line-2 {
+    height: 25px !important;
+    width: 1px;
+    border-right: 5px solid #45619d !important;
+    margin: 0 auto;
+    position: absolute;
+    top: 25px;
+    left: 300px;
 }
 .signup_email_text {
     float: left;
