@@ -5,7 +5,7 @@ Register
 @section('content')
 <div class="intro-header">
   <div class="container">
-    <div class="col-lg-12">
+      <div class="col-lg-12">
       <div style="margin-top: 60px;">&nbsp;</div>
       <div class="container">
         <div class="row">
@@ -37,7 +37,8 @@ Register
                       <br>
                       <ul>
                         @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li> @endforeach
+                            <li>{{ $error }}</li>
+                        @endforeach
                       </ul>
                     </div>
                     @endif
@@ -82,6 +83,7 @@ Register
                               name="password_confirmation">
                           </div>
                         </div>
+
                         <div class="form-group">
                           <button type="submit"
                             class="btn btn-primary btn-block form-control">Register</button>
@@ -90,10 +92,10 @@ Register
                     </div>
                   </fieldset>
                 </form>
-              </div>
-                <div class="row push-buttons-down">
+                </div>
+                <div class="row">
                     <div class="content_bottom_v3 shift-right">
-                        <div class="connect_btns_container logged_out_quote_btns">
+                        <div class="connect_btns_container logged_out_quote_btns push-buttons-down-2" id="buttons">
                             <div class="google_btn_container">
                                 <div class="connect">
                                     <a href="/oauth/google" class="google google_login_click dib pr tal clearfix">
@@ -113,21 +115,27 @@ Register
                         </div>
                     </div>
                 </div>
-              <div class="login-last ">
-                <span class="pull-left">Already Registered! <a
-                  href="{{ url('/login') }}" onClick=""> Login Here
-                </a></span> <span class="pull-right"><a
-                  href="{{ url('/password/email') }}"> Forgot
-                    Password </a></span>
+                @if(count($errors) > 0)
+                    <script type="text/javascript">
+                        $('div#buttons').removeClass('push-buttons-down-2').addClass('push-buttons-further');
+                    </script>
+                @endif
+              <div class="register-last" id="label">
+                <span class= "big-text shadow left-space">Already Registered!
+                    <a class="white-text" href="{{ url('/login') }}" onClick="">Login Here</a>
+                </span>
               </div>
+              @if(count($errors) > 0)
+                <script type="text/javascript">
+                    $('div#label').removeClass('register-last').addClass('register-last-error');
+                </script>
+              @endif
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
-  <!-- /.container -->
 
 </div>
 @endsection

@@ -199,20 +199,26 @@ p.copyright {
 
 .move-up {
     position: absolute !important;
-    top: 70px;
+    top: 50px;
     left:50px;
 }
 
 .pull-text-up {
     position: absolute;
-    top:5px;
+    top:0;
     left:420px;
     padding:2px;
 }
 
 .push-buttons-down {
     position: absolute;
-    top:20px;
+    top:30px;
+    left:-50px;
+}
+
+.push-buttons-down-2 {
+    position: absolute;
+    top:50px;
     left:-50px;
 }
 
@@ -220,5 +226,40 @@ p.copyright {
     position: absolute;
     top:480px;
     left: 20px;
+}
+
+.register-last {
+    position: absolute;
+    top:520px;
+    left: 50px;
+}
+.left-space {
+    margin-left: 90px;
+}
+
+
+.push-buttons-further {
+    position: absolute;
+    top:180px;
+    left:-50px;
+}
+
+.register-last-error {
+    position: absolute;
+    top:620px;
+    left: 50px;
+}
+
+
+.login-last-error {
+    position: absolute;
+    top:570px;
+    left: 20px;
+}
+
+.login-buttons-error {
+    position: absolute;
+    top:120px;
+    left:-50px;
 }
 
