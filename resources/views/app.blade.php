@@ -10,7 +10,7 @@
 <!-- Custom CSS -->
     <link href="{!! asset('css/social.min.css') !!}" rel="stylesheet">
     <link href="{!! asset('css/custom.css') !!}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css"  href="http://x.tagstat.com/dyn/css/0/ax8U-nqOs.css"></link>
+    <link rel="stylesheet" type="text/css"  href="http://x.tagstat.com/dyn/css/0/ax8U-nqOs.css">
     <link href="{!! asset('css/landing-page.css') !!}" rel="stylesheet">
 <!-- Custom Fonts -->
 <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">

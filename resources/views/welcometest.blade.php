@@ -17,9 +17,7 @@
                                 <h2 class="convince shadow">Tell your friends about that special meal you just discovered and love so much</h2>
                             </div>
                         </div>
-
                     </div>
-
                     <div class="row">
                         <div class="content_bottom_v3 shift-right">
                             <div class="connect_btns_container logged_out_quote_btns">
@@ -48,7 +46,6 @@
                                 Sign up with your email!                                </div>
                             <div class="clear_both"></div>
                         </div>
-
                     </div>
                     <div class="row">
 
@@ -57,7 +54,8 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="intro-forms form-shadow">
-                                <form class="form-horizontal" method="post" id="login" role="form">
+                                <form class="form-horizontal" method="post" id="login" role="form"
+                                      action="{{ url('/login') }}">
                                     <input type="hidden" name="_token"
                                            value="{{ csrf_token() }}">
                                     <h5 class="pull-right">Sign In</h5>
@@ -87,7 +85,8 @@
                     </div>
                     <div class="row">
                         <div class="form-shadow">
-                            <form class="form-horizontal" method="post" id="register" role="form">
+                            <form class="form-horizontal" method="post" id="register" role="form"
+                                  action="{{ url('/register') }}">
                                 <input type="hidden" name="_token"
                                        value="{{ csrf_token() }}">
                                 <h5 class="pull-right">Sign Up</h5>

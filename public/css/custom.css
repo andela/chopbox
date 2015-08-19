@@ -1954,8 +1954,8 @@ h3 {
     margin: 30px 0 0 0;
 }
 .content_bottom_v3 .text_above {
-    background-color: #FFF;
-    color: #29447e;
+    background-color: rgb(238, 126, 91) !important;
+    color: #ffffff !important;
     bottom: 45px;
     left: 0;
     position: relative;
@@ -1992,7 +1992,7 @@ h3 {
 }
 .signup_email_text {
     float: left;
-    color: #29447e;
+    color: #ffffff !important;
     font-size: 18px;
     margin: 36px 0 0 0;
     width: 150px;
