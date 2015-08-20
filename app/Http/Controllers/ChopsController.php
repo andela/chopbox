@@ -153,94 +153,12 @@ class ChopsController extends Controller
             return redirect('chops');
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  Request  $request
-	 * @param  int  $id
-	 * @return Response
-	 */
-//	public function update(ChopsFormRequest $request, $id)
-//	{
-//        $file = NULL;
-//        $shortened_url = "";
-//        if($request->image)
-//        {
-//
-//            $file = $request->image;
-//            $resulted =  new UploadFile;
-//            $result = $resulted->uploadFile($file);
-//
-//            if($result) {
-//                $url = $result['url']; //get the url from the cloudinary result;
-//
-//                $shortened = new ShortenUrl;
-//
-//                $shortened->setLogin(env('BITLY_LOGIN'));
-//                $shortened->setKey(env('BITLY_API_KEY'));
-//                $shortened->setFormat("json");
-//
-//                $shortened_url = $shortened->shortenUrl($url);
-//            }
-//
-//        }
-//
-//        // Update chops details to database
-//        //$user
-//
-//        $chop = Chop::find($id);
-//
-//        $chop->chops_name = $request->chops_name;
-//        $chop->about = $request->about;
-//        //dd($chop->user_id, $chop->chops_name, $chop->about);
-//        $chop->save();
-//
-//
-//
-//        // Update upload to database
-//        Upload::where('chop_id', $id)->update([
-//            'name' => $file->getClientOriginalName(),
-//            'mime_type' => $file->getMimeType(),
-//            'file_uri' => $shortened_url]);
-//
-//        return redirect('chops');
-//
-//
-//	}
-
-//
-//    /public function uploadFiles() {
-//        $input = Input::all();
-//
-//        $rules = array(
-//            'file' => 'image|max:3000',
-//        );
-//
-//        $validation = Validator::make($input, $rules);
-//
-//        if ($validation->fails()) {
-//            return Response::make($validation->errors->first(), 400);
-//        }
-//
-//        $destinationPath = 'uploads'; // upload path
-//        $extension = Input::file('file')->getClientOriginalExtension(); // getting file extension
-//        $fileName = rand(11111, 99999) . Auth::user()->id . '.' . $extension; // renameing image
-//        $upload_success = Input::file('file')->move($destinationPath, $fileName); // uploading file to given path
-//
-//        if ($upload_success) {
-//            return Response::json('success', 200);
-//        }
-//        else {
-//            return Response::json('error', 400);
-//        }
-//
-//        $dh  = opendir("uploads");
-//        while (false !== ($filename = readdir($dh))) {
-//            if ($filename != "." && $filename != "..") {
-//                $file[] = $filename;
-//            }
-//
-//        }
-//    }
-
+    /**
+     *
+     *
+     */
+	public function update()
+	{
+        //
+	}
 }
