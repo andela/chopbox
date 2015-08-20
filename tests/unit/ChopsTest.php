@@ -21,24 +21,11 @@ class ChopsTest extends \Codeception\TestCase\Test
     // tests
    public function testChopsCanBeSaved(){
 
-       //user must exist to be able to create a chops
-       $id = $this->createUser();
+       // User must exist to be able to create a chop
 
-       $chops = new Chop();
-//       $chops->chops_name = "Random";
-//       $chops->about = "A random chops";
-//       $chops->user_id = $id;
-//       $chops->likes = 0;
+       $chops_id = $this->createChops();
 
-       $chops::create([
-           'chops_name'=> "Random",
-           'about' =>'A random chops',
-           'user_id' => $id,
-           'likes' => 0
-       ]);
-       //$chops->save();
-
-       $this->tester->seeRecord('chops',['chops_name'=>'Random']);
+       $this->tester->seeRecord('chops',['id'=>$chops_id]);
    }
 
     public function  testChopsCanBeDeleted() {
@@ -68,9 +55,8 @@ class ChopsTest extends \Codeception\TestCase\Test
         $user_id = $this->createUser();
         $id = $this->tester->haveRecord('chops', [
             'user_id' => $user_id,
-            'chops_name' =>'Random name',
             'about' => 'About this chops',
-            'likes' => 0
+            'likes' => 5
         ]);
 
 
