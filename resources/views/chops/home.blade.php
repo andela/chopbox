@@ -13,7 +13,16 @@
                 @foreach($chop->uploads as $image)
 
                     <div>
-                        <img src="{{$image->file_uri}}" alt="chops image" class="image-rounded">
+                        <?php
+                            if ($image->public_id) {
+                            echo cl_image_tag($image->public_id, array("width" => 300, "height" => 200,
+                                    "crop" => "fill", "radius" => 20));
+                            }
+                            else {
+                            ?>
+                        <img src="{{$image->file_uri}}" width="300" height="200" />
+
+                        <?php } ?>
                     </div>
                 @endforeach
                 <p>
