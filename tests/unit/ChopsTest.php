@@ -30,13 +30,12 @@ class ChopsTest extends \Codeception\TestCase\Test
 
     public function  testChopsCanBeDeleted() {
 
-       $id = $this->createChops();
+        $chops_id = $this->createChops();
 
-
-        $chops = Chop::find($id);
+        $chops = Chop::find($chops_id);
         $chops->delete();
 
-        $this->tester->dontSeeRecord('chops', ['chops_name'=> 'Random name']);
+        $this->tester->dontSeeRecord('chops', ['id'=>$chops_id]);
     }
 
     public function testChopsCanBeUpdated() {
