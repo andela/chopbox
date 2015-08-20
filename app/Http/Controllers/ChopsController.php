@@ -20,9 +20,11 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input as Input;
 use Validator;
 use Response;
-
-
 use Cloudder;
+
+\Cloudinary::config(array(
+    "cloud_name" => "chopbox"
+));
 
 
 class ChopsController extends Controller
@@ -55,6 +57,15 @@ class ChopsController extends Controller
         return view('chops.home')->with('chops', $chops);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('chops.newchops');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -69,6 +80,7 @@ class ChopsController extends Controller
             $file = array();
             $result = array();
             $url = array();
+            $public_id = array();
             $shortened_url = array();
 
             // Declare an instance of Bitly
@@ -81,12 +93,12 @@ class ChopsController extends Controller
                 $file[$i] = Input::file('image')[$i];
                 $result[$i] = $this->upload_file->uploadFile($file[$i]);
                 $url[$i] = $result[$i]['url']; //get the url from the cloudinary result;
+                $public_id[$i] = $result[$i]['public_id'];
                 $shortened_url[$i] = $this->shortener->shortenUrl($url[$i]);
             }
         }
 
         // Save chop details to database
-        $this->chops->chops_name = $request->chops_name;
         $this->chops->about = $request->about;
         $this->chops->likes = 0;
         $user = Auth::user();
@@ -99,6 +111,7 @@ class ChopsController extends Controller
             $upload->name = $file[$i]->getClientOriginalName();
             $upload->mime_type = $file[$i]->getMimeType();
             $upload->file_uri = $shortened_url[$i];
+            $upload->public_id = $public_id[$i];
             $upload->chop_id = $this->chops->id;
             $upload->user_id = $user->id;
             $upload->save();
@@ -139,17 +152,6 @@ class ChopsController extends Controller
         else
             return redirect('chops');
 	}
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
 	/**
 	 * Update the specified resource in storage.
@@ -206,15 +208,6 @@ class ChopsController extends Controller
 //
 //	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-//    public function create()
-//    {
-//        return view('chops.newchops');
-//    }
 //
 //    /public function uploadFiles() {
 //        $input = Input::all();

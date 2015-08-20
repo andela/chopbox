@@ -24,7 +24,7 @@ class ChopsFormRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|min:3',
+            'chops_name' => 'required|min:3',
             'about'=> 'required|max:255',
             'image' => 'required'
         ];
