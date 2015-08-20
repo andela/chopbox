@@ -39,15 +39,16 @@ class ChopsTest extends \Codeception\TestCase\Test
     }
 
     public function testChopsCanBeUpdated() {
-        $id = $this->createChops();
 
-        $chops = Chop::find($id);
-        $chops->chops_name = "A new name";
+        $chops_id = $this->createChops();
+
+        $chops = Chop::find($chops_id);
+        $chops->about = "I'm a lover of variety of foods.";
 
         $chops->save();
 
-        $this->tester->seeRecord('chops', ['chops_name'=>'A new name']);
-        $this->tester->dontSeeRecord('chops', ['chops_name' => 'Random name']);
+        $this->tester->dontSeeRecord('chops', ['id'=>$chops_id, 'about'=>"About this chops"]);
+        $this->tester->seeRecord('chops', ['id'=>$chops_id, 'about'=>"I'm a lover of variety of foods."]);
     }
 
     private function createChops() {
