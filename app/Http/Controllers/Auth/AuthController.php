@@ -4,12 +4,13 @@ namespace ChopBox\Http\Controllers\Auth;
 
 use ChopBox\User;
 use Validator;
+use Socialite;
+use ChopBox\Helpers\SocialAuthenticateUser;
 use ChopBox\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 class AuthController extends Controller {
 	/*
 	 * |--------------------------------------------------------------------------
@@ -36,7 +37,16 @@ class AuthController extends Controller {
 				'except' => 'getLogout' 
 		] );
 	}
-	
+		public function socialLogin(SocialAuthenticateUser $authenticateUser, Request $request, $provider = null) {
+				$social_providders = array("facebook","google");
+				if(in_array(strtolower ($provider),$social_providders)){
+						return $authenticateUser->execute($request->all(), $this, $provider);
+
+				}else{
+						return redirect ( $this->registerPath )->withErrors('Invalid Login Provider');
+				}
+
+		}
 	/**
 	 * Authenticate users.
 	 *
@@ -115,11 +125,11 @@ class AuthController extends Controller {
 	 */
 	protected function create(array $data) {
 		return User::create([
-                'email' => $data['email'],
-            		  'username' => $data['name'],
-                'password' => bcrypt($data['password']),
-            		'status' =>TRUE,
-            		'profile_state' => FALSE
+										'email' => $data['email'],
+										'username' => $data['name'],
+										'password' => bcrypt($data['password']),
+										'status' =>TRUE,
+										'profile_state' => FALSE
             ]);
         }
     }

@@ -138,6 +138,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
         JD\Cloudder\CloudderServiceProvider::class,
+    		Laravel\Socialite\SocialiteServiceProvider::class,
         ChopBox\Providers\HelperServiceProvider::class,
 
 
@@ -198,6 +199,7 @@ return [
         'Form'      => Illuminate\Html\FormFacade::class,
         'Html'      => Illuminate\Html\HtmlFacade::class,
         'Cloudder'  => JD\Cloudder\Facades\Cloudder::class,
+    		'Socialite' => Laravel\Socialite\Facades\Socialite::class
 
     ],
 

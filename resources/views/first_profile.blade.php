@@ -70,7 +70,7 @@
                         <div class="form-group">
                           <div class="input-group">
                             <span class="input-group-addon"> <i
-                              class="glyphicon glyphicon-globe"></i>
+                              class="glyphicon icon-fast-food"></i>
                             </span> <input type="text"
                               class="form-control" required="required"
                               placeholder="Best Food" name="best_food"

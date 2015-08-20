@@ -58,4 +58,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->belongsToMany('ChopBox\Roles');
     }
+    public function findUserWithEmail($email)
+    {
+        return User::where('email', '=', $email)->firstOrFail();
+    }
+    
 }
