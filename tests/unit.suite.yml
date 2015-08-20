@@ -8,6 +8,4 @@ modules:
         - Asserts
         - Laravel5:
            part: ORM
-           environment_file: .env.testing
         - \Helper\Unit
-        - Db
