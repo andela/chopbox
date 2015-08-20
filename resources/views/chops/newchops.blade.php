@@ -9,22 +9,16 @@
 
 <div class="container">
 
-  <h2>What's that special meal you just ate today</h2>
+  <h2>What's that special meal you just ate today</h2><br/>
   {!! Form::open(['url' => 'chops', 'files' => true, 'method'=>'post']) !!}
-
-    <div class="form-group">
-      {!! Form::label('name', 'Tell us the name') !!}
-      {!! Form::text('chops_name', null, ['class' => 'form-control', 'required' => 'required']) !!}
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('image', 'Show us an image') !!}
-        {!! Form::file('image[]', ['multiple'=> true, 'required' => 'required']) !!}
-    </div>
-
     <div class="form-group">
       {!! Form::label('about', 'Tell us about it.') !!}
       {!! Form::textarea('about', null, ['class' => 'form-control', 'required' => 'required']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('image', 'How does it look like?') !!}
+        {!! Form::file('image[]', ['multiple'=> true, 'required' => 'required']) !!}
     </div>
 
     <div class="form-group">
