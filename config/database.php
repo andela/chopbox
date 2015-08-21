@@ -1,7 +1,9 @@
 <?php
 
 
+
 return [
+
 
 
 		/*
@@ -105,6 +107,7 @@ return [
 						'charset' => 'utf8',
 
 
+
 						'prefix' => env ( 'DB_PREFIX', '' )
 				]
 
@@ -146,9 +149,6 @@ return [
 						'database' => 0
 				]
 		]
-
-
-
 
 ]
 ;
