@@ -53,7 +53,7 @@ class ChopsController extends Controller
      */
     public function index()
     {
-        $chops = Chop::paginate(8);
+        $chops = Chop::orderBy('updated_at', 'desc')->paginate(8);
         return view('chops.home')->with('chops', $chops);
     }
 

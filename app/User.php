@@ -34,8 +34,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $fillable = [
-            'username', 
-            'email', 
+            'username',
+            'email',
             'password',
             'status',
             'profile_state'
@@ -45,7 +45,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function favourites()
     {
-        return $this->hasMany('ChopBox\Favoutite');
+        return $this->hasMany('ChopBox\Favourite');
     }
 
 
