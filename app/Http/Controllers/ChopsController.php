@@ -64,7 +64,7 @@ class ChopsController extends Controller
      */
     public function create()
     {
-        return view('chops.newchops');
+        //
     }
 
     /**
