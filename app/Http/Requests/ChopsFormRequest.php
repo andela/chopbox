@@ -25,7 +25,7 @@ class ChopsFormRequest extends Request
     {
         return [
             'about'=> 'required|max:255',
-            'image' => 'required'
+            'image' => 'required|between:1,4'
         ];
     }
 }
