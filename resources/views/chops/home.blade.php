@@ -8,7 +8,7 @@
 @section('content')
     <div class="container">
 
-        {!! Form::open(['url' => 'chops', 'files' => true, 'method'=>'post']) !!}
+        {!! Form::open(['url' => 'chops', 'id' => 'my-form', 'files' => true, 'method'=>'post']) !!}
         <div class="form-group">
             {!! Form::textarea('about', null, ['class' => 'form-control', 'placeholder' => "What's that special meal you just ate today", 'required' => 'required']) !!}
         </div>
@@ -35,12 +35,17 @@
 
     </div>
         @foreach($chops as $chop)
-            <div>
-                <div><h2>{{$chop->chops_name}}</h2></div>
 
+            <a href="">
+                <span style="color:palevioletred">
+                <?php echo '@'; ?>
+                    <?php echo strtolower($chop->user->username); ?>
+                </span>
+            </a>
+
+            <div>
                 @foreach($chop->uploads as $image)
 
-                    <div>
                         <?php
                             if ($image->public_id) {
                             echo cl_image_tag($image->public_id, array("width" => 300, "height" => 200,
@@ -51,16 +56,12 @@
                         <img src="{{$image->file_uri}}" width="300" height="200" />
 
                         <?php } ?>
-                    </div>
+
                 @endforeach
-                <p>
-                    {{$chop->about}}
-                </p>
-                <p>
-                {{$chop->favourites->count()}} Favourites
-                </p>
+                <p>{{$chop->about}}</p>
+                <p>{{$chop->favourites->count()}} Favourites</p>
                 
-            </div>
+            </div><br />
         @endforeach
         
     {!! $chops->render() !!}
