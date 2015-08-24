@@ -5,14 +5,14 @@ Register
 @section('content')
 <div class="intro-header">
   <div class="container">
-      <div class="col-lg-12">
+    <div class="col-lg-12">
       <div style="margin-top: 60px;">&nbsp;</div>
       <div class="container">
-        <div class="row">
-          <h3 class="white-text pull-text-up">Create an account and have fun</h3>
-            <span class="some-space"></span>
+        <div class="row ">
+          <h3>Why not Create an account and just have fun</h3>
+          <hr class="intro-divider">
         </div>
-        <div class="row move-up">
+        <div class="row">
           <div class="col-lg-6 col-md-3 col-md-offset-3">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -37,8 +37,7 @@ Register
                       <br>
                       <ul>
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
+                        <li>{{ $error }}</li> @endforeach
                       </ul>
                     </div>
                     @endif
@@ -92,50 +91,23 @@ Register
                     </div>
                   </fieldset>
                 </form>
-                </div>
-                <div class="row">
-                    <div class="content_bottom_v3 shift-right">
-                        <div class="connect_btns_container logged_out_quote_btns push-buttons-down-2" id="buttons">
-                            <div class="google_btn_container">
-                                <div class="connect">
-                                    <a href="/oauth/google" class="google google_login_click dib pr tal clearfix">
-                                        <span class="ico-wrap"><i class="google"></i></span>
-                                        <span class="btn_text google">Login with Google</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="fb_btn_container logged_out_quote_btns">
-                                <div class="connect">
-                                    <a href="/oauth/facebook" class="facebook facebook_login_click dib pr tal clearfix">
-                                        <span class="ico-wrap"><i class="facebook"></i></span>
-                                        <span class="btn_text facebook">Login with Facebook</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @if(count($errors) > 0)
-                    <script type="text/javascript">
-                        $('div#buttons').removeClass('push-buttons-down-2').addClass('push-buttons-further');
-                    </script>
-                @endif
-              <div class="register-last" id="label">
-                <span class= "big-text shadow left-space">Already Registered!
-                    <a class="white-text" href="{{ url('/login') }}" onClick="">Login Here</a>
-                </span>
+
               </div>
-              @if(count($errors) > 0)
-                <script type="text/javascript">
-                    $('div#label').removeClass('register-last').addClass('register-last-error');
-                </script>
-              @endif
+              <div class="panel-footer ">
+                <span class="pull-left">Already Registered! <a
+                  href="{{ url('/login') }}" onClick=""> Login Here
+                </a></span> <span class="pull-right"><a
+                  href="{{ url('/password/email') }}"> Forgot
+                    Password </a></span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
+  <!-- /.container -->
 
 </div>
 @endsection
