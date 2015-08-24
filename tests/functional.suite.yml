@@ -1,4 +1,4 @@
-p# Codeception Test Suite Configuration
+# Codeception Test Suite Configuration
 #
 # Suite for functional (integration) tests
 # Emulate web requests and make application process them
