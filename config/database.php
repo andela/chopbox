@@ -1,15 +1,5 @@
 <?php
-<<<<<<< HEAD
-
-
-
 return [
-
-
-
-=======
-return [
->>>>>>> master
 		/*
 		 * |--------------------------------------------------------------------------
 		 * | PDO Fetch Style
@@ -20,11 +10,6 @@ return [
 		 * | array format for simplicity. Here you can tweak the fetch style.
 		 * |
 		 */
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
 		'fetch' => PDO::FETCH_CLASS,
 
     /*
@@ -66,10 +51,6 @@ return [
 				],
 
 				'mysql' => [
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 						'driver' => 'mysql',
 						'host' => env ( 'DB_HOST', 'localhost' ),
 						'database' => env ( 'DB_DATABASE', 'forge' ),
@@ -78,18 +59,10 @@ return [
 						'charset' => 'utf8',
 						'collation' => 'utf8_unicode_ci',
 						'prefix' => env ( 'DB_PREFIX', '' ),
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 						'strict' => false
 				],
 
 				'mysql_testing' => [
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 						'driver' => 'mysql',
 						'host' => env ( 'DB_HOST_TESTING', 'localhost' ),
 						'database' => env ( 'DB_DATABASE_TESTING', 'forge' ),
@@ -102,10 +75,6 @@ return [
 				],
 
 				'pgsql' => [
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 						'driver' => 'pgsql',
 						'host' => env ( 'DB_HOST', 'localhost' ),
 						'database' => env ( 'DB_DATABASE', 'forge' ),
@@ -117,28 +86,14 @@ return [
 				],
 
 				'sqlsrv' => [
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 						'driver' => 'sqlsrv',
 						'host' => env ( 'DB_HOST', 'localhost' ),
 						'database' => env ( 'DB_DATABASE', 'forge' ),
 						'username' => env ( 'DB_USERNAME', 'forge' ),
 						'password' => env ( 'DB_PASSWORD', '' ),
 						'charset' => 'utf8',
-<<<<<<< HEAD
-
-
-
 						'prefix' => env ( 'DB_PREFIX', '' )
 				]
-
-
-=======
-						'prefix' => env ( 'DB_PREFIX', '' )
-				]
->>>>>>> master
 		]
 		,
 
@@ -165,10 +120,6 @@ return [
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
     */
-<<<<<<< HEAD
-
-=======
->>>>>>> master
     'redis' => [
 
 				'cluster' => false,
@@ -179,9 +130,5 @@ return [
 						'database' => 0
 				]
 		]
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 ]
 ;
