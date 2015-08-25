@@ -12,6 +12,7 @@
 */
 
 
+
 Route::get('/', 'WelcomeController@index');
 
 Route::controllers([
@@ -26,6 +27,7 @@ Route::get('logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
+
 
 
 Route::resource('chops', 'ChopsController');

@@ -2318,6 +2318,55 @@
             "time": "2015-07-16 15:26:57"
         },
         {
+<<<<<<< HEAD
+=======
+            "name": "samcrosoft/cloudinary",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/samcrosoft/Laravel5-Cloudinary.git",
+                "reference": "c5b49c78d3b5b0a9e2e0aa66edcf831c0123bc46"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/samcrosoft/Laravel5-Cloudinary/zipball/c5b49c78d3b5b0a9e2e0aa66edcf831c0123bc46",
+                "reference": "c5b49c78d3b5b0a9e2e0aa66edcf831c0123bc46",
+                "shasum": ""
+            },
+            "require": {
+                "cloudinary/cloudinary_php": "~1.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Samcrosoft\\Cloudinary": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "samuel Olowofela",
+                    "email": "samuel_olowofela@yahoo.com"
+                }
+            ],
+            "description": "Laravel Based Cloudinary PHP SDK",
+            "homepage": "https://github.com/samcrooft/cloudinary",
+            "keywords": [
+                "cloud",
+                "cloudinary",
+                "image management",
+                "image manipulation",
+                "laravel"
+            ],
+            "time": "2015-02-13 00:14:19"
+        },
+        {
+>>>>>>> master
             "name": "sebastian/comparator",
             "version": "1.2.0",
             "source": {

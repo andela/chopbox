@@ -6,7 +6,7 @@
 # http://code.google.com/p/sequel-pro/
 #
 # Host: 127.0.0.1 (MySQL 5.6.19-0ubuntu0.14.04.1)
-# Database: chopbox
+# Database: chopbox_testing
 # Generation Time: 2015-08-22 18:57:17 +0000
 # ************************************************************
 
@@ -22,7 +22,6 @@
 
 # Dump of table chops
 # ------------------------------------------------------------
-
 DROP TABLE IF EXISTS `chops`;
 
 CREATE TABLE `chops` (
@@ -41,7 +40,6 @@ CREATE TABLE `chops` (
 
 # Dump of table comments
 # ------------------------------------------------------------
-
 DROP TABLE IF EXISTS `comments`;
 
 CREATE TABLE `comments` (
@@ -62,7 +60,6 @@ CREATE TABLE `comments` (
 
 # Dump of table favourites
 # ------------------------------------------------------------
-
 DROP TABLE IF EXISTS `favourites`;
 
 CREATE TABLE `favourites` (
@@ -71,6 +68,7 @@ CREATE TABLE `favourites` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
+<<<<<<< HEAD:tests/_data/chopbox_2015-08-22.sql
   KEY `favourites_chops_id_foreign` (`chop_id`),
   CONSTRAINT `favourites_chops_id_foreign` FOREIGN KEY (`chop_id`) REFERENCES `chops` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -79,7 +77,6 @@ CREATE TABLE `favourites` (
 
 # Dump of table follows
 # ------------------------------------------------------------
-
 DROP TABLE IF EXISTS `follows`;
 
 CREATE TABLE `follows` (
@@ -99,7 +96,6 @@ CREATE TABLE `follows` (
 
 # Dump of table migrations
 # ------------------------------------------------------------
-
 DROP TABLE IF EXISTS `migrations`;
 
 CREATE TABLE `migrations` (
@@ -111,7 +107,6 @@ CREATE TABLE `migrations` (
 
 # Dump of table password_resets
 # ------------------------------------------------------------
-
 DROP TABLE IF EXISTS `password_resets`;
 
 CREATE TABLE `password_resets` (
@@ -126,7 +121,6 @@ CREATE TABLE `password_resets` (
 
 # Dump of table roles
 # ------------------------------------------------------------
-
 DROP TABLE IF EXISTS `roles`;
 
 CREATE TABLE `roles` (
@@ -139,7 +133,6 @@ CREATE TABLE `roles` (
 
 # Dump of table uploads
 # ------------------------------------------------------------
-
 DROP TABLE IF EXISTS `uploads`;
 
 CREATE TABLE `uploads` (
@@ -155,6 +148,7 @@ CREATE TABLE `uploads` (
   PRIMARY KEY (`id`),
   KEY `uploads_chops_id_foreign` (`chop_id`),
   KEY `uploads_user_id_foreign` (`user_id`),
+<<<<<<< HEAD:tests/_data/chopbox_2015-08-22.sql
   CONSTRAINT `uploads_chops_id_foreign` FOREIGN KEY (`chop_id`) REFERENCES `chops` (`id`) ON DELETE CASCADE,
   CONSTRAINT `uploads_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -163,7 +157,6 @@ CREATE TABLE `uploads` (
 
 # Dump of table user_roles
 # ------------------------------------------------------------
-
 DROP TABLE IF EXISTS `user_roles`;
 
 CREATE TABLE `user_roles` (
@@ -181,7 +174,6 @@ CREATE TABLE `user_roles` (
 
 # Dump of table users
 # ------------------------------------------------------------
-
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (

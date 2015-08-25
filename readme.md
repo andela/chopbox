@@ -1,4 +1,4 @@
-## Laravel PHP Framework
+## Laravel PHP Framework - Should be ChopBox
 
 [![Circle CI](https://circleci.com/gh/andela/chopbox/tree/master.svg?style=svg&circle-token=09964224c7df8f47b80f0d998ae2a78d826735ed)](https://circleci.com/gh/andela/chopbox/tree/master)
 
