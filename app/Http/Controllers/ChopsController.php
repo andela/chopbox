@@ -126,7 +126,7 @@ class ChopsController extends Controller
             $upload->save();
         }
 
-        // Set a flash mesage to display on the page
+        // Set a flash message to display on the page
         $message = 'Success';
         return redirect(route('chops.index', $message));
 	}
