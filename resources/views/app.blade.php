@@ -11,7 +11,6 @@
 <!-- Custom CSS -->
 <link href="{!! asset('css/landing-page.css') !!}" rel="stylesheet">
     <link href="{!! asset('css/forms.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('css/dropzone.css') !!}" rel="stylesheet" type="text/css" media="all">
 
 <!-- Custom Fonts -->
 <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
