@@ -41,12 +41,22 @@ class ChopsController extends Controller
     private $shortener;
     private $upload_file;
 
-    public function __construct(Chop $chop, ShortenUrl $shortener,
-                                UploadFile $upload_file)
+    public function __construct(Chop $chop, ShortenUrl $shortener, UploadFile $upload_file)
     {
         $this->chops = $chop;
         $this->shortener = $shortener;
         $this->upload_file = $upload_file;
+    }
+
+    /**
+     * Declare an instance of Bitly
+     *
+     */
+    private function setBitlyConfig()
+    {
+        $this->shortener->setLogin(env('BITLY_LOGIN'));
+        $this->shortener->setKey(env('BITLY_API_KEY'));
+        $this->shortener->setFormat("json");
     }
 
     /**
@@ -79,23 +89,18 @@ class ChopsController extends Controller
      */
     public function store(ChopsFormRequest $request)
     {
-        if (Input::file('image')) {
-            $file = array();
-            $result = array();
-            $url = array();
-            $public_id = array();
-            $shortened_url = array();
-
-            // Declare an instance of Bitly
-            $this->shortener->setLogin(env('BITLY_LOGIN'));
-            $this->shortener->setKey(env('BITLY_API_KEY'));
-            $this->shortener->setFormat("json");
+        $images = Input::file('image');
+        $numImages = count($images);
+        if ($images)
+        {
+            $result = $url = $public_id = $shortened_url = [];
+            $this->setBitlyConfig();
 
             // Upload each image to Cloudinary and shorten the url returned with Bitly.
-            for ($i = 0; $i < count(Input::file('image')); $i++) {
-                $file[$i] = Input::file('image')[$i];
-                $result[$i] = $this->upload_file->uploadFile($file[$i]);
-                $url[$i] = $result[$i]['url']; //get the url from the cloudinary result;
+            for ($i = 0; $i < $numImages; $i++)
+            {
+                $result[$i] = $this->upload_file->uploadFile($images[$i]);
+                $url[$i] = $result[$i]['url']; //get the url from Cloudinary result;
                 $public_id[$i] = $result[$i]['public_id'];
                 $shortened_url[$i] = $this->shortener->shortenUrl($url[$i]);
             }
@@ -109,10 +114,11 @@ class ChopsController extends Controller
         $this->chops->save();
 
         // Save info about the chop image(s) to the uploads table in the database
-        for($i=0; $i < count($file); $i++) {
+        for($i=0; $i < $numImages; $i++)
+        {
             $upload = new Upload;
-            $upload->name = $file[$i]->getClientOriginalName();
-            $upload->mime_type = $file[$i]->getMimeType();
+            $upload->name = $images[$i]->getClientOriginalName();
+            $upload->mime_type = $images[$i]->getMimeType();
             $upload->file_uri = $shortened_url[$i];
             $upload->public_id = $public_id[$i];
             $upload->chop_id = $this->chops->id;
@@ -120,9 +126,9 @@ class ChopsController extends Controller
             $upload->save();
         }
 
-		// Set a flash mesage to display on the page
-		$message = 'Success';
-		return redirect(route('chops.index', $message));
+	    // Set a flash mesage to display on the page
+	    $message = 'Success';
+        return redirect(route('chops.index', $message));
 	}
 
 	/**
@@ -143,17 +149,18 @@ class ChopsController extends Controller
 	 * @return Response
 	 */
 	public function edit($id)
-	{
-        $owner_id = Chop::find($id)->user_id;
+	{   $chops = Chop::find($id);
+        $owner_id = $chops->user_id;
         $user = Auth::user();
 
-        if($user->id === $owner_id) {
-            $chops = Chop::find($id);
-
+        if($user->id === $owner_id)
+        {
             return view('chops.updatechops', compact('chops', 'id'));
         }
         else
+        {
             return redirect('chops');
+        }
 	}
 
     /**
