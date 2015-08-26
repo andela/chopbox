@@ -117,6 +117,7 @@
 				<div class="form-group">
 				 <button type="submit" name="register" class=" btn-primary form-control btn-info">Sign Up</button>
 				</div>
+				</form>
 			</div>
 			</form>
 		 </div>
