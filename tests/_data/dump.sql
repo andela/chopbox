@@ -6,7 +6,7 @@
 # http://code.google.com/p/sequel-pro/
 #
 # Host: 127.0.0.1 (MySQL 5.6.25)
-# Database: chopbox_testing
+# Database: circle_test
 # Generation Time: 2015-08-03 14:28:22 +0000
 # ************************************************************
 
