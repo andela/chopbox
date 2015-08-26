@@ -22,6 +22,9 @@ use Validator;
 use Response;
 use Cloudder;
 
+/** Supply name of Cloudinary account for this app.
+ * Even though this has been supplied in the env file, Cloudinary cl_image_tag() for retrieving and manipulating the images on view home.blade.php requests for it.
+ */
 \Cloudinary::config(array(
     "cloud_name" => "chopbox"
 ));
