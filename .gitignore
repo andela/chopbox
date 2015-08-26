@@ -7,5 +7,5 @@ Homestead.yaml
 .DS_Store
 .gitignore.idea
 .env.testing
-
+Vagrantfile
 
