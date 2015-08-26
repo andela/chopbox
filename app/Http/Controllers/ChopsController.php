@@ -26,7 +26,7 @@ use Cloudder;
  * Even though this has been supplied in the env file, Cloudinary cl_image_tag() for retrieving and manipulating the images on view home.blade.php requests for it.
  */
 \Cloudinary::config(array(
-    "cloud_name" => "chopbox"
+	"cloud_name" => "chopbox"
 ));
 
 
@@ -34,101 +34,101 @@ class ChopsController extends Controller
 {
 
 
-    /*
-     * Inject dependencies using the constructor
-     */
-    private $chops;
-    private $shortener;
-    private $upload_file;
+	/*
+	 * Inject dependencies using the constructor
+	 */
+	private $chops;
+	private $shortener;
+	private $upload_file;
 
-    public function __construct(Chop $chop, ShortenUrl $shortener, UploadFile $upload_file)
-    {
-        $this->chops = $chop;
-        $this->shortener = $shortener;
-        $this->upload_file = $upload_file;
-    }
+	public function __construct(Chop $chop, ShortenUrl $shortener, UploadFile $upload_file)
+	{
+		$this->chops = $chop;
+		$this->shortener = $shortener;
+		$this->upload_file = $upload_file;
+	}
 
-    /**
-     * Declare an instance of Bitly
-     *
-     */
-    private function setBitlyConfig()
-    {
-        $this->shortener->setLogin(env('BITLY_LOGIN'));
-        $this->shortener->setKey(env('BITLY_API_KEY'));
-        $this->shortener->setFormat("json");
-    }
+	/**
+	 * Declare an instance of Bitly
+	 *
+	 */
+	private function setBitlyConfig()
+	{
+		$this->shortener->setLogin(env('BITLY_LOGIN'));
+		$this->shortener->setKey(env('BITLY_API_KEY'));
+		$this->shortener->setFormat("json");
+	}
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        $chops = Chop::orderBy('updated_at', 'desc')->paginate(8);
-        return view('chops.home')->with('chops', $chops);
-    }
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		$chops = Chop::orderBy('updated_at', 'desc')->paginate(8);
+		return view('chops.home')->with('chops', $chops);
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+		//
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request $request
-     *
-     * @return Response
-     */
-    public function store(ChopsFormRequest $request)
-    {
-        $images = Input::file('image');
-        $numImages = count($images);
-        if ($images)
-        {
-            $result = $url = $public_id = $shortened_url = [];
-            $this->setBitlyConfig();
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  Request $request
+	 *
+	 * @return Response
+	 */
+	public function store(ChopsFormRequest $request)
+	{
+		$images = Input::file('image');
+		$numImages = count($images);
+		if ($images)
+		{
+			$result = $url = $public_id = $shortened_url = [];
+			$this->setBitlyConfig();
 
-            // Upload each image to Cloudinary and shorten the url returned with Bitly.
-            for ($i = 0; $i < $numImages; $i++)
-            {
-                $result[$i] = $this->upload_file->uploadFile($images[$i]);
-                $url[$i] = $result[$i]['url']; //get the url from Cloudinary result;
-                $public_id[$i] = $result[$i]['public_id'];
-                $shortened_url[$i] = $this->shortener->shortenUrl($url[$i]);
-            }
-        }
+			// Upload each image to Cloudinary and shorten the url returned with Bitly.
+			for ($i = 0; $i < $numImages; $i++)
+			{
+				$result[$i] = $this->upload_file->uploadFile($images[$i]);
+				$url[$i] = $result[$i]['url']; //get the url from Cloudinary result;
+				$public_id[$i] = $result[$i]['public_id'];
+				$shortened_url[$i] = $this->shortener->shortenUrl($url[$i]);
+			}
+		}
 
-        // Save chop details to database
-        $this->chops->about = $request->about;
-        $this->chops->likes = 0;
-        $user = Auth::user();
-        $this->chops->user_id = $user->id;
-        $this->chops->save();
+		// Save chop details to database
+		$this->chops->about = $request->about;
+		$this->chops->likes = 0;
+		$user = Auth::user();
+		$this->chops->user_id = $user->id;
+		$this->chops->save();
 
-        // Save info about the chop image(s) to the uploads table in the database
-        for($i=0; $i < $numImages; $i++)
-        {
-            $upload = new Upload;
-            $upload->name = $images[$i]->getClientOriginalName();
-            $upload->mime_type = $images[$i]->getMimeType();
-            $upload->file_uri = $shortened_url[$i];
-            $upload->public_id = $public_id[$i];
-            $upload->chop_id = $this->chops->id;
-            $upload->user_id = $user->id;
-            $upload->save();
-        }
+		// Save info about the chop image(s) to the uploads table in the database
+		for($i=0; $i < $numImages; $i++)
+		{
+			$upload = new Upload;
+			$upload->name = $images[$i]->getClientOriginalName();
+			$upload->mime_type = $images[$i]->getMimeType();
+			$upload->file_uri = $shortened_url[$i];
+			$upload->public_id = $public_id[$i];
+			$upload->chop_id = $this->chops->id;
+			$upload->user_id = $user->id;
+			$upload->save();
+		}
 
-        // Set a flash message to display on the page
-        $message = 'Success';
-        return redirect(route('chops.index', $message));
+		// Set a flash message to display on the page
+		$message = 'Success';
+		return redirect(route('chops.index', $message));
 	}
 
 	/**
@@ -150,25 +150,25 @@ class ChopsController extends Controller
 	 */
 	public function edit($id)
 	{   $chops = Chop::find($id);
-        $owner_id = $chops->user_id;
-        $user = Auth::user();
+		$owner_id = $chops->user_id;
+		$user = Auth::user();
 
-        if($user->id === $owner_id)
-        {
-            return view('chops.updatechops', compact('chops', 'id'));
-        }
-        else
-        {
-            return redirect('chops');
-        }
+		if($user->id === $owner_id)
+		{
+			return view('chops.updatechops', compact('chops', 'id'));
+		}
+		else
+		{
+			return redirect('chops');
+		}
 	}
 
-    /**
-     *
-     *
-     */
+	/**
+	 *
+	 *
+	 */
 	public function update()
 	{
-        //
+		//
 	}
 }
