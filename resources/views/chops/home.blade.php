@@ -38,24 +38,19 @@
 
             <a href="">
                 <span style="color:palevioletred">
-                <?php echo '@'; ?>
-                    <?php echo strtolower($chop->user->username); ?>
+                {{'@' . strtolower($chop->user->username)}}
                 </span>
             </a>
 
             <div>
                 @foreach($chop->uploads as $image)
 
-                        <?php
-                            if ($image->public_id) {
-                            echo cl_image_tag($image->public_id, array("width" => 300, "height" => 200,
-                                    "crop" => "fill", "radius" => 20));
-                            }
-                            else {
-                            ?>
-                        <img src="{{$image->file_uri}}" width="300" height="200" />
-
-                        <?php } ?>
+                        @if ($image->public_id)
+                            {!! cl_image_tag($image->public_id, array("width" => 300, "height" => 200,
+                                    "crop" => "fill", "radius" => 20)) !!}
+                        @else
+                            <img src="{{$image->file_uri}}" width="300" height="200" />
+                        @endif
 
                 @endforeach
                 <p>{{$chop->about}}</p>
