@@ -45,12 +45,7 @@
             <div>
                 @foreach($chop->uploads as $image)
 
-                        @if ($image->public_id)
-                            {!! cl_image_tag($image->public_id, array("width" => 300, "height" => 200,
-                                    "crop" => "fill", "radius" => 20)) !!}
-                        @else
-                            <img src="{{$image->file_uri}}" width="300" height="200" />
-                        @endif
+                    <img src="{{$image->file_uri}}" width="300" height="200" class="img-rounded" class="img-responsive" />
 
                 @endforeach
                 <p>{{$chop->about}}</p>
