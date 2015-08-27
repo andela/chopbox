@@ -1363,7 +1363,7 @@ div#logo_container {
     background-position: 0 -300px;
 }
 .google_small_logo {
-    background-position: 0 -350px;
+    background-position: 0 350px;
 }
 .background {
     background: url("/im/regpath/top_gradient_bg.png") repeat-x;
@@ -2169,8 +2169,8 @@ h3 {
     margin: 0;
     padding: 22px 5px 0 0;
     text-align: center;
-    min-width: 215px;
-    overflow: visible;
+    /*min-width: 215px;*/
+    overflow: hidden !important;
 }
 .logged_out_quote_btns .fb_btn_container, .logged_out_quote_btns .google_btn_container {
     min-width: 240px;

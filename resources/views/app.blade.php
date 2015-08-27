@@ -7,6 +7,7 @@
 <title>ChopBox | @yield('title')</title>
 <link href="{!! asset('css/bootstrap.css') !!}" media="all"
   rel="stylesheet" type="text/css" />
+ <link rel="stylesheet" href="{!!asset('css/bootstrap-social.css') !!}"/>
 <!-- Custom CSS -->
     <link href="{!! asset('css/social.min.css') !!}" rel="stylesheet">
     <link href="{!! asset('css/custom.css') !!}" rel="stylesheet">
@@ -29,7 +30,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <body>
-  <nav class="navbar navbar-default">
+  <nav class="navbar">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed"
@@ -61,9 +62,7 @@
       </div>
     </div>
   </nav>
-
   @yield('content')
-
   <!-- Scripts -->
   <script src="{!! asset('js/jquery.js') !!}"></script>
 
