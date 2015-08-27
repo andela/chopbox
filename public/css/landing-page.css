@@ -37,7 +37,7 @@ h6 {
     min-height: 100%;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/bg-3.png) no-repeat center center;
+    background: url('../img/landing-bg.jpg') no-repeat center center;
     background-size: cover;
 }
 
@@ -173,7 +173,7 @@ p.copyright {
 
 .form-shadow {
     background-color: rgba(255,255,255, 1);
-    padding: 10px 30px;
+    padding: 12px;
     margin-top: 18px !important;
     border-radius: 8px;
 }
@@ -297,5 +297,9 @@ input[type=checkbox].some-space {
     margin-top: 20px;
     padding: 20px;
 
+}
+
+.form-bottom {
+    margin-bottom: 0 !important;
 }
 

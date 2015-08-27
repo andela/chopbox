@@ -1,18 +1,18 @@
 @extends('app') @section('title') Login @stop @section('content')
-<div class="intro-header">
+<div class="intro-header bg-image">
   <div class="container">
     <div class="col-lg-12">
-      <div style="margin-top: 60px;">&nbsp;</div>
+      <div>&nbsp;</div>
       <div class="container">
         <div class="row ">
-          <h3 class="white-text pull-text-up"> Login and have some fun</h3>
+          <h3 class="white-text"> Log In and have some Real fun</h3>
           <span class="some-space"></span>
         </div>
-        <div class="row move-up">
+        <div class="row">
           <div class="col-lg-6 col-md-3 col-md-offset-3">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <strong> Sign in to ChopBox to Continue</strong>
+                <strong>Log In to ChopBox to Continue</strong>
               </div>
               <div class="panel-body">
                 <form class="form-horizontal" role="form" method="POST"
@@ -58,11 +58,9 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="remember" style="color: #3f3f3f;"
-                            class="form-inline pull-left"> <input
-                            type="checkbox" name="remember"
-                            class="form-control"> Remember Me
-                          </label>
+												 <input type="checkbox" name="remember" class="pull-left some-space">
+                          <label for="remember" style="color: #3f3f3f;"class="pull-left some-space">Remember Me</label>
+												 <span><a href="{{ url('/password/email') }}" class="small_font pull-right some-space">Forgot password?</a></span>
                         </div>
 
                         <div class="form-group">
@@ -74,36 +72,29 @@
                   </fieldset>
                 </form>
               </div>
-                <div class="row push-buttons-down" id="buttons">
-                    <div class="content_bottom_v3 shift-right">
-                        <div class="connect_btns_container logged_out_quote_btns">
-                            <div class="google_btn_container">
-                                <div class="connect">
-                                    <a href="/oauth/google" class="google google_login_click dib pr tal clearfix">
-                                        <span class="ico-wrap"><i class="google"></i></span>
-                                        <span class="btn_text google">Login with Google</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="fb_btn_container logged_out_quote_btns">
-                                <div class="connect">
-                                    <a href="/oauth/facebook" class="facebook facebook_login_click dib pr tal clearfix">
-                                        <span class="ico-wrap"><i class="facebook"></i></span>
-                                        <span class="btn_text facebook">Login with Facebook</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-              <div class="login-last" id="error">
-                <span class="pull-left some-space big-text shadow">Don't have an account? <a
-                  href="{{ url('/register') }}" onClick="" class="white-text">Sign Up Here
-                </a></span> <span class="pull-right some-space big-text"><a
-                  href="{{ url('/password/email') }}" class="white-text shadow"> Forgot Password? </a></span>
-              </div>
             </div>
+					 <div class="row">
+						<div class="col-md-12">
+						 <!-- social network login buttons -->
+						 <form class="form-shadow form" method="get" id="socialform">
+							<input type="hidden" name="_token"
+										 value="{{ csrf_token() }}">
+							<div class="form-group">
+							 <a class="btn btn-block btn-social btn-google" href="{{url('/oauth/google')}}">
+								<i class="fa fa-google"></i>
+								Sign in with google
+							 </a>
+							</div>
+							<div class="form-group form-bottom">
+							 <a class="btn btn-block btn-social btn-facebook" href="{{url('/oauth/facebook')}}">
+								<i class="fa fa-facebook"></i>
+								Sign in with facebook
+							 </a>
+							</div>
+						 </form>
+						 <!-- end social network login buttons -->
+						</div>
+					 </div>
           </div>
         </div>
       </div>
@@ -113,10 +104,4 @@
   <!-- /.container -->
 
 </div>
-@if(count($errors) > 0)
-    <script type="text/javascript">
-        $('div#buttons').removeClass('push-buttons-down').addClass('login-buttons-error');
-        $('div#error').removeClass('login-last').addClass('login-last-error');
-    </script>
-@endif
 @endsection

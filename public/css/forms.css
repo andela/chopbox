@@ -31,3 +31,22 @@
 .big-text {
     font-size: 18px;
 }
+
+.reg-login {
+    margin: 2px 0 2px 5px;
+    padding:0;
+}
+div.reg-login {
+    margin: 2px 0 2px 0;
+    padding:0;
+}
+span.reg-login {
+    margin: 2px 0 2px 15px;
+    padding:0;
+}
+
+a.fancy-link:hover {
+    color:rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 20px;
+}
