@@ -31,3 +31,7 @@ Route::post('register', 'Auth\AuthController@postRegister');
 
 
 Route::resource('chops', 'ChopsController');
+
+Route::get('about', 'AboutTermsController@about');
+
+Route::get('terms', 'AboutTermsController@terms');
