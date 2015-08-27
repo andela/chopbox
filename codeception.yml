@@ -12,10 +12,3 @@ settings:
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
-modules:
-    config:
-        Db:
-            dsn: 'mysql:host=127.0.0.1;dbname=chopbox_testing'
-            user: 'root'
-            password: ''
-            dump: tests/_data/dump.sql
