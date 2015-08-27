@@ -1,4 +1,4 @@
-<?php
+<?
 // This is global bootstrap for autoloading
 \Codeception\Configuration::$defaultSuiteSettings['modules']['config'] = [
 		'Db' => [
