@@ -14,7 +14,9 @@
 
 
 Route::get('/', 'WelcomeController@index');
-
+Route::get('/home', function () {
+		return redirect("/");
+});
 Route::controllers([
 		'password' => 'Auth\PasswordController',
 ]);
@@ -27,6 +29,14 @@ Route::get('logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
+
+// Registration routes...
+Route::get('register', 'Auth\AuthController@getRegister');
+Route::post('register', 'Auth\AuthController@postRegister');
+
+// Set Social Password routes...
+Route::get('social_password', 'Auth\AuthController@getSocialPassword');
+Route::post('social_password', 'Auth\AuthController@postSocialPassword');
 
 Route::get('login/{provider?}', 'Auth\AuthController@socialLogin');
 

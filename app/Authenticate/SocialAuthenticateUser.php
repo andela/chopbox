@@ -6,7 +6,7 @@
  * Time: 11:20 AM
  */
 
-namespace ChopBox\Helpers;
+namespace ChopBox\Authenticate;
 
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
@@ -25,9 +25,10 @@ class SocialAuthenticateUser {
 		}
 
 		public function execute($request, $listener, $provider) {
-				if (!$request){
+
+				if (!$request->all()){
 						return $this->getAuthorizationFirst($provider);
-				}elseif(isset($request['errors'])){
+				}elseif(isset($request->all()['errors'])){
 						return redirect ('/login')->withErrors('Error authenticating with '.$provider);
 				}else{
 						$socialUser = $this->getSocialUser($provider);
@@ -38,18 +39,14 @@ class SocialAuthenticateUser {
         if(Auth::check()){
 										return redirect()->intended('/');
 								}
-						}
+						}else{
+								session(['socialUser' => $socialUser]);
+								return redirect()->intended('/social_password');
+ 					}
 
 
 				}
 
-
-//				if (!$request) return $this->getAuthorizationFirst($provider);
-//				$user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider));
-//
-//				$this->auth->login($user, true);
-//
-//				return $listener->userHasLoggedIn($user);
 		}
 
 		private function getAuthorizationFirst($provider) {

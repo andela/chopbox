@@ -5,7 +5,7 @@ namespace ChopBox\Http\Controllers\Auth;
 use ChopBox\User;
 use Validator;
 use Socialite;
-use ChopBox\Helpers\SocialAuthenticateUser;
+use ChopBox\Authenticate\SocialAuthenticateUser;
 use ChopBox\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -40,7 +40,7 @@ class AuthController extends Controller {
 		public function socialLogin(SocialAuthenticateUser $authenticateUser, Request $request, $provider = null) {
 				$social_providders = array("facebook","google");
 				if(in_array(strtolower ($provider),$social_providders)){
-						return $authenticateUser->execute($request->all(), $this, $provider);
+						return $authenticateUser->execute($request, $this, $provider);
 
 				}else{
 						return redirect ( $this->registerPath )->withErrors('Invalid Login Provider');
@@ -116,7 +116,37 @@ class AuthController extends Controller {
 				'password' => 'required|confirmed|min:8' 
 		] );
 	}
-	
+		public function getSocialPassword(Request $request) {
+				if(!$request->session()->has('socialUser')){
+						return redirect()->intended('/login');
+				}
+				return view('auth.set_social_password');
+		}
+		public function postSocialPassword(Request $request) {
+				if(Auth::check()){
+						return redirect()->intended('/');
+				}
+				$validation = Validator::make($request->all(), [
+						'password' => 'required|confirmed|min:8',
+						'name' => 'required|max:255|unique:users,username|min:3',
+				]);
+
+				if ($validation->fails())
+				{
+						return redirect()->back()->withInput()->withErrors($validation->errors());
+				}else{
+						$user_array = array(
+								'email' => $request->session()->get('socialUser')->getEmail(),
+								'name' => $request->all()['name'],
+						  'password'=> $request->all()['password'],
+						);
+
+						Auth::login ( $this->create ( $user_array ) );
+						$request->session()->forget('socialUser');
+						return redirect ( $this->redirectPath () );
+
+				}
+		}
 	/**
 	 * Create a new user instance after a valid registration.
 	 *
@@ -133,3 +163,5 @@ class AuthController extends Controller {
             ]);
         }
     }
+
+
