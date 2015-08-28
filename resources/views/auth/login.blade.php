@@ -5,11 +5,13 @@
       <div>&nbsp;</div>
       <div class="container">
         <div class="row ">
-          <h3 class="white-text"> Log In and have some Real fun</h3>
-          <span class="some-space"></span>
+          <div class="col-sm-6 col-sm-offset-2">
+					 <h2 class="white-text fancy-text"> Log In and have some fun</h2>
+					 <span class="some-space"></span>
+					</div>
         </div>
         <div class="row">
-          <div class="col-lg-6 col-md-3 col-md-offset-3">
+          <div class="col-md-5 col-md-offset-3">
             <div class="panel panel-default">
               <div class="panel-heading">
                 <strong>Log In to ChopBox to Continue</strong>
@@ -43,7 +45,7 @@
                             <span class="input-group-addon"> <i
                               class="glyphicon glyphicon-user"></i>
                             </span> <input type="text"
-                              class="form-control" required="required"
+                              class="form-control input-sm" required="required"
                               placeholder="Username or Email"
                               name="email" value="{{ old('email') }}">
                           </div>
@@ -53,7 +55,7 @@
                             <span class="input-group-addon"> <i
                               class="glyphicon glyphicon-lock"></i>
                             </span> <input type="password"
-                              class="form-control" required="required"
+                              class="form-control input-sm" required="required"
                               placeholder="Password" name="password">
                           </div>
                         </div>
@@ -65,7 +67,7 @@
 
                         <div class="form-group">
                           <button name="submit" type="submit"
-                            class="btn btn-primary btn-block form-control">Login</button>
+                            class="btn btn-primary btn-block form-control input-sm">Login</button>
                         </div>
                       </div>
                     </div>
@@ -74,7 +76,7 @@
               </div>
             </div>
 					 <div class="row">
-						<div class="col-md-12">
+						<div class="col-sm-12 col-md-12">
 						 <!-- social network login buttons -->
 						 <form class="form-shadow form" method="get" id="socialform">
 							<input type="hidden" name="_token"

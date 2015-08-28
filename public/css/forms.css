@@ -50,3 +50,35 @@ a.fancy-link:hover {
     text-decoration: none;
     font-size: 20px;
 }
+
+
+div.social-up {
+    margin-top:0;
+}
+
+.fancy-text {
+    color: rgba(255, 255,255, 1);
+    font-size: 20px;
+    line-height: 8px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 200;
+}
+
+.register-header{
+    margin: 15px 0 0 230px;
+    font-family: sans-serif;
+    font-size: 22px;
+    line-height: 12px;
+    padding: 20px;
+    font-weight: 400;
+}
+
+.register-footer {
+    margin: 0 0 0 220px;
+    font-family: sans-serif;
+    font-size: 22px;
+    line-height: 12px;
+    padding: 20px;
+    font-weight: 400;
+}

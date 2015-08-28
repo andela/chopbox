@@ -9,10 +9,12 @@ Register
 
 		<div class="container">
 		 <div class="row">
-			<h3 class="white-text text-capitalize">Create an account and have fun</h3>
+			<div class="col-sm-6 col-sm-offset-2 register-header">
+			  <span class="">Create an Account and have some fun</span>
+			</div>
 		 </div>
 		 <div class="row">
-			<div class="col-lg-6 col-md-3 col-md-offset-3">
+			<div class="col-md-5 col-md-offset-3">
 			 <div class="panel panel-default">
 				<div class="panel-heading">
 				 <strong class="big-text">Signing Up is Simple. Get Started</strong>
@@ -95,7 +97,7 @@ Register
 				</div>
 			 </div>
 			</div>
-			<div class="col-md-6 col-md-offset-3">
+			<div class="col-md-6 col-md-offset-3 register-footer">
 			 <span class="white-text big-text">Already Registered?</span>
 			 <span class="white-text reg-login big-text"><a href="{{url('/login')}}" class="white-text fancy-link">Log In Here</a> </span>
 			</div>
