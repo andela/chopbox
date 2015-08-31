@@ -299,3 +299,10 @@ hr {
     padding-left: 100px;
     padding-right: 100px;
 }
+
+.privacy-policy {
+    margin-top: 18px;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
