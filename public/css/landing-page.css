@@ -263,3 +263,39 @@ p.copyright {
     left:-50px;
 }
 
+/*Help Center CSS*/
+
+.fixme { position: fixed; }
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    .fixme { width: 100%; position: static; }
+}
+
+.well {
+    margin-top: 0px;
+    margin-left: 250px;
+    text-align: justify;
+    padding-top: 0px;
+}
+
+.tabbable {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+hr {
+    height: 1px;
+    color: #337ab7;
+    background-color: #337ab7;
+}
+
+.tips {
+    padding-left: 20px;
+}
+
+.privacy {
+    text-align: justify;
+    padding-left: 100px;
+    padding-right: 100px;
+}
