@@ -302,8 +302,6 @@ hr {
 
 .privacy {
     text-align: justify;
-    padding-left: 100px;
-    padding-right: 100px;
 }
 
 .privacy-policy {
@@ -318,5 +316,10 @@ hr {
 .help-center {
     text-align: left;
     padding-left: 50px;
+    font-weight: 400;
+}
+
+.last_privacy_update {
+    text-align: center;
     font-weight: 400;
 }

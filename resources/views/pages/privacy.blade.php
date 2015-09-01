@@ -5,8 +5,9 @@
 @section('content')
     <div class="container">
         <div class="privacy-policy">Privacy Policy</div>
-        <p style="text-align: center">The ChopBox Privacy Policy was updated on 31st of August, 2015.</p>
-        <div class="tabbable privacy">
+        <p class="last_privacy_update">The ChopBox Privacy Policy was updated on 31st of August, 2015.</p>
+        <div class="col-md-2"></div>
+        <div class="col-md-8 tabbable privacy">
         <h2>
             Web Site Terms and Conditions of Use
         </h2>
@@ -140,5 +141,6 @@
             We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained.
         </p>
         </div>
+        <div class="col-md-2"></div>
     </div>
 @endsection
