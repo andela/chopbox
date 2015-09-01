@@ -277,7 +277,10 @@ p.copyright {
 
         /*Help CSS*/
 
-.fixme { position: fixed; }
+.fixme {
+    position: fixed;
+    margin-bottom: 10px;
+}
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
     .fixme { width: 100%; position: static; }
@@ -285,7 +288,6 @@ p.copyright {
 
 .well {
     margin-top: 0px;
-    margin-left: 250px;
     text-align: justify;
     padding-top: 0px;
 }

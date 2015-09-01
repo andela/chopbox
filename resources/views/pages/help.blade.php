@@ -7,7 +7,7 @@
         <div class="row tabbable">
             <div class="privacy-policy help-center">Welcome to ChopBox Help Center</div>
             <br/>
-            <div class="span3 fixme">
+            <div class="col-md-3 span3 fixme">
 
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="#blog" data-toggle="tab">What is ChopBox?</a></li>
@@ -15,7 +15,7 @@
                     <li><a href="#misc" data-toggle="tab">Frequently Asked Questions</a></li>
                 </ul>
             </div>
-            <div class="span8 well pull-right">
+            <div class="col-md-9 span8 well pull-right">
                 <div class="tab-content">
                     <div id="blog" class="tab-pane active">
                         <h1 class="h1">What is ChopBox?</h1>
