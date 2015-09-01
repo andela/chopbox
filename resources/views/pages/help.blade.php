@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row tabbable">
-            <h1 class="" style="font-size = 60px">Welcome to ChopBox Help Center</h1>
+            <div class="privacy-policy help-center">Welcome to ChopBox Help Center</div>
             <br/>
             <div class="span3 fixme">
 

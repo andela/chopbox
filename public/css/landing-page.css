@@ -263,7 +263,19 @@ p.copyright {
     left:-50px;
 }
 
-/*Help Center CSS*/
+/*Help Center and Privacy CSS*/
+
+.tips {
+    padding-left: 20px;
+}
+
+.tabbable {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+        /*Help CSS*/
 
 .fixme { position: fixed; }
 /* Landscape phone to portrait tablet */
@@ -278,21 +290,13 @@ p.copyright {
     padding-top: 0px;
 }
 
-.tabbable {
-    font-size: 16px;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-}
-
 hr {
     height: 1px;
     color: #337ab7;
     background-color: #337ab7;
 }
 
-.tips {
-    padding-left: 20px;
-}
+        /*Privacy CSS*/
 
 .privacy {
     text-align: justify;
@@ -305,4 +309,12 @@ hr {
     font-size: 40px;
     font-weight: bold;
     text-align: center;
+    font-family: Helvetica Neue;
+    font-weight: 500;
+}
+
+.help-center {
+    text-align: left;
+    padding-left: 50px;
+    font-weight: 400;
 }
