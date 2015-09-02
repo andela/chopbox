@@ -21,4 +21,66 @@
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
+
+}
+
+
+.white-text {
+    color: #ffffff;
+}
+
+.big-text {
+    font-size: 18px;
+}
+
+.reg-login {
+    margin: 2px 0 2px 5px;
+    padding:0;
+}
+div.reg-login {
+    margin: 2px 0 2px 0;
+    padding:0;
+}
+span.reg-login {
+    margin: 2px 0 2px 15px;
+    padding:0;
+}
+
+a.fancy-link:hover {
+    color:rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
+div.social-up {
+    margin-top:0;
+}
+
+.fancy-text {
+    color: rgba(255, 255,255, 1);
+    font-size: 20px;
+    line-height: 8px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 200;
+}
+
+.register-header{
+    margin: 15px 0 0 230px;
+    font-family: sans-serif;
+    font-size: 22px;
+    line-height: 12px;
+    padding: 20px;
+    font-weight: 400;
+}
+
+.register-footer {
+    margin: 0 0 0 220px;
+    font-family: sans-serif;
+    font-size: 22px;
+    line-height: 12px;
+    padding: 20px;
+    font-weight: 400;
+
 }
