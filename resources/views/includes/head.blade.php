@@ -2,6 +2,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ChopBox | @yield('title')</title>
+{{--Bootstrap CSS--}}
 <link href="{!! asset('css/bootstrap.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <!-- Custom CSS -->
 <link href="{!! asset('css/social.min.css') !!}" rel="stylesheet">

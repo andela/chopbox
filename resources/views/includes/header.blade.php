@@ -1,3 +1,4 @@
+{{--Nav bar--}}
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -27,6 +28,6 @@
                             <li><a href="{{ url('/logout') }}">Logout</a></li>
                         </ul></li> @endif
             </ul>
-        </div>
+        </div> {{--/.nav-collapse--}}
     </div>
 </nav>

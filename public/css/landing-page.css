@@ -277,13 +277,21 @@ p.copyright {
 
         /*Help CSS*/
 
-.fixme {
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: #5bc0de;
+}
+
+.nav-pills > li > a {
+    color: #5bc0de;
+}
+
+.fix-me {
     position: fixed;
     margin-bottom: 10px;
 }
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
-    .fixme { width: 100%; position: static; }
+    .fix-me { width: 100%; position: static; }
 }
 
 .well {
@@ -294,8 +302,8 @@ p.copyright {
 
 hr {
     height: 1px;
-    color: #337ab7;
-    background-color: #337ab7;
+    color: #5bc0de;
+    background-color: #5bc0de;
 }
 
         /*Privacy CSS*/
@@ -319,7 +327,7 @@ hr {
     font-weight: 400;
 }
 
-.last_privacy_update {
+.last-privacy-update {
     text-align: center;
     font-weight: 400;
 }
