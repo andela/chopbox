@@ -5,7 +5,7 @@ namespace ChopBox\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends Controller {
-  
+
   /*
    * |--------------------------------------------------------------------------
    * | Welcome Controller
@@ -24,22 +24,23 @@ class WelcomeController extends Controller {
    */
   public function __construct() {
   }
-  
+
   /**
    * Show the application welcome screen to the user.
    *
    * @return Response
    */
   public function index() {
-    if (Auth::check ()) {
-      $user = Auth::user ();
+    if (Auth::check()) {
+      $user = Auth::user();
       if ($user->profile_state) {
-        return view ( 'home' );
+        return view('home');
       } else {
-        return view ( 'first_profile' );
+        return view('profile_complete');
       }
     } else {
-      return view ( 'welcome' );
+      return view('welcome');
     }
   }
+
 }

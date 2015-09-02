@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 
 class HomeController extends Controller {
-  
+
   /*
    * |--------------------------------------------------------------------------
    * | Home Controller
@@ -25,34 +25,35 @@ class HomeController extends Controller {
    * @return void
    */
   public function __construct() {
-    $this->middleware ( 'auth' );
+    $this->middleware('auth');
   }
-  
+
   /**
    * Show the application dashboard to the user is th user is logged and also
    * checks if the user has completed the profile details.
    */
   public function firstProfile(Request $request) {
-    $validation = Validator::make ( $request->all (), [ 
+    $validation = Validator::make($request->all(), [ 
         'firstname' => 'required|min:2',
         'lastname' => 'required|min:2',
         'location' => 'required|min:2',
         'best_food' => 'required|min:2',
         'gender' => 'required' 
-    ] );
+    ]);
     
-    if ($validation->fails ()) {
-      return redirect ()->back ()->withInput ()->withErrors ( $validation->errors () );
+    if ($validation->fails()) {
+      return redirect()->back()->withInput()->withErrors($validation->errors());
     } else {
-      $user = Auth::user ();
+      $user = Auth::user();
       $user->profile_state = true;
       $user->firstname = $request ['firstname'];
       $user->lastname = $request ['lastname'];
       $user->location = $request ['location'];
       $user->gender = $request ['gender'];
       $user->best_food = $request ['best_food'];
-      $user->save ();
-      return redirect ( "/" );
+      $user->save();
+      return redirect("/");
     }
   }
+
 }
