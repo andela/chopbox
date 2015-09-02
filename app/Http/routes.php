@@ -1,43 +1,44 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
-
-
-Route::get('/', 'WelcomeController@index');
-Route::get('/home', function () {
-		return redirect("/");
-});
-Route::controllers([
-		'password' => 'Auth\PasswordController',
-]);
+ * |--------------------------------------------------------------------------
+ * | Application Routes
+ * |--------------------------------------------------------------------------
+ * |
+ * | Here is where you can register all of the routes for an application.
+ * | It's a breeze. Simply tell Laravel the URIs it should respond to
+ * | and give it the controller to call when that URI is requested.
+ * |
+ */
+Route::get ( '/', 'WelcomeController@index' );
+Route::get ( '/home', function () {
+  return redirect ( "/" );
+} );
+Route::controllers ( [ 
+    'password' => 'Auth\PasswordController' 
+] );
 
 // Authentication routes...
-Route::get('login', 'Auth\AuthController@getLogin');
-Route::post('login', 'Auth\AuthController@doLogin');
-Route::get('logout', 'Auth\AuthController@getLogout');
+Route::get ( 'login', 'Auth\AuthController@getLogin' );
+Route::post ( 'login', 'Auth\AuthController@doLogin' );
+Route::get ( 'logout', 'Auth\AuthController@getLogout' );
 
 // Registration routes...
-Route::get('register', 'Auth\AuthController@getRegister');
-Route::post('register', 'Auth\AuthController@postRegister');
+Route::get ( 'register', 'Auth\AuthController@getRegister' );
+Route::post ( 'register', 'Auth\AuthController@postRegister' );
 
 // Registration routes...
-Route::get('register', 'Auth\AuthController@getRegister');
-Route::post('register', 'Auth\AuthController@postRegister');
+Route::get ( 'register', 'Auth\AuthController@getRegister' );
+Route::post ( 'register', 'Auth\AuthController@postRegister' );
 
 // Set Social Password routes...
-Route::get('social_password', 'Auth\AuthController@getSocialPassword');
-Route::post('social_password', 'Auth\AuthController@postSocialPassword');
+Route::get ( 'social_password', 'Auth\AuthController@getSocialPassword' );
+Route::post ( 'social_password', 'Auth\AuthController@postSocialPassword' );
 
-Route::get('login/{provider?}', 'Auth\AuthController@socialLogin');
+Route::get ( 'login/{provider?}', 'Auth\AuthController@socialLogin' );
 
-Route::resource('chops', 'ChopsController');
+Route::resource ( 'chops', 'ChopsController' );
+
+Route::post ( 'first_profile', 'HomeController@firstProfile' );
+
+

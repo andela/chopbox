@@ -62,5 +62,5 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return User::where('email', '=', $email)->firstOrFail();
     }
-    
+
 }
