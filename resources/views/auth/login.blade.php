@@ -5,7 +5,7 @@
       <div style="margin-top: 60px;">&nbsp;</div>
       <div class="container">
         <div class="row ">
-          <h3 class="white-text pull-text-up"> Login and have some fun</h3>
+          <h3 class="white-text pull-text-up">Login and have some fun</h3>
           <span class="some-space"></span>
         </div>
         <div class="row move-up">
@@ -74,34 +74,41 @@
                   </fieldset>
                 </form>
               </div>
-                <div class="row push-buttons-down" id="buttons">
-                    <div class="content_bottom_v3 shift-right">
-                        <div class="connect_btns_container logged_out_quote_btns">
-                            <div class="google_btn_container">
-                                <div class="connect">
-                                    <a href="/oauth/google" class="google google_login_click dib pr tal clearfix">
-                                        <span class="ico-wrap"><i class="google"></i></span>
-                                        <span class="btn_text google">Login with Google</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="fb_btn_container logged_out_quote_btns">
-                                <div class="connect">
-                                    <a href="/oauth/facebook" class="facebook facebook_login_click dib pr tal clearfix">
-                                        <span class="ico-wrap"><i class="facebook"></i></span>
-                                        <span class="btn_text facebook">Login with Facebook</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+              <div class="row push-buttons-down" id="buttons">
+                <div class="content_bottom_v3 shift-right">
+                  <div
+                    class="connect_btns_container logged_out_quote_btns">
+                    <div class="google_btn_container">
+                      <div class="connect">
+                        <a href="/oauth/google"
+                          class="google google_login_click dib pr tal clearfix">
+                          <span class="ico-wrap"><i class="google"></i></span>
+                          <span class="btn_text google">Login with
+                            Google</span>
+                        </a>
+                      </div>
                     </div>
+                    <div class="fb_btn_container logged_out_quote_btns">
+                      <div class="connect">
+                        <a href="/oauth/facebook"
+                          class="facebook facebook_login_click dib pr tal clearfix">
+                          <span class="ico-wrap"><i class="facebook"></i></span>
+                          <span class="btn_text facebook">Login with
+                            Facebook</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
 
               <div class="login-last" id="error">
-                <span class="pull-left some-space big-text shadow">Don't have an account? <a
-                  href="{{ url('/register') }}" onClick="" class="white-text">Sign Up Here
-                </a></span> <span class="pull-right some-space big-text"><a
-                  href="{{ url('/password/email') }}" class="white-text shadow"> Forgot Password? </a></span>
+                <span class="pull-left some-space big-text shadow">Don't
+                  have an account? <a href="{{ url('/register') }}"
+                  onClick="" class="white-text">Sign Up Here </a>
+                </span> <span class="pull-right some-space big-text"><a
+                  href="{{ url('/password/email') }}"
+                  class="white-text shadow"> Forgot Password? </a></span>
               </div>
             </div>
           </div>
@@ -114,9 +121,8 @@
 
 </div>
 @if(count($errors) > 0)
-    <script type="text/javascript">
+<script type="text/javascript">
         $('div#buttons').removeClass('push-buttons-down').addClass('login-buttons-error');
         $('div#error').removeClass('login-last').addClass('login-last-error');
     </script>
-@endif
-@endsection
+@endif @endsection

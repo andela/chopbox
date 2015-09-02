@@ -1,20 +1,19 @@
 <?php
-
-return [
-
+return [ 
+    
     /*
-    |--------------------------------------------------------------------------
-    | Default Authentication Driver
-    |--------------------------------------------------------------------------
-    |
-    | This option controls the authentication driver that will be utilized.
-    | This driver manages the retrieval and authentication of the users
-    | attempting to get access to protected areas of your application.
-    |
-    | Supported: "database", "eloquent"
-    |
-    */
-
+     * |--------------------------------------------------------------------------
+     * | Default Authentication Driver
+     * |--------------------------------------------------------------------------
+     * |
+     * | This option controls the authentication driver that will be utilized.
+     * | This driver manages the retrieval and authentication of the users
+     * | attempting to get access to protected areas of your application.
+     * |
+     * | Supported: "database", "eloquent"
+     * |
+     */
+    
     'driver' => 'eloquent',
 
     /*
@@ -58,10 +57,10 @@ return [
     |
     */
 
-    'password' => [
+    'password' => [ 
         'email' => 'emails.password',
         'table' => 'password_resets',
-        'expire' => 60,
-    ],
-
-];
+        'expire' => 60 
+    ] 
+]
+;
