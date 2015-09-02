@@ -1,4 +1,4 @@
-@extends('app') @section('title') Login @stop @section('content')
+@extends('layouts.app') @section('title') Login @stop @section('content')
 <div class="intro-header">
   <div class="container">
     <div class="col-lg-12">

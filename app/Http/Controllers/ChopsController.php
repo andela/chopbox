@@ -50,7 +50,7 @@ class ChopsController extends Controller
 	public function index()
 	{
 		$chops = Chop::paginate(8);
-		return view('chops.home')->with('chops', $chops);
+		return view('pages.chops.home')->with('chops', $chops);
 	}
 
 	/**
@@ -60,7 +60,7 @@ class ChopsController extends Controller
 	 */
 	public function create()
 	{
-		return view('chops.newchops');
+		return view('pages.chops.newchops');
 	}
 
 	/**

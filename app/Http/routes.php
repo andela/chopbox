@@ -15,6 +15,10 @@
 
 Route::get('/', 'WelcomeController@index');
 
+Route::get('help', 'HelpAndPrivacyController@help');
+
+Route::get('privacy', 'HelpAndPrivacyController@privacy');
+
 Route::controllers([
 		'password' => 'Auth\PasswordController',
 ]);
