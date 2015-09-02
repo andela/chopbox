@@ -10,7 +10,7 @@ Register
 		<div class="container">
 		 <div class="row">
 			<div class="col-sm-6 col-sm-offset-2 register-header">
-			  <span class="">Create an Account and have some fun</span>
+			  <span>Create an Account and have some fun</span>
 			</div>
 		 </div>
 		 <div class="row">
