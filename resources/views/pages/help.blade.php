@@ -10,21 +10,21 @@
             <div class="col-md-3 span3 fix-me">
 
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#what" data-toggle="tab">What is ChopBox?</a></li>
-                    <li><a href="#how" data-toggle="tab">How do I use ChopBox?</a></li>
+                    <li class="active"><a href="#what-is-chopbox" data-toggle="tab">What is ChopBox?</a></li>
+                    <li><a href="#how-do-i-use-chopbox" data-toggle="tab">How do I use ChopBox?</a></li>
                     <li><a href="#faq" data-toggle="tab">Frequently Asked Questions</a></li>
                 </ul>
             </div>
             <div class="col-md-9 span8 well pull-right">
                 <div class="tab-content">
-                    <div id="what" class="tab-pane active">
+                    <div id="what-is-chopbox" class="tab-pane active">
                         <h1 class="h1">What is ChopBox?</h1>
                         <hr/>
                         <p class="p1"><span class="s1"><h4>What's ChopBox?<br /></h4></span>Good question! Chopbox is a free social networking site that makes it easy for foodies to connect to each other and share that special meal they've had, jus had or about to have.</p>
                         <p class="p1"><span class="s1"><h4>Who is allowed to use ChopBox?<br /></h4></span>Everyone! Young, Old, Male, Female, Foodies and YOU!</p>
                         <p class="p1"><span class="s1"><h4>How much does it cost to register on ChopBox?<br /></h4></span>Chopbox is a free site and will never require that you pay to continue using the site. You do, however, have the option of paying for certain extra services to personalize your feel and usage of this site</p>
                     </div>
-                    <div id="how" class="tab-pane">
+                    <div id="how-do-i-use-chopbox" class="tab-pane">
                         <h1 class="h1">How do I use ChopBox?</h1>
                         <hr/>
                         <p class="p1"><span class="s1"><h4>How do I sign up on ChopBox?<br /></h4></span>If you don't have a ChopBox account, you can sign up for one in a few steps: <br/><ol class="tips">
