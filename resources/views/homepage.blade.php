@@ -575,41 +575,7 @@
 
      
 
-        <li class="qg b amk">
-          <a class="qk" href="index.html#">
-            <img
-              class="qi cu"
-              src="assets/img/avatar-mdo.png">
-          </a>
-          <div class="qh">
-            <div class="qo">
-              <small class="eg dp">34 min</small>
-              <h5>Mark Otto</h5>
-            </div>
-
-            <p>
-              Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-            </p>
-
-            <div class="anx" data-grid="images">
-              <img style="display: none" data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_3.jpg">
-            </div>
-
-            <ul class="qp">
-              <li class="qg">
-                <a class="qk" href="index.html#">
-                  <img
-                    class="qi cu"
-                    src="assets/img/avatar-dhg.png">
-                </a>
-                <div class="qh">
-                  <strong>Dave Gamache: </strong>
-                  Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
-                </div>
-              </li>
-            </ul>
-          </div>
-        </li>
+     
       </ul>
     </div>
     <div class="go">
@@ -711,5 +677,21 @@
         $( "#file" ).click();
       });
     </script>
+  
+
+    @foreach($all_chops as $chop)
+      @foreach ($chop->comments as $comment)
+        {{ $comment->comment }} <br/>
+      @endforeach
+      <span class="username">{{ '@'.strtolower($chop->user->username) }} </span>
+      <br/>
+      {{ $chop->chops_name }}
+      <br/>
+      @foreach($chop->uploads as $upload)
+        <img width="200" height="200" src="{{ $upload->file_uri }}" />
+      @endforeach
+      <br/><br/>
+    @endforeach
+
   </body>
 </html>

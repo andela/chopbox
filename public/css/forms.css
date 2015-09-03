@@ -98,3 +98,7 @@ textarea {
     resize: none;
     margin-bottom: 1px;
 }
+
+.username {
+    color: red;
+}
