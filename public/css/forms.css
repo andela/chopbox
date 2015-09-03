@@ -84,3 +84,17 @@ div.social-up {
     font-weight: 400;
 
 }
+
+#file {
+    display: none;
+}
+
+#camera {
+    border-radius: 4px;
+    margin-top: -1px;
+}
+
+textarea {
+    resize: none;
+    margin-bottom: 1px;
+}
