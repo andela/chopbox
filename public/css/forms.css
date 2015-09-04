@@ -100,5 +100,9 @@ textarea {
 }
 
 .username {
-    color: red;
+    color: purple;
+}
+
+.centralize {
+    text-align: center;
 }
