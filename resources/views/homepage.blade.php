@@ -504,6 +504,7 @@
 
     <div class="ha">
       <ul class="ca qp anw">
+
         <li class="qg b amk">
           {!! Form::open(['url' => 'chops', 'files' => true, 'method'=>'post']) !!}
           {!! Form::textarea('about', null, ['class' => 'form-control', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
@@ -512,72 +513,54 @@
           {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right', 'name' =>'submitButton']) !!}
           {!! Form::close() !!}
         </li>
-        <li class="qg b amk">
-          <a class="qk" href="index.html#">
-            <img
-              class="qi cu"
-              src="assets/img/avatar-dhg.png">
-          </a>
-          <div class="qh">
-            <div class="qo">
-              <small class="eg dp">4 min</small>
-              <h5>Dave Gamache</h5>
-            </div>
 
-            <p>
-              Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-            </p>
+          @foreach($all_chops as $chop)
+              <li class="qg b amk">
+                  <a class="qk" href="index.html#">
+                      <img class="qi cu" src="assets/img/avatar-dhg.png">
+                      <strong>
+                          <span class="username">{{ '@'.strtolower($chop->user->username) }}</span>
+                      </strong>
+                  </a>
 
-            <div class="anx" data-grid="images">
-              <div style="display: none">
-                <img data-action="zoom" data-width="1050" data-height="700" src="assets/img/unsplash_1.jpg">
-              </div>
+                  <div class="qh qo">
+                      <small class="eg dp">4 min</small>
+                  </div>
 
-              <div style="display: none">
-                <img data-action="zoom" data-width="640" data-height="640" src="assets/img/instagram_1.jpg">
-              </div>
+                  <p>{{ $chop->about }}</p>
 
-              <div style="display: none">
-                <img data-action="zoom" data-width="640" data-height="640" src="assets/img/instagram_13.jpg">
-              </div>
+                  <div class="anx" data-grid="images">
+                      @foreach($chop->uploads as $upload)
+                          <div style="display: none">
+                              <img data-action="zoom" data-width="1050" data-height="700" src="{{ $upload->file_uri }}">
+                          </div>
+                      @endforeach
+                  </div>
 
-              <div style="display: none">
-                <img data-action="zoom" data-width="1048" data-height="700" src="assets/img/unsplash_2.jpg">
-              </div>
-            </div>
+                  <ul class="qp all">
+                      @foreach ($chop->comments as $comment)
+                          <li class="qg">
+                              <a class="qk" href="index.html#">
+                                  <img class="qi cu" src="assets/img/avatar-fat.jpg">
+                              </a>
 
-            <ul class="qp all">
-              <li class="qg">
-                <a class="qk" href="index.html#">
-                  <img
-                    class="qi cu"
-                    src="assets/img/avatar-fat.jpg">
-                </a>
-                <div class="qh">
-                  <strong>Jacon Thornton: </strong>
-                  Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
-                </div>
+                              <div class="qh">
+                                  <strong>
+                                      <span class="username">{{ '@'.strtolower($all_users->find($comment->user_id)->username).': ' }}</span>
+                                  </strong>
+                                  {{ $comment->comment }}
+                              </div>
+                          </li>
+                          <br/>
+                      @endforeach
+                  </ul>
               </li>
-              <li class="qg">
-                <a class="qk" href="index.html#">
-                  <img
-                    class="qi cu"
-                    src="assets/img/avatar-mdo.png">
-                </a>
-                <div class="qh">
-                  <strong>Mark Otto: </strong>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-                </div>
-              </li>
-            </ul>
-          </div>
-        </li>
-
-     
-
-     
+              <br/>
+              @endforeach
       </ul>
     </div>
+
+
     <div class="go">
       <div class="alert pw alert-dismissible st" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -635,23 +618,12 @@
       </div>
 
       <div class="qw rd aoj">
-        <div class="qx">
-          © 2015 Chopbox
-
+        <div class="qx centralize">
           <a href="index.html#">About</a>
           <a href="index.html#">Help</a>
           <a href="index.html#">Terms</a>
-          <a href="index.html#">Privacy</a>
-          <a href="index.html#">Cookies</a>
-          <a href="index.html#">Ads </a>
-
-          <a href="index.html#">info</a>
-          <a href="index.html#">Brand</a>
-          <a href="index.html#">Blog</a>
-          <a href="index.html#">Status</a>
-          <a href="index.html#">Apps</a>
-          <a href="index.html#">Jobs</a>
-          <a href="index.html#">Advertise</a>
+          <a href="index.html#">Privacy</a><br>
+            © 2015 Chopbox
         </div>
       </div>
     </div>
@@ -677,21 +649,6 @@
         $( "#file" ).click();
       });
     </script>
-  
-
-    @foreach($all_chops as $chop)
-      @foreach ($chop->comments as $comment)
-        {{ $comment->comment }} <br/>
-      @endforeach
-      <span class="username">{{ '@'.strtolower($chop->user->username) }} </span>
-      <br/>
-      {{ $chop->chops_name }}
-      <br/>
-      @foreach($chop->uploads as $upload)
-        <img width="200" height="200" src="{{ $upload->file_uri }}" />
-      @endforeach
-      <br/><br/>
-    @endforeach
 
   </body>
 </html>
