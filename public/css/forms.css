@@ -106,3 +106,13 @@ textarea {
 .centralize {
     text-align: center;
 }
+
+.round {
+    height: 60px;
+    width: 60px; 
+}
+
+.small-round {
+    height: 40px;
+    width: 40px; 
+}

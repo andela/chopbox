@@ -501,7 +501,6 @@
     </div>
 
 
-
     <div class="ha">
       <ul class="ca qp anw">
 
@@ -513,54 +512,45 @@
           {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right', 'name' =>'submitButton']) !!}
           {!! Form::close() !!}
         </li>
-
           @foreach($all_chops as $chop)
-              <li class="qg b amk">
-                  <a class="qk" href="index.html#">
-                      <img class="qi cu" src="assets/img/avatar-dhg.png">
-                      <strong>
-                          <span class="username">{{ '@'.strtolower($chop->user->username) }}</span>
-                      </strong>
-                  </a>
+          <li class="qg b amk">
+              <a class="qk" href="index.html#">
+                  <img class="qi cu round"  src="{{ $chop->user->image_uri }}"> 
+              </a>
+            <div class="qh">
+              <div class="qo">
+                  <small class="eg dp">4 min</small>
+                  <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
+              </div>
+              <p>{{ $chop->about }}</p>
+              <div class="anx" data-grid="images">
+                  @foreach($chop->uploads as $upload)
+                      <div style="display: none">
+                          <img data-action="zoom" data-width="1050" data-height="700" src="{{ $upload->file_uri }}">
+                      </div>
+                  @endforeach
+              </div>
 
-                  <div class="qh qo">
-                      <small class="eg dp">4 min</small>
-                  </div>
-
-                  <p>{{ $chop->about }}</p>
-
-                  <div class="anx" data-grid="images">
-                      @foreach($chop->uploads as $upload)
-                          <div style="display: none">
-                              <img data-action="zoom" data-width="1050" data-height="700" src="{{ $upload->file_uri }}">
-                          </div>
-                      @endforeach
-                  </div>
-
-                  <ul class="qp all">
-                      @foreach ($chop->comments as $comment)
-                          <li class="qg">
-                              <a class="qk" href="index.html#">
-                                  <img class="qi cu" src="assets/img/avatar-fat.jpg">
-                              </a>
-
-                              <div class="qh">
-                                  <strong>
-                                      <span class="username">{{ '@'.strtolower($all_users->find($comment->user_id)->username).': ' }}</span>
-                                  </strong>
-                                  {{ $comment->comment }}
-                              </div>
-                          </li>
-                          <br/>
-                      @endforeach
-                  </ul>
-              </li>
-              <br/>
-              @endforeach
+              <ul class="qp all">
+                  @foreach ($chop->comments as $comment)
+                  <li class="qg">
+                      <a class="qk" href="index.html#">
+                          <img class="qi cu small-round" src="{{ $all_users->find($comment->user_id)->image_uri }}">
+                      </a>
+                      <div class="qh">
+                          <strong>
+                              <span class="username">{{ '@'.strtolower($all_users->find($comment->user_id)->username).': ' }}</span>
+                          </strong>
+                          {{ $comment->comment }}
+                      </div>
+                  </li>
+                  @endforeach
+              </ul>
+            </div>
+          </li>
+          @endforeach
       </ul>
     </div>
-
-
     <div class="go">
       <div class="alert pw alert-dismissible st" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -616,7 +606,6 @@
           Dave really likes these nerds, no one knows why though.
         </div>
       </div>
-
       <div class="qw rd aoj">
         <div class="qx centralize">
           <a href="index.html#">About</a>
