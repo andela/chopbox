@@ -1,0 +1,11 @@
+.env
+/vendor
+/node_modules
+/.settings
+/.idea
+Homestead.yaml
+.DS_Store
+.gitignore.idea
+.env.testing
+Vagrantfile
+
