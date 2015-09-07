@@ -6,13 +6,13 @@
  * Date: 8/19/15
  * Time: 11:20 AM
  */
-namespace ChopBox\Authenticate;
+namespace ChopBox\ChopBox\Authenticate;
 
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Socialite;
-use ChopBox\Helpers\UserRepository;
+use ChopBox\ChopBox\Repository\UserRepository;
 use Request;
 
 class SocialAuthenticateUser {

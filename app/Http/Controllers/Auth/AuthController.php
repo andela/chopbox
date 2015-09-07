@@ -5,7 +5,7 @@ namespace ChopBox\Http\Controllers\Auth;
 use ChopBox\User;
 use Validator;
 use Socialite;
-use ChopBox\Authenticate\SocialAuthenticateUser;
+use ChopBox\ChopBox\Authenticate\SocialAuthenticateUser;
 use ChopBox\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
