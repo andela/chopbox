@@ -21,7 +21,6 @@
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-
 }
 
 
@@ -82,7 +81,6 @@ div.social-up {
     line-height: 12px;
     padding: 20px;
     font-weight: 400;
-
 }
 
 #file {
@@ -115,6 +113,16 @@ textarea {
 .small-round {
     height: 40px;
     width: 40px; 
+}
+
+
+.pd .navbar-nav > li > a, .pd .navbar-nav > li > a:hover   {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.app-navbar {
+    background: white;
 }
 
 .e {

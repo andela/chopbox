@@ -14,12 +14,11 @@
       
       
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+      <link href="//cdn.shopify.com/s/files/1/0691/5403/t/82/assets/style.scss.css?16677709998824235896" rel="stylesheet" type="text/css"  media="all"  />
       <link href="{!! asset('css/toolkit.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('css/application.css') !!}" media="all" rel="stylesheet" type="text/css" />
-      <link href="//cdn.shopify.com/s/files/1/0691/5403/t/82/assets/style.scss.css?16677709998824235896" rel="stylesheet" type="text/css"  media="all"  />
       <link href="{!! asset('css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('css/forms.css') !!}" media="all" rel="stylesheet" type="text/css" />
-
       <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
 
       <style>
@@ -54,7 +53,7 @@
     <div class="f collapse" id="navbar-collapse-main">
 
         <ul class="nav navbar-nav st">
-          <li class="active">
+          <li>
             <a href="index.html">Home</a>
           </li>
           <li>
@@ -71,12 +70,13 @@
         <ul class="nav navbar-nav oh ald st">
           <li >
             <a class="g" href="notifications/index.html">
-              <span class="h ws"></span>
+             <i class="glyphicon glyphicon-bell"></i>
             </a>
           </li>
           <li>
             <button class="cg fm oy ank" data-toggle="popover">
               <img class="cu" src="{{ $user->image_uri }}">
+
             </button>
           </li>
         </ul>
@@ -120,7 +120,46 @@
             <a href="index.html#" class="b">
               <div class="qg">
                 <span class="qk">
-                <img class="cu qi" src="assets/img/avatar-fat.jpg">
+                <img class="cu qi" src="http://lorempixel.com/120/120">
+                </span>
+                <div class="qh">
+                  <strong>Jacob Thornton</strong> and <strong>1 other</strong>
+                  <div class="aoe">
+                    Aenean eu leo quam. Pellentesque ornare sem lacinia quam &hellip;
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a href="index.html#" class="b">
+              <div class="qg">
+                <span class="qk">
+                  <img class="cu qi" src="http://lorempixel.com/120/120">
+                </span>
+                <div class="qh">
+                  <strong>Mark Otto</strong> and <strong>3 others</strong>
+                  <div class="aoe">
+                    Brunch sustainable placeat vegan bicycle rights yeah…
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a href="index.html#" class="b">
+              <div class="qg">
+                <span class="qk">
+                  <img class="cu qi" src="http://lorempixel.com/120/120">
+                </span>
+                <div class="qh">
+                  <strong>Dave Gamache</strong>
+                  <div class="aoe">
+                    Brunch sustainable placeat vegan bicycle rights yeah…
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a href="index.html#" class="b">
+              <div class="qg">
+                <span class="qk">
+                  <img class="cu qi" src="http://lorempixel.com/120/120">
                 </span>
                 <div class="qh">
                   <strong>Jacob Thornton</strong> and <strong>1 other</strong>
@@ -159,7 +198,7 @@
             <a href="index.html#" class="b">
               <div class="qg">
                 <span class="qk">
-                  <img class="cu qi" src="assets/img/avatar-fat.jpg">
+                  <img class="cu qi" src="http://lorempixel.com/120/120">
                 </span>
                 <div class="qh">
                   <strong>Jacob Thornton</strong> and <strong>1 other</strong>
@@ -172,46 +211,7 @@
             <a href="index.html#" class="b">
               <div class="qg">
                 <span class="qk">
-                  <img class="cu qi" src="assets/img/avatar-mdo.png">
-                </span>
-                <div class="qh">
-                  <strong>Mark Otto</strong> and <strong>3 others</strong>
-                  <div class="aoe">
-                    Brunch sustainable placeat vegan bicycle rights yeah…
-                  </div>
-                </div>
-              </div>
-            </a>
-            <a href="index.html#" class="b">
-              <div class="qg">
-                <span class="qk">
-                  <img class="cu qi" src="assets/img/avatar-dhg.png">
-                </span>
-                <div class="qh">
-                  <strong>Dave Gamache</strong>
-                  <div class="aoe">
-                    Brunch sustainable placeat vegan bicycle rights yeah…
-                  </div>
-                </div>
-              </div>
-            </a>
-            <a href="index.html#" class="b">
-              <div class="qg">
-                <span class="qk">
-                  <img class="cu qi" src="assets/img/avatar-fat.jpg">
-                </span>
-                <div class="qh">
-                  <strong>Jacob Thornton</strong> and <strong>1 other</strong>
-                  <div class="aoe">
-                    Aenean eu leo quam. Pellentesque ornare sem lacinia quam &hellip;
-                  </div>
-                </div>
-              </div>
-            </a>
-            <a href="index.html#" class="b">
-              <div class="qg">
-                <span class="qk">
-                  <img class="cu qi" src="assets/img/avatar-mdo.png">
+                  <img class="cu qi" src="http://lorempixel.com/120/120">
                 </span>
                 <div class="qh">
                   <strong>Mark Otto</strong> and <strong>3 others</strong>
@@ -472,7 +472,7 @@
           <h5 class="alc">Photos <small>· <a href="index.html#">Edit</a></small></h5>
           <div data-grid="images" data-target-height="150">
             <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_5.jpg">
+              <img data-width="640" data-height="640" data-action="zoom" src="http://lorempixel.com/640/640">
             </div>
 
             <div>
@@ -588,7 +588,7 @@
         <div class="qx">
           <h5 class="alc">Sponsored</h5>
           <div data-grid="images" data-target-height="150">
-            <img class="qi" data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_2.jpg">
+            <img class="qi" data-width="640" data-height="640" data-action="zoom" src="http://lorempixel.com/480/480">
           </div>
           <p><strong>It might be time to visit Iceland.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
           <button class="cg ts fx">Buy a ticket</button>
@@ -603,7 +603,7 @@
             <a class="qk" href="index.html#">
               <img
                 class="qi cu"
-                src="assets/img/avatar-fat.jpg">
+                src="http://lorempixel.com/120/120">
             </a>
             <div class="qh">
               <strong>Jacob Thornton</strong> @fat
@@ -617,7 +617,7 @@
             <a class="qk" href="index.html#">
               <img
                 class="qi cu"
-                src="assets/img/avatar-mdo.png">
+                src="http://lorempixel.com/120/120">
             </a>
             <div class="qh">
               <strong>Mark Otto</strong> @mdo
