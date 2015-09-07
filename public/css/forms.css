@@ -117,6 +117,7 @@ textarea {
     width: 40px; 
 }
 
+
 .pd .navbar-nav > li > a, .pd .navbar-nav > li > a:hover   {
     color: #337ab7;
     text-decoration: none;
@@ -124,4 +125,12 @@ textarea {
 
 .app-navbar {
     background: white;
+
+.e {
+    margin-top: -25px;
+}
+
+.anf {
+    background-color: gainsboro;
+
 }
