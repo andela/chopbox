@@ -32,4 +32,4 @@ Route::post('register', 'Auth\AuthController@postRegister');
 
 Route::resource('chops', 'ChopsController');
 
-Route::get('homepage','HomePageController@index');
+Route::get('home','HomepageController@index');

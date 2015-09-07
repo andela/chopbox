@@ -510,6 +510,17 @@
           <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera" title="Attach photos"></button>
           {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right', 'name' =>'submitButton']) !!}
           {!! Form::close() !!}
+
+            @if($errors->any())
+                <div class="has-error">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
         </li><br/>
           @foreach($all_chops as $chop)
           <li class="qg b amk">
@@ -543,11 +554,7 @@
                       <p>{{ $chop->about }}</p>
                       <div>
                           <a href="#">
-                              @if($chop->like > 0)
-                                  <span class="glyphicon glyphicon-heart"></span>
-                              @else
-                                  <span class="glyphicon glyphicon-heart unpopular"></span>
-                              @endif
+                              <span class="glyphicon glyphicon-heart"></span>
                           </a>
                           {{ $chop->likes }}
                       </div>
@@ -646,43 +653,6 @@
   </div>
 </div>
     <script src="{!! asset('js/jquery.min.js') !!}"></script>
-
-  <!--<script>
-      $(document).ready(function() {
-          var fixTopLeft = $('.fixLeft').offset().top;       // get initial position of the element
-          var fixTopRight = $('.fixRight').offset().top;       // get initial position of the element
-
-          $(window).scroll(function() {                  // assign scroll event listener
-
-              var currentScroll = $(window).scrollTop(); // get current position
-
-              if (currentScroll > fixTopLeft) {           // apply position: fixed if you
-                  $('.fixLeft').css({                      // scroll to that element or below it
-                      position: 'fixed',
-                      top: '0',
-                      left: '0'
-                  });
-              }
-              else if (currentScroll > fixTopRight) {
-                  $('.fixRight').css({                      // scroll to that element or below it
-                      position: 'fixed',
-                      top: '0',
-                      right: '0'
-                  });
-              }
-              else {                                   // apply position: static
-                  $('.fixLeft').css({                      // if you scroll above it
-                      position: 'static'
-                  });
-                  $('.fixRight').css({                      // if you scroll above it
-                      position: 'static'
-                  });
-              }
-
-          });
-      });
-  </script>-->
-
     <script src="{!! asset('js/bootstrap.min.js') !!}"></script>
     <script src="{!! asset('js/expanding.js') !!}"></script>
     <script src="{!! asset('js/chart.js') !!}"></script>
