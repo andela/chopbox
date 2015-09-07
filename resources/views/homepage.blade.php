@@ -17,8 +17,9 @@
       <link href="{!! asset('css/toolkit.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('css/application.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
-      <link href="{!! asset('css/forms.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="//cdn.shopify.com/s/files/1/0691/5403/t/82/assets/style.scss.css?16677709998824235896" rel="stylesheet" type="text/css"  media="all"  />
+      <link href="{!! asset('css/forms.css') !!}" media="all" rel="stylesheet" type="text/css" />
+
 
       <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
       <style>
@@ -47,7 +48,7 @@
         <span class="ow"></span>
       </button>
       <a class="e" href="index.html">
-        <img src="assets/img/brand-white.png" alt="brand">
+        <h1>Chopbox</h1>
       </a>
     </div>
     <div class="f collapse" id="navbar-collapse-main">
@@ -75,7 +76,7 @@
           </li>
           <li>
             <button class="cg fm oy ank" data-toggle="popover">
-              <img class="cu" src="assets/img/avatar-dhg.png">
+              <img class="cu" src="{{ $user->image_uri }}">
             </button>
           </li>
         </ul>
@@ -421,14 +422,12 @@
 
 <div class="by ams">
   <div class="gd">
-    <div class="go">
+    <div class="go fixLeft">
       <div class="qw rd aof alt">
-        <div class="qy" style="background-image: url(assets/img/iceland.jpg);"></div>
+        <div class="qy" style="background-image: url('{{ $user->image_uri }}');"></div>
         <div class="qx dj">
           <a href="profile.1">
-            <img
-              class="aog"
-              src="assets/img/avatar-dhg.png">
+            <img class="aog" src="{{ $user->image_uri }}">
           </a>
 
           <h5 class="qz">
@@ -508,10 +507,10 @@
           {!! Form::open(['url' => 'chops', 'files' => true, 'method'=>'post']) !!}
           {!! Form::textarea('about', null, ['class' => 'form-control', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
           {!! Form::file('image[]', ['multiple'=> true, 'required' => 'required', 'id'=>'file']) !!}
-          <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera"></button>
+          <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera" title="Attach photos"></button>
           {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right', 'name' =>'submitButton']) !!}
           {!! Form::close() !!}
-        </li>
+        </li><br/>
           @foreach($all_chops as $chop)
           <li class="qg b amk">
               <a class="qk" href="index.html#">
@@ -547,11 +546,11 @@
                   @endforeach
               </ul>
             </div>
-          </li>
+          </li><br/>
           @endforeach
       </ul>
     </div>
-    <div class="go">
+    <div class="go fixRight">
       <div class="alert pw alert-dismissible st" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <a class="ps" href="profile.1">Visit your profile!</a> Check your self, you aren't looking too good.
@@ -619,6 +618,42 @@
   </div>
 </div>
     <script src="{!! asset('js/jquery.min.js') !!}"></script>
+
+  <!--<script>
+      $(document).ready(function() {
+          var fixTopLeft = $('.fixLeft').offset().top;       // get initial position of the element
+          var fixTopRight = $('.fixRight').offset().top;       // get initial position of the element
+
+          $(window).scroll(function() {                  // assign scroll event listener
+
+              var currentScroll = $(window).scrollTop(); // get current position
+
+              if (currentScroll > fixTopLeft) {           // apply position: fixed if you
+                  $('.fixLeft').css({                      // scroll to that element or below it
+                      position: 'fixed',
+                      top: '0',
+                      left: '0'
+                  });
+              }
+              else if (currentScroll > fixTopRight) {
+                  $('.fixRight').css({                      // scroll to that element or below it
+                      position: 'fixed',
+                      top: '0',
+                      right: '0'
+                  });
+              }
+              else {                                   // apply position: static
+                  $('.fixLeft').css({                      // if you scroll above it
+                      position: 'static'
+                  });
+                  $('.fixRight').css({                      // if you scroll above it
+                      position: 'static'
+                  });
+              }
+
+          });
+      });
+  </script>-->
 
     <script src="{!! asset('js/bootstrap.min.js') !!}"></script>
     <script src="{!! asset('js/chart.js') !!}"></script>
