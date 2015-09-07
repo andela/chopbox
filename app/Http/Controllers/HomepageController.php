@@ -2,13 +2,11 @@
 
 namespace ChopBox\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-
 use ChopBox\Http\Requests;
-use ChopBox\Http\Controllers\Controller;
 use ChopBox\Chop;
 use ChopBox\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomepageController extends Controller
 {
@@ -17,6 +15,7 @@ class HomepageController extends Controller
 
     $all_chops = Chop::all();
 	  $all_users = User::all();
-    return view('homepage', compact('all_chops', 'all_users'));
+	  $user = Auth::user();
+    return view('homepage', compact('all_chops', 'all_users', 'user'));
   }
 }
