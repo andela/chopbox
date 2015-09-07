@@ -11,3 +11,4 @@ modules:
         - \Helper\Functional
         - Asserts
         - Laravel5
+        - Db
