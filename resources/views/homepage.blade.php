@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,12 +16,12 @@
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
       <link href="{!! asset('css/toolkit.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('css/application.css') !!}" media="all" rel="stylesheet" type="text/css" />
-      <link href="{!! asset('css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="//cdn.shopify.com/s/files/1/0691/5403/t/82/assets/style.scss.css?16677709998824235896" rel="stylesheet" type="text/css"  media="all"  />
+      <link href="{!! asset('css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('css/forms.css') !!}" media="all" rel="stylesheet" type="text/css" />
 
-
       <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
+
       <style>
       /* note: this is a hack for ios iframe for bootstrap themes shopify page */
       /* this chunk of css is not part of the toolkit :) */
@@ -505,7 +505,7 @@
 
         <li class="qg b amk">
           {!! Form::open(['url' => 'chops', 'files' => true, 'method'=>'post']) !!}
-          {!! Form::textarea('about', null, ['class' => 'form-control', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
+          {!! Form::textarea('about', null, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
           {!! Form::file('image[]', ['multiple'=> true, 'required' => 'required', 'id'=>'file']) !!}
           <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera" title="Attach photos"></button>
           {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right', 'name' =>'submitButton']) !!}
@@ -518,16 +518,40 @@
               </a>
             <div class="qh">
               <div class="qo">
-                  <small class="eg dp">4 min</small>
+                  @if($chop->user_id == $user->id)
+                      <div class="eg">
+                          <a href="edit.php">
+                            <small class="dp">Edit</small>
+                          </a>
+
+                          <a href="delete.php">
+                            <small class="dp">X</small>
+                          </a>
+                      </div>
+                  @endif
+
                   <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
               </div>
-              <p>{{ $chop->about }}</p>
+
               <div class="anx" data-grid="images">
                   @foreach($chop->uploads as $upload)
                       <div style="display: none">
                           <img data-action="zoom" data-width="1050" data-height="700" src="{{ $upload->file_uri }}">
                       </div>
                   @endforeach
+
+                      <p>{{ $chop->about }}</p>
+                      <div>
+                          <a href="#">
+                              @if($chop->like > 0)
+                                  <span class="glyphicon glyphicon-heart"></span>
+                              @else
+                                  <span class="glyphicon glyphicon-heart unpopular"></span>
+                              @endif
+                          </a>
+                          {{ $chop->likes }}
+                      </div>
+
               </div>
 
               <ul class="qp all">
@@ -545,6 +569,10 @@
                   </li>
                   @endforeach
               </ul>
+
+                <form action="" method="POST">
+                    <input class="form-control" rows="1" placeholder="Comment..."></input>
+                </form>
             </div>
           </li><br/>
           @endforeach
@@ -656,6 +684,7 @@
   </script>-->
 
     <script src="{!! asset('js/bootstrap.min.js') !!}"></script>
+    <script src="{!! asset('js/expanding.js') !!}"></script>
     <script src="{!! asset('js/chart.js') !!}"></script>
     <script src="{!! asset('js/toolkit.js') !!}"></script>
     <script src="{!! asset('js/application.js') !!}"></script>
@@ -672,6 +701,8 @@
       $('#camera').click(function() {
         $( "#file" ).click();
       });
+
+        $('')
     </script>
 
   </body>
