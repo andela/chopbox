@@ -14,11 +14,12 @@
       
       
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+      <link href="//cdn.shopify.com/s/files/1/0691/5403/t/82/assets/style.scss.css?16677709998824235896" rel="stylesheet" type="text/css"  media="all"  />
       <link href="{!! asset('css/toolkit.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('css/application.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('css/forms.css') !!}" media="all" rel="stylesheet" type="text/css" />
-      <link href="//cdn.shopify.com/s/files/1/0691/5403/t/82/assets/style.scss.css?16677709998824235896" rel="stylesheet" type="text/css"  media="all"  />
+      
 
       <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
       <style>
@@ -47,13 +48,13 @@
         <span class="ow"></span>
       </button>
       <a class="e" href="index.html">
-        <img src="assets/img/brand-white.png" alt="brand">
+        <img src="http://lorempixel.com/120/20" alt="brand">
       </a>
     </div>
     <div class="f collapse" id="navbar-collapse-main">
 
         <ul class="nav navbar-nav st">
-          <li class="active">
+          <li>
             <a href="index.html">Home</a>
           </li>
           <li>
@@ -75,7 +76,7 @@
           </li>
           <li>
             <button class="cg fm oy ank" data-toggle="popover">
-              <img class="cu" src="assets/img/avatar-dhg.png">
+              <img class="cu" src="http://lorempixel.com/120/120">
             </button>
           </li>
         </ul>
