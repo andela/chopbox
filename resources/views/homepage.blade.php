@@ -555,10 +555,17 @@
                   @endforeach
 
                       <p>{{ $chop->about }}</p>
+                      <br />
                       <div>
-                          <a href="#">
-                              <span class="glyphicon glyphicon-heart"></span>
-                          </a>
+                          @if($chop->likes > 0)
+                              <a href="#">
+                                  <span class="glyphicon glyphicon-heart"></span>
+                              </a>
+                          @else
+                              <a href="#">
+                                  <span id="unpopular" class="glyphicon glyphicon-heart"></span>
+                              </a>
+                          @endif
                           {{ $chop->likes }}
                       </div>
 
