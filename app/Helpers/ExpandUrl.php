@@ -51,8 +51,7 @@ class ExpandUrl {
     try {
       $expanded_url = $this->shorten->parseContent($content, $hash);
     } catch ( Exception $e ) {
-      echo "Caught exception: " . $e->getMessage();
-      exit();
+      return "Caught exception: " . $e->getMessage();
     }
     
     return $expanded_url;

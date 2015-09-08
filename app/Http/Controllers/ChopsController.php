@@ -78,22 +78,9 @@ class ChopsController extends Controller {
     }
     
     // save chops details to database
+    $this->saveChops($request);
     
-    $this->chops->chops_name = $request->name;
-    $this->chops->about = $request->about;
-    $this->chops->likes = 0;
-    $user = Auth::user();
-    $this->chops->user_id = $user->id;
-    
-    $this->chops->save();
-    
-    // save upload to database
-    $this->upload->name = $file->getClientOriginalName();
-    $this->upload->mime_type = $file->getMimeType();
-    $this->upload->file_uri = $shortened_url;
-    $this->upload->chops_id = $this->chops->id;
-    $this->upload->save();
-    
+    $this->saveUplaod($file);
     // set a flash mesage to display on the page
     $message = 'Your chops has been posted';
     return redirect(route('chops.index', $message));
@@ -137,6 +124,26 @@ class ChopsController extends Controller {
    */
   public function destroy($id) {
     //
+  }
+  
+  private function saveUpload($file) {
+    // save upload to database
+    $this->upload->name = $file->getClientOriginalName();
+    $this->upload->mime_type = $file->getMimeType();
+    $this->upload->file_uri = $shortened_url;
+    $this->upload->chops_id = $this->chops->id;
+    $this->upload->save();
+    
+  }
+  
+  private function saveChops(ChopsFormRequest $request) {
+    $this->chops->chops_name = $request->name;
+    $this->chops->about = $request->about;
+    $this->chops->likes = 0;
+    $user = Auth::user();
+    $this->chops->user_id = $user->id;
+    
+    $this->chops->save();
   }
 
 }

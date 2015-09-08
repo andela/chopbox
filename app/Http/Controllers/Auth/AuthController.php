@@ -45,6 +45,7 @@ class AuthController extends Controller {
         "facebook",
         "google" 
     );
+    
     if (in_array(strtolower($provider), $social_providders)) {
       return $authenticateUser->execute($request, $this, $provider);
     } else {
@@ -135,6 +136,7 @@ class AuthController extends Controller {
     if (Auth::check()) {
       return redirect()->intended('/');
     }
+    
     $validation = Validator::make($request->all(), [ 
         'password' => 'required|confirmed|min:8',
         'name' => 'required|max:255|unique:users,username|min:3' 
@@ -150,7 +152,9 @@ class AuthController extends Controller {
       );
       
       Auth::login($this->create($user_array));
+      
       $request->session()->forget('socialUser');
+      
       return redirect($this->redirectPath());
     }
   }

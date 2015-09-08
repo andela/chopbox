@@ -30,21 +30,11 @@ class ShortenUrl {
     try {
       $shortened_url = $this->parseContent($content, $url);
     } catch ( Exception $e ) {
-      echo "Caught exception: " . $e->getMessage() . "<br/>";
-      exit();
+      return "Caught exception: " . $e->getMessage() . "<br/>";
     }
     
     return $shortened_url;
   }
-  
-  // public function shorten($url)
-  // {
-  // $expanded_url = "";
-  // $hash = $this->parseUrl($url);
-  // $expanded_url = $this->expandUrlByHash($hash);
-  //
-  // return $expanded_url;
-  // }
   
   /* returns a bitly hash */
   private function parseUrl($url) {
@@ -59,7 +49,7 @@ class ShortenUrl {
     
     // check errors
     if ($content ['statusCode'] != 'OK') {
-      echo $content ['statusCode'] . ":" . $content ['errorCode'] . " " . $content ['errorMessage'];
+      return $content ['statusCode'] . ":" . $content ['errorCode'] . " " . $content ['errorMessage'];
     }
     
     // dd($content);
@@ -68,7 +58,7 @@ class ShortenUrl {
     if (isset($content ['results'] [$key] ['shortUrl'])) {
       return $content ['results'] [$key] ['shortUrl'];
     } else {
-      echo "Error: URL not found " . $key;
+      return "Error: URL not found " . $key;
     }
   }
 

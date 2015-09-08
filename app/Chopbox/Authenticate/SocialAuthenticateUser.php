@@ -17,6 +17,7 @@ use Request;
 
 class SocialAuthenticateUser {
   use AuthenticatesAndRegistersUsers;
+  
   private $users;
 
   public function __construct(UserRepository $users) {
@@ -24,7 +25,8 @@ class SocialAuthenticateUser {
   }
 
   public function execute($request, $listener, $provider) {
-    if (! $request->all()) {
+    
+    if (!$request->all()) {
       return $this->getAuthorizationFirst($provider);
     } elseif (isset($request->all() ['errors'])) {
       return redirect('/login')->withErrors('Error authenticating with ' . $provider);
@@ -33,10 +35,8 @@ class SocialAuthenticateUser {
       $user = $this->users->findUserByEmail($userSocialDetails->email);
       if ($user) {
         Auth::loginUsingId($user->id, true);
-        
-        if (Auth::check()) {
-          return redirect()->intended('/');
-        }
+        return redirect()->intended('/');
+       
       } else {
         session([ 
             'socialUser' => $userSocialDetails 

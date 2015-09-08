@@ -11,7 +11,7 @@ class UploadFile {
    * the result of the upload to the user or false if it fails;
    */
   public function uploadFile($file) {
-    if ($file != NULL) {
+    if (isset($file)) {
       Cloudder::upload($file);
       return Cloudder::getResult();
     } else {
