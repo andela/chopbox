@@ -80,7 +80,7 @@ class ChopsController extends Controller {
     // save chops details to database
     $this->saveChops($request);
     
-    $this->saveUplaod($file);
+    $this->saveUpload($file);
     // set a flash mesage to display on the page
     $message = 'Your chops has been posted';
     return redirect(route('chops.index', $message));
@@ -137,9 +137,11 @@ class ChopsController extends Controller {
   }
   
   private function saveChops(ChopsFormRequest $request) {
+    
     $this->chops->chops_name = $request->name;
     $this->chops->about = $request->about;
     $this->chops->likes = 0;
+    
     $user = Auth::user();
     $this->chops->user_id = $user->id;
     
