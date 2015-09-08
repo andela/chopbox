@@ -10,6 +10,7 @@
 textarea {
     resize: none;
     margin-bottom: 1px;
+    border: 3px solid red;
 }
 
 .username {
@@ -39,8 +40,10 @@ textarea {
     background: white;
 }
 
-.e {
-    margin-top: -25px;
+.chopbox {
+
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 900;
 }
 
 .anf {
@@ -54,3 +57,21 @@ textarea {
 #unpopular {
     color: slategray;
 }
+
+img.aog{
+    height: 100px;
+}
+
+ .disc-list {
+    list-style-type: disc;
+    
+ }
+
+ .disc-list-ul {
+    margin-left: 20px;
+ }
+
+ .leaderboard {
+    padding-top: 10px;
+    padding-right: 30px;
+ }

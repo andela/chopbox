@@ -46,27 +46,19 @@
         <span class="ow"></span>
         <span class="ow"></span>
       </button>
-      <a class="navbar-brand" href="index.html">
+      <a class="chopbox navbar-brand" href="index.html">
         ChopBox
       </a>
     </div>
     <div class="f collapse" id="navbar-collapse-main">
-
         <ul class="nav navbar-nav st">
-          <li>
-            <a href="index.html">Home</a>
-          </li>
           <li>
             <a href="profile.1">Profile</a>
           </li>
           <li>
             <a data-toggle="modal" href="index.html#msgModal">Messages</a>
           </li>
-          <li>
-            <a href="docs/index.html">Docs</a>
-          </li>
         </ul>
-
         <ul class="nav navbar-nav oh ald st">
           <li >
             <a class="g" href="notifications/index.html">
@@ -76,7 +68,6 @@
           <li>
             <button class="cg fm oy ank" data-toggle="popover">
               <img class="cu" src="{{ $user->image_uri }}">
-
             </button>
           </li>
         </ul>
@@ -88,18 +79,14 @@
         </form>
 
         <ul class="nav navbar-nav su sv sw">
-          <li><a href="index.html">Home</a></li>
           <li><a href="profile.1">Profile</a></li>
           <li><a href="notifications/index.html">Notifications</a></li>
           <li><a data-toggle="modal" href="index.html#msgModal">Messages</a></li>
-          <li><a href="docs/index.html">Docs</a></li>
-          <li><a href="index.html#" data-action="growl">Growl</a></li>
-          <li><a href="login/index.html">Logout</a></li>
+          <li><a href="logout">Logout</a></li>
         </ul>
 
         <ul class="nav navbar-nav hidden">
-          <li><a href="index.html#" data-action="growl">Growl</a></li>
-          <li><a href="login/index.html">Logout</a></li>
+          <li><a href="logout">Logout</a></li>
         </ul>
       </div>
   </div>
@@ -436,55 +423,39 @@
           </h5>
 
           <p class="alt"> {{ $user-> about }}</p>
-
+          <hr />
           <ul class="aoh">
             <li class="aoi">
-              <a href="index.html#userModal" class="akt" data-toggle="modal">
+              <a href="index.html#userModal" class="" data-toggle="modal">
                 Followers
-                <h5 class="alh"> {{ $follows->where('followee_id', $user->id)->count() }}</h5>
-               
               </a>
+              <h5 class="alh"> {{ $follows->where('followee_id', $user->id)->count() }}</h5>
             </li>
 
             <li class="aoi">
-              <a href="index.html#userModal" class="akt" data-toggle="modal">
+              <a href="index.html#userModal" class="" data-toggle="modal">
                 Following
-                <h5 class="alh"> {{ $follows->where('follower_id', $user->id)->count() }} </h5>
               </a>
+              <h5 class="alh"> {{ $follows->where('follower_id', $user->id)->count() }}</h5>
             </li>
           </ul>
         </div>
       </div>
-
+    
       <div class="qw rd sn sq">
         <div class="qx">
           <h5 class="alc">About <small>· <a href="index.html#">Edit</a></small></h5>
-          <ul class="eb tc">
-            <li><span class="dp h xh alk"></span>Best food <a href="index.html#">{{ $user->best_food }}</a>
-            <li><span class="dp h ajv alk"></span>Location <a href="index.html#"> {{ $user->location }} </a>
-            <li><span class="dp h abu alk"></span>Gender <a href="index.html#"> {{  $user->gender }}</a>
-            <li><span class="dp h acj alk"></span>Total chops <a href="index.html#"> {{ $all_chops->where('user_id', $user->id)->count() }} </a>
-            <li><span class="dp h ads alk"></span>From <a href="index.html#">Seattle, WA</a>
+          <ul class="eb tc disc-list-ul">
+            <li class="disc-list"><span class=""></span>Best food <a href="index.html#">{{ $user->best_food }}</a></li>
+            <li class="disc-list"><span class=""></span>Location <a href="index.html#"> {{ $user->location }} </a></li>
+            <li class="disc-list"><span class=""></span>Gender <a href="index.html#"> {{  $user->gender }}</a></li>
+            <li class="disc-list"><span class=""></span>Total chops <a href="index.html#"> {{ $all_chops->where('user_id', $user->id)->count() }} </a></li>
+           
           </ul>
         </div>
       </div>
 
-       <div class="qw rd sn sq">
-        <div class="qx">
-          <h5 class="alc">Your chops <small>· <a href="index.html#">Edit</a></small></h5>
-          <div data-grid="images" data-target-height="150">
-          @foreach( $all_chops->take(6)->where('user_id', $user->id) as $user_chop)
-            @foreach( $user_chop->uploads as $chop)
-              <!-- {{ $chop->file_uri }} -->
-              <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="{{$chop->file_uri}}">
-            </div>
-            @endforeach
-          @endforeach
-           
-          </div>
-        </div>
-      </div>
+      
     </div>
 
 
@@ -551,7 +522,7 @@
                               </a>
                           @else
                               <a href="#">
-                                  <span id="unpopular" class="glyphicon glyphicon-heart"></span>
+                                <span id="unpopular" class="glyphicon glyphicon-heart"></span>
                               </a>
                           @endif
                           {{ $chop->likes }}
@@ -586,68 +557,44 @@
       </ul>
     </div>
     <div class="go fixRight">
-      <div class="alert pw alert-dismissible st" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <a class="ps" href="profile.1">Visit your profile!</a> Check your self, you aren't looking too good.
-      </div>
-
       <div class="qw rd alt st">
         <div class="qx">
-          <h5 class="alc">Sponsored</h5>
-          <div data-grid="images" data-target-height="150">
-            <img class="qi" data-width="640" data-height="640" data-action="zoom" src="http://lorempixel.com/480/480">
-          </div>
-          <p><strong>It might be time to visit Iceland.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
-          <button class="cg ts fx">Buy a ticket</button>
+          <h5 class="alc">Leaderboard</h5>
+          <hr />
+         
+
+
+
+              <ul class="qp all">
+                  @foreach($top_users as $top_user)
+                  <li class="qg">
+                      <a class="qk" href="index.html#">
+                          <img class="qi cu small-round" src="{{ $all_users->find($top_user)->image_uri }}">
+                      </a>
+                      <div class="qh leaderboard">
+                          <a href="">
+                              <strong>
+                                  <span class="username">{{ '@'.strtolower($all_users->find($top_user)->username) }}</span>
+                              </strong>
+                          </a>
+                         <span class="pull-right"> {{ $chops->where('user_id', $top_user)->count() }} </span>
+                      </div>
+                  </li>
+                  @endforeach
+              </ul>
+
+
         </div>
       </div>
 
-      <div class="qw rd alt st">
-        <div class="qx">
-        <h5 class="alc">Likes <small>· <a href="index.html#">View All</a></small></h5>
-        all followers {{ $follows->take(2)->where('followee_id', $user->id) }}
-        <ul class="qp anw">
-          <li class="qg all">
-            <a class="qk" href="index.html#">
-              <img
-                class="qi cu"
-                src="http://lorempixel.com/120/120">
-            </a>
-            <div class="qh">
-              <strong>Jacob Thornton</strong> @fat
-              <div class="anz">
-                <button class="cg ts fx">
-                  <span class="h vc"></span> Follow</button>
-              </div>
-            </div>
-          </li>
-           <li class="qg">
-            <a class="qk" href="index.html#">
-              <img
-                class="qi cu"
-                src="http://lorempixel.com/120/120">
-            </a>
-            <div class="qh">
-              <strong>Mark Otto</strong> @mdo
-              <div class="anz">
-                <button class="cg ts fx">
-                  <span class="h vc"></span> Follow</button></button>
-              </div>
-            </div>
-          </li>
-        </ul>
-        </div>
-        <div class="ra">
-          Dave really likes these nerds, no one knows why though.
-        </div>
-      </div>
+     
       <div class="qw rd aoj">
         <div class="qx centralize">
-          <a href="index.html#">About</a>
-          <a href="index.html#">Help</a>
-          <a href="index.html#">Terms</a>
-          <a href="index.html#">Privacy</a><br>
-            © 2015 Chopbox
+          <a href="about">About</a>
+          <a href="help">Help</a>
+          <a href="terms">Terms</a>
+          <a href="privacy">Privacy</a><br>
+            © 2015 ChopBox
         </div>
       </div>
     </div>
