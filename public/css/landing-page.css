@@ -57,6 +57,8 @@ h6 {
 
 .intro-divider {
     width: 400px;
+    margin-left: auto;
+    margin-right: auto;
     border-top: 1px solid #f8f8f8;
     border-bottom: 1px solid rgba(0,0,0,0.2);
 }
@@ -268,6 +270,11 @@ p.copyright {
 
 /*Help Center and Privacy CSS*/
 
+.help-body {
+    background-color: #f5f5f5;
+    min-height: 700px;
+}
+
 .tips {
     padding-left: 20px;
 }
@@ -281,11 +288,15 @@ p.copyright {
         /*Help CSS*/
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-    background-color: #5bc0de;
+    background-color: #000098;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: #ffffff;
 }
 
 .nav-pills > li > a {
-    color: #5bc0de;
+    color: #000098;
 }
 
 .fix-me {
@@ -298,15 +309,16 @@ p.copyright {
 }
 
 .well {
-    margin-top: 0px;
+    margin-top: -2px;
     text-align: justify;
     padding-top: 0px;
+    background-color: #ffffff;
 }
 
 hr {
     height: 1px;
-    color: #5bc0de;
-    background-color: #5bc0de;
+    color: #000098;
+    background-color: #000098;
 }
 
         /*Privacy CSS*/

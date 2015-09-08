@@ -6,8 +6,8 @@
     <div class="col-lg-12">
       <div style="margin-top: 60px;">&nbsp;</div>
       <div class="container">
-        <div class="row ">
-          <h3>Forgot Your Password? Recover it here.</h3>
+        <div class="row">
+          <h3 style="color: #f8f8f8">Forgot Your Password? Recover it here.</h3>
           <hr class="intro-divider">
         </div>
         <div class="row">
