@@ -29,7 +29,7 @@
         min-width: 100%;
         width: 100%;
       }
-    </style>
+      </style>
 
   </head>
 
@@ -418,11 +418,11 @@
             <img class="aog" src="{{ $user->image_uri }}">
           </a>
 
-          <h5 class="qz">
-            <a class="akt" href="profile.1"> {{ $user->username }}</a>
+          <h5 class="qz username">
+            <a class="akt" href="profile.1">{{ '@'.strtolower($user->username) }}</a>
           </h5>
 
-          <p class="alt"> {{ $user-> about }}</p>
+          <p class="alt">{{ $user-> about }}</p>
           <hr />
           <ul class="aoh">
             <li class="aoi">
@@ -559,11 +559,8 @@
     <div class="go fixRight">
       <div class="qw rd alt st">
         <div class="qx">
-          <h5 class="alc">Leaderboard</h5>
+          <h5 class="alc centralize lead">Leaderboard</h5>
           <hr />
-         
-
-
 
               <ul class="qp all">
                   @foreach($top_users as $top_user)
@@ -582,8 +579,6 @@
                   </li>
                   @endforeach
               </ul>
-
-
         </div>
       </div>
 
@@ -619,8 +614,6 @@
       $('#camera').click(function() {
         $( "#file" ).click();
       });
-
-        $('')
     </script>
 
   </body>
