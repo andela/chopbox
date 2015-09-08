@@ -39,7 +39,7 @@ class HomeController extends Controller {
 		if ($user->profile_state) {
 			return view('pages.home');
 		}else {
-			return view('pages.first_profile');
+			return view('pages.initial_profile_update');
 		}
 		
 	}
