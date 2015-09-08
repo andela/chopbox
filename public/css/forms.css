@@ -118,19 +118,25 @@ textarea {
 }
 
 
-.pd .navbar-nav > li > a, .pd .navbar-nav > li > a:hover   {
+.pd .navbar-nav > li > a, .pd .navbar-nav > li > a:hover, nav > div > div > a   {
     color: #337ab7;
     text-decoration: none;
 }
 
 .app-navbar {
     background: white;
+}
 
-.e {
-    margin-top: -25px;
+.pd .e, .pd .e:hover {
+    margin-top: -8px;
+    color: #337ab7;
 }
 
 .anf {
     background-color: gainsboro;
 
+}
+
+img.aog{
+    height: 100px;
 }

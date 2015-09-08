@@ -18,9 +18,8 @@
       <link href="{!! asset('css/toolkit.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('css/application.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
-      <link href="{!! asset('css/forms.css') !!}" media="all" rel="stylesheet" type="text/css" />
-   
       <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
+      <link href="{!! asset('css/forms.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <style>
       /* note: this is a hack for ios iframe for bootstrap themes shopify page */
       /* this chunk of css is not part of the toolkit :) */
@@ -46,8 +45,8 @@
         <span class="ow"></span>
         <span class="ow"></span>
       </button>
-      <a class="e" href="index.html">
-        <h1>Chopbox</h1>
+      <a class="navbar-brand" href="index.html">
+        ChopBox
       </a>
     </div>
     <div class="f collapse" id="navbar-collapse-main">
@@ -370,6 +369,7 @@
       <div class="modal-body ame">
         <div class="up">
           <ul class="qp cj ca">
+
             <li class="b">
               <div class="qg">
                 <a class="qk" href="index.html#">
@@ -431,23 +431,24 @@
           </a>
 
           <h5 class="qz">
-            <a class="akt" href="profile.1">Dave Gamache</a>
+            <a class="akt" href="profile.1"> {{ $user->username }}</a>
           </h5>
 
-          <p class="alt">I wish i was a little bit taller, wish i was a baller, wish i had a girl… also.</p>
+          <p class="alt"> {{ $user-> about }}</p>
 
           <ul class="aoh">
             <li class="aoi">
               <a href="index.html#userModal" class="akt" data-toggle="modal">
-                Friends
-                <h5 class="alh">12M</h5>
+                Followers
+                <h5 class="alh"> {{ $follows->where('followee_id', $user->id)->count() }}</h5>
+               
               </a>
             </li>
 
             <li class="aoi">
               <a href="index.html#userModal" class="akt" data-toggle="modal">
-                Enemies
-                <h5 class="alh">1</h5>
+                Following
+                <h5 class="alh"> {{ $follows->where('follower_id', $user->id)->count() }} </h5>
               </a>
             </li>
           </ul>
@@ -458,10 +459,10 @@
         <div class="qx">
           <h5 class="alc">About <small>· <a href="index.html#">Edit</a></small></h5>
           <ul class="eb tc">
-            <li><span class="dp h xh alk"></span>Went to <a href="index.html#">Oh, Canada</a>
-            <li><span class="dp h ajv alk"></span>Became friends with <a href="index.html#">Obama</a>
-            <li><span class="dp h abu alk"></span>Worked at <a href="index.html#">Github</a>
-            <li><span class="dp h acj alk"></span>Lives in <a href="index.html#">San Francisco, CA</a>
+            <li><span class="dp h xh alk"></span>Best food <a href="index.html#">{{ $user->best_food }}</a>
+            <li><span class="dp h ajv alk"></span>Location <a href="index.html#"> {{ $user->location }} </a>
+            <li><span class="dp h abu alk"></span>Gender <a href="index.html#"> {{  $user->gender }}</a>
+            <li><span class="dp h acj alk"></span>Total chops <a href="index.html#"> {{ $all_chops->where('user_id', $user->id)->count() }} </a>
             <li><span class="dp h ads alk"></span>From <a href="index.html#">Seattle, WA</a>
           </ul>
         </div>
@@ -469,31 +470,17 @@
 
        <div class="qw rd sn sq">
         <div class="qx">
-          <h5 class="alc">Photos <small>· <a href="index.html#">Edit</a></small></h5>
+          <h5 class="alc">Your chops <small>· <a href="index.html#">Edit</a></small></h5>
           <div data-grid="images" data-target-height="150">
-            <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="http://lorempixel.com/640/640">
+          @foreach( $all_chops->take(6)->where('user_id', $user->id) as $user_chop)
+            @foreach( $user_chop->uploads as $chop)
+              <!-- {{ $chop->file_uri }} -->
+              <div>
+              <img data-width="640" data-height="640" data-action="zoom" src="{{$chop->file_uri}}">
             </div>
-
-            <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_6.jpg">
-            </div>
-
-            <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_7.jpg">
-            </div>
-
-            <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_8.jpg">
-            </div>
-
-            <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_9.jpg">
-            </div>
-
-            <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_10.jpg">
-            </div>
+            @endforeach
+          @endforeach
+           
           </div>
         </div>
       </div>
@@ -570,6 +557,7 @@
       <div class="qw rd alt st">
         <div class="qx">
         <h5 class="alc">Likes <small>· <a href="index.html#">View All</a></small></h5>
+        all followers {{ $follows->take(2)->where('followee_id', $user->id) }}
         <ul class="qp anw">
           <li class="qg all">
             <a class="qk" href="index.html#">
