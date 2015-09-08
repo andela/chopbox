@@ -39,7 +39,7 @@ class WelcomeController extends Controller {
 				return view ( 'pages.initial_profile_update' );
 			}
 		} else {
-			return view ( 'pages.welcomeTest' );
+			return view ( 'pages.welcome' );
 		}
 	}
 }
