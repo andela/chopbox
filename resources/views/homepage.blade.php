@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,8 +18,9 @@
       <link href="{!! asset('css/toolkit.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('css/application.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
+      <link href="{!! asset('css/homepage.css') !!}" media="all" rel="stylesheet" type="text/css" />
       <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
-      <link href="{!! asset('css/forms.css') !!}" media="all" rel="stylesheet" type="text/css" />
+
       <style>
       /* note: this is a hack for ios iframe for bootstrap themes shopify page */
       /* this chunk of css is not part of the toolkit :) */
@@ -492,11 +493,22 @@
 
         <li class="qg b amk">
           {!! Form::open(['url' => 'chops', 'files' => true, 'method'=>'post']) !!}
-          {!! Form::textarea('about', null, ['class' => 'form-control', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
+          {!! Form::textarea('about', null, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
           {!! Form::file('image[]', ['multiple'=> true, 'required' => 'required', 'id'=>'file']) !!}
           <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera" title="Attach photos"></button>
           {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right', 'name' =>'submitButton']) !!}
           {!! Form::close() !!}
+
+            @if($errors->any())
+                <div class="has-error">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
         </li><br/>
           @foreach($all_chops as $chop)
           <li class="qg b amk">
@@ -505,16 +517,46 @@
               </a>
             <div class="qh">
               <div class="qo">
-                  <small class="eg dp">4 min</small>
-                  <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
+                  @if($chop->user_id == $user->id)
+                      <div class="eg">
+                          <a href="edit.php">
+                            <small class="dp">Edit</small>
+                          </a>
+
+                          <a href="delete.php">
+                            <small class="dp">X</small>
+                          </a>
+                      </div>
+                  @endif
+
+                  <a href="">
+                      <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
+                  </a>
+
               </div>
-              <p>{{ $chop->about }}</p>
+
               <div class="anx" data-grid="images">
                   @foreach($chop->uploads as $upload)
                       <div style="display: none">
                           <img data-action="zoom" data-width="1050" data-height="700" src="{{ $upload->file_uri }}">
                       </div>
                   @endforeach
+
+                      <p>{{ $chop->about }}</p>
+                      <br />
+                      <div>
+                          @if($chop->likes > 0)
+                              <a href="#">
+                                  <span class="glyphicon glyphicon-heart"></span>
+                              </a>
+                          @else
+                              <a href="#">
+                                  <span id="unpopular" class="glyphicon glyphicon-heart"></span>
+                              </a>
+                          @endif
+                          {{ $chop->likes }}
+                      </div>
+
               </div>
 
               <ul class="qp all">
@@ -524,14 +566,20 @@
                           <img class="qi cu small-round" src="{{ $all_users->find($comment->user_id)->image_uri }}">
                       </a>
                       <div class="qh">
-                          <strong>
-                              <span class="username">{{ '@'.strtolower($all_users->find($comment->user_id)->username).': ' }}</span>
-                          </strong>
+                          <a href="">
+                              <strong>
+                                  <span class="username">{{ '@'.strtolower($all_users->find($comment->user_id)->username).': ' }}</span>
+                              </strong>
+                          </a>
                           {{ $comment->comment }}
                       </div>
                   </li>
                   @endforeach
               </ul>
+
+                <form action="" method="POST">
+                    <input class="form-control" rows="1" placeholder="Comment..."></input>
+                </form>
             </div>
           </li><br/>
           @endforeach
@@ -606,44 +654,8 @@
   </div>
 </div>
     <script src="{!! asset('js/jquery.min.js') !!}"></script>
-
-  <!--<script>
-      $(document).ready(function() {
-          var fixTopLeft = $('.fixLeft').offset().top;       // get initial position of the element
-          var fixTopRight = $('.fixRight').offset().top;       // get initial position of the element
-
-          $(window).scroll(function() {                  // assign scroll event listener
-
-              var currentScroll = $(window).scrollTop(); // get current position
-
-              if (currentScroll > fixTopLeft) {           // apply position: fixed if you
-                  $('.fixLeft').css({                      // scroll to that element or below it
-                      position: 'fixed',
-                      top: '0',
-                      left: '0'
-                  });
-              }
-              else if (currentScroll > fixTopRight) {
-                  $('.fixRight').css({                      // scroll to that element or below it
-                      position: 'fixed',
-                      top: '0',
-                      right: '0'
-                  });
-              }
-              else {                                   // apply position: static
-                  $('.fixLeft').css({                      // if you scroll above it
-                      position: 'static'
-                  });
-                  $('.fixRight').css({                      // if you scroll above it
-                      position: 'static'
-                  });
-              }
-
-          });
-      });
-  </script>-->
-
     <script src="{!! asset('js/bootstrap.min.js') !!}"></script>
+    <script src="{!! asset('js/expanding.js') !!}"></script>
     <script src="{!! asset('js/chart.js') !!}"></script>
     <script src="{!! asset('js/toolkit.js') !!}"></script>
     <script src="{!! asset('js/application.js') !!}"></script>
@@ -660,6 +672,8 @@
       $('#camera').click(function() {
         $( "#file" ).click();
       });
+
+        $('')
     </script>
 
   </body>

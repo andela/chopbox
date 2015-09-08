@@ -21,9 +21,7 @@
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-
 }
-
 
 .white-text {
     color: #ffffff;
@@ -82,6 +80,7 @@ div.social-up {
     line-height: 12px;
     padding: 20px;
     font-weight: 400;
+<<<<<<< HEAD
 
 }
 
@@ -139,4 +138,6 @@ textarea {
 
 img.aog{
     height: 100px;
+=======
+>>>>>>> 1a814d1006567b43db784f1afd6c860be26daa2d
 }

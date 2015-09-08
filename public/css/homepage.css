@@ -1,0 +1,56 @@
+#file {
+    display: none;
+}
+
+#camera {
+    border-radius: 4px;
+    margin-top: -1px;
+}
+
+textarea {
+    resize: none;
+    margin-bottom: 1px;
+}
+
+.username {
+    color: purple;
+}
+
+.centralize {
+    text-align: center;
+}
+
+.round {
+    height: 60px;
+    width: 60px;
+}
+
+.small-round {
+    height: 40px;
+    width: 40px;
+}
+
+.pd .navbar-nav > li > a, .pd .navbar-nav > li > a:hover   {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.app-navbar {
+    background: white;
+}
+
+.e {
+    margin-top: -25px;
+}
+
+.anf {
+    background-color: gainsboro;
+}
+
+.glyphicon-heart {
+    color: #ff0000;
+}
+
+#unpopular {
+    color: slategray;
+}
