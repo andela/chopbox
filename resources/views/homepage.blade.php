@@ -541,7 +541,10 @@
                       </div>
                   @endif
 
-                  <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
+                  <a href="">
+                      <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
+                  </a>
+
               </div>
 
               <div class="anx" data-grid="images">
@@ -568,9 +571,11 @@
                           <img class="qi cu small-round" src="{{ $all_users->find($comment->user_id)->image_uri }}">
                       </a>
                       <div class="qh">
-                          <strong>
-                              <span class="username">{{ '@'.strtolower($all_users->find($comment->user_id)->username).': ' }}</span>
-                          </strong>
+                          <a href="">
+                              <strong>
+                                  <span class="username">{{ '@'.strtolower($all_users->find($comment->user_id)->username).': ' }}</span>
+                              </strong>
+                          </a>
                           {{ $comment->comment }}
                       </div>
                   </li>
