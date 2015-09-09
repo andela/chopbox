@@ -444,14 +444,18 @@
     
       <div class="qw rd sn sq">
         <div class="qx">
-          <h5 class="alc">About <small>· <a href="index.html#">Edit</a></small></h5>
-          <ul class="eb tc disc-list-ul">
-            <li class="disc-list"><span class=""></span>Best food <a href="index.html#">{{ $user->best_food }}</a></li>
-            <li class="disc-list"><span class=""></span>Location <a href="index.html#"> {{ $user->location }} </a></li>
-            <li class="disc-list"><span class=""></span>Gender <a href="index.html#"> {{  $user->gender }}</a></li>
-            <li class="disc-list"><span class=""></span>Total chops <a href="index.html#"> {{ $all_chops->where('user_id', $user->id)->count() }} </a></li>
-           
-          </ul>
+            <div class="eg">
+                <a href="index.html#">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+            </div>
+            <h5 class="alc bluecolor">About</h5>
+            <ul class="eb tc disc-list-ul">
+                <li class="disc-list">Best food &nbsp; &nbsp; <a href="index.html#">{{ $user->best_food }}</a></li>
+                <li class="disc-list">Location &nbsp; &nbsp; <a href="index.html#"> {{ $user->location }} </a></li>
+                <li class="disc-list">Gender &nbsp; &nbsp; <a href="index.html#"> {{  $user->gender }}</a></li>
+                <li class="disc-list">Total Chops &nbsp; &nbsp; <a href="index.html#"> {{ $all_chops->where('user_id', $user->id)->count() }} </a></li>
+            </ul>
         </div>
       </div>
 
@@ -482,27 +486,28 @@
 
         </li><br/>
           @foreach($all_chops as $chop)
-          <li class="qg b amk">
-              <a class="qk" href="index.html#">
-                  <img class="qi cu round"  src="{{ $chop->user->image_uri }}"> 
-              </a>
+          <li class="qg b amk curve">
+
             <div class="qh">
               <div class="qo">
                   @if($chop->user_id == $user->id)
                       <div class="eg">
                           <a href="edit.php">
-                            <small class="dp">Edit</small>
+                              <i class="glyphicon glyphicon-edit"></i>
                           </a>
 
                           <a href="delete.php">
-                            <small class="dp">X</small>
+                              <i class="glyphicon glyphicon-remove-circle"></i>
                           </a>
                       </div>
                   @endif
 
-                  <a href="">
-                      <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
-                  </a>
+                      <a class="qk" href="index.html#">
+                          <img class="qi cu round"  src="{{ $chop->user->image_uri }}">
+                      </a>
+                      <a class="qk shift-down" href="">
+                          <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
+                      </a>
 
               </div>
 
@@ -559,7 +564,7 @@
     <div class="go fixRight">
       <div class="qw rd alt st">
         <div class="qx">
-          <h5 class="alc centralize lead">Leaderboard</h5>
+          <h5 class="alc centralize bluecolor">Leaderboard</h5>
           <hr />
 
               <ul class="qp all">

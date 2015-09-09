@@ -76,6 +76,14 @@ img.aog{
     padding-right: 30px;
  }
 
- .lead {
+ .bluecolor {
      color: #337ab7;
+ }
+
+ .shift-down {
+     padding-top: 12px;
+ }
+
+ .curve {
+     border-radius: 4px;
  }
