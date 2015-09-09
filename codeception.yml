@@ -12,6 +12,7 @@ settings:
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
+
 modules:
     config:
         Db:
@@ -19,3 +20,4 @@ modules:
             user: 'root'
             password: ''
             dump: tests/_data/dump.sql
+

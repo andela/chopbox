@@ -38,4 +38,4 @@ dependencies:
 test:
   override:
     - composer install --prefer-source --no-interaction --no-dev
-    - php vendor/bin/codecept run --env testing 
+    - php vendor/bin/codecept run --env testing

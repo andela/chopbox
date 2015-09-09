@@ -10,7 +10,7 @@ Register
 		<div class="container">
 		 <div class="row">
 			<div class="col-sm-6 col-sm-offset-2 register-header">
-			  <span>Create an Account and have some fun</span>
+			  <span class="">Create an Account and have some fun</span>
 			</div>
 		 </div>
 		 <div class="row">
@@ -84,7 +84,6 @@ Register
 							 name="password_confirmation">
 							</div>
 						 </div>
-
 						 <div class="form-group">
 							<button type="submit"
 											class="btn btn-primary btn-block form-control">Register
