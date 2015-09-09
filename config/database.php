@@ -1,5 +1,5 @@
 <?php
-return [ 
+return [
     /*
      * |--------------------------------------------------------------------------
      * | PDO Fetch Style
@@ -42,15 +42,15 @@ return [
     */
 
 
-    'connections' => [ 
-        
-        'sqlite' => [ 
+    'connections' => [
+
+        'sqlite' => [
             'driver' => 'sqlite',
             'database' => storage_path('database.sqlite'),
-            'prefix' => '' 
+            'prefix' => ''
         ],
-        
-        'mysql' => [ 
+
+        'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
             'database' => env('DB_DATABASE', 'forge'),
@@ -59,10 +59,10 @@ return [
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => env('DB_PREFIX', ''),
-            'strict' => false 
+            'strict' => false
         ],
-        
-        'mysql_testing' => [ 
+
+        'mysql_testing' => [
             'driver' => 'mysql',
             'host' => env('DB_URL', 'localhost'),
             'database' => env('DB_NAME', 'forge'),
@@ -71,10 +71,10 @@ return [
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => env('DB_PREFIX', ''),
-            'strict' => false 
+            'strict' => false
         ],
-        
-        'pgsql' => [ 
+
+        'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', 'localhost'),
             'database' => env('DB_DATABASE', 'forge'),
@@ -82,18 +82,18 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => env('DB_PREFIX', ''),
-            'schema' => 'public' 
+            'schema' => 'public'
         ],
-        
-        'sqlsrv' => [ 
+
+        'sqlsrv' => [
             'driver' => 'sqlsrv',
             'host' => env('DB_HOST', 'localhost'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
-            'prefix' => env('DB_PREFIX', '') 
-        ] 
+            'prefix' => env('DB_PREFIX', '')
+        ]
     ]
 		,
 
@@ -120,14 +120,14 @@ return [
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
     */
-    'redis' => [ 
-        
+    'redis' => [
+
         'cluster' => false,
-        
-        'default' => [ 
+
+        'default' => [
             'host' => '127.0.0.1',
             'port' => 6379,
-            'database' => 0 
-        ] 
-    ] 
+            'database' => 0
+        ]
+    ]
 ];
