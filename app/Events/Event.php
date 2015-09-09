@@ -2,7 +2,6 @@
 
 namespace ChopBox\Events;
 
-abstract class Event
-{
-    //
+abstract class Event {
+  //
 }

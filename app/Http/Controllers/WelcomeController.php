@@ -5,7 +5,7 @@ namespace ChopBox\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends Controller {
-	
+
 	/*
 	 * |--------------------------------------------------------------------------
 	 * | Welcome Controller
@@ -16,7 +16,7 @@ class WelcomeController extends Controller {
 	 * | controllers, you are free to modify or remove it as you desire.
 	 * |
 	 */
-	
+
 	/**
 	 * Create a new controller instance.
 	 *
@@ -24,7 +24,7 @@ class WelcomeController extends Controller {
 	 */
 	public function __construct() {
 	}
-	
+
 	/**
 	 * Show the application welcome screen to the user.
 	 *
