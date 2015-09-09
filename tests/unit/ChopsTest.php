@@ -29,13 +29,6 @@ class ChopsTest extends \Codeception\TestCase\Test
        $chops->about = "A random chops";
        $chops->user_id = $id;
        $chops->likes = 0;
-
-//       $chops::create([
-//           'chops_name'=> "Random",
-//           'about' =>'A random chops',
-//           'user_id' => $id,
-//           'likes' => 0
-//       ]);
        $chops->save();
 
        $this->tester->seeRecord('chops',['chops_name'=>'Random']);

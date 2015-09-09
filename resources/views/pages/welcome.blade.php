@@ -3,125 +3,94 @@
 
 @section('title')
  Home
-@stop
+@endsection
+
 
 @section('content')
- <div class="intro-header background-image">
-	<div class="container">
-	 <div class="row">
-		<div class="col-md-8">
-		 <div class="row">
-			<div class="col-md-6">
-			 <div class="pitchcontents push-down" id="web_pitch">
-				<h1 class="tagline shadow">The Online community for food lovers</h1>
-				<h2 class="convince shadow">Tell your friends about that special meal you just discovered and love so much</h2>
-			 </div>
-			</div>
-		 </div>
-		 <div class="row">
-			<div class="content_bottom_v3 shift-right">
-			 <div class="connect_btns_container logged_out_quote_btns">
-				<div class="google_btn_container">
-				 <div class="connect">
-					<a href="/oauth/google" class="google google_login_click dib pr tal clearfix">
-					 <span class="ico-wrap"><i class="google"></i></span>
-					 <span class="btn_text google">Login with Google            </span>
-					</a>
-				 </div>
-				</div>
-				<div class="fb_btn_container logged_out_quote_btns">
-				 <div class="connect">
-					<a href="/oauth/facebook" class="facebook facebook_login_click dib pr tal clearfix">
-					 <span class="ico-wrap"><i class="facebook"></i></span>
-					 <span class="btn_text facebook">Login with Facebook</span>
-					</a>
-				 </div>
-				</div>
-			 </div>
-			 <div class="divider_container">
-				<div class="vertical_line-2"></div>
-				<div class="vertical_line"></div>
-				<span class="text_above text-uppercase">or </span>
-			 </div>
-			 <div class="signup_email_text">
-				<a href="#register" id="register" class="white-text text-capitalize">Sign up with your email!</a>
-			 </div>
-			 <div class="clear_both"></div>
-			</div>
-		 </div>
-		 <div class="row">
+ <div class="container-fluid bg-image">
+	<div class="row">
+	 <div class="col-md-1">
 
-		 </div>
+	 </div>
+	 <div class="col-md-6">
+		<div class="row">
+			 <span class="push-down white-text small_font dark-background">
+				<h1 class="welcome-header">Welcome to ChopBox</h1>
+				<p class="welcome-text">Connect with your friends -- and more fascinating
+				 people.<br>Get in-the-moment updates on the delicacies that interest<br> you.
+				 Feel the savour of the dishes, in real time from<br> different parts of the world.
+			 </span>
 		</div>
-		<div class="col-md-4">
-		 <div class="row">
-			<div class="intro-forms form-shadow">
-			 <form class="form-horizontal" method="post" id="login" role="form"
-						 action="{{ url('/login') }}">
-				<input type="hidden" name="_token"
-							 value="{{ csrf_token() }}">
-				<h5 class="pull-right">Sign In</h5>
-
-				<div class="form-group">
-				 <input type="text" class="form-control" value="{{old('email')}}"
-								name="email" placeholder="Email or Username..."
-								required="">
-				</div>
-				<div class="form-group">
-				 <input type="password" name="password" class="form-control"
-								placeholder="Password..." required="">
-				</div>
-				<div class="form-group">
-				 <label for="remember" class="form-inline pull-left">
-					<input type="checkbox" name="remember" class="form-control">
-					Remember Me
-				 </label><a class="btn btn-link pull-right white-text"
-										href="{{ url('/password/email') }}">Forgot Your
-					Password?</a>
-				</div>
-				<div class="form-group">
-				 <button type="submit" name="login" class="btn-primary form-control btn-info">Log In</button>
-				</div>
-			 </form>
-
+	 </div>
+	 <div class="col-md-3">
+		<div class="row">
+		 <!-- login form -->
+		 <form class="form-shadow" method="post" id="login" role="form"
+					 action="{{ url('/login') }}">
+			<input type="hidden" name="_token"
+						 value="{{ csrf_token() }}">
+			 <div class="form-group">
+				<input type="text" required="" name="email" class="form-control input-sm" placeholder="email or username">
+			 </div>
+			<div class="form-inline">
+				<input type="password" required="" name="password" class="input-sm form-control" placeholder="password">
+				<input type="submit" name="login" class="btn btn-primary input-sm pull-right" value="Log In">
 			</div>
-		 </div>
-		 <div class="row">
-			<div class="form-shadow">
-			 <form class="form-horizontal" method="post" id="register" role="form"
-						 action="{{ url('/register') }}">
-				<input type="hidden" name="_token"
-							 value="{{ csrf_token() }}">
-				<h5 class="pull-right">Sign Up</h5>
-
-				<div class="form-group">
-				 <input type="text" name="name" placeholder="Username..." class="form-control"
-								id="registerName" required="" value="{{old('name')}}">
-				</div>
-				<div class="form-group">
-				 <input type="text" name="email" id="registerEmail"
-								required="" class="form-control" placeholder="Email..."
-								value="{{old('email')}}">
-				</div>
-
-				<div class="form-group">
-				 <input type="password" id="registerpassword"
-								class="form-control" name="password" required=""
-								placeholder="Password...">
-				</div>
-				<div class="form-group">
-				 <input type="password" name="password_confirmation"
-								class="form-control" required=""
-								placeholder="Confirm Password..." id="registerpconfirm">
-				</div>
-				<div class="form-group">
-				 <button type="submit" name="register" class=" btn-primary form-control btn-info">Sign Up</button>
-				</div>
+			<div class="form-inline form-group form-bottom">
+			 <input type="checkbox" value="remember" class="pull-left some-space" name="remember">
+			 <label for="remember" class="some-space small_font">Remember me</label>
+			 <span><a href="{{ url('/password/email') }}" class="small_font pull-right some-space">Forgot password?</a></span>
 			</div>
-			</form>
-		 </div>
+		 </form>
+
+		 <!-- end login form -->
+
+		 <!-- signup form -->
+		 <form class="form-shadow" method="post" id="register" role="form"
+					 action="{{ url('/register') }}">
+			<input type="hidden" name="_token"
+						 value="{{ csrf_token() }}">
+			<span class="some-space pull-right big-text">Sign Up</span>
+			<div class="form-group">
+			 <input type="text" required="" name="username" class="form-control input-sm" placeholder="username">
+			</div>
+			<div class="form-group">
+			 <input type="email" name="email" required="" class="form-control input-sm" placeholder="email">
+			</div>
+			<div class="form-group">
+			 <input type="password" required="" name="password" class="form-control input-sm" placeholder="password">
+			</div>
+			<div class="form-group">
+			 <input type="password" required="" class="form-control" name="password_confirmation" placeholder="confirm password">
+			</div>
+			<div class="form-group col-sm-offset-6 form-bottom">
+			 <input type="submit" required="" name="register" class="btn btn-primary input-sm" value="Sign up for Chopbox">
+			</div>
+		 </form>
+		 <!-- end signup form -->
+
+		 <!-- social network login buttons -->
+		 <form class="form-shadow form" method="get" id="socialform">
+			<input type="hidden" name="_token"
+						 value="{{ csrf_token() }}">
+			<div class="form-group">
+			 <a class="btn btn-block btn-social btn-google" href="{{ url('/oauth/google') }}">
+				<i class="fa fa-google"></i>
+				Sign in with google
+			 </a>
+			</div>
+			 <div class="form-group form-bottom">
+				<a class="btn btn-block btn-social btn-facebook" href="{{ url('/oauth/facebook') }}">
+				 <i class="fa fa-facebook"></i>
+				 Sign in with facebook
+				</a>
+			 </div>
+		 </form>
+		 <!-- end social network login buttons -->
 		</div>
+	 </div>
+	 <div class="col-md-2">
 	 </div>
 	</div>
  </div>
-@stop
+@endsection
