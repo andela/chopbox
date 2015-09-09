@@ -1,5 +1,8 @@
+/vendor
+/node_modules
 .env
-/.idea
-/vendor
-.gitignore
-/vendor
+.env.testing
+.DS_Store
+
+tests/_output/*
+tests/_output/*

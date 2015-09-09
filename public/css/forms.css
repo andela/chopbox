@@ -1,16 +1,18 @@
-.intro-forms{
-    margin-top: 100px;
+.intro-forms {
+	margin-top: 100px;
 }
-.signup-forms{
-    margin-top: 60px;
+
+.signup-forms {
+	margin-top: 60px;
 }
+
 .panel-heading {
-    padding: 5px 15px;
+	padding: 5px 15px;
 }
 
 .panel-footer {
-    padding: 1px 15px;
-    color: #A0A0A0;
+	padding: 1px 15px;
+	color: #A0A0A0;
 }
 
 .profile-img {
@@ -21,12 +23,10 @@
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-
 }
 
-
 .white-text {
-    color: #ffffff;
+	color: #ffffff;
 }
 
 .big-text {
@@ -82,5 +82,4 @@ div.social-up {
     line-height: 12px;
     padding: 20px;
     font-weight: 400;
-
 }
