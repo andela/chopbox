@@ -21,9 +21,7 @@
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-
 }
-
 
 .white-text {
     color: #ffffff;
@@ -82,5 +80,4 @@ div.social-up {
     line-height: 12px;
     padding: 20px;
     font-weight: 400;
-
 }
