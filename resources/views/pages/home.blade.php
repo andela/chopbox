@@ -1,5 +1,9 @@
+<<<<<<< HEAD:resources/views/pages/home.blade.php
+@extends('layouts.app')
+=======
 @extends('app')
 
+>>>>>>> staging:resources/views/home.blade.php
 @section('content')
 <div class="container">
   <div class="row">

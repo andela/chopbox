@@ -1,4 +1,8 @@
-@extends('app') @section('title') New Chops @endsection
+@extends('layouts.app')
+
+@section('title')
+  New Chops
+@endsection
 
 @section('content')
 <div class="container">
@@ -20,13 +24,15 @@
 
   <div class="form-group">{!! Form::submit('Post', ['class' =>'btn
     btn-primary', 'name' =>'submitButton']) !!}</div>
-  {!! Form::close() !!} @if($errors->any())
-  <div class="has-error">
-    <ul>
-      @foreach($errors->all() as $error)
-      <li>{{$error}}</li> @endforeach
-    </ul>
-  </div>
+  {!! Form::close() !!}
+
+  @if($errors->any())
+    <div class="has-error">
+      <ul>
+        @foreach($errors->all() as $error)
+        <li>{{$error}}</li> @endforeach
+      </ul>
+    </div>
   @endif
 
 </div>

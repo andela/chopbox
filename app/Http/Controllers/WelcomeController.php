@@ -34,12 +34,12 @@ class WelcomeController extends Controller {
 		if (Auth::check ()) {
 			$user = Auth::user ();
 			if ($user->profile_state) {
-				return view ( 'home' );
+				return view ( 'pages.home' );
 			} else {
-				return view ( 'first_profile' );
+				return view ( 'pages.initial_profile_update' );
 			}
 		} else {
-			return view ( 'welcomeTest' );
+			return view ( 'pages.welcome' );
 		}
 	}
 }

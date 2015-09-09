@@ -1,7 +1,9 @@
-@extends('app')
+@extends('layouts.app')
+
 @section('title')
-Register
+	Register
 @stop
+
 @section('content')
 
  <div class="intro-header bg-image">
@@ -28,18 +30,7 @@ Register
 						 <img class="profile-img" src="{!! asset('img/nologin.jpg') !!}">
 						</div>
 					 </div>
-					 @if (count( $errors ) > 0 )
-						<div class="alert alert-danger">
-						 <strong>Whoops!</strong> There were some problems
-						 with your input.<br>
-						 <br>
-						 <ul>
-							@foreach ($errors->all() as $error)
-							 <li>{{ $error }}</li>
-							@endforeach
-						 </ul>
-						</div>
-					 @endif
+					 @include('errors.errors')
 					 <div class="row">
 						<div class="col-sm-12 col-md-10  col-md-offset-1 ">
 						 <div class="form-group">
@@ -84,8 +75,7 @@ Register
 
 
 						 <div class="form-group">
-							<button type="submit"
-											class="btn btn-primary btn-block form-control">Register
+							<button type="submit" class="btn btn-primary btn-block form-control">Register
 							</button>
 						 </div>
 						</div>

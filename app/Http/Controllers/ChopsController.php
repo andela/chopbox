@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Redirect;
 use Cloudder;
 
 class ChopsController extends Controller {
-  
+
   /*
    * inject dependencies using the constructor
    */
@@ -55,31 +55,31 @@ class ChopsController extends Controller {
   /**
    * Store a newly created resource in storage.
    *
-   * @param Request $request          
+   * @param Request $request
    * @return Response
    */
   public function store(ChopsFormRequest $request) {
     $file = NULL;
     $shortened_url = "";
     if ($request->image) {
-      
+
       $file = $request->image;
       $result = $this->upload_file->uploadFile($file);
-      
+
       if ($result) {
         $url = $result ['url']; // get the url from the cloudinary result;
-        
+
         $this->shortener->setLogin(env('BITLY_LOGIN'));
         $this->shortener->setKey(env('BITLY_API_KEY'));
         $this->shortener->setFormat("json");
-        
+
         $shortened_url = $this->shortener->shortenUrl($url);
       }
     }
-    
+
     // save chops details to database
     $this->saveChops($request);
-    
+
     $this->saveUpload($file);
     // set a flash mesage to display on the page
     $message = 'Your chops has been posted';
@@ -89,7 +89,7 @@ class ChopsController extends Controller {
   /**
    * Display the specified resource.
    *
-   * @param int $id          
+   * @param int $id
    * @return Response
    */
   public function show($id) {
@@ -98,7 +98,7 @@ class ChopsController extends Controller {
   /**
    * Show the form for editing the specified resource.
    *
-   * @param int $id          
+   * @param int $id
    * @return Response
    */
   public function edit($id) {
@@ -108,8 +108,8 @@ class ChopsController extends Controller {
   /**
    * Update the specified resource in storage.
    *
-   * @param Request $request          
-   * @param int $id          
+   * @param Request $request
+   * @param int $id
    * @return Response
    */
   public function update(Request $request, $id) {
@@ -119,13 +119,13 @@ class ChopsController extends Controller {
   /**
    * Remove the specified resource from storage.
    *
-   * @param int $id          
+   * @param int $id
    * @return Response
    */
   public function destroy($id) {
     //
   }
-  
+
   private function saveUpload($file) {
     // save upload to database
     $this->upload->name = $file->getClientOriginalName();
@@ -133,19 +133,18 @@ class ChopsController extends Controller {
     $this->upload->file_uri = $shortened_url;
     $this->upload->chops_id = $this->chops->id;
     $this->upload->save();
-    
+
   }
-  
+
   private function saveChops(ChopsFormRequest $request) {
-    
+
     $this->chops->chops_name = $request->name;
     $this->chops->about = $request->about;
     $this->chops->likes = 0;
-    
+
     $user = Auth::user();
     $this->chops->user_id = $user->id;
-    
+
     $this->chops->save();
   }
-
 }

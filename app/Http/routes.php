@@ -11,21 +11,25 @@
  * |
  */
 Route::get('/', 'WelcomeController@index');
+
+Route::get('help', 'HelpAndPrivacyController@help');
+
+Route::get('privacy', 'HelpAndPrivacyController@privacy');
+
 Route::get('/home', function () {
   return redirect("/");
 });
-Route::controllers([ 
-    'password' => 'Auth\PasswordController' 
+
+Route::controllers([
+    'password' => 'Auth\PasswordController'
 ]);
 
 // Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@doLogin');
+
 Route::get('logout', 'Auth\AuthController@getLogout');
 
-// Registration routes...
-Route::get('register', 'Auth\AuthController@getRegister');
-Route::post('register', 'Auth\AuthController@postRegister');
 
 // Registration routes...
 Route::get('register', 'Auth\AuthController@getRegister');

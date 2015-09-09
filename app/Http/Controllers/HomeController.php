@@ -28,6 +28,33 @@ class HomeController extends Controller {
     $this->middleware('auth');
   }
 
+<<<<<<< HEAD
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{   
+		$user = Auth::user();
+		if ($user->profile_state) {
+			return view('pages.home');
+		}else {
+			return view('pages.first_profile');
+		}
+		
+	}
+=======
   /**
    * Show the application dashboard to the user is th user is logged and also
    * checks if the user has completed the profile details.
@@ -55,5 +82,6 @@ class HomeController extends Controller {
       return redirect("/");
     }
   }
+>>>>>>> staging
 
 }
