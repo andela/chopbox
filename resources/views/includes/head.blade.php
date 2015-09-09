@@ -5,7 +5,7 @@
 {{--Bootstrap CSS--}}
 <link href="{!! asset('css/bootstrap.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <!-- Custom CSS -->
-<link href="{!! asset('css/social.min.css') !!}" rel="stylesheet">
+<link rel="stylesheet" href="{!!asset('css/bootstrap-social.css') !!}"/>
 <link href="{!! asset('css/custom.css') !!}" rel="stylesheet">
 <link rel="stylesheet" type="text/css"  href="http://x.tagstat.com/dyn/css/0/ax8U-nqOs.css">
 <link href="{!! asset('css/landing-page.css') !!}" rel="stylesheet">

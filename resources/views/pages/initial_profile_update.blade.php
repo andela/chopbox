@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="">
+<div class="bg-image">
   <div class="container">
     <div class="col-lg-12">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-3 col-md-offset-3">
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="margin-top: 40px;">
               <div class="panel-heading">
                 <strong>Complete Your Profile</strong>
               </div>
