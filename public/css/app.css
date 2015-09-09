@@ -1691,7 +1691,7 @@ div#logo_container {
 }
 
 .google_small_logo {
-	background-position: 0 -350px;
+    background-position: 0 350px;
 }
 
 .background {
@@ -2668,11 +2668,11 @@ h3 {
 }
 
 .logged_out_quote_btns {
-	margin: 0;
-	padding: 22px 5px 0 0;
-	text-align: center;
-	min-width: 215px;
-	overflow: visible;
+    margin: 0;
+    padding: 22px 5px 0 0;
+    text-align: center;
+    /*min-width: 215px;*/
+    overflow: hidden !important;
 }
 
 .logged_out_quote_btns .fb_btn_container, .logged_out_quote_btns .google_btn_container
