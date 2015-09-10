@@ -5,6 +5,10 @@ namespace ChopBox\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Validator;
+use ChopBox\Http\Requests;
+use ChopBox\Chop;
+use ChopBox\User;
+use ChopBox\Follow;
 
 class HomeController extends Controller {
 
@@ -18,48 +22,48 @@ class HomeController extends Controller {
    * | controller as you wish. It is just here to get your app started!
    * |
    */
-  
+
   /**
    * Create a new controller instance.
    *
    * @return void
    */
   public function __construct() {
-    $this->middleware('auth');
+    $this->middleware('home');
   }
 
-<<<<<<< HEAD
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
+  /**
+   * Show the application dashboard to the user.
+   *
+   * @return Response
+   */
+  public function index() {
+      $user = Auth::user();
+      $all_users = User::all();
+      $follows = Follow::all();
+      $following = $follows->where('follower_id', $user->id)->all();
+      $followees = [];
+      $top_users = \DB::table('chops')
+      ->groupBy('user_id')
+      ->orderBy(\DB::raw('count(user_id)'), 'DESC')
+      ->take(10)
+      ->lists('user_id');
+      $chops = Chop::all();
+      foreach($following as $followee)
+      {
+        array_push($followees, $followee->followee_id);
+      }
+      $all_chops = Chop::whereIn('user_id', $followees)
+      ->orWhere('user_id', $user->id)->latest()->get();
+      return view('pages.home', compact('all_chops', 'all_users', 'user', 'follows','top_users', 'chops'));
+  }
 
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{   
-		$user = Auth::user();
-		if ($user->profile_state) {
-			return view('pages.home');
-		}else {
-			return view('pages.initial_profile_update');
-		}
-		
-	}
-=======
   /**
    * Show the application dashboard to the user is th user is logged and also
    * checks if the user has completed the profile details.
    */
   public function firstProfile(Request $request) {
+    
     $validation = Validator::make($request->all(), [ 
         'firstname' => 'required|min:2',
         'lastname' => 'required|min:2',
@@ -82,6 +86,5 @@ class HomeController extends Controller {
       return redirect("/");
     }
   }
->>>>>>> staging
 
 }
