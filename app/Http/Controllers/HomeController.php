@@ -41,27 +41,33 @@ class HomeController extends Controller {
 	  if (!Auth::check ()) {
 		  return view ( 'pages.welcome' );
 	  }
-      $user = Auth::user();
+	  $user = Auth::user();
 	  if (!Auth::user()->profile_state) {
 		  return view ( 'pages.initial_profile_update' );
 	  }
-	  $all_users = User::all();
-      $follows = Follow::all();
-      $following = $follows->where('follower_id', $user->id)->all();
-      $followees = [];
-      $top_users = \DB::table('chops')
-      ->groupBy('user_id')
-      ->orderBy(\DB::raw('count(user_id)'), 'DESC')
-      ->take(10)
-      ->lists('user_id');
-      $chops = Chop::all();
-      foreach($following as $followee)
-      {
-        array_push($followees, $followee->followee_id);
-      }
-      $all_chops = Chop::whereIn('user_id', $followees)
-      ->orWhere('user_id', $user->id)->latest()->get();
-      return view('pages.home', compact('all_chops', 'all_users', 'user', 'follows','top_users', 'chops'));
+	  $follower = Follow::where('followee_id', $user->id)->count();
+	  $followings = Follow::where('follower_id', $user->id)->get();
+	  $followees_id = [];
+
+	  $top = \DB::table('chops')
+		  ->groupBy('user_id')
+		  ->orderBy(\DB::raw('count(user_id)'), 'DESC')
+		  ->take(10)
+		  ->lists('user_id');
+
+	  $top_users = User::whereIn('id', $top)->get();
+
+	  foreach($followings as $followee)
+	  {
+		  array_push($followees_id, $followee->followee_id);
+	  }
+
+	  $following = count($followees_id);
+
+	  $chops = Chop::whereIn('user_id', $followees_id)
+		  ->orWhere('user_id', $user->id)->latest()->get();
+
+	  return view('homepage', compact('user', 'chops', 'follower', 'top_users', 'following'));
   }
 
   /**
