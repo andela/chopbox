@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 
 @section('title')
@@ -52,7 +52,7 @@
 						 value="{{ csrf_token() }}">
 			<span class="some-space pull-right big-text">Sign Up</span>
 			<div class="form-group">
-			 <input type="text" required="" name="username" class="form-control input-sm" placeholder="username">
+			 <input type="text" required="" name="name" class="form-control input-sm" placeholder="username">
 			</div>
 			<div class="form-group">
 			 <input type="email" name="email" required="" class="form-control input-sm" placeholder="email">
@@ -74,13 +74,13 @@
 			<input type="hidden" name="_token"
 						 value="{{ csrf_token() }}">
 			<div class="form-group">
-			 <a class="btn btn-block btn-social btn-google" href="{{url('/oauth/google')}}">
+			 <a class="btn btn-block btn-social btn-google" href="{{url('/login/google')}}">
 				<i class="fa fa-google"></i>
 				Sign in with google
 			 </a>
 			</div>
 			 <div class="form-group form-bottom">
-				<a class="btn btn-block btn-social btn-facebook" href="{{url('/oauth/facebook')}}">
+				<a class="btn btn-block btn-social btn-facebook" href="{{url('/login/facebook')}}">
 				 <i class="fa fa-facebook"></i>
 				 Sign in with facebook
 				</a>

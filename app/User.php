@@ -8,6 +8,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
     use Authenticatable, CanResetPassword;
@@ -56,6 +57,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function roles()
     {
-        return $this->belongsToMany('ChopBox\Roles');
+        return $this->belongsToMany('ChopBox\Role');
     }
+
+	public function chops()
+	{
+		return $this->hasMany('ChopBox\Chop');
+	}
 }

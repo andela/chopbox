@@ -6,12 +6,13 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*",
+        "laravel/framework": "5.1.10",
         "cloudinary/cloudinary_php": "^1.1",
         "illuminate/html": "^5.0",
         "jrm2k6/cloudder": "0.2.",
         "doctrine/dbal": "^2.5",
         "codeception/codeception": "*",
+        "laravel/socialite": "^2.0",
         "mockery/mockery": "dev-master"
     },
     "require-dev": {
@@ -19,7 +20,7 @@
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1"
     },
-    
+
     "autoload": {
         "classmap": [
             "database"

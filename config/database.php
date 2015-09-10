@@ -1,16 +1,16 @@
 <?php
 return [
-		/*
-		 * |--------------------------------------------------------------------------
-		 * | PDO Fetch Style
-		 * |--------------------------------------------------------------------------
-		 * |
-		 * | By default, database results will be returned as instances of the PHP
-		 * | stdClass object; however, you may desire to retrieve records in an
-		 * | array format for simplicity. Here you can tweak the fetch style.
-		 * |
-		 */
-		'fetch' => PDO::FETCH_CLASS,
+    /*
+     * |--------------------------------------------------------------------------
+     * | PDO Fetch Style
+     * |--------------------------------------------------------------------------
+     * |
+     * | By default, database results will be returned as instances of the PHP
+     * | stdClass object; however, you may desire to retrieve records in an
+     * | array format for simplicity. Here you can tweak the fetch style.
+     * |
+     */
+    'fetch' => PDO::FETCH_CLASS,
 
     /*
     |--------------------------------------------------------------------------
@@ -23,7 +23,7 @@ return [
     |
     */
 
-    'default' => env ( 'DB_CONNECTION', 'mysql' ),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -44,57 +44,57 @@ return [
 
     'connections' => [
 
-				'sqlite' => [
-						'driver' => 'sqlite',
-						'database' => storage_path ( 'database.sqlite' ),
-						'prefix' => ''
-				],
+        'sqlite' => [
+            'driver' => 'sqlite',
+            'database' => storage_path('database.sqlite'),
+            'prefix' => ''
+        ],
 
-				'mysql' => [
-						'driver' => 'mysql',
-						'host' => env ( 'DB_HOST', 'localhost' ),
-						'database' => env ( 'DB_DATABASE', 'forge' ),
-						'username' => env ( 'DB_USERNAME', 'forge' ),
-						'password' => env ( 'DB_PASSWORD', '' ),
-						'charset' => 'utf8',
-						'collation' => 'utf8_unicode_ci',
-						'prefix' => env ( 'DB_PREFIX', '' ),
-						'strict' => false
-				],
+        'mysql' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', 'localhost'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => env('DB_PREFIX', ''),
+            'strict' => false
+        ],
 
-				'mysql_testing' => [
-						'driver' => 'mysql',
-						'host' => env ( 'DB_URL', 'localhost' ),
-						'database' => env ( 'DB_NAME', 'forge' ),
-						'username' => env ( 'DB_USER', 'forge' ),
-						'password' => env ( 'DB_PASSWORD', '' ),
-						'charset' => 'utf8',
-						'collation' => 'utf8_unicode_ci',
-						'prefix' => env ( 'DB_PREFIX', '' ),
-						'strict' => false
-				],
+        'mysql_testing' => [
+            'driver' => 'mysql',
+            'host' => env('DB_URL', 'localhost'),
+            'database' => env('DB_NAME', 'forge'),
+            'username' => env('DB_USER', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => env('DB_PREFIX', ''),
+            'strict' => false
+        ],
 
-				'pgsql' => [
-						'driver' => 'pgsql',
-						'host' => env ( 'DB_HOST', 'localhost' ),
-						'database' => env ( 'DB_DATABASE', 'forge' ),
-						'username' => env ( 'DB_USERNAME', 'forge' ),
-						'password' => env ( 'DB_PASSWORD', '' ),
-						'charset' => 'utf8',
-						'prefix' => env ( 'DB_PREFIX', '' ),
-						'schema' => 'public'
-				],
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST', 'localhost'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => env('DB_PREFIX', ''),
+            'schema' => 'public'
+        ],
 
-				'sqlsrv' => [
-						'driver' => 'sqlsrv',
-						'host' => env ( 'DB_HOST', 'localhost' ),
-						'database' => env ( 'DB_DATABASE', 'forge' ),
-						'username' => env ( 'DB_USERNAME', 'forge' ),
-						'password' => env ( 'DB_PASSWORD', '' ),
-						'charset' => 'utf8',
-						'prefix' => env ( 'DB_PREFIX', '' )
-				]
-		]
+        'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST', 'localhost'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => env('DB_PREFIX', '')
+        ]
+    ]
 		,
 
     /*
@@ -122,13 +122,12 @@ return [
     */
     'redis' => [
 
-				'cluster' => false,
+        'cluster' => false,
 
-				'default' => [
-						'host' => '127.0.0.1',
-						'port' => 6379,
-						'database' => 0
-				]
-		]
-]
-;
+        'default' => [
+            'host' => '127.0.0.1',
+            'port' => 6379,
+            'database' => 0
+        ]
+    ]
+];

@@ -2,9 +2,7 @@
 
 namespace ChopBox\Http\Controllers;
 
-
 use League\Flysystem\File;
-
 use ChopBox\Comment;
 use ChopBox\Favourite;
 use Illuminate\Support\Facades\DB;
@@ -15,119 +13,90 @@ use ChopBox\Http\Requests\ChopsFormRequest;
 use ChopBox\Upload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input as Input;
+use Validator;
+use Response;
 use Cloudder;
 
-
+/** Supply name of Cloudinary account for this app.
+ * Even though this has been supplied in the env file, Cloudinary cl_image_tag() for retrieving and manipulating the images on view home.blade.php requests for it.
+ */
+\Cloudinary::config(array(
+	"cloud_name" => "chopbox"
+));
 
 class ChopsController extends Controller
 {
-
-
-
-
 	/*
-	 * inject dependencies using the constructor
+	 * Inject dependencies using the constructor
 	 */
-	private $upload;
 	private $chops;
 	private $shortener;
 	private $upload_file;
 
-	public function __construct(Upload $upload, Chop $chop, ShortenUrl $shortener,
-								UploadFile $upload_file){
-		$this->upload = $upload;
+	public function __construct(Chop $chop, ShortenUrl $shortener, UploadFile $upload_file)
+	{
 		$this->chops = $chop;
-		$this->shortener =$shortener;
+		$this->shortener = $shortener;
 		$this->upload_file = $upload_file;
 	}
 
 	/**
-	 * Display a listing of the resource.
+	 * Declare an instance of Bitly
 	 *
-	 * @return Response
 	 */
-	public function index()
+	private function setBitlyConfig()
 	{
-		$chops = Chop::paginate(8);
-		return view('chops.home')->with('chops', $chops);
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return view('chops.newchops');
+		$this->shortener->setLogin(env('BITLY_LOGIN'));
+		$this->shortener->setKey(env('BITLY_API_KEY'));
+		$this->shortener->setFormat("json");
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  Request  $request
+	 * @param  Request $request
+	 *
 	 * @return Response
 	 */
 	public function store(ChopsFormRequest $request)
 	{
-
-		$file = NULL;
-		$shortened_url = "";
-		if($request->image)
+		$images = Input::file('image');
+		$numImages = count($images);
+		if ($images)
 		{
+			$result = $url = $public_id = $shortened_url = [];
+			$this->setBitlyConfig();
 
-			$file = $request->image;
-			$result =  $this->upload_file->uploadFile($file);
-			
-			if($result) {
-				$url = $result['url']; //get the url from the cloudinary result;
-
-				$this->shortener->setLogin(env('BITLY_LOGIN'));
-				$this->shortener->setKey(env('BITLY_API_KEY'));
-				$this->shortener->setFormat("json");
-
-				$shortened_url = $this->shortener->shortenUrl($url);
+			// Upload each image to Cloudinary and shorten the url returned with Bitly.
+			for ($i = 0; $i < $numImages; $i++)
+			{
+				$result[$i] = $this->upload_file->uploadFile($images[$i]);
+				$url[$i] = $result[$i]['url']; //get the url from Cloudinary result;
+				$shortened_url[$i] = $this->shortener->shortenUrl($url[$i]);
 			}
-
 		}
 
-		// save chops details to database
-
-
-		$this->chops->chops_name = $request->name;
+		// Save chop details to database
 		$this->chops->about = $request->about;
 		$this->chops->likes = 0;
 		$user = Auth::user();
 		$this->chops->user_id = $user->id;
-
 		$this->chops->save();
 
-		
+		// Save info about the chop image(s) to the uploads table in the database
+		for($i=0; $i < $numImages; $i++)
+		{
+			$upload = new Upload;
+			$upload->name = $images[$i]->getClientOriginalName();
+			$upload->mime_type = $images[$i]->getMimeType();
+			$upload->file_uri = $shortened_url[$i];
+			$upload->chop_id = $this->chops->id;
+			$upload->user_id = $user->id;
+			$upload->save();
+		}
 
-		//save upload to database
-		$this->upload->name = $file->getClientOriginalName();
-		$this->upload->mime_type = $file->getMimeType();
-		$this->upload->file_uri = $shortened_url;
-		$this->upload->chops_id = $this->chops->id;
-		$this->upload->save();
-
-		//set a flash mesage to display on the page
-		$message = 'Your chops has been posted';
-		return redirect(route('chops.index', $message));
-
-
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-
+		return redirect()->action('HomepageController@index');
 	}
 
 	/**
@@ -137,31 +106,25 @@ class ChopsController extends Controller
 	 * @return Response
 	 */
 	public function edit($id)
-	{
-		//
+	{   $chops = Chop::find($id);
+		$owner_id = $chops->user_id;
+		$user = Auth::user();
+		if($user->id === $owner_id)
+		{
+			return view('chops.updatechops', compact('chops', 'id'));
+		}
+		else
+		{
+			return redirect('chops');
+		}
 	}
 
 	/**
-	 * Update the specified resource in storage.
 	 *
-	 * @param  Request  $request
-	 * @param  int  $id
-	 * @return Response
+	 *
 	 */
-	public function update(Request $request, $id)
+	public function update()
 	{
 		//
 	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 }
