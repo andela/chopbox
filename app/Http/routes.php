@@ -29,5 +29,11 @@ Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
 
 
+/*
+ * Password reset routes.
+ */
+Route::get('/password/email', 'Auth/PasswordController@getEmail');
+Route::post('/password/reset/{token}', 'Auth/PassWordController@postEmail');
+
 
 Route::resource('chops', 'ChopsController');
