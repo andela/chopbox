@@ -19,28 +19,28 @@ class HomepageController extends Controller
 	public function index()
 	{
 		$user = Auth::user();
-		$all_users = User::all();
-		$follows = Follow::all();
-		$following = $follows->where('follower_id', $user->id)->all();
-		$followees = [];
+		$follower = Follow::where('followee_id', $user->id)->count();
+		$followings = Follow::where('follower_id', $user->id)->get();
+		$followees_id = [];
 
-    $top_users = \DB::table('chops')
+    	$top = \DB::table('chops')
             ->groupBy('user_id')
             ->orderBy(\DB::raw('count(user_id)'), 'DESC')
             ->take(10)
-            ->lists('user_id');
+			->lists('user_id');
 
-    $chops = Chop::all();   
+		$top_users = User::whereIn('id', $top)->get();
 
-
-		foreach($following as $followee)
+		foreach($followings as $followee)
 		{
-			array_push($followees, $followee->followee_id);
+			array_push($followees_id, $followee->followee_id);
 		}
 
-  	$all_chops = Chop::whereIn('user_id', $followees)
+		$following = count($followees_id);
+
+  		$chops = Chop::whereIn('user_id', $followees_id)
 						->orWhere('user_id', $user->id)->latest()->get();
 
-  	return view('homepage', compact('all_chops', 'all_users', 'user', 'follows','top_users', 'chops'));
+  		return view('homepage', compact('user', 'chops', 'follower', 'top_users', 'following'));
 	}
 }

@@ -429,14 +429,14 @@
               <a href="index.html#userModal" class="" data-toggle="modal">
                 Followers
               </a>
-              <h5 class="alh"> {{ $follows->where('followee_id', $user->id)->count() }}</h5>
+              <h5 class="alh"> {{ $follower }}</h5>
             </li>
 
             <li class="aoi">
               <a href="index.html#userModal" class="" data-toggle="modal">
                 Following
               </a>
-              <h5 class="alh"> {{ $follows->where('follower_id', $user->id)->count() }}</h5>
+              <h5 class="alh"> {{ $following }}</h5>
             </li>
           </ul>
         </div>
@@ -454,7 +454,7 @@
                 <li class="disc-list">Best food &nbsp; &nbsp; <a href="index.html#">{{ $user->best_food }}</a></li>
                 <li class="disc-list">Location &nbsp; &nbsp; <a href="index.html#"> {{ $user->location }} </a></li>
                 <li class="disc-list">Gender &nbsp; &nbsp; <a href="index.html#"> {{  $user->gender }}</a></li>
-                <li class="disc-list">Total Chops &nbsp; &nbsp; <a href="index.html#"> {{ $all_chops->where('user_id', $user->id)->count() }} </a></li>
+                <li class="disc-list">Total Chops &nbsp; &nbsp; <a href="index.html#"> {{ $chops->where('user_id', $user->id)->count() }} </a></li>
             </ul>
         </div>
       </div>
@@ -485,7 +485,7 @@
             @endif
 
         </li><br/>
-          @foreach($all_chops as $chop)
+          @foreach($chops as $chop)
           <li class="qg b amk curve">
 
             <div class="qh">
@@ -539,12 +539,12 @@
                   @foreach ($chop->comments as $comment)
                   <li class="qg">
                       <a class="qk" href="index.html#">
-                          <img class="qi cu small-round" src="{{ $all_users->find($comment->user_id)->image_uri }}">
+                          <img class="qi cu small-round" src="{{ $comment->user->image_uri }}">
                       </a>
                       <div class="qh">
                           <a href="">
                               <strong>
-                                  <span class="username">{{ '@'.strtolower($all_users->find($comment->user_id)->username).': ' }}</span>
+                                  <span class="username">{{ '@'.strtolower($comment->user->username).': ' }}</span>
                               </strong>
                           </a>
                           {{ $comment->comment }}
@@ -571,15 +571,15 @@
                   @foreach($top_users as $top_user)
                   <li class="qg">
                       <a class="qk" href="index.html#">
-                          <img class="qi cu small-round" src="{{ $all_users->find($top_user)->image_uri }}">
+                          <img class="qi cu small-round" src="{{ $top_user->image_uri }}">
                       </a>
                       <div class="qh leaderboard">
                           <a href="">
                               <strong>
-                                  <span class="username">{{ '@'.strtolower($all_users->find($top_user)->username) }}</span>
+                                  <span class="username">{{ '@'.strtolower($top_user->username) }}</span>
                               </strong>
                           </a>
-                         <span class="pull-right"> {{ $chops->where('user_id', $top_user)->count() }} </span>
+                         <span class="pull-right"> {{ $top_user->chops->count() }} </span>
                       </div>
                   </li>
                   @endforeach
