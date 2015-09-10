@@ -29,7 +29,7 @@ class HomeController extends Controller {
    * @return void
    */
   public function __construct() {
-    $this->middleware('home');
+    //$this->middleware('home');
   }
 
   /**
@@ -38,8 +38,14 @@ class HomeController extends Controller {
    * @return Response
    */
   public function index() {
+	  if (!Auth::check ()) {
+		  return view ( 'pages.welcome' );
+	  }
       $user = Auth::user();
-      $all_users = User::all();
+	  if (!Auth::user()->profile_state) {
+		  return view ( 'pages.initial_profile_update' );
+	  }
+	  $all_users = User::all();
       $follows = Follow::all();
       $following = $follows->where('follower_id', $user->id)->all();
       $followees = [];
@@ -63,7 +69,7 @@ class HomeController extends Controller {
    * checks if the user has completed the profile details.
    */
   public function firstProfile(Request $request) {
-    
+//    dd($request);
     $validation = Validator::make($request->all(), [ 
         'firstname' => 'required|min:2',
         'lastname' => 'required|min:2',
