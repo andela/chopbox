@@ -1,13 +1,14 @@
-@extends('app') 
-@section('title') 
-Register 
-@stop 
+@extends('layouts.app')
+
+@section('title')
+	Register
+@stop
+
 @section('content')
 
  <div class="intro-header bg-image">
 	<div class="container">
 	 <div class="col-md-12">
-
 		<div class="container">
 		 <div class="row">
 			<div class="col-sm-6 col-sm-offset-2 register-header">
@@ -21,29 +22,15 @@ Register
 				 <strong class="big-text">Signing Up is Simple. Get Started</strong>
 				</div>
 				<div class="panel-body">
-				 <form class="form-horizontal" role="form" method="post"
-							 action="{{ url('/register') }}">
-					<input type="hidden" name="_token"
-								 value="{{ csrf_token() }}">
+				 <form class="form-horizontal" role="form" method="post" action="{{ url('/register') }}">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<fieldset>
 					 <div class="row">
 						<div class="center-block">
-						 <img class="profile-img"
-									src="{!! asset('img/nologin.jpg') !!}">
+						 <img class="profile-img" src="{!! asset('img/nologin.jpg') !!}">
 						</div>
 					 </div>
-					 @if (count( $errors ) > 0 )
-						<div class="alert alert-danger">
-						 <strong>Whoops!</strong> There were some problems
-						 with your input.<br>
-						 <br>
-						 <ul>
-							@foreach ($errors->all() as $error)
-							 <li>{{ $error }}</li>
-							@endforeach
-						 </ul>
-						</div>
-					 @endif
+					 @include('errors.errors')
 					 <div class="row">
 						<div class="col-sm-12 col-md-10  col-md-offset-1 ">
 						 <div class="form-group">
@@ -88,8 +75,7 @@ Register
 
 
 						 <div class="form-group">
-							<button type="submit"
-											class="btn btn-primary btn-block form-control">Register
+							<button type="submit" class="btn btn-primary btn-block form-control">Register
 							</button>
 						 </div>
 						</div>
@@ -101,7 +87,7 @@ Register
 			</div>
 			<div class="col-md-6 col-md-offset-3 register-footer">
 			 <span class="white-text big-text">Already Registered?</span>
-			 <span class="white-text reg-login big-text"><a href="{{url('/login')}}" class="white-text fancy-link">Log In Here</a> </span>
+			 <span class="white-text reg-login big-text"><a href="{{ url('/login') }}" class="white-text fancy-link">Log In Here</a> </span>
 			</div>
 		 </div>
 

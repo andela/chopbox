@@ -2,6 +2,10 @@
 
 namespace ChopBox\Http\Controllers;
 
+use League\Flysystem\File;
+use ChopBox\Comment;
+use ChopBox\Favourite;
+use Illuminate\Support\Facades\DB;
 use ChopBox\Chop;
 use ChopBox\helpers\ShortenUrl;
 use ChopBox\helpers\UploadFile;
