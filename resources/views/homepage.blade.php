@@ -29,7 +29,7 @@
         min-width: 100%;
         width: 100%;
       }
-      </style>
+    </style>
 
   </head>
 
@@ -418,25 +418,25 @@
             <img class="aog" src="{{ $user->image_uri }}">
           </a>
 
-          <h5 class="qz username">
-            <a class="akt" href="profile.1">{{ '@'.strtolower($user->username) }}</a>
+          <h5 class="qz">
+            <a class="akt" href="profile.1"> {{ $user->username }}</a>
           </h5>
 
-          <p class="alt">{{ $user-> about }}</p>
+          <p class="alt"> {{ $user-> about }}</p>
           <hr />
           <ul class="aoh">
             <li class="aoi">
               <a href="index.html#userModal" class="" data-toggle="modal">
                 Followers
               </a>
-              <h5 class="alh"> {{ $follower }}</h5>
+              <h5 class="alh"> {{ $user->followers_count}}</h5>
             </li>
 
             <li class="aoi">
               <a href="index.html#userModal" class="" data-toggle="modal">
                 Following
               </a>
-              <h5 class="alh"> {{ $following }}</h5>
+              <h5 class="alh"> {{ $user->followings_count}}</h5>
             </li>
           </ul>
         </div>
@@ -444,18 +444,14 @@
     
       <div class="qw rd sn sq">
         <div class="qx">
-            <div class="eg">
-                <a href="index.html#">
-                    <i class="glyphicon glyphicon-edit"></i>
-                </a>
-            </div>
-            <h5 class="alc bluecolor">About</h5>
-            <ul class="eb tc disc-list-ul">
-                <li class="disc-list">Best food &nbsp; &nbsp; <a href="index.html#">{{ $user->best_food }}</a></li>
-                <li class="disc-list">Location &nbsp; &nbsp; <a href="index.html#"> {{ $user->location }} </a></li>
-                <li class="disc-list">Gender &nbsp; &nbsp; <a href="index.html#"> {{  $user->gender }}</a></li>
-                <li class="disc-list">Total Chops &nbsp; &nbsp; <a href="index.html#"> {{ $chops->where('user_id', $user->id)->count() }} </a></li>
-            </ul>
+          <h5 class="alc">About <small>· <a href="index.html#">Edit</a></small></h5>
+          <ul class="eb tc disc-list-ul">
+            <li class="disc-list"><span class=""></span>Best food <a href="index.html#">{{ $user->best_food }}</a></li>
+            <li class="disc-list"><span class=""></span>Location <a href="index.html#"> {{ $user->location }} </a></li>
+            <li class="disc-list"><span class=""></span>Gender <a href="index.html#"> {{  $user->gender }}</a></li>
+            <li class="disc-list"><span class=""></span>Total chops <a href="index.html#"> {{ $user->chops_count }} </a></li>
+           
+          </ul>
         </div>
       </div>
 
@@ -486,11 +482,13 @@
 
         </li><br/>
           @foreach($chops as $chop)
-          <li class="qg b amk curve">
-
+          <li class="qg b amk">
+              <a class="qk" href="index.html#">
+                  <img class="qi cu round"  src="{{ $chop->user->image_uri }}"> 
+              </a>
             <div class="qh">
               <div class="qo">
-                  @if($chop->user_id == $user->id)
+                 @if($chop->user_id == $user->id)
                       <div class="eg">
                           <a href="edit.php">
                               <i class="glyphicon glyphicon-edit"></i>
@@ -502,12 +500,9 @@
                       </div>
                   @endif
 
-                      <a class="qk" href="index.html#">
-                          <img class="qi cu round"  src="{{ $chop->user->image_uri }}">
-                      </a>
-                      <a class="qk shift-down" href="">
-                          <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
-                      </a>
+                  <a href="">
+                      <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
+                  </a>
 
               </div>
 
@@ -564,11 +559,14 @@
     <div class="go fixRight">
       <div class="qw rd alt st">
         <div class="qx">
-          <h5 class="alc centralize bluecolor">Leaderboard</h5>
+          <h5 class="alc">Leaderboard</h5>
           <hr />
+         
+
+
 
               <ul class="qp all">
-                  @foreach($top_users as $top_user)
+                  @foreach($top as $top_user)
                   <li class="qg">
                       <a class="qk" href="index.html#">
                           <img class="qi cu small-round" src="{{ $top_user->image_uri }}">
@@ -579,11 +577,13 @@
                                   <span class="username">{{ '@'.strtolower($top_user->username) }}</span>
                               </strong>
                           </a>
-                         <span class="pull-right"> {{ $top_user->chops->count() }} </span>
+                         <span class="pull-right"> {{ $top_user->chops_count }} </span>
                       </div>
                   </li>
                   @endforeach
               </ul>
+
+
         </div>
       </div>
 
@@ -619,6 +619,8 @@
       $('#camera').click(function() {
         $( "#file" ).click();
       });
+
+        $('')
     </script>
 
   </body>
