@@ -5,6 +5,7 @@ namespace ChopBox\Http\Controllers;
 use League\Flysystem\File;
 use ChopBox\Comment;
 use ChopBox\Favourite;
+use ChopBox\User;
 use Illuminate\Support\Facades\DB;
 use ChopBox\Chop;
 use ChopBox\helpers\ShortenUrl;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Input as Input;
 use Validator;
 use Response;
 use Cloudder;
+
 
 /** Supply name of Cloudinary account for this app.
  * Even though this has been supplied in the env file, Cloudinary cl_image_tag() for retrieving and manipulating the images on view home.blade.php requests for it.
@@ -82,6 +84,10 @@ class ChopsController extends Controller
 		$this->chops->likes = 0;
 		$user = Auth::user();
 		$this->chops->user_id = $user->id;
+		$userChopsCount = User::where('id', $user->id )->chops_count;
+		$userChopsCount += 1;
+		$user->save();
+		//dd($checkCount);
 		$this->chops->save();
 
 		// Save info about the chop image(s) to the uploads table in the database

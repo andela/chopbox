@@ -11,15 +11,11 @@
  * |
  */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', ['middleware'=>'home', 'uses' => 'HomeController@index']);
 
 Route::get('help', 'HelpAndPrivacyController@help');
 
 Route::get('privacy', 'HelpAndPrivacyController@privacy');
-
-Route::get('/home', function () {
-  return redirect("/");
-});
 
 Route::controllers([
     'password' => 'Auth\PasswordController'

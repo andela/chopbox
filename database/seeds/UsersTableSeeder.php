@@ -22,7 +22,9 @@ class UserTableSeeder extends Seeder {
                 'password' => $faker->password(8, 20),
                 'email' => $faker->email,
                 'profile_state' => $faker->boolean(),
-                'image_uri' => $faker->imageUrl()
+                'image_uri' => $faker->imageUrl(),
+                'followers_count' => $faker->numberBetween(1,50),
+                'followings_count' => $faker->numberBetween(1,50)
             ]);
         }
     }
