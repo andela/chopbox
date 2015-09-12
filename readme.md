@@ -44,7 +44,7 @@ Because we keep the generated / minified css out of the repository, we must have
 
 ## Maintainers
 
-The Chopbox portal is currently maintained by [Prosper Otemuyiwa](https://github.com/busayo), [Kolawole Erinoso](https://github.com/andela-kerinoso), [Oladosu Dara](https://github.com/andela-doladosu),[Oduye Oluwayemisi](https://github.com/andela-ooduye),[Verem Dugeri](https://github.com/vdugeri) and [Chidozie Ijeomah](https://github.com/andela-cijeomah). 
+The Chopbox portal is currently maintained by [Prosper Otemuyiwa](https://github.com/busayo), [Kolawole Erinoso](https://github.com/andela-kerinoso), [Oladosu Dara](https://github.com/andela-doladosu),[Oduye Oluwayemisi](https://github.com/andela-ooduye),[Verem Dugeri](https://github.com/andela-vdugeri) and [Chidozie Ijeomah](https://github.com/andela-cijeomah). 
 
 
 
