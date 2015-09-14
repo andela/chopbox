@@ -32,7 +32,7 @@ textarea {
     width: 40px;
 }
 
-.pd .navbar-nav > li > a, .pd .navbar-nav > li > a:hover   {
+.pd .navbar-nav > li > a, .pd .navbar-nav > li > a:hover, .pd .navbar-nav > li > a:focus,  .pd .navbar-nav > li > a:visited  {
     color: #337ab7;
     text-decoration: none;
 }
@@ -96,3 +96,8 @@ img.aog{
  .tinted {
      border-color: #337ab7;
  }
+
+ .post-btn, #camera {
+     margin-top: 2px;
+ }
+

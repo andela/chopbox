@@ -469,7 +469,7 @@
                     {!! Form::textarea('about', null, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
                     {!! Form::file('image[]', ['multiple'=> true, 'required' => 'required', 'id'=>'file']) !!}
                     <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera" title="Attach photos"></button>
-                    {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right', 'name' =>'submitButton']) !!}
+                    {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
                     {!! Form::close() !!}
 
                     @if($errors->any())
@@ -599,11 +599,17 @@
     </div>
 </div>
 <script src="{!! asset('js/jquery.min.js') !!}"></script>
-<script src="{!! asset('js/bootstrap.min.js') !!}"></script>
+
 <script src="{!! asset('js/expanding.js') !!}"></script>
 <script src="{!! asset('js/chart.js') !!}"></script>
 <script src="{!! asset('js/toolkit.js') !!}"></script>
 <script src="{!! asset('js/application.js') !!}"></script>
+
+
+
+
+
+
 <script>
     // execute/clear BS loaders for docs
     $(function(){

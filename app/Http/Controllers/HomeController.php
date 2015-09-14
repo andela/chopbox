@@ -8,78 +8,65 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use ChopBox\Http\Requests;
 use ChopBox\Http\Requests\ProfileRequest;
-use ChopBox\Chop;
 use ChopBox\User;
 use ChopBox\Follow;
 use ChopBox\ChopBox\Repository\ChopRepository;
 
 class HomeController extends Controller
 {
-    /*
-   * |--------------------------------------------------------------------------
-   * | Home Controller
-   * |--------------------------------------------------------------------------
-   * |
-   * | This controller renders your application's "dashboard" for users that
-   * | are authenticated. Of course, you are free to change or remove the
-   * | controller as you wish. It is just here to get your app started!
-   * |
-   */
+    /**
+     * Show the application dashboard to a logged-in user.
+     *
+     * @param UserRepository $userRepository
+     *
+     * @param ChopsRepository $chopsRepository
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(UserRepository $userRepository, ChopsRepository $chopsRepository)
+    {
+        $user = Auth::user();
 
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-  public function __construct()
-  {
-  }
+        // Find and order the users that have the highest number of chops
+        $topTen =  $userRepository->topUsers();
 
-  /**
-   * Show the application dashboard to the user.
-   *
-   * @return Response
-   */
+        // Find followee ids
+        $followeeIds = $this->getFolloweeIds($user);
 
-  public function index(UserRepository $userRepository, ChopsRepository $chopsRepository)
-  {
-	  $user = Auth::user();
+        // Get chops of logged-in user and that of those (s)he follows
+        $chops = $chopsRepository->getChops($user, $followeeIds);
 
-	/* find and order the users that have the highest number of chops */
-		$topTen =  $userRepository->topUsers();
+        return view('homepage', compact('user', 'chops', 'topTen'));
+    }
 
-	/* find followee ids */
-		$followeeIds = $this->getFolloweeIds($user);
+    /**
+     * Check if a user has completed the profile details.
+     *
+     * @param ProfileRequest $request
+     *
+     * @param UserRepository $userRepository
+     *
+     * @param ChopsRepository $chopRepository
+     *
+     * @return \Illuminate\View\View
+     */
+    public function firstProfile(ProfileRequest $request, UserRepository $userRepository, ChopsRepository $chopRepository)
+    {
+        $user = Auth::user();
 
-	  $chops = $chopsRepository->getUserChops($user, $followeeIds);
+        $this->saveUser($user, $request);
 
-	  return view('homepage', compact('user', 'chops', 'topTen'));
-  }
+      // Find and order the users that have the highest number of chops
+      $topTen =  $userRepository->topUsers();
 
-  /**
-   * Show the application dashboard to the user is th user is logged and also
-   * checks if the user has completed the profile details.
-   */
-  public function firstProfile(ProfileRequest $request, UserRepository $userRepository, ChopsRepository $chopRepository)
-  {
+      // Find followee ids
+      $followeeIds = $this->getFolloweeIds($user);
 
-	/*get the authenticated user */
-	  $user = Auth::user();
+      // Get chops of logged-in user and that of those (s)he follows
+      $chops = $chopRepository->getChops($user, $followeeIds);
 
-
-	/*save user details to database */
-	  $this->saveUser($user, $request);
-
-    /* find and order the users that have the highest number of chops */
-	  $topTen =  $userRepository->topUsers();
-
-    /*find followee ids */
-	  $followeeIds = $this->getFolloweeIds($user);
-
-      $chops = $chopRepository->getUserChops($user, $followeeIds);
-
-      return view('homepage', compact('user', 'chops', 'topTen'));
-  }
+        return view('homepage', compact('user', 'chops', 'topTen'));
+    }
 
     private function saveUser(User $user, profileRequest $request)
     {
@@ -91,7 +78,6 @@ class HomeController extends Controller
         $user->best_food = $request ['best_food'];
         $user->save();
     }
-
 
     private function getFolloweeIds(User $user)
     {
