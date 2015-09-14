@@ -76,30 +76,31 @@ class ChopsController extends Controller
             }
         }
 
-        // Save chop details to database
-        $this->chops->about = $request->about;
-        $this->chops->likes = 0;
-        $user = Auth::user();
-        $this->chops->user_id = $user->id;
-        $userChopsCount = User::where('id', $user->id)->chops_count;
-        $userChopsCount += 1;
-        $user->save();
-        //dd($checkCount);
-        $this->chops->save();
 
-        // Save info about the chop image(s) to the uploads table in the database
-        for ($i=0; $i < $numImages; $i++) {
-            $upload = new Upload;
-            $upload->name = $images[$i]->getClientOriginalName();
-            $upload->mime_type = $images[$i]->getMimeType();
-            $upload->file_uri = $shortened_url[$i];
-            $upload->chop_id = $this->chops->id;
-            $upload->user_id = $user->id;
-            $upload->save();
-        }
+		// Save chop details to database
+		$this->chops->about = $request->about;
+		$this->chops->likes = 0;
+		$user = Auth::user();
+		$this->chops->user_id = $user->id;
+		$this->chops->save();
 
-        return redirect()->action('HomepageController@index');
-    }
+		$user->chops_count++;
+		$user->save();
+
+		// Save info about the chop image(s) to the uploads table in the database
+		for($i=0; $i < $numImages; $i++)
+		{
+			$upload = new Upload;
+			$upload->name = $images[$i]->getClientOriginalName();
+			$upload->mime_type = $images[$i]->getMimeType();
+			$upload->file_uri = $shortened_url[$i];
+			$upload->chop_id = $this->chops->id;
+			$upload->user_id = $user->id;
+			$upload->save();
+		}
+
+		return redirect()->action('HomeController@index');
+	}
 
     /**
      * Show the form for editing the specified resource.

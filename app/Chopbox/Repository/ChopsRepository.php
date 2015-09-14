@@ -9,6 +9,7 @@
 namespace ChopBox\ChopBox\Repository;
 
 use ChopBox\Chop;
+use ChopBox\User;
 
 class ChopsRepository {
 
