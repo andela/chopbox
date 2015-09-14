@@ -11,7 +11,6 @@ use ChopBox\Http\Requests\ProfileRequest;
 use ChopBox\Chop;
 use ChopBox\User;
 use ChopBox\Follow;
-use ChopBox\ChopBox\Repository\ChopRepository;
 
 class HomeController extends Controller
 {

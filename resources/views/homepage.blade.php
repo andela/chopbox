@@ -31,7 +31,6 @@
 
 </head>
 
-
 <body class="anf">
 <div class="anp" id="app-growl"></div>
 
@@ -135,7 +134,7 @@
                 </span>
                                 <div class="qh">
                                     <strong>Dave Gamache</strong>
-                                    <div class="aoe">
+																 <div class="aoe">
                                         Brunch sustainable placeat vegan bicycle rights yeah…
                                     </div>
                                 </div>
