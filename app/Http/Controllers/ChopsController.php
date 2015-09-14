@@ -84,11 +84,10 @@ class ChopsController extends Controller
 		$this->chops->likes = 0;
 		$user = Auth::user();
 		$this->chops->user_id = $user->id;
-		$userChopsCount = User::where('id', $user->id )->chops_count;
-		$userChopsCount += 1;
-		$user->save();
-		//dd($checkCount);
 		$this->chops->save();
+
+		$user->chops_count++;
+		$user->save();
 
 		// Save info about the chop image(s) to the uploads table in the database
 		for($i=0; $i < $numImages; $i++)
@@ -102,7 +101,7 @@ class ChopsController extends Controller
 			$upload->save();
 		}
 
-		return redirect()->action('HomepageController@index');
+		return redirect()->action('HomeController@index');
 	}
 
 	/**

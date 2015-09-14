@@ -77,6 +77,10 @@ img.aog{
     padding-right: 30px;
  }
 
+ .align-right {
+     padding-right: 8px;
+ }
+
  .bluecolor {
      color: #337ab7;
  }
@@ -87,4 +91,8 @@ img.aog{
 
  .curve {
      border-radius: 4px;
+ }
+
+ .tinted {
+     border-color: #337ab7;
  }

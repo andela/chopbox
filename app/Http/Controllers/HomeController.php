@@ -39,29 +39,29 @@ class HomeController extends Controller {
    *
    * @return Response
    */
-  public function index(ChopRepository $chopRepo) {
+  public function index() {
 	  $user = Auth::user();
-	  $follower = Follow::where('followee_id', $user->id)->count();
+//	  $follower = Follow::where('followee_id', $user->id)->count();
 	  $followings = Follow::where('follower_id', $user->id)->get();
 	  $followees_id = [];
 
     /* find and order the users that have the highest number of chops */
 
-	  $top =  User::orderBy('chops_count', 'DESC')->take(10)->get();
+	  $topTen =  User::orderBy('chops_count', 'DESC')->take(10)->get();
 
 	  foreach($followings as $followee)
 	  {
 		  array_push($followees_id, $followee->followee_id);
 	  }
 
-	  $following = count($followees_id);
+//	  $following = count($followees_id);
 
 	  $chops = Chop::whereIn('user_id', $followees_id)
 		  ->orWhere('user_id', $user->id)->latest()->get();
 
-    $chopCount = count($chops);
+//    $chopCount = count($chops);
 
-	  return view('homepage', compact('user', 'chops', 'top'));
+	  return view('homepage', compact('user', 'chops', 'topTen'));
   }
 
   /**
@@ -76,7 +76,7 @@ class HomeController extends Controller {
 
     $this->saveUser($user, $request);
 
-    $follower = Follow::where('followee_id', $user->id)->count();
+//    $follower = Follow::where('followee_id', $user->id)->count();
     $followings = Follow::where('follower_id', $user->id)->get();
     $followees_id = [];
 
@@ -89,12 +89,12 @@ class HomeController extends Controller {
       array_push($followees_id, $followee->followee_id);
     }
 
-    $following = count($followees_id);
+//    $following = count($followees_id);
 
     $chops = Chop::whereIn('user_id', $followees_id)
       ->orWhere('user_id', $user->id)->latest()->get();
 
-    $chopCount = count($chops);
+//    $chopCount = count($chops);
 
     return view('homepage', compact('user', 'chops', 'top'));
       
