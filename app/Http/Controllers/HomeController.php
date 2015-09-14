@@ -2,8 +2,9 @@
 
 namespace ChopBox\Http\Controllers;
 
+use ChopBox\ChopBox\Repository\ChopsRepository;
+use ChopBox\ChopBox\Repository\UserRepository;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use Validator;
 use ChopBox\Http\Requests;
 use ChopBox\Http\Requests\ProfileRequest;
@@ -12,9 +13,9 @@ use ChopBox\User;
 use ChopBox\Follow;
 use ChopBox\ChopBox\Repository\ChopRepository;
 
-class HomeController extends Controller {
-
-  /*
+class HomeController extends Controller
+{
+    /*
    * |--------------------------------------------------------------------------
    * | Home Controller
    * |--------------------------------------------------------------------------
@@ -30,8 +31,8 @@ class HomeController extends Controller {
    *
    * @return void
    */
-  public function __construct() {
-    //$this->middleware('home');
+  public function __construct()
+  {
   }
 
   /**
@@ -39,74 +40,75 @@ class HomeController extends Controller {
    *
    * @return Response
    */
-  public function index(ChopRepository $chopRepo) {
-	  $user = Auth::user();
-	  $follower = Follow::where('followee_id', $user->id)->count();
-	  $followings = Follow::where('follower_id', $user->id)->get();
-	  $followees_id = [];
+  public function index(UserRepository $userRepository)
+  {
+      $user = Auth::user();
+
 
     /* find and order the users that have the highest number of chops */
+		$top =  $userRepository->topUsers();
 
-	  $top =  User::orderBy('chops_count', 'DESC')->take(10)->get();
 
-	  foreach($followings as $followee)
-	  {
-		  array_push($followees_id, $followee->followee_id);
-	  }
 
-	  $following = count($followees_id);
+    /* find followee ids */
+		$followeeIds = $this->getFolloweeIds($user);
 
-	  $chops = Chop::whereIn('user_id', $followees_id)
-		  ->orWhere('user_id', $user->id)->latest()->get();
 
-    $chopCount = count($chops);
 
-	  return view('homepage', compact('user', 'chops', 'top'));
+      $chops = Chop::whereIn('user_id', $followeeIds)
+          ->orWhere('user_id', $user->id)->latest()->get();
+
+
+
+      return view('homepage', compact('user', 'chops', 'top'));
   }
 
   /**
    * Show the application dashboard to the user is th user is logged and also
    * checks if the user has completed the profile details.
    */
-  public function firstProfile(ProfileRequest $request) {
-    
-    
-  
-    $user = Auth::user();
+  public function firstProfile(ProfileRequest $request,
+															 		UserRepository $userRepository,
+																			ChopsRepository $chopRepository)
+  {
 
-    $this->saveUser($user, $request);
+		/*get the authenticated user */
+		$user = Auth::user();
 
-    $follower = Follow::where('followee_id', $user->id)->count();
-    $followings = Follow::where('follower_id', $user->id)->get();
-    $followees_id = [];
+		/*save user details to database */
+		$this->saveUser($user, $request);
 
     /* find and order the users that have the highest number of chops */
+    $top =  $userRepository->topUsers();
 
-    $top =  User::orderBy('chops_count', 'DESC')->take(10)->get();
+    /*find followee ids */
+		$followeeIds = $this->getFolloweeIds($user);
 
-    foreach($followings as $followee)
-    {
-      array_push($followees_id, $followee->followee_id);
-    }
+		$chops = $chopRepository->getUserChops($user, $followeeIds);
 
-    $following = count($followees_id);
-
-    $chops = Chop::whereIn('user_id', $followees_id)
-      ->orWhere('user_id', $user->id)->latest()->get();
-
-    $chopCount = count($chops);
-
-    return view('homepage', compact('user', 'chops', 'top'));
-      
-    }
-
-  private  function saveUser(User $user, profileRequest $request) {
-    $user->profile_state = true;
-    $user->firstname = $request ['firstname'];
-    $user->lastname = $request ['lastname'];
-    $user->location = $request ['location'];
-    $user->gender = $request ['gender'];
-    $user->best_food = $request ['best_food'];
-    $user->save();
+		return view('homepage', compact('user', 'chops', 'top'));
   }
+
+    private function saveUser(User $user, profileRequest $request)
+    {
+			$user->profile_state = true;
+			$user->firstname = $request ['firstname'];
+			$user->lastname = $request ['lastname'];
+			$user->location = $request ['location'];
+			$user->gender = $request ['gender'];
+			$user->best_food = $request ['best_food'];
+			$user->save();
+    }
+
+    private function getFolloweeIds(User $user)
+    {
+			$followings = Follow::where('follower_id', $user->id)->get();
+			$followee_ids = [];
+
+			foreach ($followings as $followee) {
+					array_push($followee_ids, $followee->followee_id);
+			}
+
+			return $followee_ids;
+    }
 }
