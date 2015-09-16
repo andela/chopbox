@@ -52,7 +52,7 @@
 						 value="{{ csrf_token() }}">
 			<span class="some-space pull-right big-text">Sign Up</span>
 			<div class="form-group">
-			 <input type="text" required="" name="username" class="form-control input-sm" placeholder="username">
+			 <input type="text" required="" name="name" class="form-control input-sm" placeholder="username">
 			</div>
 			<div class="form-group">
 			 <input type="email" name="email" required="" class="form-control input-sm" placeholder="email">

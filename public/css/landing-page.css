@@ -31,9 +31,7 @@ body, h1, h2, h3, h4, h5, h6 {
     min-height: 100%;
     text-align: center;
     color: #f8f8f8;
-
     background: url('../img/landing-bg.jpg') no-repeat center center;
-
     background-size: cover;
 }
 
@@ -404,3 +402,4 @@ input[type=checkbox].some-space {
 .form-bottom {
     margin-bottom: 0 !important;
 }
+

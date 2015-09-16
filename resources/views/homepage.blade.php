@@ -11,8 +11,6 @@
     <title>Home</title>
 
     <!-- styles -->
-
-
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="//cdn.shopify.com/s/files/1/0691/5403/t/82/assets/style.scss.css?16677709998824235896" rel="stylesheet" type="text/css"  media="all"  />
     <link href="{!! asset('css/toolkit.css') !!}" media="all" rel="stylesheet" type="text/css" />
@@ -32,7 +30,6 @@
     </style>
 
 </head>
-
 
 <body class="anf">
 <div class="anp" id="app-growl"></div>
@@ -137,7 +134,7 @@
                 </span>
                                 <div class="qh">
                                     <strong>Dave Gamache</strong>
-                                    <div class="aoe">
+																 <div class="aoe">
                                         Brunch sustainable placeat vegan bicycle rights yeah…
                                     </div>
                                 </div>
@@ -411,7 +408,7 @@
 <div class="by ams">
     <div class="gd">
         <div class="go fixLeft">
-            <div class="qw rd aof alt">
+            <div class="qw rd aof alt tinted">
                 <div class="qy" style="background-image: url('{{ $user->image_uri }}');"></div>
                 <div class="qx dj">
                     <a href="profile.1">
@@ -422,27 +419,27 @@
                         <a class="akt" href="profile.1">{{ '@'.strtolower($user->username) }}</a>
                     </h5>
 
-                    <p class="alt">{{ $user-> about }}</p>
+                    <p class="alt">{{ $user->about }}</p>
                     <hr />
                     <ul class="aoh">
                         <li class="aoi">
                             <a href="index.html#userModal" class="" data-toggle="modal">
                                 Followers
                             </a>
-                            <h5 class="alh"> {{ $follower }}</h5>
+                            <h5 class="alh"> {{ $user->followers_count }}</h5>
                         </li>
 
                         <li class="aoi">
                             <a href="index.html#userModal" class="" data-toggle="modal">
                                 Following
                             </a>
-                            <h5 class="alh"> {{ $following }}</h5>
+                            <h5 class="alh"> {{ $user->followings_count }}</h5>
                         </li>
                     </ul>
                 </div>
             </div>
 
-            <div class="qw rd sn sq">
+            <div class="qw rd sn sq tinted">
                 <div class="qx">
                     <div class="eg">
                         <a href="index.html#">
@@ -451,10 +448,10 @@
                     </div>
                     <h5 class="alc bluecolor">About</h5>
                     <ul class="eb tc disc-list-ul">
-                        <li class="disc-list">Best food &nbsp; &nbsp; <a href="index.html#">{{ $user->best_food }}</a></li>
-                        <li class="disc-list">Location &nbsp; &nbsp; <a href="index.html#"> {{ $user->location }} </a></li>
-                        <li class="disc-list">Gender &nbsp; &nbsp; <a href="index.html#"> {{  $user->gender }}</a></li>
-                        <li class="disc-list">Total Chops &nbsp; &nbsp; <a href="index.html#"> {{ $chops->where('user_id', $user->id)->count() }} </a></li>
+                        <li class="disc-list">Best food<a class="pull-right align-right" href="index.html#">{{ $user->best_food }}</a></li>
+                        <li class="disc-list">Location<a class="pull-right align-right" href="index.html#"> {{ $user->location }} </a></li>
+                        <li class="disc-list">Gender<a class="pull-right align-right" href="index.html#"> {{  $user->gender }}</a></li>
+                        <li class="disc-list">Total Chops<a class="pull-right align-right" href="index.html#"> {{ $user->chops_count }} </a></li>
                     </ul>
                 </div>
             </div>
@@ -466,12 +463,12 @@
         <div class="ha">
             <ul class="ca qp anw">
 
-                <li class="qg b amk">
+                <li class="qg b amk tinted">
                     {!! Form::open(['url' => 'chops', 'files' => true, 'method'=>'post']) !!}
                     {!! Form::textarea('about', null, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
-                    {!! Form::file('image[]', ['multiple'=> true, 'required' => 'required', 'id'=>'file']) !!}
+                    {!! Form::file('image[]', ['multiple'=> true, 'id'=>'file']) !!}
                     <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera" title="Attach photos"></button>
-                    {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right', 'name' =>'submitButton']) !!}
+                    {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
                     {!! Form::close() !!}
 
                     @if($errors->any())
@@ -486,7 +483,7 @@
 
                 </li><br/>
                 @foreach($chops as $chop)
-                    <li class="qg b amk curve">
+                    <li class="qg b amk curve tinted">
 
                         <div class="qh">
                             <div class="qo">
@@ -562,13 +559,13 @@
             </ul>
         </div>
         <div class="go fixRight">
-            <div class="qw rd alt st">
+            <div class="qw rd alt st tinted">
                 <div class="qx">
                     <h5 class="alc centralize bluecolor">Leaderboard</h5>
                     <hr />
 
                     <ul class="qp all">
-                        @foreach($top_users as $top_user)
+                        @foreach($topTen as $top_user)
                             <li class="qg">
                                 <a class="qk" href="index.html#">
                                     <img class="qi cu small-round" src="{{ $top_user->image_uri }}">
@@ -579,7 +576,7 @@
                                             <span class="username">{{ '@'.strtolower($top_user->username) }}</span>
                                         </strong>
                                     </a>
-                                    <span class="pull-right"> {{ $top_user->chops->count() }} </span>
+                                    <span class="pull-right"> {{ $top_user->chops_count }} </span>
                                 </div>
                             </li>
                         @endforeach
@@ -588,7 +585,7 @@
             </div>
 
 
-            <div class="qw rd aoj">
+            <div class="qw rd aoj tinted">
                 <div class="qx centralize">
                     <a href="about">About</a>
                     <a href="help">Help</a>
@@ -601,11 +598,17 @@
     </div>
 </div>
 <script src="{!! asset('js/jquery.min.js') !!}"></script>
-<script src="{!! asset('js/bootstrap.min.js') !!}"></script>
+
 <script src="{!! asset('js/expanding.js') !!}"></script>
 <script src="{!! asset('js/chart.js') !!}"></script>
 <script src="{!! asset('js/toolkit.js') !!}"></script>
 <script src="{!! asset('js/application.js') !!}"></script>
+
+
+
+
+
+
 <script>
     // execute/clear BS loaders for docs
     $(function(){

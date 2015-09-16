@@ -10,15 +10,12 @@
  * | and give it the controller to call when that URI is requested.
  * |
  */
-Route::get('/', 'WelcomeController@index');
+
+Route::get('/', ['middleware'=>'home', 'uses' => 'HomeController@index']);
 
 Route::get('help', 'HelpAndPrivacyController@help');
 
 Route::get('privacy', 'HelpAndPrivacyController@privacy');
-
-Route::get('/home', function () {
-  return redirect("/");
-});
 
 Route::controllers([
     'password' => 'Auth\PasswordController'
@@ -39,10 +36,17 @@ Route::post('register', 'Auth\AuthController@postRegister');
 Route::get('social_password', 'Auth\AuthController@getSocialPassword');
 Route::post('social_password', 'Auth\AuthController@postSocialPassword');
 
+/*
+ * Password reset routes.
+ */
+Route::get('/password/email', 'Auth\PasswordController@getEmail');
+Route::post('/password/reset/{token}', 'Auth\PassWordController@postEmail');
+
+
 Route::get('login/{provider?}', 'Auth\AuthController@socialLogin');
+
 
 Route::resource('chops', 'ChopsController');
 
 Route::post('profile_complete', 'HomeController@firstProfile');
-
 

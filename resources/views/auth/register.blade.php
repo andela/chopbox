@@ -5,7 +5,6 @@
 @stop
 
 @section('content')
-
  <div class="intro-header bg-image">
 	<div class="container">
 	 <div class="col-md-12">
@@ -72,8 +71,6 @@
 							 name="password_confirmation">
 							</div>
 						 </div>
-
-
 						 <div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block form-control">Register
 							</button>

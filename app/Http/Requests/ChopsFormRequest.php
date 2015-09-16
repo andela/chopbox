@@ -15,17 +15,16 @@ class ChopsFormRequest extends Request {
     return true;
   }
 
-  /**
-   * Get the validation rules that apply to the request.
-   *
-   * @return array
-   */
-  public function rules() {
-    return [ 
-        'name' => 'required|min:3',
-        'about' => 'required|max:255',
-        'image' => 'required' 
-    ];
-  }
-
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+		return [
+			'about'	=> 'required|max:255',
+			'image' => 'between:0,4'
+		];
+    }
 }

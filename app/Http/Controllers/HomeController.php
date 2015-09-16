@@ -2,86 +2,99 @@
 
 namespace ChopBox\Http\Controllers;
 
+use ChopBox\ChopBox\Repository\ChopsRepository;
+use ChopBox\ChopBox\Repository\UserRepository;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use Validator;
+use ChopBox\Http\Requests;
+use ChopBox\Http\Requests\ProfileRequest;
+use ChopBox\User;
+use ChopBox\Follow;
 
-class HomeController extends Controller {
+class HomeController extends Controller
+{
+    /**
+     * Show the application dashboard to a logged-in user.
+     *
+     * @param UserRepository $userRepository
+     *
+     * @param ChopsRepository $chopsRepository
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(UserRepository $userRepository, ChopsRepository $chopsRepository)
+    {
+        $user = Auth::user();
 
-  /*
-   * |--------------------------------------------------------------------------
-   * | Home Controller
-   * |--------------------------------------------------------------------------
-   * |
-   * | This controller renders your application's "dashboard" for users that
-   * | are authenticated. Of course, you are free to change or remove the
-   * | controller as you wish. It is just here to get your app started!
-   * |
-   */
-  
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-  public function __construct() {
-    $this->middleware('auth');
-  }
+        // Find and order the users that have the highest number of chops
+        $topTen =  $userRepository->topUsers();
 
-<<<<<<< HEAD
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
+        // Find followee ids
+        $followeeIds = $this->getFolloweeIds($user);
 
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{   
-		$user = Auth::user();
-		if ($user->profile_state) {
-			return view('pages.home');
-		}else {
-			return view('pages.initial_profile_update');
-		}
-		
-	}
-=======
-  /**
-   * Show the application dashboard to the user is th user is logged and also
-   * checks if the user has completed the profile details.
-   */
-  public function firstProfile(Request $request) {
-    $validation = Validator::make($request->all(), [ 
-        'firstname' => 'required|min:2',
-        'lastname' => 'required|min:2',
-        'location' => 'required|min:2',
-        'best_food' => 'required|min:2',
-        'gender' => 'required' 
-    ]);
-    
-    if ($validation->fails()) {
-      return redirect()->back()->withInput()->withErrors($validation->errors());
-    } else {
-      $user = Auth::user();
-      $user->profile_state = true;
-      $user->firstname = $request ['firstname'];
-      $user->lastname = $request ['lastname'];
-      $user->location = $request ['location'];
-      $user->gender = $request ['gender'];
-      $user->best_food = $request ['best_food'];
-      $user->save();
-      return redirect("/");
+        // Get chops of logged-in user and that of those (s)he follows
+        $chops = $chopsRepository->getChops($user, $followeeIds);
+
+        return view('homepage', compact('user', 'chops', 'topTen'));
     }
-  }
->>>>>>> staging
 
+    /**
+     * Check if a user has completed the profile details.
+     *
+     * @param ProfileRequest $request
+     *
+     * @param UserRepository $userRepository
+     *
+     * @param ChopsRepository $chopRepository
+     *
+     * @return \Illuminate\View\View
+     */
+    public function firstProfile(ProfileRequest $request, UserRepository $userRepository, ChopsRepository $chopRepository)
+    {
+        $user = Auth::user();
+
+        $this->saveUser($user, $request);
+
+      // Find and order the users that have the highest number of chops
+      $topTen =  $userRepository->topUsers();
+
+      // Find followee ids
+      $followeeIds = $this->getFolloweeIds($user);
+
+      // Get chops of logged-in user and that of those (s)he follows
+      $chops = $chopRepository->getChops($user, $followeeIds);
+
+        //return view('homepage', compact('user', 'chops', 'topTen'));
+        return redirect('/')->with(compact('user', 'chops', 'topTen'));
+    }
+
+    private function saveUser(User $user, profileRequest $request)
+    {
+        $user->profile_state = true;
+        $user->firstname = $request ['firstname'];
+        $user->lastname = $request ['lastname'];
+        $user->location = $request ['location'];
+        $user->gender = $request ['gender'];
+        $user->best_food = $request ['best_food'];
+        $user->image_uri = $this->getAvatarUrl($user);
+        $user->save();
+    }
+
+
+    private function getFolloweeIds(User $user)
+    {
+        $followings = Follow::where('follower_id', $user->id)->get();
+        $followeeIds = [];
+
+        foreach ($followings as $followee) {
+            array_push($followeeIds, $followee->followee_id);
+        }
+
+        return $followeeIds;
+    }
+
+    private function getAvatarUrl(User $user)
+    {
+        return "http://www.gravatar.com/avatar/" . md5(strtolower(trim($user->email))) . "?d=mm&s=120";
+    }
 }

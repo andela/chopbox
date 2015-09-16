@@ -57,7 +57,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function roles()
     {
-        return $this->belongsToMany('ChopBox\Roles');
+        return $this->belongsToMany('ChopBox\Role');
     }
 
+	public function chops()
+	{
+		return $this->hasMany('ChopBox\Chop');
+	}
 }

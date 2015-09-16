@@ -27,7 +27,8 @@ class Kernel extends HttpKernel {
   protected $routeMiddleware = [ 
       'auth' => \ChopBox\Http\Middleware\Authenticate::class,
       'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-      'guest' => \ChopBox\Http\Middleware\RedirectIfAuthenticated::class 
+      'guest' => \ChopBox\Http\Middleware\RedirectIfAuthenticated::class, 
+      'home' => \ChopBox\Http\Middleware\HomeMiddleware::class,
   ];
 
 }

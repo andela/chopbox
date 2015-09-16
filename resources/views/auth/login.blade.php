@@ -18,7 +18,6 @@
         </div>
         <div class="row">
           <div class="col-md-5 col-md-offset-3">
-
             <div class="panel panel-default">
               <div class="panel-heading">
                 <strong>Log In to ChopBox to Continue</strong>
