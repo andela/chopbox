@@ -15,4 +15,5 @@ class UserRepository
     {
         return User::orderBy('chops_count', 'DESC')->take(10)->get();
     }
+
 }

@@ -466,7 +466,7 @@
                 <li class="qg b amk tinted">
                     {!! Form::open(['url' => 'chops', 'files' => true, 'method'=>'post']) !!}
                     {!! Form::textarea('about', null, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
-                    {!! Form::file('image[]', ['multiple'=> true, 'required' => 'required', 'id'=>'file']) !!}
+                    {!! Form::file('image[]', ['multiple'=> true, 'id'=>'file']) !!}
                     <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera" title="Attach photos"></button>
                     {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
                     {!! Form::close() !!}

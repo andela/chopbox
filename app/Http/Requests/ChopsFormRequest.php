@@ -23,8 +23,8 @@ class ChopsFormRequest extends Request {
     public function rules()
     {
 		return [
-			'about'=> 'required|max:255',
-			'image' => 'required|between:1,4'
+			'about'	=> 'required|max:255',
+			'image' => 'between:0,4'
 		];
     }
 }

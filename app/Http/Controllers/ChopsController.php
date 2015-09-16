@@ -2,13 +2,8 @@
 
 namespace ChopBox\Http\Controllers;
 
-use League\Flysystem\File;
-use ChopBox\Chop;
-use ChopBox\helpers\ShortenUrl;
-use ChopBox\helpers\UploadFile;
 use ChopBox\helpers\PostChop;
 use ChopBox\Http\Requests\ChopsFormRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input as Input;
 
@@ -21,18 +16,19 @@ class ChopsController extends Controller
      *
      * @return Response Redirect to homepage view
      */
-    public function store(ChopsFormRequest $request)
+    public function store(ChopsFormRequest $request, PostChop $post)
     {
         $user = Auth::user();
         $images = Input::file('image');
 
-        $postChop = new PostChop(new Chop, new ShortenUrl, new UploadFile);
+		$chopsId = $post->saveChops($user, $request);
 
-        $shortened_url = $postChop->uploadImages($images);
+        if (! is_null($images[0])) {
+            $shortened_url = $post->uploadImages($images);
+            $post->saveUploads($user, $images, $shortened_url, $chopsId);
+        }
 
-        $postChop->saveChops($user, $request);
 
-        $postChop->saveUploads($user, $images, $shortened_url);
 
         return redirect()->action('HomeController@index');
     }

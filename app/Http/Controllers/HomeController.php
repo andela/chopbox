@@ -64,7 +64,8 @@ class HomeController extends Controller
       // Get chops of logged-in user and that of those (s)he follows
       $chops = $chopRepository->getChops($user, $followeeIds);
 
-        return view('homepage', compact('user', 'chops', 'topTen'));
+        //return view('homepage', compact('user', 'chops', 'topTen'));
+        return redirect('/')->with(compact('user', 'chops', 'topTen'));
     }
 
     private function saveUser(User $user, profileRequest $request)
@@ -75,8 +76,10 @@ class HomeController extends Controller
         $user->location = $request ['location'];
         $user->gender = $request ['gender'];
         $user->best_food = $request ['best_food'];
+        $user->image_uri = $this->getAvatarUrl($user);
         $user->save();
     }
+
 
     private function getFolloweeIds(User $user)
     {
@@ -88,5 +91,10 @@ class HomeController extends Controller
         }
 
         return $followeeIds;
+    }
+
+    private function getAvatarUrl(User $user)
+    {
+        return "http://www.gravatar.com/avatar/" . md5(strtolower(trim($user->email))) . "?d=mm&s=120";
     }
 }

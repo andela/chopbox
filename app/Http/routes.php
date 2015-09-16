@@ -39,8 +39,8 @@ Route::post('social_password', 'Auth\AuthController@postSocialPassword');
 /*
  * Password reset routes.
  */
-Route::get('/password/email', 'Auth/PasswordController@getEmail');
-Route::post('/password/reset/{token}', 'Auth/PassWordController@postEmail');
+Route::get('/password/email', 'Auth\PasswordController@getEmail');
+Route::post('/password/reset/{token}', 'Auth\PassWordController@postEmail');
 
 
 Route::get('login/{provider?}', 'Auth\AuthController@socialLogin');
