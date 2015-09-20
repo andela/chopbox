@@ -43,3 +43,7 @@ Thank you for considering contributing to ChopBox! The contribution guide is as 
 4. [Prosper Otemuyiwa](https://github.com/busayo)
 5. [Verem Dugeri](https://twitter.com/andela-vdugeri)
 6. [Yemisi Oduye](https://twitter.com/andela-ooduye)
+
+## License
+
+The MIT License (MIT). Please see [License File](license.md) for more information.
