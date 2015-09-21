@@ -1,94 +1,54 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+@extends('layouts.app')
 
-    <title>Home</title>
+@section('title')
+    Home
+@endsection
 
-    <!-- styles -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <link href="//cdn.shopify.com/s/files/1/0691/5403/t/82/assets/style.scss.css?16677709998824235896" rel="stylesheet" type="text/css"  media="all"  />
-    <link href="{!! asset('css/toolkit.css') !!}" media="all" rel="stylesheet" type="text/css" />
-    <link href="{!! asset('css/application.css') !!}" media="all" rel="stylesheet" type="text/css" />
-    <link href="{!! asset('css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
-    <link href="{!! asset('css/homepage.css') !!}" media="all" rel="stylesheet" type="text/css" />
-    <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
+@section('navbar')
+    <div class="f collapse" id="navbar-collapse-main">
+        <ul class="nav navbar-nav st">
+            <li>
+                <a href="profile.1">Profile</a>
+            </li>
+            <li>
+                <a data-toggle="modal" href="index.html#msgModal">Messages</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav oh ald st">
+            <li >
+                <a class="g" href="notifications/index.html">
+                    <i class="glyphicon glyphicon-bell"></i>
+                </a>
+            </li>
+            <li>
+                <button class="cg fm oy ank" data-toggle="popover">
+                    <img class="cu" src="{{ $user->image_uri }}">
+                </button>
+            </li>
+        </ul>
 
-    <style>
-        /* note: this is a hack for ios iframe for bootstrap themes shopify page */
-        /* this chunk of css is not part of the toolkit :) */
-        body {
-            width: 1px;
-            min-width: 100%;
-            width: 100%;
-        }
-    </style>
+        <form class="ox oh i" role="search">
+            <div class="et">
+                <input type="text" class="form-control" data-action="grow" placeholder="Search">
+            </div>
+        </form>
 
-</head>
+        <ul class="nav navbar-nav su sv sw">
+            <li><a href="profile.1">Profile</a></li>
+            <li><a href="notifications/index.html">Notifications</a></li>
+            <li><a data-toggle="modal" href="index.html#msgModal">Messages</a></li>
+            <li><a href="logout">Logout</a></li>
+        </ul>
 
-<body class="anf">
-<div class="anp" id="app-growl"></div>
-
-<nav class="ck pd ot app-navbar">
-    <div class="by">
-        <div class="os">
-            <button type="button" class="ov collapsed" data-toggle="collapse" data-target="#navbar-collapse-main">
-                <span class="cv">Toggle navigation</span>
-                <span class="ow"></span>
-                <span class="ow"></span>
-                <span class="ow"></span>
-            </button>
-            <a class="chopbox navbar-brand" href="index.html">
-                ChopBox
-            </a>
-        </div>
-        <div class="f collapse" id="navbar-collapse-main">
-            <ul class="nav navbar-nav st">
-                <li>
-                    <a href="profile.1">Profile</a>
-                </li>
-                <li>
-                    <a data-toggle="modal" href="index.html#msgModal">Messages</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav oh ald st">
-                <li >
-                    <a class="g" href="notifications/index.html">
-                        <i class="glyphicon glyphicon-bell"></i>
-                    </a>
-                </li>
-                <li>
-                    <button class="cg fm oy ank" data-toggle="popover">
-                        <img class="cu" src="{{ $user->image_uri }}">
-                    </button>
-                </li>
-            </ul>
-
-            <form class="ox oh i" role="search">
-                <div class="et">
-                    <input type="text" class="form-control" data-action="grow" placeholder="Search">
-                </div>
-            </form>
-
-            <ul class="nav navbar-nav su sv sw">
-                <li><a href="profile.1">Profile</a></li>
-                <li><a href="notifications/index.html">Notifications</a></li>
-                <li><a data-toggle="modal" href="index.html#msgModal">Messages</a></li>
-                <li><a href="logout">Logout</a></li>
-            </ul>
-
-            <ul class="nav navbar-nav hidden">
-                <li><a href="logout">Logout</a></li>
-            </ul>
-        </div>
+        <ul class="nav navbar-nav hidden">
+            <li><a href="logout">Logout</a></li>
+        </ul>
     </div>
-</nav>
+@endsection
 
+@section('content')
+    <div class="anf">
+    <div class="anp" id="app-growl"></div>
 <div class="cd fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="msgModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -597,32 +557,5 @@
         </div>
     </div>
 </div>
-<script src="{!! asset('js/jquery.min.js') !!}"></script>
-
-<script src="{!! asset('js/expanding.js') !!}"></script>
-<script src="{!! asset('js/chart.js') !!}"></script>
-<script src="{!! asset('js/toolkit.js') !!}"></script>
-<script src="{!! asset('js/application.js') !!}"></script>
-
-
-
-
-
-
-<script>
-    // execute/clear BS loaders for docs
-    $(function(){
-        if (window.BS&&window.BS.loader&&window.BS.loader.length) {
-            while(BS.loader.length){(BS.loader.pop())()}
-        }
-    })
-</script>
-
-<script>
-    $('#camera').click(function() {
-        $( "#file" ).click();
-    });
-</script>
-
-</body>
-</html>
+        </div>
+@endsection

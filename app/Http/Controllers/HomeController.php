@@ -35,7 +35,7 @@ class HomeController extends Controller
         // Get chops of logged-in user and that of those (s)he follows
         $chops = $chopsRepository->getChops($user, $followeeIds);
 
-        return view('homepage', compact('user', 'chops', 'topTen'));
+        return view('pages.homepage', compact('user', 'chops', 'topTen'));
     }
 
     /**

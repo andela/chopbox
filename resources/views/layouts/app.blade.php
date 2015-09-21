@@ -3,10 +3,8 @@
 <head>
     @include('includes.head')
 </head>
-<body>
-{{--@include('includes.header')--}}
-
-@yield('content')
+<body class="anf">
+@include('includes.body')
 
 @include('includes.footer')
 
