@@ -9,7 +9,7 @@
         <span class="ow"></span>
         <span class="ow"></span>
       </button>
-      <a class="chopbox navbar-brand" href="index.html">
+      <a class="chopbox navbar-brand" href="{{url('/')}}">
         ChopBox
       </a>
     </div>

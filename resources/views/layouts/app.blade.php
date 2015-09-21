@@ -6,8 +6,6 @@
 <body class="anf">
 @include('includes.body')
 
-@include('includes.footer')
-
 @include('includes.script')
 </body>
 </html>
