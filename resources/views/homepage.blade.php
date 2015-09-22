@@ -549,10 +549,11 @@
                                     </li>
                                 @endforeach
                             </ul>
-
-                            <form action="" method="POST">
-                                <input class="form-control" rows="1" placeholder="Comment..."></input>
-                            </form>
+                            {!! Form::open(['url' => 'comment', 'method'=>'post']) !!}
+                            {!! Form::text('comment', null, ['class' => 'form-control expanding', 'required' => 'required']) !!}
+                            {!! Form::hidden('user_id', $user->id ) !!}
+                            {!! Form::hidden('chop_id', $chop->id ) !!}
+                            {!! Form::close() !!}
                         </div>
                     </li><br/>
                 @endforeach
