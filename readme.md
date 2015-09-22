@@ -35,7 +35,7 @@ Thank you for considering contributing to ChopBox! The contribution guide is as 
 
  * [PRAYERBOX - PRAY, TESTIFY AND WORSHIP SOCIALLY](http://www.prayerbox.co)
 
-## Contributing
+## Contributors
 
 1. [Chidozie Ijeomah](https://twitter.com/andela-cijeomah)
 2. [Dara Oladosu](https://twitter.com/andela-doladosu)
