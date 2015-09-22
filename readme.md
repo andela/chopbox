@@ -37,12 +37,12 @@ Thank you for considering contributing to ChopBox! The contribution guide is as 
 
 ## Contributors
 
-1. [Chidozie Ijeomah](https://twitter.com/andela-cijeomah)
-2. [Dara Oladosu](https://twitter.com/andela-doladosu)
-3. [Kola Erinoso](https://twitter.com/andela-kerinoso)
+1. [Chidozie Ijeomah](https://github.com/andela-cijeomah)
+2. [Dara Oladosu](https://github.com/andela-doladosu)
+3. [Kola Erinoso](https://github.com/andela-kerinoso)
 4. [Prosper Otemuyiwa](https://github.com/busayo)
-5. [Verem Dugeri](https://twitter.com/andela-vdugeri)
-6. [Yemisi Oduye](https://twitter.com/andela-ooduye)
+5. [Verem Dugeri](https://github.com/andela-vdugeri)
+6. [Yemisi Oduye](https://github.com/andela-ooduye)
 
 ## License
 
