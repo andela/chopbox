@@ -27,5 +27,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies($gate);
 
         //
+        $gate->define('update-chop', function ($user, $chop) {
+            return $user->id === $chop->user_id;
+        });
     }
 }
