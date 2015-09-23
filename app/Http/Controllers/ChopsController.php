@@ -12,7 +12,7 @@ class ChopsController extends Controller
     /**
      * Store posted chops
      *
-     * @param  Request $request
+     * @param ChopsFormRequest $request
      *
      * @return Response Redirect to homepage view
      */
@@ -21,15 +21,14 @@ class ChopsController extends Controller
         $user = Auth::user();
         $images = Input::file('image');
 
-		$chopsId = $post->saveChops($user, $request);
+        $chopsId = $post->saveChops($user, $request);
 
         if (! is_null($images[0])) {
             $shortened_url = $post->uploadImages($images);
             $post->saveUploads($user, $images, $shortened_url, $chopsId);
         }
-
-
-
+        
         return redirect()->action('HomeController@index');
     }
+
 }

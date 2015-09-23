@@ -468,6 +468,7 @@
                     {!! Form::textarea('about', null, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
                     {!! Form::file('image[]', ['multiple'=> true, 'id'=>'file']) !!}
                     <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera" title="Attach photos"></button>
+								 		<div id = "dvPreview"></div>
                     {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
                     {!! Form::close() !!}
 
@@ -622,6 +623,38 @@
     $('#camera').click(function() {
         $( "#file" ).click();
     });
+</script>
+
+//preview images before upload
+<script type="text/javascript">
+ $(function () {
+	$("#file").change(function () {
+	 if (typeof (FileReader) !== "undefined") {
+		var dvPreview = $("#dvPreview");
+		dvPreview.html("");
+		var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+		$($(this)[0].files).each(function () {
+		 var file = $(this);
+		 if (regex.test(file[0].name.toLowerCase())) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+			 var img = $("<img />");
+			 img.attr("style", "height:100px;width: 100px");
+			 img.attr("src", e.target.result);
+			 dvPreview.append(img);
+			};
+			reader.readAsDataURL(file[0]);
+		 } else {
+			alert(file[0].name + " is not a valid image file.");
+			dvPreview.html("");
+			return false;
+		 }
+		});
+	 } else {
+		alert("This browser does not support HTML5 FileReader.");
+	 }
+	});
+ });
 </script>
 
 </body>
