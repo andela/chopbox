@@ -487,7 +487,7 @@
 
                         <div class="qh">
                             <div class="qo">
-                                @if($chop->user_id == $user->id)
+                                @can('update-chop', $chop)
                                     <div class="eg">
                                         <a href="edit.php">
                                             <i class="glyphicon glyphicon-edit"></i>
@@ -497,7 +497,7 @@
                                             <i class="glyphicon glyphicon-remove-circle"></i>
                                         </a>
                                     </div>
-                                @endif
+                                @endcan
 
                                 <a class="qk" href="index.html#">
                                     <img class="qi cu round"  src="{{ $chop->user->image_uri }}">
