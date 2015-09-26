@@ -40,6 +40,7 @@ class PostChop
      */
     public function uploadImages($images)
     {
+		dd($images);
         if (!is_null($images[0])) {
             $numImages = count($images);
             $result = $url = $shortened_url = [];
