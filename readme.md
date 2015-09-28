@@ -1,29 +1,49 @@
-## Laravel PHP Framework - Should be ChopBox
+## ChopBox
 
-[![Circle CI](https://circleci.com/gh/andela/chopbox/tree/master.svg?style=svg&circle-token=09964224c7df8f47b80f0d998ae2a78d826735ed)](https://circleci.com/gh/andela/chopbox/tree/master)
+ChopBox is an awesome stopover for foodies all over the world to socialize. Registered members of ChopBox get to share their
+favorite foods, recent ones they've tried, and those ones which they'd love to try. Users may upload enticing images alongside their posts to capture the attention of other users. ChopBox also allows its members to comment on,
+and show interest in what has been shared on the platform through likes and comments. 
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Installation
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+[PHP](https://php.net) 5.5+ and [Composer](https://getcomposer.org) are required.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+1. Clone this repository: `git clone git@github.com:andela/chopbox.git chopbox/`
+2. `cd` into the chopbox folder and run `composer install`
+3. Run php -S localhost:8000 -t public
+4. Visit localhost:8000 in your browser to see the app running.
 
-## Official Documentation
+## Database set-up
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+1. Create a mysql database with the name `chopbox`
+2. `cd` into the chopbox folder and run `php artisan:migrate` to set up the required tables for the app.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Thank you for considering contributing to ChopBox! The contribution guide is as follows:
 
-## Security Vulnerabilities
+#### Submit a pull request in this format:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+##### A new feature
+[ChopBox][#Feat] *Short Description of the Feature*
 
-### License
+##### A Fix for a bug
+[ChopBox][#Fix] *Short Description of the Fix to a bug on the app*
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+## Inspiration
+
+ * [PRAYERBOX - PRAY, TESTIFY AND WORSHIP SOCIALLY](http://www.prayerbox.co)
+
+## Contributors
+
+1. [Chidozie Ijeomah](https://github.com/andela-cijeomah)
+2. [Dara Oladosu](https://github.com/andela-doladosu)
+3. [Kola Erinoso](https://github.com/andela-kerinoso)
+4. [Prosper Otemuyiwa](https://github.com/busayo)
+5. [Verem Dugeri](https://github.com/andela-vdugeri)
+6. [Yemisi Oduye](https://github.com/andela-ooduye)
+
+## License
+
+The MIT License (MIT). Please see [License File](license.md) for more information.
