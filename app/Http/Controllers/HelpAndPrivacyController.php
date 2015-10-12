@@ -2,7 +2,6 @@
 
 namespace ChopBox\Http\Controllers;
 
-
 use ChopBox\Http\Requests;
 use Illuminate\Http\Request;
 use ChopBox\Http\Controllers\Controller;
