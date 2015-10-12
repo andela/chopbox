@@ -6,17 +6,6 @@
 
 @section('custom-css')
     <link href="{!! asset('css/landing-page.css') !!}" rel="stylesheet" />
-    <link href="{!! asset('css/footer.css') !!}" rel="stylesheet" />
-@endsection
-
-@section('navbar')
-    <div class="collapse navbar-collapse" id="global-nav">
-        <div class="navbar-right">
-            <ul class="nav navbar-nav">
-                <li><a href="{{url('/')}}"><b>Home</b></a></li>
-            </ul>
-        </div>
-    </div>
 @endsection
 
 @section('content')

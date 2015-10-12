@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.10",
+        "laravel/framework": "5.1.16",
         "cloudinary/cloudinary_php": "^1.1",
         "illuminate/html": "^5.0",
         "jrm2k6/cloudder": "0.2.",
@@ -37,13 +37,14 @@
     "scripts": {
         "post-install-cmd": [
             "php artisan clear-compiled",
-            "php artisan optimize"
+            "php artisan optimize",
+            "php artisan migrate --force"
         ],
         "pre-update-cmd": [
             "php artisan clear-compiled"
         ],
         "post-update-cmd": [
-            "php artisan optimize"
+            "php artisan migrate"
         ],
         "post-root-package-install": [
             "php -r \"copy('.env.example', '.env');\""

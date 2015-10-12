@@ -2,10 +2,10 @@
 
 @section('custom-css')
 <link href="{!! asset('css/forms.css') !!}" rel="stylesheet" />
-<link href="{!! asset('css/footer.css') !!}" rel="stylesheet" />
 @endsection
 
 @section('content')
+    <div class="">
         <div class="container">
             <div class="col-lg-12">
                 <div class="container">

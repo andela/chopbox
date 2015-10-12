@@ -4,8 +4,10 @@
     @include('includes.head')
 </head>
 <body class="anf">
-@include('includes.body')
+    @include('includes.body')
 
-@include('includes.script')
+    @include('includes.footer')
+
+    @include('includes.script')
 </body>
 </html>
