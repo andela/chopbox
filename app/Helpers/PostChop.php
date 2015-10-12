@@ -51,13 +51,12 @@ class PostChop
             for ($i = 0; $i < $numImages; $i++) {
 
                 $result[$i] = $this->uploadFile->uploadFile($images[$i]);
-				echo $result[$i];
-                //$url[$i] = $result[$i]['url']; //get the url from Cloudinary result;
-				//$this->setBitlyConfig();
-                //$shortened_url[$i] = $this->shortener->shortenUrl($url[$i]);
+                $url[$i] = $result[$i]['url']; //get the url from Cloudinary result;
+				$this->setBitlyConfig();
+                $shortened_url[$i] = $this->shortener->shortenUrl($url[$i]);
             }
 
-            //return $shortened_url;
+            return $shortened_url;
         }
     }
 
