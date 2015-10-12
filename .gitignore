@@ -9,3 +9,5 @@ Homestead.yaml
 .env.testing
 .env
 Vagrantfile
+
+tests/_output/*
