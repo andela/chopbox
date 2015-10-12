@@ -2,9 +2,8 @@
 
 namespace ChopBox\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use ChopBox\Http\Requests;
+use Illuminate\Http\Request;
 use ChopBox\Http\Controllers\Controller;
 
 class HelpAndPrivacyController extends Controller

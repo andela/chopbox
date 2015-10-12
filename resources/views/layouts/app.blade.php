@@ -6,10 +6,11 @@
 <body>
 {{--@include('includes.header')--}}
 
-@yield('content')
+    @yield('content')
 
-@include('includes.footer')
+    @include('includes.footer')
 
-@include('includes.script')
+    @include('includes.script')
+
 </body>
 </html>

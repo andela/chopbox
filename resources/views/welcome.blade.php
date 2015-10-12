@@ -1,4 +1,10 @@
- @extends('app') @section('title') Home @stop @section('content')
+@extends('app')
+
+@section('title')
+    Home
+@endsection
+
+@section('content')
 
 <div class="intro-header">
   <div class="container">

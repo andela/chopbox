@@ -1,4 +1,4 @@
- @extends('app') @section('title') Upload @stop @section('content')
+@extends('app') @section('title') Upload @stop @section('content')
 <script type="text/javascript">
     function readURL(input) {
         if (input.files && input.files[0]) {

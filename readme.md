@@ -4,6 +4,7 @@ ChopBox is an awesome stopover for foodies all over the world to socialize. Regi
 favorite foods, recent ones they've tried, and those ones which they'd love to try. Users may upload enticing images alongside their posts to capture the attention of other users. ChopBox also allows its members to comment on,
 and show interest in what has been shared on the platform through likes and comments. 
 
+
 ## Installation
 
 [PHP](https://php.net) 5.5+ and [Composer](https://getcomposer.org) are required.
@@ -35,15 +36,16 @@ Thank you for considering contributing to ChopBox! The contribution guide is as 
 
  * [PRAYERBOX - PRAY, TESTIFY AND WORSHIP SOCIALLY](http://www.prayerbox.co)
 
-## Contributing
+## Contributors
 
-1. [Chidozie Ijeoma](https://twitter.com/andela-cijeomah)
-2. [Dara Oladodu](https://twitter.com/andela-doladosu)
-3. [Kola Erinoso](https://twitter.com/andela-kerinoso)
+1. [Chidozie Ijeomah](https://github.com/andela-cijeomah)
+2. [Dara Oladosu](https://github.com/andela-doladosu)
+3. [Kola Erinoso](https://github.com/andela-kerinoso)
 4. [Prosper Otemuyiwa](https://github.com/busayo)
-5. [Verem Dugeri](https://twitter.com/andela-vdugeri)
-6. [Yemisi Oduye](https://twitter.com/andela-ooduye)
+5. [Verem Dugeri](https://github.com/andela-vdugeri)
+6. [Yemisi Oduye](https://github.com/andela-ooduye)
 
 ## License
 
 The MIT License (MIT). Please see [License File](license.md) for more information.
+

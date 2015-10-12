@@ -17,6 +17,10 @@ Route::get('help', 'HelpAndPrivacyController@help');
 
 Route::get('privacy', 'HelpAndPrivacyController@privacy');
 
+Route::get('about', 'AboutTermsController@about');
+
+Route::get('terms', 'AboutTermsController@terms');
+
 Route::controllers([
     'password' => 'Auth\PasswordController'
 ]);

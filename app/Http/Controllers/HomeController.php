@@ -2,14 +2,14 @@
 
 namespace ChopBox\Http\Controllers;
 
-use ChopBox\ChopBox\Repository\ChopsRepository;
-use ChopBox\ChopBox\Repository\UserRepository;
-use Illuminate\Support\Facades\Auth;
 use Validator;
-use ChopBox\Http\Requests;
-use ChopBox\Http\Requests\ProfileRequest;
 use ChopBox\User;
 use ChopBox\Follow;
+use ChopBox\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+use ChopBox\Http\Requests\ProfileRequest;
+use ChopBox\ChopBox\Repository\ChopsRepository;
+use ChopBox\ChopBox\Repository\UserRepository;
 
 class HomeController extends Controller
 {
@@ -35,7 +35,7 @@ class HomeController extends Controller
         // Get chops of logged-in user and that of those (s)he follows
         $chops = $chopsRepository->getChops($user, $followeeIds);
 
-        return view('homepage', compact('user', 'chops', 'topTen'));
+        return view('pages.homepage', compact('user', 'chops', 'topTen'));
     }
 
     /**
@@ -55,20 +55,20 @@ class HomeController extends Controller
 
         $this->saveUser($user, $request);
 
-      // Find and order the users that have the highest number of chops
-      $topTen =  $userRepository->topUsers();
+        // Find and order the users that have the highest number of chops
+        $topTen =  $userRepository->topUsers();
 
-      // Find followee ids
-      $followeeIds = $this->getFolloweeIds($user);
+        // Find followee ids
+        $followeeIds = $this->getFolloweeIds($user);
 
-      // Get chops of logged-in user and that of those (s)he follows
-      $chops = $chopRepository->getChops($user, $followeeIds);
+        // Get chops of logged-in user and that of those (s)he follows
+        $chops = $chopRepository->getChops($user, $followeeIds);
 
         //return view('homepage', compact('user', 'chops', 'topTen'));
         return redirect('/')->with(compact('user', 'chops', 'topTen'));
     }
 
-    private function saveUser(User $user, profileRequest $request)
+    private function saveUser(User $user, ProfileRequest $request)
     {
         $user->profile_state = true;
         $user->firstname = $request ['firstname'];
