@@ -147,7 +147,7 @@ return [
         ChopBox\Providers\AppServiceProvider::class,
         ChopBox\Providers\EventServiceProvider::class,
         ChopBox\Providers\RouteServiceProvider::class,
-        PhpConsole\Laravel\ServiceProvider::class,
+	    PhpConsole\Laravel\ServiceProvider::class,
     ]
     ,
 
