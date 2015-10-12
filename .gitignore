@@ -9,3 +9,5 @@ Homestead.yaml
 .env.testing
 .env
 Vagrantfile
+composer.lock
+tests/_output/
