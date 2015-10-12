@@ -1,16 +1,31 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
 <title>ChopBox | @yield('title')</title>
-{{--Bootstrap CSS--}}
-<link href="{!! asset('css/bootstrap.css') !!}" media="all" rel="stylesheet" type="text/css" />
-<!-- Custom CSS -->
-<link rel="stylesheet" href="{!!asset('css/bootstrap-social.css') !!}"/>
-<link href="{!! asset('css/custom.css') !!}" rel="stylesheet">
-<link rel="stylesheet" type="text/css"  href="http://x.tagstat.com/dyn/css/0/ax8U-nqOs.css">
-<link href="{!! asset('css/landing-page.css') !!}" rel="stylesheet">
-<!-- Custom Fonts -->
-<link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
-<link href="{!! asset('css/forms.css') !!}" rel="stylesheet">
-<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+
+<!-- styles -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css' />
+<link href="//cdn.shopify.com/s/files/1/0691/5403/t/82/assets/style.scss.css?16677709998824235896" rel="stylesheet" type="text/css"  media="all"  />
+<link href="{!! asset('css/toolkit.css') !!}" media="all" rel="stylesheet" type="text/css" />
+<link href="{!! asset('css/application.css') !!}" media="all" rel="stylesheet" type="text/css" />
+<link href="{!! asset('css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
+
+@yield('custom-css')
+
+<link href="{!! asset('css/homepage.css') !!}" media="all" rel="stylesheet" type="text/css" />
+<link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css" />
+
+<style>
+    /* note: this is a hack for ios iframe for bootstrap themes shopify page */
+    /* this chunk of css is not part of the toolkit :) */
+    body {
+        width: 1px;
+        min-width: 100%;
+        width: 100%;
+    }
+
+</style>

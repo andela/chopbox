@@ -1,7 +1,13 @@
 @extends('layouts.app')
+
 @section('title')
     Help Center
 @stop
+
+@section('custom-css')
+    <link href="{!! asset('css/landing-page.css') !!}" rel="stylesheet" />
+@endsection
+
 @section('content')
     <div class="help-body">
         <div class="container">
