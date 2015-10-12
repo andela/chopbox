@@ -2,7 +2,7 @@
 
 namespace ChopBox\helpers;
 
-use JD\Cloudder;
+use Cloudder;
 
 class UploadFile
 {
@@ -13,10 +13,10 @@ class UploadFile
   public function uploadFile($file)
   {
       if (isset($file)) {
+		  echo $file;
+          //Cloudder::upload($file);
 
-          Cloudder::upload($file);
-
-          return Cloudder::getResult();
+          //return Cloudder::getResult();
       } else {
           return false;
       }

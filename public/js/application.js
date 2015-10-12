@@ -134,8 +134,9 @@ $('document').ready(function () {
             success: function (data) {
                 console.log(data);
             },
-            error: function (data) {
-                console.log(data);
+            error: function(xhr, request, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
             }
         });
     });
