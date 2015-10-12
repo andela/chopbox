@@ -592,10 +592,10 @@
 
 		 <div class="qw rd aoj tinted">
 			<div class="qx centralize">
-			 <a href="#">About</a>
-			 <a href="#">Help</a>
-			 <a href="#">Terms</a>
-			 <a href="#">Privacy</a><br>
+			 <a href="{{ url('about') }}">About</a>
+			 <a href="{{ url('help') }}">Help</a>
+			 <a href="{{ url('terms') }}">Terms</a>
+			 <a href="{{ url('privacy') }}">Privacy</a><br>
 			 © 2015 ChopBox
 			</div>
 		 </div>
