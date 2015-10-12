@@ -318,12 +318,10 @@
 					 </div>
 					</div>
 				 </li>
-
 				 <li class="qg all">
 					<a class="qk" href="#">
 					 <img class="cu qi" src="assets/img/avatar-mdo.png">
 					</a>
-
 					<div class="qh">
 					 <div class="aob">
 						Etiam porta sem malesuada magna mollis euismod. Donec id elit non mi porta gravida at eget metus. Praesent
@@ -348,7 +346,6 @@
 		</div>
 	 </div>
 	</div>
-
 	<div class="cd fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true">
 	 <div class="modal-dialog">
 		<div class="modal-content">
@@ -356,23 +353,19 @@
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			<h4 class="modal-title">Users</h4>
 		 </div>
-
 		 <div class="modal-body ame">
 			<div class="up">
 			 <ul class="qp cj ca">
-
 				<li class="b">
 				 <div class="qg">
 					<a class="qk" href="#">
 					 <img class="qi cu" src="assets/img/avatar-fat.jpg">
 					</a>
-
 					<div class="qh">
 					 <button class="cg fm fx eg">
 						<span class="c aok"></span> Follow
 					 </button>
 					 <strong>Jacob Thornton</strong>
-
 					 <p>@fat - San Francisco</p>
 					</div>
 				 </div>
@@ -382,13 +375,11 @@
 					<a class="qk" href="#">
 					 <img class="qi cu" src="assets/img/avatar-dhg.png">
 					</a>
-
 					<div class="qh">
 					 <button class="cg fm fx eg">
 						<span class="c aok"></span> Follow
 					 </button>
 					 <strong>Dave Gamache</strong>
-
 					 <p>@dhg - Palo Alto</p>
 					</div>
 				 </div>
@@ -398,13 +389,11 @@
 					<a class="qk" href="index.html#">
 					 <img class="qi cu" src="assets/img/avatar-mdo.png">
 					</a>
-
 					<div class="qh">
 					 <button class="cg fm fx eg">
 						<span class="c aok"></span> Follow
 					 </button>
 					 <strong>Mark Otto</strong>
-
 					 <p>@mdo - San Francisco</p>
 					</div>
 				 </div>
@@ -460,21 +449,17 @@
 			 </div>
 			 <h5 class="alc bluecolor">About</h5>
 			 <ul class="eb tc disc-list-ul">
-				<li class="disc-list">Best food<a class="pull-right align-right" href="index.html#">{{ $user->best_food }}</a>
+				<li class="disc-list">Best food<a class="pull-right align-right" href="#">{{ $user->best_food }}</a>
 				</li>
-				<li class="disc-list">Location<a class="pull-right align-right" href="index.html#"> {{ $user->location }} </a>
+				<li class="disc-list">Location<a class="pull-right align-right" href="#"> {{ $user->location }} </a>
 				</li>
-				<li class="disc-list">Gender<a class="pull-right align-right" href="index.html#"> {{  $user->gender }}</a></li>
+				<li class="disc-list">Gender<a class="pull-right align-right" href="#"> {{  $user->gender }}</a></li>
 				<li class="disc-list">Total Chops<a class="pull-right align-right"
-																						href="index.html#"> {{ $user->chops_count }} </a></li>
+																						href="#"> {{ $user->chops_count }} </a></li>
 			 </ul>
 			</div>
 		 </div>
-
-
 		</div>
-
-
 		<div class="ha">
 		 <ul class="ca qp anw">
 
