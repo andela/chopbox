@@ -3,7 +3,6 @@
 <head>
     @include('includes.head')
 </head>
-
 <body class="anf">
     @include('includes.body')
 

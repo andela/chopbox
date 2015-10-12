@@ -151,4 +151,7 @@
             <div class="col-md-2"></div>
         </div><!--/.container-->
     </div><!--/.help-body-->
+
+    @include('includes.footer')
+
 @endsection
