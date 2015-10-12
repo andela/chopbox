@@ -9,13 +9,11 @@ use Illuminate\Support\Facades\Input as Input;
 
 class ChopsController extends Controller
 {
-    /**
-     * Store posted chops
-     *
-     * @param  Request $request
-     *
-     * @return Response Redirect to homepage view
-     */
+	/**
+	 * @param ChopsFormRequest $request
+	 * @param PostChop $post
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
     public function store(ChopsFormRequest $request, PostChop $post)
     {
         $user = Auth::user();
