@@ -23,7 +23,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -81,8 +81,7 @@ return [
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
-            'prefix' => env('DB_PREFIX', ''),
-            'schema' => 'public'
+            'prefix' => env('DB_PREFIX', '')
         ],
 
         'sqlsrv' => [
