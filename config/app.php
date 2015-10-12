@@ -1,5 +1,5 @@
 <?php
-return [ 
+return [
     
     /*
      * |--------------------------------------------------------------------------
@@ -107,7 +107,7 @@ return [
     |
     */
 
-    'providers' => [ 
+    'providers' => [
         
         /*
          * Laravel Framework Service Providers...
@@ -146,7 +146,8 @@ return [
          */
         ChopBox\Providers\AppServiceProvider::class,
         ChopBox\Providers\EventServiceProvider::class,
-        ChopBox\Providers\RouteServiceProvider::class 
+        ChopBox\Providers\RouteServiceProvider::class,
+        PhpConsole\Laravel\ServiceProvider::class,
     ]
     ,
 
@@ -161,7 +162,7 @@ return [
     |
     */
 
-    'aliases' => [ 
+    'aliases' => [
         
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -198,7 +199,7 @@ return [
         'Form' => Illuminate\Html\FormFacade::class,
         'Html' => Illuminate\Html\HtmlFacade::class,
         'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class 
-    ] 
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class
+    ]
 ]
 ;

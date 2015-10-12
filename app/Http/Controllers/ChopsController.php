@@ -23,19 +23,21 @@ class ChopsController extends Controller
     public function store(ChopsFormRequest $request, PostChop $post)
     {
         $user = Auth::user();
-
+		$images = null;
         if ($request->ajax()) {
             $images = Input::get('images');
-
             $chopsId = $post->saveChops($user, $request);
 
             if (! is_null($images[0])) {
+
                 $shortened_url = $post->uploadImages($images);
-                $post->saveUploads($user, $images, $shortened_url, $chopsId);
+				//return response()->json('I am here');
+                //$post->saveUploads($user, $images, $shortened_url, $chopsId);
             }
 
-            return response()->json($images);
             //return redirect()->action('HomeController@index');
         }
+
+		//return response()->json($images);
     }
 }
