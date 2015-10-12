@@ -2,9 +2,13 @@
 
 
 @section('title')
- Home
+    Welcome
 @endsection
 
+@section('custom-css')
+<link href="{!! asset('css/bootstrap-social.css') !!}" rel="stylesheet" />
+<link href="{!! asset('css/landing-page.css') !!}" rel="stylesheet" />
+@endsection
 
 @section('content')
  <div class="container-fluid bg-image">
@@ -93,4 +97,7 @@
 	 </div>
 	</div>
  </div>
+
+ @include('includes.footer')
+
 @endsection

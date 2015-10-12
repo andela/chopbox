@@ -147,7 +147,11 @@ return [
         ChopBox\Providers\AppServiceProvider::class,
         ChopBox\Providers\EventServiceProvider::class,
         ChopBox\Providers\RouteServiceProvider::class,
+<<<<<<< HEAD
 	    PhpConsole\Laravel\ServiceProvider::class,
+=======
+        ChopBox\Providers\AuthServiceProvider::class
+>>>>>>> staging
     ]
     ,
 
@@ -199,7 +203,13 @@ return [
         'Form' => Illuminate\Html\FormFacade::class,
         'Html' => Illuminate\Html\HtmlFacade::class,
         'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
+<<<<<<< HEAD
         'Socialite' => Laravel\Socialite\Facades\Socialite::class
     ]
+=======
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Gate' => Illuminate\Support\Facades\Gate::class
+    ] 
+>>>>>>> staging
 ]
 ;

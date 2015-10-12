@@ -3,6 +3,7 @@
 namespace ChopBox\Http\Controllers;
 
 use ChopBox\helpers\PostChop;
+
 use ChopBox\Http\Requests\ChopsFormRequest;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ChopsController extends Controller
 {
+
     /**
      * Store posted chops
      *
@@ -31,14 +33,17 @@ class ChopsController extends Controller
 
             if (! is_null($images[0])) {
 
+
                 $shortened_url = $post->uploadImages($images);
-				//return response()->json($shortened_url);
-                //$post->saveUploads($user, $images, $shortened_url, $chopsId);
+				return response()->json($shortened_url);
+                $post->saveUploads($user, $images, $shortened_url, $chopsId);
             }
 
             //return redirect()->action('HomeController@index');
         }
 
         //return response()->json($images);
+        return redirect()->action('HomeController@index');
+
     }
 }
