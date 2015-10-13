@@ -105,6 +105,18 @@ img.aog {
      margin-top: 2px;
  }
 
+.imagePreview {
+    width: 100px;
+    height: 180px;
+    margin: 10px 5px 5px 5px;
+    padding: 5px;
+    background-position: center center;
+    background-size: cover;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+    display: inline;
+}
+
  .cu {
   border: 2px solid #F5F8FA;
  }
+
