@@ -3,14 +3,9 @@
 <head>
     @include('includes.head')
 </head>
-<body>
-{{--@include('includes.header')--}}
-
-    @yield('content')
-
-    @include('includes.footer')
+<body class="anf">
+    @include('includes.body')
 
     @include('includes.script')
-
 </body>
 </html>

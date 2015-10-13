@@ -6,7 +6,23 @@
 <![endif]-->
 
 <!-- Scripts -->
-<script src="{!! asset('js/jquery.js') !!}"></script>
+<script src="{!! asset('js/jquery.min.js') !!}"></script>
+<script src="{!! asset('js/expanding.js') !!}"></script>
+<script src="{!! asset('js/chart.js') !!}"></script>
+<script src="{!! asset('js/toolkit.js') !!}"></script>
+<script src="{!! asset('js/application.js') !!}"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="{!! asset('js/bootstrap.min.js') !!}"></script>
+<script>
+    // execute/clear BS loaders for docs
+    $(function(){
+        if (window.BS&&window.BS.loader&&window.BS.loader.length) {
+            while(BS.loader.length){(BS.loader.pop())()}
+        }
+    })
+</script>
+
+<script>
+    $('#camera').click(function() {
+        $( "#file" ).click();
+    });
+</script>

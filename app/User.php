@@ -42,7 +42,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             'password',
             'status',
             'profile_state'
-        ];
+    ];
 
 
 
@@ -50,7 +50,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return $this->hasMany('ChopBox\Favourite');
     }
-
 
     public function uploads()
     {
