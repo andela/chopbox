@@ -6,11 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chop extends Model
 {
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
       'chops_name',
       'file_uri',
       'likes'
-  ];
+    ];
 
     public function user()
     {

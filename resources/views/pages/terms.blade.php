@@ -8,16 +8,6 @@
     <link href="{!! asset('css/footer.css') !!}" rel="stylesheet" />
 @endsection
 
-@section('navbar')
-    <div class="collapse navbar-collapse" id="global-nav">
-        <div class="navbar-right">
-            <ul class="nav navbar-nav">
-                <li><a href="{{url('/')}}"><b>Home</b></a></li>
-            </ul>
-        </div>
-    </div>
-@endsection
-
 @section('content')
     <h1 class="rte-heading text-center">Terms of Service</h1>
     <div class="row">

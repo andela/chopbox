@@ -2,17 +2,37 @@
 
 namespace ChopBox\helpers;
 
-use ChopBox\Http\Requests\ChopsFormRequest;
-use ChopBox\Upload;
 use ChopBox\Chop;
 use ChopBox\User;
+use ChopBox\Upload;
+use ChopBox\Http\Requests\ChopsFormRequest;
 
 class PostChop
 {
+    /**
+     * User chops
+     * @var Chop
+     */
     private $chops;
+
+    /**
+     * Shortener
+     * @var ShortenUrl
+     */
     private $shortener;
+
+    /**
+     * File uploaded by the user
+     * @var string
+     */
     private $uploadFile;
 
+    /**
+     * PostChop constructor
+     * @param Chop       $chop
+     * @param ShortenUrl $shortener
+     * @param UploadFile $uploadFile
+     */
     public function __construct(Chop $chop, ShortenUrl $shortener, UploadFile $uploadFile)
     {
         $this->chops = $chop;
@@ -50,7 +70,6 @@ class PostChop
             //Upload each image to Cloudinary and shorten the url returned with Bitly.
 
             for ($i = 0; $i < $numImages; $i++) {
-
                 $result[$i] = $this->uploadFile->uploadFile($images[$i]);
                 $url[$i] = $result[$i]['url']; //get the url from Cloudinary result;
 				$this->setBitlyConfig();

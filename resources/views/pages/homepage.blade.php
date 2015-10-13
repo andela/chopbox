@@ -47,7 +47,7 @@
 @endsection
 
 @section('content')
- <div class="anf">
+ <div>
 	<div class="anp" id="app-growl"></div>
 	<div class="cd fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="msgModal" aria-hidden="true">
 	 <div class="modal-dialog">
@@ -391,7 +391,7 @@
 				</li>
 				<li class="b">
 				 <div class="qg">
-					<a class="qk" href="index.html#">
+					<a class="qk" href="#">
 					 <img class="qi cu" src="assets/img/avatar-mdo.png">
 					</a>
 
@@ -458,11 +458,12 @@
 			 <ul class="eb tc disc-list-ul">
 				<li class="disc-list">Best food<a class="pull-right align-right" href="#">{{ $user->best_food }}</a>
 				</li>
-				<li class="disc-list">Location<a class="pull-right align-right" href="#"> {{ $user->location }} </a>
+				<li class="disc-list">Location<a class="pull-right align-right" href="#"> {{ $user->location }}</a>
 				</li>
-				<li class="disc-list">Gender<a class="pull-right align-right" href="#"> {{  $user->gender }}</a></li>
-				<li class="disc-list">Total Chops<a class="pull-right align-right"
-																						href="#"> {{ $user->chops_count }} </a></li>
+				<li class="disc-list">Gender<a class="pull-right align-right" href="#"> {{  $user->gender }}</a>
+                </li>
+				<li class="disc-list">Total Chops<a class="pull-right align-right" href="#"> {{ $user->chops_count }}</a>
+                </li>
 			 </ul>
 			</div>
 		 </div>
@@ -509,7 +510,7 @@
 					</div>
 					@endcan
 
-					<a class="qk" href="index.html#">
+					<a class="qk" href="#">
 					 <img class="qi cu round" src="{{ $chop->user->image_uri }}">
 					</a>
 					<a class="qk shift-down" href="">
@@ -546,7 +547,7 @@
 				 <ul class="qp all">
 					@foreach ($chop->comments as $comment)
 					 <li class="qg">
-						<a class="qk" href="index.html#">
+						<a class="qk" href="#">
 						 <img class="qi cu small-round" src="{{ $comment->user->image_uri }}">
 						</a>
 
@@ -563,7 +564,7 @@
 				 </ul>
 
 				 <form action="" method="POST">
-					<input class="form-control" rows="1" placeholder="Comment..."></input>
+					<input class="form-control" rows="1" placeholder="Comment..." />
 				 </form>
 				</div>
 			 </li><br/>
@@ -579,7 +580,7 @@
 			 <ul class="qp all">
 				@foreach($topTen as $top_user)
 				 <li class="qg">
-					<a class="qk" href="index.html#">
+					<a class="qk" href="#">
 					 <img class="qi cu small-round" src="{{ $top_user->image_uri }}">
 					</a>
 
