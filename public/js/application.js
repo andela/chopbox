@@ -123,21 +123,21 @@ $('document').ready(function () {
             $("input[name=file]").val(files);
         });
     });
-    $("#post").submit(function (e) {
-        e.preventDefault();
-        var about = $('#about').val();
-        $.ajax({
-            type: 'POST',
-            url: 'chops',
-            dataType: 'json',
-            data: {about: about, images: files},
-            success: function (data) {
-                console.log(data);
-            },
-            error: function (xhr, request, thrownError) {
-                alert(xhr.status);
-                alert(thrownError);
-            }
-        });
-    });
+    //$("#post").submit(function (e) {
+    //    e.preventDefault();
+    //    var about = $('#about').val();
+    //    $.ajax({
+    //        type: 'POST',
+    //        url: 'chops',
+    //        dataType: 'json',
+    //        data: {about: about, images: files},
+    //        success: function (data) {
+    //            console.log(data);
+    //        },
+    //        error: function (xhr, request, thrownError) {
+    //            alert(xhr.status);
+    //            alert(thrownError);
+    //        }
+    //    });
+    //});
 });
