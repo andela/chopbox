@@ -48,6 +48,7 @@ class PostChop
             $this->setBitlyConfig();
 
             //Upload each image to Cloudinary and shorten the url returned with Bitly.
+
             for ($i = 0; $i < $numImages; $i++) {
 
                 $result[$i] = $this->uploadFile->uploadFile($images[$i]);
@@ -63,7 +64,7 @@ class PostChop
     /**
      * Save info of uploaded images to database
      *
-     * @param $user Authenticated user
+     * @param $user
      *
      * @param array $images Uploaded images
      *
@@ -85,13 +86,13 @@ class PostChop
         }
     }
 
-    /**
-     * Save chops in the database
-     *
-     * @param $user Authenticated user
-     *
-     * @param $request
-     */
+	/**
+	 * Save a chops to database
+	 *
+	 * @param User $user
+	 * @param ChopsFormRequest $request
+	 * @return mixed
+	 */
     public function saveChops(User $user, ChopsFormRequest $request)
     {
         // Save chop details to database

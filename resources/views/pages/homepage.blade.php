@@ -419,12 +419,12 @@
 		 <div class="qw rd aof alt tinted">
 			<div class="qy" style="background-image: url('{{ $user->image_uri }}');"></div>
 			<div class="qx dj">
-			 <a href="profile.1">
+			 <a href="#">
 				<img class="aog" src="{{ $user->image_uri }}">
 			 </a>
 
 			 <h5 class="qz username">
-				<a class="akt" href="profile.1">{{ '@'.strtolower($user->username) }}</a>
+				<a class="akt" href="#">{{ '@'.strtolower($user->username) }}</a>
 			 </h5>
 
 			 <p class="alt">{{ $user->about }}</p>
@@ -475,6 +475,7 @@
 			 {!! Form::textarea('about', null, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required',
 			 'placeholder'=>"What's that special meal you ate today?"]) !!}
 			 {!! Form::file('image[]', ['multiple'=> true, 'id'=>'file']) !!}
+			 <div id="imagePreview"></div>
 			 <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera" title="Attach photos"></button>
 			 {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
 			 {!! Form::close() !!}
@@ -599,10 +600,10 @@
 
 		 <div class="qw rd aoj tinted">
 			<div class="qx centralize">
-			 <a href="#">About</a>
-			 <a href="#">Help</a>
-			 <a href="#">Terms</a>
-			 <a href="#">Privacy</a><br>
+			 <a href="{{ url('about') }}">About</a>
+			 <a href="{{ url('help') }}">Help</a>
+			 <a href="{{ url('terms') }}">Terms</a>
+			 <a href="{{ url('privacy') }}">Privacy</a><br>
 			 © 2015 ChopBox
 			</div>
 		 </div>
