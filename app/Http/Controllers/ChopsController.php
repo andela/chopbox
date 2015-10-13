@@ -30,7 +30,6 @@ class ChopsController extends Controller
             $images = Input::get('images');
             $chopsId = $post->saveChops($user, $request);
 
-
             if (! is_null($images[0])) {
                 $shortened_url = $post->uploadImages($images);
                 $post->saveUploads($user, $images, $shortened_url, $chopsId);

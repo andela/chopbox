@@ -47,7 +47,7 @@
 @endsection
 
 @section('content')
- <div class="anf">
+ <div>
 	<div class="anp" id="app-growl"></div>
 	<div class="cd fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="msgModal" aria-hidden="true">
 	 <div class="modal-dialog">
@@ -322,6 +322,7 @@
 					<a class="qk" href="#">
 					 <img class="cu qi" src="assets/img/avatar-mdo.png">
 					</a>
+
 					<div class="qh">
 					 <div class="aob">
 						Etiam porta sem malesuada magna mollis euismod. Donec id elit non mi porta gravida at eget metus. Praesent
@@ -361,11 +362,13 @@
 					<a class="qk" href="#">
 					 <img class="qi cu" src="assets/img/avatar-fat.jpg">
 					</a>
+
 					<div class="qh">
 					 <button class="cg fm fx eg">
 						<span class="c aok"></span> Follow
 					 </button>
 					 <strong>Jacob Thornton</strong>
+
 					 <p>@fat - San Francisco</p>
 					</div>
 				 </div>
@@ -375,25 +378,29 @@
 					<a class="qk" href="#">
 					 <img class="qi cu" src="assets/img/avatar-dhg.png">
 					</a>
+
 					<div class="qh">
 					 <button class="cg fm fx eg">
 						<span class="c aok"></span> Follow
 					 </button>
 					 <strong>Dave Gamache</strong>
+
 					 <p>@dhg - Palo Alto</p>
 					</div>
 				 </div>
 				</li>
 				<li class="b">
 				 <div class="qg">
-					<a class="qk" href="index.html#">
+					<a class="qk" href="#">
 					 <img class="qi cu" src="assets/img/avatar-mdo.png">
 					</a>
+
 					<div class="qh">
 					 <button class="cg fm fx eg">
 						<span class="c aok"></span> Follow
 					 </button>
 					 <strong>Mark Otto</strong>
+
 					 <p>@mdo - San Francisco</p>
 					</div>
 				 </div>
@@ -412,12 +419,12 @@
 		 <div class="qw rd aof alt tinted">
 			<div class="qy" style="background-image: url('{{ $user->image_uri }}');"></div>
 			<div class="qx dj">
-			 <a href="profile.1">
+			 <a href="#">
 				<img class="aog" src="{{ $user->image_uri }}">
 			 </a>
 
 			 <h5 class="qz username">
-				<a class="akt" href="profile.1">{{ '@'.strtolower($user->username) }}</a>
+				<a class="akt" href="#">{{ '@'.strtolower($user->username) }}</a>
 			 </h5>
 
 			 <p class="alt">{{ $user->about }}</p>
@@ -451,11 +458,12 @@
 			 <ul class="eb tc disc-list-ul">
 				<li class="disc-list">Best food<a class="pull-right align-right" href="#">{{ $user->best_food }}</a>
 				</li>
-				<li class="disc-list">Location<a class="pull-right align-right" href="#"> {{ $user->location }} </a>
+				<li class="disc-list">Location<a class="pull-right align-right" href="#"> {{ $user->location }}</a>
 				</li>
-				<li class="disc-list">Gender<a class="pull-right align-right" href="#"> {{  $user->gender }}</a></li>
-				<li class="disc-list">Total Chops<a class="pull-right align-right"
-																						href="#"> {{ $user->chops_count }} </a></li>
+				<li class="disc-list">Gender<a class="pull-right align-right" href="#"> {{  $user->gender }}</a>
+                </li>
+				<li class="disc-list">Total Chops<a class="pull-right align-right" href="#"> {{ $user->chops_count }}</a>
+                </li>
 			 </ul>
 			</div>
 		 </div>
@@ -468,6 +476,7 @@
 			 {!! Form::textarea('about', null, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required',
 			 'placeholder'=>"What's that special meal you ate today?"]) !!}
 			 {!! Form::file('image[]', ['multiple'=> true, 'id'=>'file']) !!}
+			 <div id="imagePreview"></div>
 			 <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera" title="Attach photos"></button>
 			 {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
 			 {!! Form::close() !!}
@@ -501,7 +510,7 @@
 					</div>
 					@endcan
 
-					<a class="qk" href="index.html#">
+					<a class="qk" href="#">
 					 <img class="qi cu round" src="{{ $chop->user->image_uri }}">
 					</a>
 					<a class="qk shift-down" href="">
@@ -538,7 +547,7 @@
 				 <ul class="qp all">
 					@foreach ($chop->comments as $comment)
 					 <li class="qg">
-						<a class="qk" href="index.html#">
+						<a class="qk" href="#">
 						 <img class="qi cu small-round" src="{{ $comment->user->image_uri }}">
 						</a>
 
@@ -555,7 +564,7 @@
 				 </ul>
 
 				 <form action="" method="POST">
-					<input class="form-control" rows="1" placeholder="Comment..."></input>
+					<input class="form-control" rows="1" placeholder="Comment..." />
 				 </form>
 				</div>
 			 </li><br/>
@@ -571,7 +580,7 @@
 			 <ul class="qp all">
 				@foreach($topTen as $top_user)
 				 <li class="qg">
-					<a class="qk" href="index.html#">
+					<a class="qk" href="#">
 					 <img class="qi cu small-round" src="{{ $top_user->image_uri }}">
 					</a>
 
