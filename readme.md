@@ -2,7 +2,12 @@
 
 ChopBox is an awesome stopover for foodies all over the world to socialize. Registered members of ChopBox get to share their
 favorite foods, recent ones they've tried, and those ones which they'd love to try. Users may upload enticing images alongside their posts to capture the attention of other users. ChopBox also allows its members to comment on,
-and show interest in what has been shared on the platform through likes and comments.
+and show interest in what has been shared on the platform through likes and comments. 
+
+## Technologies used
+ChopBox was built using
+- PHP
+- Laravel
 
 ## Installation
 
@@ -10,12 +15,13 @@ and show interest in what has been shared on the platform through likes and comm
 
 1. Clone this repository: `git clone git@github.com:andela/chopbox.git chopbox/`
 2. `cd` into the chopbox folder and run `composer install`
-3. Run php -S localhost:8000 -t public
-4. Visit localhost:8000 in your browser to see the app running.
+3. Create a `.env` file using the provided `.env.example` file as a guide
+4. Run php -S localhost:8000 -t public
+5. Visit localhost:8000 in your browser to see the app running.
 
 ## Database set-up
 
-1. Create a postgres database with the name `chopbox`
+1. Create a mysql database with the name `chopbox`
 2. `cd` into the chopbox folder and run `php artisan:migrate` to set up the required tables for the app.
 
 ## Contributing
