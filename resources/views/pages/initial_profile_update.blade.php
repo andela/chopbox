@@ -1,4 +1,10 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app')
+
+@section('custom-css')
+<link href="{!! asset('css/forms.css') !!}" rel="stylesheet" />
+@endsection
+
+@section('content')
     <div class="">
         <div class="container">
             <div class="col-lg-12">
@@ -103,5 +109,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
+    @include('includes.footer')
+
 @endsection
