@@ -8,16 +8,21 @@
  */
 namespace ChopBox\ChopBox\Authenticate;
 
-use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Socialite;
-use ChopBox\ChopBox\Repository\UserRepository;
 use Request;
+use Socialite;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Auth\Guard;
+use ChopBox\ChopBox\Repository\UserRepository;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class SocialAuthenticateUser {
+
   use AuthenticatesAndRegistersUsers;
-  
+
+  /**
+   * Store users details
+   * @var UserRepository
+   */
   private $users;
 
   public function __construct(UserRepository $users) {
@@ -25,22 +30,27 @@ class SocialAuthenticateUser {
   }
 
   public function execute($request, $listener, $provider) {
-    
-    if (!$request->all()) {
+
+    if (! $request->all()) {
       return $this->getAuthorizationFirst($provider);
-    } elseif (isset($request->all() ['errors'])) {
+    }
+    elseif ( isset($request->all() ['errors'])) {
       return redirect('/login')->withErrors('Error authenticating with ' . $provider);
-    } else {
+    }
+    else {
       $userSocialDetails = $this->getSocialMediaProfile($provider);
       $user = $this->users->findUserByEmail($userSocialDetails->email);
+
       if ($user) {
         Auth::loginUsingId($user->id, true);
+
         return redirect()->intended('/');
-       
-      } else {
-        session([ 
-            'socialUser' => $userSocialDetails 
+      }
+      else {
+        session([
+            'socialUser' => $userSocialDetails
         ]);
+
         return redirect()->intended('/social_password');
       }
     }
