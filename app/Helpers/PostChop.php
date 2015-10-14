@@ -60,7 +60,6 @@ class PostChop
      */
     public function uploadImages($images)
     {
-
         if (!is_null($images[0])) {
             $numImages = count($images);
 
@@ -72,7 +71,7 @@ class PostChop
             for ($i = 0; $i < $numImages; $i++) {
                 $result[$i] = $this->uploadFile->uploadFile($images[$i]);
                 $url[$i] = $result[$i]['url']; //get the url from Cloudinary result;
-				$this->setBitlyConfig();
+                $this->setBitlyConfig();
                 $shortened_url[$i] = $this->shortener->shortenUrl($url[$i]);
             }
 
@@ -105,13 +104,13 @@ class PostChop
         }
     }
 
-	/**
-	 * Save a chops to database
-	 *
-	 * @param User $user
-	 * @param ChopsFormRequest $request
-	 * @return mixed
-	 */
+    /**
+     * Save a chops to database
+     *
+     * @param User $user
+     * @param ChopsFormRequest $request
+     * @return mixed
+     */
     public function saveChops(User $user, ChopsFormRequest $request)
     {
         // Save chop details to database
@@ -123,6 +122,6 @@ class PostChop
         $user->chops_count++;
         $user->save();
 
-		return $this->chops->id;
+        return $this->chops->id;
     }
 }
