@@ -50,6 +50,14 @@ textarea {
     color: #ffffff;
 }
 
+.landing-navbar {
+    background: #ffffff;
+}
+
+.landing-navbar-brand {
+    color: #286090;
+}
+
 .anf {
     background-color: #F5F8FA;
 }
