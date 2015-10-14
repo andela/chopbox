@@ -28,11 +28,6 @@
             "ChopBox\\": "app/"
         }
     },
-    "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ]
-    },
     "scripts": {
         "post-install-cmd": [
             "php artisan clear-compiled",
