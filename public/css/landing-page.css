@@ -12,7 +12,7 @@ body, html {
 	margin-bottom: 0px;
 }
 
-body, h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
 	font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 700;
 }
@@ -150,11 +150,6 @@ body, h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-footer {
-	padding: 50px 0;
-	background-color: #f8f8f8;
-}
-
 p.copyright {
     margin: 15px 0 0;
 }
@@ -251,9 +246,38 @@ p.copyright {
     left:-50px;
 }
 
+.space-out {
+    padding-top: 50px;
+    text-align: left;
+    padding-left: 210px;
+    color: #E5E5E5;
+    font-weight: 200;
+    font-size: small;
+}
+
+.space-out > p {
+    word-spacing: 20px;
+}
+
+.space-out > p > a {
+    color: #E5E5E5;
+    text-decoration: none;
+}
+
+.space-out > p > a:hover {
+    text-decoration: underline;
+}
+
+div > p > span {
+    word-spacing: normal;
+}
+
+#hide {
+    display: block;
+}
+
 /*Help Center and Privacy CSS*/
 .bg-image {
-    padding: 0 0 50px 0;
     min-height: 100%;
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../img/chops-bg.jpg) no-repeat center center;
     background-size: cover;
@@ -289,7 +313,7 @@ input[type=checkbox].some-space {
 }
 
 .help-body {
-    background-color: #f5f5f5;
+    /*background-color: #f5f5f5;*/
     min-height: 700px;
 }
 
@@ -305,7 +329,7 @@ input[type=checkbox].some-space {
 
 /*Help CSS*/
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-    background-color: #000098;
+    background-color: #286090;
 }
 
 .nav > li > a:hover, .nav > li > a:focus {
@@ -313,7 +337,7 @@ input[type=checkbox].some-space {
 }
 
 .nav-pills > li > a {
-    color: #000098;
+    color: #286090;
 }
 
 .fix-me {
@@ -334,8 +358,8 @@ input[type=checkbox].some-space {
 
 hr {
     height: 1px;
-    color: #000098;
-    background-color: #000098;
+    color: #286090;
+    background-color: #286090;
 }
 
 /*Privacy CSS*/
@@ -361,13 +385,6 @@ hr {
 .last-privacy-update {
     text-align: center;
     font-weight: 400;
-}
-
-.bg-image {
-    padding: 0 0 50px 0;
-    min-height: 100%;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../img/chops-bg.jpg) no-repeat center center;
-    background-size: cover;
 }
 
 .welcome-text{

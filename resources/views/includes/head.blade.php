@@ -13,10 +13,10 @@
 <link href="{!! asset('css/toolkit.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('css/application.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
+<link href="{!! asset('css/homepage.css') !!}" media="all" rel="stylesheet" type="text/css" />
 
 @yield('custom-css')
 
-<link href="{!! asset('css/homepage.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css" />
 
 <style>
