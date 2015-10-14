@@ -2,7 +2,6 @@
 
 namespace ChopBox\Http\Controllers\Auth;
 
-use ChopBox\ChopBox\Authenticate\SocialAuthenticateUser;
 use ChopBox\Http\Controllers\Controller;
 use ChopBox\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -11,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Socialite;
 use Validator;
+
 
 class AuthController extends Controller
 {
@@ -33,7 +33,6 @@ class AuthController extends Controller
 	/**
 	 * Create a new authentication controller instance.
 	 *
-	 * @return void
 	 */
 	public function __construct()
 	{
@@ -44,12 +43,12 @@ class AuthController extends Controller
 
 	public function socialLogin(SocialAuthenticateUser $authenticateUser, Request $request, $provider = null)
 	{
-		$social_providders = array(
+		$socialProvidders = array(
 			"facebook",
 			"google"
 		);
 
-		if(in_array(strtolower($provider), $social_providders)) {
+		if(in_array(strtolower($provider), $socialProvidders)) {
 			return $authenticateUser->execute($request, $this, $provider);
 		} else{
 			return redirect($this->registerPath)->withErrors('Invalid Login Provider');
@@ -109,17 +108,17 @@ class AuthController extends Controller
 	 */
 	public function postRegister(Request $request)
 	{
-
-		$request->all()['name'] = trim($request->all()['name']);
-		$request->all()['email'] = trim($request->all()['email']);
+		$this->sanitizeInputs($request);
 
 		$validator = $this->validator($request->all());
 
+
 		if($validator->fails()) {
-			return redirect($this->registerPath)->withErrors($validator);
+			return redirect($this->registerPath)->withInput()->withErrors($validator);
 		}
 
 		Auth::login($this->create($request->all()));
+
 		return redirect($this->redirectPath());
 	}
 
@@ -133,7 +132,7 @@ class AuthController extends Controller
 	protected function validator(array $data)
 	{
 		return Validator::make($data, [
-			'name' => 'required|max:255|unique:users,username|min:3',
+			'name' => 'invalid|required|max:255|unique:users,username|min:3',
 			'email' => 'required|email|max:255|unique:users',
 			'password' => 'required|confirmed|min:8'
 		]);
@@ -144,6 +143,7 @@ class AuthController extends Controller
 		if(! $request->session()->has('socialUser')) {
 			return redirect()->intended('/login');
 		}
+
 		return view('auth.set_social_password');
 	}
 
@@ -155,7 +155,7 @@ class AuthController extends Controller
 
 		$validation = Validator::make($request->all(), [
 			'password' => 'required|confirmed|min:8',
-			'name' => 'required|max:255|unique:users,username|min:3'
+			'name' => 'invalid|required|max:255|unique:users,username|min:3'
 		]);
 
 		if($validation->fails()) {
@@ -163,8 +163,8 @@ class AuthController extends Controller
 		} else{
 			$user_array = array(
 				'email' => $request->session()->get('socialUser')->getEmail(),
-				'name' => $request->all() ['name'],
-				'password' => $request->all() ['password']
+				'name' => $request->input('name'),
+				'password' => $request->input('password')
 			);
 
 			Auth::login($this->create($user_array));
@@ -191,6 +191,20 @@ class AuthController extends Controller
 			'status' => TRUE,
 			'profile_state' => FALSE
 		]);
+	}
+
+	/**
+	 * Sanitize the Inputs.
+	 *
+	 */
+	public function sanitizeInputs(Request $request)
+	{
+		$input = $request->all();
+
+		$input['name'] = trim(filter_var($request->input('name'), FILTER_SANITIZE_STRING));
+		$input['email'] = trim(filter_var($request->input('email'), FILTER_SANITIZE_EMAIL));
+
+		$request->replace($input);
 	}
 
 }
