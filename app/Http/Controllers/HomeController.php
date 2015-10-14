@@ -71,12 +71,13 @@ class HomeController extends Controller
     private function saveUser(User $user, ProfileRequest $request)
     {
         $user->profile_state = true;
-        $user->firstname = $request ['firstname'];
-        $user->lastname = $request ['lastname'];
-        $user->location = $request ['location'];
-        $user->gender = $request ['gender'];
-        $user->best_food = $request ['best_food'];
-        $user->image_uri = $this->getAvatarUrl($user);
+        $user->firstname = trim($request ['firstname']);
+        $user->lastname = trim($request ['lastname']);
+        $user->location = trim($request ['location']);
+	    $user->about = trim($request ['about']);
+        $user->gender = trim($request ['gender']);
+        $user->best_food = trim($request ['best_food']);
+        $user->image_uri = trim($this->getAvatarUrl($user));
         $user->save();
     }
 
