@@ -112,4 +112,14 @@ img.aog {
     display: inline;
 }
 
+div#image-crop-overlay {
+    background-color : #ffffff;
+    overflow : hidden;
+}
+
+div#image-crop-outline {
+    background : #ffffff url('../img/outline.gif');
+    overflow : hidden;
+}
+
 
