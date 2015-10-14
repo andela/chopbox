@@ -6,3 +6,11 @@
     padding-top: 15px;
     background-color: #ffffff;
 }
+
+.footer a {
+    color: #286090;
+}
+
+#hide {
+    display: block;
+}
