@@ -518,22 +518,39 @@
                                         {!! Form::model($chop,['url' => 'chopsEdit', 'files' => true, 'method' => 'put']) !!}
                                         {!! Form::hidden('chop_id', $chop->id) !!}
                                         {!! Form::textarea('about', $chop->about, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
-                                        {!! Form::file('image[]', ['multiple'=> true, 'id'=>'file']) !!}
-                                        <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera" title="Attach photos"></button>
-                                        {!! Form::submit('Edit', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
-                                        {!! Form::close() !!}
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        {!! Form::submit('Edit', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
+                                        {!! Form::close() !!}
                                     </div>
                                 </div>
 
                             </div>
                         </div>   <!-- End of Edit Modal -->
 
-                        <a href="#">
+                        <a data-toggle="modal" data-target="#confirmDelete">
 						    <i class="glyphicon glyphicon-remove-circle"></i>
                         </a>
+
+                        <!-- Delete Modal Dialog -->
+                        <div class="modal fade" id="confirmDelete" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">Delete Parmanently</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure about this ?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-danger" id="confirm">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>      <!-- End of Delete Modal -->
+
 					</div>
 					@endcan
 
