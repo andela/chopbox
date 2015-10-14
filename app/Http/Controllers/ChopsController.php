@@ -3,11 +3,11 @@
 namespace ChopBox\Http\Controllers;
 
 use ChopBox\helpers\PostChop;
+use Illuminate\Support\Facades\Auth;
 use ChopBox\Http\Requests\ChopsFormRequest;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input as Input;
 use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Facades\Input as Input;
 
 class ChopsController extends Controller
 {
