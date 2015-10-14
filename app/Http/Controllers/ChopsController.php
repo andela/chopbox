@@ -2,6 +2,7 @@
 
 namespace ChopBox\Http\Controllers;
 
+use ChopBox\Chop;
 use ChopBox\helpers\PostChop;
 
 use ChopBox\Http\Requests\ChopsFormRequest;
@@ -40,5 +41,19 @@ class ChopsController extends Controller
 
         return redirect()->action('HomeController@index');
 
+    }
+
+    public function update(ChopsFormRequest $request)
+    {
+
+        $chop_id = $request['chop_id'];
+
+        $chop = Chop::find($chop_id);
+
+        $chop->about = $request['about'];
+
+        $chop->save();
+
+        return redirect()->action('HomeController@index');
     }
 }
