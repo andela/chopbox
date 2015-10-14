@@ -56,3 +56,4 @@ Route::post('profile_complete', 'HomeController@firstProfile');
 
 Route::post('comment', 'CommentController@addComment');
 
+

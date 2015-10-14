@@ -10,15 +10,14 @@
         "cloudinary/cloudinary_php": "^1.1",
         "illuminate/html": "^5.0",
         "jrm2k6/cloudder": "0.2.",
-        "doctrine/dbal": "^2.5",
-        "codeception/codeception": "*",
-        "laravel/socialite": "^2.0",
-        "mockery/mockery": "dev-master"
+        "laravel/socialite": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
-        "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1"
+        "phpspec/phpspec": "~2.1",
+        "php-console/php-console": "~3.0",
+        "mockery/mockery": "0.9.4",
+        "php-console/laravel-service-provider": "~5.0"
     },
 
     "autoload": {
@@ -56,4 +55,6 @@
     "config": {
         "preferred-install": "dist"
     }
+
+
 }

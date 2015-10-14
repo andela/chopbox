@@ -1,4 +1,4 @@
-#file {
+#file, #hide {
     display: none;
 }
 
@@ -15,7 +15,7 @@ textarea {
 }
 
 .username {
-    color: purple;
+    color: #286090;
 }
 
 .centralize {
@@ -33,22 +33,25 @@ textarea {
 }
 
 .pd .navbar-nav > li > a, .pd .navbar-nav > li > a:hover, .pd .navbar-nav > li > a:focus,  .pd .navbar-nav > li > a:visited  {
-    color: #337ab7;
+    color: #fff;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .app-navbar {
-    background: white;
+    background: #286090;
+    box-shadow: 1px 1px 1px #ccc;
 }
 
 .chopbox {
 
     font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 900;
+    color: #ffffff;
 }
 
 .anf {
-    background-color: gainsboro;
+    background-color: #F5F8FA;
 }
 
 .glyphicon-heart {
@@ -94,9 +97,26 @@ img.aog {
  }
 
  .tinted {
-     border-color: #337ab7;
- }
+    border-color: #cccccc;
+    box-shadow: 1px 1px 1px #ccc;
+  }
 
  .post-btn, #camera {
      margin-top: 2px;
  }
+
+.imagePreview {
+    width: 100px;
+    height: 180px;
+    margin: 10px 5px 5px 5px;
+    padding: 5px;
+    background-position: center center;
+    background-size: cover;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+    display: inline;
+}
+
+ .cu {
+  border: 2px solid #F5F8FA;
+ }
+

@@ -322,6 +322,7 @@
 					<a class="qk" href="#">
 					 <img class="cu qi" src="assets/img/avatar-mdo.png">
 					</a>
+
 					<div class="qh">
 					 <div class="aob">
 						Etiam porta sem malesuada magna mollis euismod. Donec id elit non mi porta gravida at eget metus. Praesent
@@ -361,11 +362,13 @@
 					<a class="qk" href="#">
 					 <img class="qi cu" src="assets/img/avatar-fat.jpg">
 					</a>
+
 					<div class="qh">
 					 <button class="cg fm fx eg">
 						<span class="c aok"></span> Follow
 					 </button>
 					 <strong>Jacob Thornton</strong>
+
 					 <p>@fat - San Francisco</p>
 					</div>
 				 </div>
@@ -375,11 +378,13 @@
 					<a class="qk" href="#">
 					 <img class="qi cu" src="assets/img/avatar-dhg.png">
 					</a>
+
 					<div class="qh">
 					 <button class="cg fm fx eg">
 						<span class="c aok"></span> Follow
 					 </button>
 					 <strong>Dave Gamache</strong>
+
 					 <p>@dhg - Palo Alto</p>
 					</div>
 				 </div>
@@ -389,11 +394,13 @@
 					<a class="qk" href="#">
 					 <img class="qi cu" src="assets/img/avatar-mdo.png">
 					</a>
+
 					<div class="qh">
 					 <button class="cg fm fx eg">
 						<span class="c aok"></span> Follow
 					 </button>
 					 <strong>Mark Otto</strong>
+
 					 <p>@mdo - San Francisco</p>
 					</div>
 				 </div>
@@ -469,6 +476,7 @@
 			 {!! Form::textarea('about', null, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required',
 			 'placeholder'=>"What's that special meal you ate today?"]) !!}
 			 {!! Form::file('image[]', ['multiple'=> true, 'id'=>'file']) !!}
+			 <div id="imagePreview"></div>
 			 <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera" title="Attach photos"></button>
 			 {!! Form::submit('Post', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
 			 {!! Form::close() !!}

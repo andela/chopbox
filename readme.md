@@ -48,4 +48,3 @@ Thank you for considering contributing to ChopBox! The contribution guide is as 
 ## License
 
 The MIT License (MIT). Please see [License File](license.md) for more information.
-
