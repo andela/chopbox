@@ -500,13 +500,40 @@
 				 <div class="qo">
 					@can('update-chop', $chop)
 					<div class="eg">
-					 <a href="#">
-						<i class="glyphicon glyphicon-edit"></i>
-					 </a>
+                        <a data-toggle="modal" data-target="#editModal-{{ $chop->id  }}">
+						    <i class="glyphicon glyphicon-edit"></i>
+                        </a>
 
-					 <a href="#">
-						<i class="glyphicon glyphicon-remove-circle"></i>
-					 </a>
+                        <!-- Edit Modal -->
+                        <div id="editModal-{{ $chop->id }}" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Edit Chop</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        {!! Form::model($chop,['url' => 'chopsEdit', 'files' => true, 'method' => 'put']) !!}
+                                        {!! Form::hidden('chop_id', $chop->id) !!}
+                                        {!! Form::textarea('about', $chop->about, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
+                                        {!! Form::file('image[]', ['multiple'=> true, 'id'=>'file']) !!}
+                                        <button type="button" class="cg fm glyphicon glyphicon-camera" id="camera" title="Attach photos"></button>
+                                        {!! Form::submit('Edit', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>   <!-- End of Edit Modal -->
+
+                        <a href="#">
+						    <i class="glyphicon glyphicon-remove-circle"></i>
+                        </a>
 					</div>
 					@endcan
 
