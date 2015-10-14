@@ -16,8 +16,7 @@
         "fzaninotto/faker": "~1.4",
         "phpspec/phpspec": "~2.1",
         "php-console/php-console": "~3.0",
-        "mockery/mockery": "0.9.4",
-        "php-console/laravel-service-provider": "~5.0"
+        "mockery/mockery": "0.9.4"
     },
 
     "autoload": {
@@ -27,11 +26,6 @@
         "psr-4": {
             "ChopBox\\": "app/"
         }
-    },
-    "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ]
     },
     "scripts": {
         "post-install-cmd": [
