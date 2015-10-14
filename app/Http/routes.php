@@ -54,4 +54,6 @@ Route::resource('chops', 'ChopsController');
 
 Route::post('profile_complete', 'HomeController@firstProfile');
 
+Route::put('chopsEdit', 'ChopsController@update');
+
 
