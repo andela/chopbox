@@ -105,6 +105,10 @@ img.aog {
      margin-top: 2px;
  }
 
+ .delete-btn {
+     margin-left: 10px;
+ }
+
 .imagePreview {
     width: 100px;
     height: 180px;

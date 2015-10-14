@@ -3,6 +3,7 @@
 namespace ChopBox\Http\Controllers;
 
 use ChopBox\Chop;
+use ChopBox\User;
 use ChopBox\helpers\PostChop;
 
 use ChopBox\Http\Requests\ChopsFormRequest;
@@ -53,6 +54,21 @@ class ChopsController extends Controller
         $chop->about = $request['about'];
 
         $chop->save();
+
+        return redirect()->action('HomeController@index');
+    }
+
+    public function destroy(ChopsFormRequest $request)
+    {
+        $user_id = $request['user_id'];
+        $chop_id = $request['chop_id'];
+
+        Chop::destroy($chop_id);
+
+        $user = User::find($user_id);
+
+        $user->chops_count = $user['chops_count'] - 1;
+        $user->save();
 
         return redirect()->action('HomeController@index');
     }

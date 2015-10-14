@@ -54,6 +54,6 @@ Route::resource('chops', 'ChopsController');
 
 Route::post('profile_complete', 'HomeController@firstProfile');
 
-Route::put('chopsEdit', 'ChopsController@update');
+Route::put('editChop', 'ChopsController@update');
 
-
+Route::delete('deleteChop', 'ChopsController@destroy');

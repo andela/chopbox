@@ -515,7 +515,7 @@
                                         <h4 class="modal-title">Edit Chop</h4>
                                     </div>
                                     <div class="modal-body">
-                                        {!! Form::model($chop,['url' => 'chopsEdit', 'files' => true, 'method' => 'put']) !!}
+                                        {!! Form::model($chop,['url' => 'editChop', 'files' => true, 'method' => 'put']) !!}
                                         {!! Form::hidden('chop_id', $chop->id) !!}
                                         {!! Form::textarea('about', $chop->about, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
                                     </div>
@@ -528,24 +528,31 @@
                             </div>
                         </div>   <!-- End of Edit Modal -->
 
-                        <a data-toggle="modal" data-target="#confirmDelete">
+                        <a data-toggle="modal" data-target="#confirmDelete-{{ $chop->id  }}">
 						    <i class="glyphicon glyphicon-remove-circle"></i>
                         </a>
 
                         <!-- Delete Modal Dialog -->
-                        <div class="modal fade" id="confirmDelete" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+                        <div class="modal fade" id="confirmDelete-{{ $chop->id }}" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title">Delete Parmanently</h4>
+                                        <h4 class="modal-title">Are you sure you want to delete this chop?</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Are you sure about this ?</p>
+                                        <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
+                                        <p>{{ $chop->about }}</p>
+                                        <input name="chop_id" type="hidden" value="{{ $chop->id }}" />
                                     </div>
                                     <div class="modal-footer">
+                                        {!! Form::model($chop,['url' => 'deleteChop', 'method' => 'delete']) !!}
+                                        {!! Form::hidden('about', $chop->about, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
+                                        {!! Form::hidden('chop_id', $chop->id) !!}
+                                        {!! Form::hidden('user_id', $chop->user->id) !!}
+                                        {!! Form::submit('Delete', ['class' =>'btn btn-danger pull-right delete-btn', 'name' =>'submitButton']) !!}
+                                        {!! Form::close() !!}
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-danger" id="confirm">Delete</button>
                                     </div>
                                 </div>
                             </div>
