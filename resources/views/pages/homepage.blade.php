@@ -563,9 +563,12 @@
 					@endforeach
 				 </ul>
 
-				 <form action="" method="POST">
-					<input class="form-control" rows="1" placeholder="Comment..." />
-				 </form>
+				 {!! Form::open(['url' => '/comment', 'method'=>'post']) !!}
+				 {!! Form::hidden('chop_id', $chop->id) !!}
+				 {!! Form::text('comment', null, ['class' => 'form-control expanding', 'required' => 'required',
+				 'placeholder'=>"comment"]) !!}
+				 {!! Form::close() !!}
+
 				</div>
 			 </li><br/>
 			@endforeach
