@@ -40,6 +40,7 @@ return [
     'image'                => 'The :attribute must be an image.',
     'in'                   => 'The selected :attribute is invalid.',
     'integer'              => 'The :attribute must be an integer.',
+	'invalid'              => 'The :attribute is invalid.',
     'ip'                   => 'The :attribute must be a valid IP address.',
     'max'                  => [
         'numeric' => 'The :attribute may not be greater than :max.',
@@ -72,7 +73,7 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'The :attribute has already been taken.',
+    'unique'               => 'The :attribute is is not available.',
     'url'                  => 'The :attribute format is invalid.',
 
     /*
@@ -89,6 +90,7 @@ return [
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
+	        'invalid' => 'custom-message',
         ],
     ],
 
@@ -103,6 +105,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+	    'email'  => 'E-Mail Address',
+	    'name'  => 'Username'
+    ],
 
 ];
