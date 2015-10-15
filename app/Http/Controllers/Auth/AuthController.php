@@ -2,15 +2,15 @@
 
 namespace ChopBox\Http\Controllers\Auth;
 
-use ChopBox\Http\Controllers\Controller;
-use ChopBox\User;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Socialite;
 use Validator;
-
+use ChopBox\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use ChopBox\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use ChopBox\ChopBox\Authenticate\SocialAuthenticateUser;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
