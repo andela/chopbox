@@ -19,6 +19,31 @@ and show interest in what has been shared on the platform through likes and comm
 1. Create a mysql database with the name `chopbox`
 2. `cd` into the chopbox folder and run `php artisan:migrate` to set up the required tables for the app.
 
+## homestead
+
+If you are using homestead which is *highly* recomended here
+are instructions to make the app available under `http://chopbox.app`.
+
+1. edit your `~/.homestead/Homestead.yaml`:
+- in the section for `sites`, add
+```
+    - map: chopbox.app
+      to: /home/homestead/chopbox
+
+```
+
+- in the section for `databases`, add
+```
+    - chopbox
+```
+
+2. run `vagrant provision` in your Homestead directory.
+
+3. edit your `/etc/hosts` and add the following:
+```
+192.168.10.10    chopbox.app
+```
+
 ## Contributing
 
 Thank you for considering contributing to ChopBox! The contribution guide is as follows:
