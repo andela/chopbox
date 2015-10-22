@@ -427,7 +427,7 @@
 				<a class="akt" href="#">{{ '@'.strtolower($user->username) }}</a>
 			 </h5>
 
-			 <p class="alt">{{ $user->about }}</p>
+			 <h5 class="alc bluecolor">{{ $user->firstname }} {{ $user->lastname }}</h5>
 			 <hr/>
 			 <ul class="aoh">
 				<li class="aoi">
@@ -449,24 +449,31 @@
 
 		 <div class="qw rd sn sq tinted">
 			<div class="qx">
-			 <div class="eg">
-				<a href="#">
-				 <i class="glyphicon glyphicon-edit"></i>
-				</a>
-			 </div>
 			 <h5 class="alc bluecolor">About</h5>
-			 <ul class="eb tc disc-list-ul">
-				<li class="disc-list">Best food<a class="pull-right align-right" href="#">{{ $user->best_food }}</a>
-				</li>
-				<li class="disc-list">Location<a class="pull-right align-right" href="#"> {{ $user->location }}</a>
-				</li>
-				<li class="disc-list">Gender<a class="pull-right align-right" href="#"> {{  $user->gender }}</a>
-                </li>
-				<li class="disc-list">Total Chops<a class="pull-right align-right" href="#"> {{ $user->chops_count }}</a>
-                </li>
-			 </ul>
+			 <p>{{ $user->about }}</p>
 			</div>
 		 </div>
+		    <div class="qw rd sn sq tinted">
+                <div class="qx">
+                 <div class="eg">
+                    <a href="#">
+                     <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                 </div>
+                 <h5 class="alc bluecolor">Bio</h5>
+                 <ul class="eb tc disc-list-ul">
+                    <li class="disc-list">Best food<a class="pull-right align-right" href="#">{{ $user->best_food }}</a>
+                    </li>
+                    <li class="disc-list">Location<a class="pull-right align-right" href="#"> {{ $user->location }}</a>
+                    </li>
+                    <li class="disc-list">Gender<a class="pull-right align-right" href="#"> {{  $user->gender }}</a>
+                     </li>
+                    <li class="disc-list">Total Chops<a class="pull-right align-right" href="#"> {{ $user->chops_count }}</a>
+                     </li>
+                 </ul>
+                </div>
+             </div>
+
 		</div>
 		<div class="ha">
 		 <ul class="ca qp anw">
@@ -563,9 +570,12 @@
 					@endforeach
 				 </ul>
 
-				 <form action="" method="POST">
-					<input class="form-control" rows="1" placeholder="Comment..." />
-				 </form>
+				 {!! Form::open(['url' => '/comment', 'method'=>'post']) !!}
+				 {!! Form::hidden('chop_id', $chop->id) !!}
+				 {!! Form::text('comment', null, ['class' => 'form-control expanding', 'required' => 'required',
+				 'placeholder'=>"comment"]) !!}
+				 {!! Form::close() !!}
+
 				</div>
 			 </li><br/>
 			@endforeach

@@ -85,3 +85,10 @@ div.social-up {
     font-weight: 400;
 }
 
+.container {
+    padding-top: 15px;
+}
+
+#hide {
+    display: block;
+}

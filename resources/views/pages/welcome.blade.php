@@ -96,8 +96,15 @@
 	 <div class="col-md-2">
 	 </div>
 	</div>
+
+     <div class="space-out">
+         <p>
+             <a href="{{url('about')}}">About</a>
+             <a href="{{url('terms')}}">Terms</a>
+             <a href="{{url('privacy')}}">Privacy</a>
+             <a href="{{url('help')}}">Help</a>
+             <span>© 2015 ChopBox</span>
+         </p>
+     </div>
  </div>
-
- @include('includes.footer')
-
 @endsection

@@ -2,7 +2,8 @@
 
 ChopBox is an awesome stopover for foodies all over the world to socialize. Registered members of ChopBox get to share their
 favorite foods, recent ones they've tried, and those ones which they'd love to try. Users may upload enticing images alongside their posts to capture the attention of other users. ChopBox also allows its members to comment on,
-and show interest in what has been shared on the platform through likes and comments.
+and show interest in what has been shared on the platform through likes and comments. 
+
 
 ## Installation
 
@@ -15,7 +16,7 @@ and show interest in what has been shared on the platform through likes and comm
 
 ## Database set-up
 
-1. Create a postgres database with the name `chopbox`
+1. Create a mysql database with the name `chopbox`
 2. `cd` into the chopbox folder and run `php artisan:migrate` to set up the required tables for the app.
 
 ## Contributing
