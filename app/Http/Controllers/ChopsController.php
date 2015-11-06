@@ -3,9 +3,7 @@
 namespace ChopBox\Http\Controllers;
 
 use ChopBox\helpers\PostChop;
-
 use Illuminate\Support\Facades\Auth;
-
 use ChopBox\Http\Requests\ChopsFormRequest;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Request;

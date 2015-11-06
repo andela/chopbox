@@ -10,11 +10,11 @@ use ChopBox\App\Comment;
 
 class CommentController extends Controller
 {
-  public function addComment(CommentRequest $request, PostComment $comment)
-  { 
-    $user = Auth::user();
+    public function addComment(CommentRequest $request, PostComment $comment)
+    {
+        $user = Auth::user();
 
-    $comment->saveComment($user, $request);
-    return redirect()->action('HomeController@index');
-  }
+        $comment->saveComment($user, $request);
+        return redirect()->action('HomeController@index');
+    }
 }

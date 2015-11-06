@@ -8,18 +8,19 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory;
 use ChopBox\UserRole;
-class UserRoleTableSeeder extends Seeder {
 
+class UserRoleTableSeeder extends Seeder
+{
     public $timestamps = false;
-    public function run() {
-
+    public function run()
+    {
         $faker = Factory::create();
         //UserRole::truncate();
 
-        foreach(range(1,50) as $index) {
+        foreach (range(1, 50) as $index) {
             UserRole::create([
-                'user_id' => $faker->numberBetween(1,50),
-                'role_id' => $faker->numberBetween(1,3)
+                'user_id' => $faker->numberBetween(1, 50),
+                'role_id' => $faker->numberBetween(1, 3)
             ]);
         }
     }

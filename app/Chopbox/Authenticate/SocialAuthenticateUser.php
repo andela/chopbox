@@ -15,9 +15,9 @@ use Illuminate\Contracts\Auth\Guard;
 use ChopBox\ChopBox\Repository\UserRepository;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
-class SocialAuthenticateUser {
-
-  use AuthenticatesAndRegistersUsers;
+class SocialAuthenticateUser
+{
+    use AuthenticatesAndRegistersUsers;
 
   /**
    * Store users details
@@ -25,43 +25,42 @@ class SocialAuthenticateUser {
    */
   private $users;
 
-  public function __construct(UserRepository $users) {
-    $this->users = $users;
-  }
-
-  public function execute($request, $listener, $provider) {
-
-    if (! $request->all()) {
-      return $this->getAuthorizationFirst($provider);
+    public function __construct(UserRepository $users)
+    {
+        $this->users = $users;
     }
-    elseif ( isset($request->all() ['errors'])) {
-      return redirect('/login')->withErrors('Error authenticating with ' . $provider);
-    }
-    else {
-      $userSocialDetails = $this->getSocialMediaProfile($provider);
-      $user = $this->users->findUserByEmail($userSocialDetails->email);
 
-      if ($user) {
-        Auth::loginUsingId($user->id, true);
+    public function execute($request, $listener, $provider)
+    {
+        if (! $request->all()) {
+            return $this->getAuthorizationFirst($provider);
+        } elseif (isset($request->all() ['errors'])) {
+            return redirect('/login')->withErrors('Error authenticating with ' . $provider);
+        } else {
+            $userSocialDetails = $this->getSocialMediaProfile($provider);
+            $user = $this->users->findUserByEmail($userSocialDetails->email);
 
-        return redirect()->intended('/');
-      }
-      else {
-        session([
+            if ($user) {
+                Auth::loginUsingId($user->id, true);
+
+                return redirect()->intended('/');
+            } else {
+                session([
             'socialUser' => $userSocialDetails
         ]);
 
-        return redirect()->intended('/social_password');
-      }
+                return redirect()->intended('/social_password');
+            }
+        }
     }
-  }
 
-  private function getAuthorizationFirst($provider) {
-    return Socialite::driver($provider)->redirect();
-  }
+    private function getAuthorizationFirst($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
 
-  private function getSocialMediaProfile($provider) {
-    return Socialite::driver($provider)->user();
-  }
-
+    private function getSocialMediaProfile($provider)
+    {
+        return Socialite::driver($provider)->user();
+    }
 }

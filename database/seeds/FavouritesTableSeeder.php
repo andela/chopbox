@@ -8,19 +8,18 @@
 use Faker\Factory;
 use ChopBox\Favourite;
 use Illuminate\Database\Seeder;
-class FavouritesTableSeeder extends Seeder {
 
-
-    public function run() {
+class FavouritesTableSeeder extends Seeder
+{
+    public function run()
+    {
         $faker = Factory::create();
         //Favourite::truncate();
 
-        foreach(range(1,50) as $index) {
+        foreach (range(1, 50) as $index) {
             Favourite::create([
-                'chop_id' => $faker->numberBetween(1,50)
+                'chop_id' => $faker->numberBetween(1, 50)
             ]);
         }
     }
-
 }
-
