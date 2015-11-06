@@ -148,6 +148,7 @@ return [
         ChopBox\Providers\EventServiceProvider::class,
         ChopBox\Providers\RouteServiceProvider::class,
         ChopBox\Providers\AuthServiceProvider::class
+
     ]
     ,
 

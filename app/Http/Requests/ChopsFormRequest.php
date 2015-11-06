@@ -4,15 +4,16 @@ namespace ChopBox\Http\Requests;
 
 use ChopBox\Http\Requests\Request;
 
-class ChopsFormRequest extends Request {
-
-  /**
+class ChopsFormRequest extends Request
+{
+    /**
    * Determine if the user is authorized to make this request.
    *
    * @return bool
    */
-  public function authorize() {
-    return true;
+  public function authorize()
+  {
+      return true;
   }
 
     /**
@@ -22,9 +23,9 @@ class ChopsFormRequest extends Request {
      */
     public function rules()
     {
-		return [
-			'about'	=> 'required|max:255',
-			'image' => 'between:0,4'
-		];
+        return [
+            'about'    => 'required|max:255',
+            'image' => 'between:0,4'
+        ];
     }
 }

@@ -10,4 +10,3 @@ Homestead.yaml
 Vagrantfile
 composer.lock
 tests/_output/
-

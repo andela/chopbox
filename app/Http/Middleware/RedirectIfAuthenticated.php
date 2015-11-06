@@ -5,8 +5,9 @@ namespace ChopBox\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
-class RedirectIfAuthenticated {
-  /**
+class RedirectIfAuthenticated
+{
+    /**
    * The Guard implementation.
    *
    * @var Guard
@@ -19,8 +20,9 @@ class RedirectIfAuthenticated {
    * @param Guard $auth          
    * @return void
    */
-  public function __construct(Guard $auth) {
-    $this->auth = $auth;
+  public function __construct(Guard $auth)
+  {
+      $this->auth = $auth;
   }
 
   /**
@@ -30,12 +32,12 @@ class RedirectIfAuthenticated {
    * @param \Closure $next          
    * @return mixed
    */
-  public function handle($request, Closure $next) {
-    if ($this->auth->check()) {
-      return redirect('/home');
-    }
+  public function handle($request, Closure $next)
+  {
+      if ($this->auth->check()) {
+          return redirect('/home');
+      }
     
-    return $next($request);
+      return $next($request);
   }
-
 }

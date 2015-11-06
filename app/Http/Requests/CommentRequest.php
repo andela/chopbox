@@ -6,14 +6,14 @@ use ChopBox\Http\Requests\Request;
 
 class CommentRequest extends Request
 {
-  /**
+    /**
    * Determine if the user is authorized to make this request.
    *
    * @return bool
    */
   public function authorize()
   {
-    return true;
+      return true;
   }
 
   /**
@@ -23,7 +23,7 @@ class CommentRequest extends Request
    */
   public function rules()
   {
-    return [
+      return [
       'comment' => 'required'
     ];
   }

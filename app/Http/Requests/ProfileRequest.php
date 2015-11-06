@@ -28,7 +28,7 @@ class ProfileRequest extends Request
         'lastname' => 'required|min:2',
         'location' => 'required|min:2',
         'best_food' => 'required|min:2',
-        'gender' => 'required' 
+        'gender' => 'required'
         ];
     }
 }

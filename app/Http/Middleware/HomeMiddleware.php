@@ -16,14 +16,13 @@ class HomeMiddleware
      */
     public function handle($request, Closure $next)
     {
-      
-        if (!Auth::check ()) {
-            return view ( 'pages.welcome' );
+        if (!Auth::check()) {
+            return view('pages.welcome');
         }
         
         if (!Auth::user()->profile_state) {
-            return view ( 'pages.initial_profile_update' );
-        } 
+            return view('pages.initial_profile_update');
+        }
         
         return $next($request);
     }

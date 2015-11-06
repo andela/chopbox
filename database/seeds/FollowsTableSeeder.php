@@ -8,17 +8,18 @@
 use ChopBox\Follow;
 use Illuminate\Database\Seeder;
 use Faker\Factory;
-class FollowsTableSeeder extends Seeder {
 
-
-    public function run() {
+class FollowsTableSeeder extends Seeder
+{
+    public function run()
+    {
         $faker = Factory::create();
         //Follow::truncate();
 
-        foreach(range(1,50) as $index) {
+        foreach (range(1, 50) as $index) {
             Follow::create([
-                'follower_id' =>$faker->numberBetween(1,50),
-                'followee_id' =>$faker->numberBetween(1,50)
+                'follower_id' =>$faker->numberBetween(1, 50),
+                'followee_id' =>$faker->numberBetween(1, 50)
             ]);
         }
     }

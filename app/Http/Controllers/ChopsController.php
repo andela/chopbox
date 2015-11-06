@@ -31,7 +31,7 @@ class ChopsController extends Controller
             $shortened_url = $post->uploadImages($images);
             $post->saveUploads($user, $images, $shortened_url, $chopsId);
         }
-        
+
         return redirect()->action('HomeController@index');
     }
 }
