@@ -10,7 +10,6 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
@@ -61,8 +60,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $this->belongsToMany('ChopBox\Role');
     }
 
-	public function chops()
-	{
-		return $this->hasMany('ChopBox\Chop');
-	}
+    public function chops()
+    {
+        return $this->hasMany('ChopBox\Chop');
+    }
 }

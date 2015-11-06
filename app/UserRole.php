@@ -4,8 +4,8 @@ namespace ChopBox;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserRole extends Model {
-
+class UserRole extends Model
+{
     /**
      * The attributes that are mass assignable.
      *
@@ -18,8 +18,8 @@ class UserRole extends Model {
 
     public $timestamps = false;
 
-    public function users() {
+    public function users()
+    {
         return $this->belongsToMany('ChopBox\User');
     }
-
 }

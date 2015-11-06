@@ -4,8 +4,8 @@ namespace ChopBox;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Favourite extends Model {
-
+class Favourite extends Model
+{
     /**
      * The attributes that are mass assignable.
      *
@@ -15,12 +15,13 @@ class Favourite extends Model {
       'chops_id'
     ];
 
-    public function chops() {
+    public function chops()
+    {
         return $this->belongsTo('ChopBox\Chop');
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo('ChopBox\User');
     }
-
 }

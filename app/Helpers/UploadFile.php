@@ -13,9 +13,12 @@ class UploadFile
   public function uploadFile($file)
   {
       if (isset($file)) {
+
           Cloudder::upload($file);
+
           return Cloudder::getResult();
       } else {
+		  
           return false;
       }
   }

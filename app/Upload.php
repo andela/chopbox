@@ -4,8 +4,8 @@ namespace ChopBox;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Upload extends Model {
-
+class Upload extends Model
+{
     /**
      * The attributes that are mass assignable.
      *
@@ -18,12 +18,13 @@ class Upload extends Model {
       'created_at'
     ];
 
-    public function chops() {
+    public function chops()
+    {
         return $this->belongsTo('ChopBox\Chop');
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo('ChopBox\User');
     }
-
 }
