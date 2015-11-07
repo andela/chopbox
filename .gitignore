@@ -8,5 +8,4 @@ Homestead.yaml
 .gitignore.idea
 .env.testing
 Vagrantfile
-composer.lock
 tests/_output/
