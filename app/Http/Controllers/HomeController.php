@@ -97,4 +97,40 @@ class HomeController extends Controller
     {
         return "http://www.gravatar.com/avatar/" . md5(strtolower(trim($user->email))) . "?d=mm&s=120";
     }
+
+    public function Follow($followee_id)
+    {
+        $follower = Auth::user();
+        $followee = User::find($followee_id)->get();
+
+        $follow = new Follow;
+        $follow->follower_id = $follower->id;
+        $follow->followee_id = $followee->id;
+        $follow->save();
+
+        $follower->followings_count++;
+        $follower->save();
+
+        $followee->followers_count++;
+        $followee->save();
+
+        return $follower->followings_count;
+    }
+
+    public function unfollow($followee_id)
+    {
+        $follower = Auth::user();
+        $followee = User::find($followee_id)->get();
+
+        Follow::where('follower_id', $follower->id)
+            ->where('followee_id', $followee->id)->destroy();
+
+        $follower->followings_count--;
+        $follower->save();
+
+        $followee->followers_count--;
+        $followee->save();
+
+        return $follower->followings_count;
+    }
 }

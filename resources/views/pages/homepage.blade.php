@@ -352,11 +352,12 @@
 		<div class="modal-content">
 		 <div class="d">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h4 class="modal-title">Users</h4>
+			<h4 class="modal-title">Following</h4>
 		 </div>
 		 <div class="modal-body ame">
 			<div class="up">
 			 <ul class="qp cj ca">
+                 @foreach($followings as $following)
 				<li class="b">
 				 <div class="qg">
 					<a class="qk" href="#">
@@ -373,38 +374,7 @@
 					</div>
 				 </div>
 				</li>
-				<li class="b">
-				 <div class="qg">
-					<a class="qk" href="#">
-					 <img class="qi cu" src="assets/img/avatar-dhg.png">
-					</a>
-
-					<div class="qh">
-					 <button class="cg fm fx eg">
-						<span class="c aok"></span> Follow
-					 </button>
-					 <strong>Dave Gamache</strong>
-
-					 <p>@dhg - Palo Alto</p>
-					</div>
-				 </div>
-				</li>
-				<li class="b">
-				 <div class="qg">
-					<a class="qk" href="#">
-					 <img class="qi cu" src="assets/img/avatar-mdo.png">
-					</a>
-
-					<div class="qh">
-					 <button class="cg fm fx eg">
-						<span class="c aok"></span> Follow
-					 </button>
-					 <strong>Mark Otto</strong>
-
-					 <p>@mdo - San Francisco</p>
-					</div>
-				 </div>
-				</li>
+                 @endforeach
 			 </ul>
 			</div>
 		 </div>

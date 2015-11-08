@@ -22,6 +22,12 @@
 </script>
 
 <script>
+    $('#userModal').on('show.bs.modal', function() {
+
+    });
+</script>
+
+<script>
     $('#camera').click(function() {
         $( "#file" ).click();
     });
