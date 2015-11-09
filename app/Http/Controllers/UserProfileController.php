@@ -69,7 +69,7 @@ class UserProfileController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find(1);
+        $user = User::find($id);
 
         return view('users.profile', compact('user'));
     }
