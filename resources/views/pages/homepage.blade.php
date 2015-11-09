@@ -386,7 +386,7 @@
 			 </a>
 
 			 <h5 class="qz username">
-				<a class="akt" href="{{ route('user.profile', $user->id) }}">{{ '@'.strtolower($user->username) }}</a>
+				<a class="akt" href="{{ route('user.show', $user->id) }}">{{ '@'.strtolower($user->username) }}</a>
 			 </h5>
 
 			 <h5 class="alc bluecolor">{{ $user->firstname }} {{ $user->lastname }}</h5>
@@ -417,11 +417,13 @@
 		 </div>
 		    <div class="qw rd sn sq tinted">
                 <div class="qx">
-                 <div class="eg">
-                    <a href="{{ route('user.profile', $user->id) }}" id="profile-edit">
-                     <i class="glyphicon glyphicon-edit"></i>
-                    </a>
-                 </div>
+                    @can('edit-profile', $user->id)
+                    <div class="eg">
+                        <a href="{{ route('user.profile', $user->id) }}" id="profile-edit">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </div>
+                    @endcan
                  <h5 class="alc bluecolor">Bio</h5>
                  <ul class="eb tc disc-list-ul">
                     <li class="disc-list">Best food<a class="pull-right align-right" href="#">{{ $user->best_food }}</a>
@@ -603,12 +605,12 @@
 			 <ul class="qp all">
 				@foreach($topTen as $top_user)
 				 <li class="qg">
-					<a class="qk" href="#">
+					<a class="qk" href="{{ route('user.show',$top_user->id) }}">
 					 <img class="qi cu small-round" src="{{ $top_user->image_uri }}">
 					</a>
 
 					<div class="qh leaderboard">
-					 <a href="#">
+					 <a href="{{ route('user.show', $top_user->id) }}">
 						<strong>
 						 <span class="username">{{ '@'.strtolower($top_user->username) }}</span>
 						</strong>
