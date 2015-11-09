@@ -75,6 +75,12 @@ Route::post('profile/{id}', [
     'middleware'    => ['auth']
 ]);
 
+Route::get('user/{id}', [
+    'uses'      => 'UserProfileController@show',
+    'as'        => 'user.show',
+    'middleware'=> ['auth']
+]);
+
 Route::put('editChop', 'ChopsController@update');
 
 Route::delete('deleteChop', 'ChopsController@destroy');

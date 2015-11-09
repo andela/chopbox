@@ -30,10 +30,10 @@
         <li><a href="#">Profile</a></li>
         <li><a href="#">Notifications</a></li>
         <li><a data-toggle="modal" href="index.html#msgModal">Messages</a></li>
-        <li><a href="logout">Logout</a></li>
+        <li><a href="{{ url('/logout') }}">Logout</a></li>
     </ul>
 
     <ul class="nav navbar-nav hidden">
-        <li><a href="logout">Logout</a></li>
+        <li><a href="{{ url('/logout') }}">Logout</a></li>
     </ul>
 </div>
