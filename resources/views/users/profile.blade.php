@@ -22,10 +22,6 @@
                     <input type="text" name="username" value="{{ $user->username }}" class="form-control input-sm" placeholder="username">
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password" class="form-control input-sm" placeholder="password">
-                </div>
-
-                <div class="form-group">
                     <input type="file" name="file" id="file" multiple="true">
                 </div>
                 <div class="form-group">
