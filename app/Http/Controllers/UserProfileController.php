@@ -98,7 +98,7 @@ class UserProfileController extends Controller
      */
      public function update(Request $request, $id, UploadFile $upload)
      {
-        $url = "";
+        $url = User::find($id)->image_uri;
         if ($request['file']) {
             $url = $this->uploadImage($request['file']);
         }
