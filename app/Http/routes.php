@@ -55,3 +55,21 @@ Route::resource('chops', 'ChopsController');
 Route::post('profile_complete', 'HomeController@firstProfile');
 
 Route::post('comment', 'CommentController@addComment');
+
+/*
+ * |--------------------------------------------------------------------------
+ * | User profile Routes
+ * |--------------------------------------------------------------------------
+ */
+
+Route::get('profile/{id}', [
+    'uses'           => 'UserProfileController@edit',
+    'as'             =>  'user.profile',
+    'middleware'     => ['auth']
+]);
+
+Route::post('profile/{id}', [
+    'uses'          => 'UserProfileController@update',
+    'as'            => 'profile.update',
+    'middleware'    => ['auth']
+]);
