@@ -9,6 +9,7 @@ use ChopBox\Http\Requests;
 use ChopBox\Http\Requests\ProfileRequest;
 use ChopBox\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Validator;
 
 class HomeController extends Controller
@@ -86,11 +87,23 @@ class HomeController extends Controller
         $followings = Follow::where('follower_id', $user->id)->get();
         $followeeIds = [];
 
-        foreach ($followings as $followee) {
-            array_push($followeeIds, $followee->followee_id);
+        foreach ($followings as $following) {
+            array_push($followeeIds, $following->followee_id);
         }
 
         return $followeeIds;
+    }
+
+    private function getFollowerIds(User $user)
+    {
+        $followings = Follow::where('followee_id', $user->id)->get();
+        $followerIds = [];
+
+        foreach ($followings as $following) {
+            array_push($followerIds, $following->follower_id);
+        }
+
+        return $followerIds;
     }
 
     private function getAvatarUrl(User $user)
@@ -98,32 +111,35 @@ class HomeController extends Controller
         return "http://www.gravatar.com/avatar/" . md5(strtolower(trim($user->email))) . "?d=mm&s=120";
     }
 
-    public function Follow($followee_id)
+    public function follow()
     {
         $follower = Auth::user();
-        $followee = User::find($followee_id)->get();
+        $followee = User::find(Input::get('followee_id'));
 
-        $follow = new Follow;
-        $follow->follower_id = $follower->id;
-        $follow->followee_id = $followee->id;
-        $follow->save();
+        if(! Follow::where('follower_id', $follower->id)->where('followee_id', $followee->id)->first()) {
+            $follow = new Follow;
+            $follow->follower_id = $follower->id;
+            $follow->followee_id = $followee->id;
+            $follow->save();
 
-        $follower->followings_count++;
-        $follower->save();
+            $follower->followings_count++;
+            $follower->save();
 
-        $followee->followers_count++;
-        $followee->save();
+            $followee->followers_count++;
+            $followee->save();
+        }
+
 
         return $follower->followings_count;
     }
 
-    public function unfollow($followee_id)
+    public function unfollow()
     {
         $follower = Auth::user();
-        $followee = User::find($followee_id)->get();
+        $followee = User::find(Input::get('followee_id'));
 
         Follow::where('follower_id', $follower->id)
-            ->where('followee_id', $followee->id)->destroy();
+            ->where('followee_id', $followee->id)->delete();
 
         $follower->followings_count--;
         $follower->save();
@@ -132,5 +148,26 @@ class HomeController extends Controller
         $followee->save();
 
         return $follower->followings_count;
+    }
+
+    public function getFollowees()
+    {
+        return User::whereIn('id', $this->getFolloweeIds(Auth::user()))->get();
+    }
+
+    public function getFollowers()
+    {
+        return User::whereIn('id', $this->getFollowerIds(Auth::user()))->get();
+    }
+
+    public function checkFollowStatus()
+    {
+        $status = Follow::where('follower_id', Auth::user()->id)
+                        ->where('followee_id', Input::get('followee_id'))->first();
+
+        return $status ? "YES" : "NO";
+//        $returnVal = (!($status == null)) ? "YES" : "NO";//json_encode(['result' => "YES"]) : json_encode(['result' => "NO"]);
+
+//        return response()->json(['status' => $returnVal]);
     }
 }

@@ -55,3 +55,11 @@ Route::resource('chops', 'ChopsController');
 Route::post('profile_complete', 'HomeController@firstProfile');
 
 Route::post('comment', 'CommentController@addComment');
+
+Route::get('followees', 'HomeController@getFollowees');
+
+Route::get('followers', 'HomeController@getFollowers');
+
+Route::get('follow', 'HomeController@follow');
+
+Route::get('follow_status', 'HomeController@checkFollowStatus');

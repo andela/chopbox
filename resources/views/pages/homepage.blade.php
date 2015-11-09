@@ -352,36 +352,16 @@
 		<div class="modal-content">
 		 <div class="d">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h4 class="modal-title">Following</h4>
+			<h4 class="modal-title"></h4>
 		 </div>
 		 <div class="modal-body ame">
 			<div class="up">
-			 <ul class="qp cj ca">
-                 @foreach($followings as $following)
-				<li class="b">
-				 <div class="qg">
-					<a class="qk" href="#">
-					 <img class="qi cu" src="assets/img/avatar-fat.jpg">
-					</a>
-
-					<div class="qh">
-					 <button class="cg fm fx eg">
-						<span class="c aok"></span> Follow
-					 </button>
-					 <strong>Jacob Thornton</strong>
-
-					 <p>@fat - San Francisco</p>
-					</div>
-				 </div>
-				</li>
-                 @endforeach
-			 </ul>
+			 <ul id="followingList" class="qp cj ca"> </ul>
 			</div>
 		 </div>
 		</div>
 	 </div>
 	</div>
-
 
 	<div class="by ams">
 	 <div class="gd">
@@ -401,17 +381,17 @@
 			 <hr/>
 			 <ul class="aoh">
 				<li class="aoi">
-				 <a href="index.html#userModal" class="" data-toggle="modal">
-					Followers
-				 </a>
-				 <h5 class="alh"> {{ $user->followers_count }}</h5>
+                    <a id="followers" style="cursor: pointer">
+					    Followers
+				    </a>
+				    <h5 class="alh followers_count"> {{ $user->followers_count }}</h5>
 				</li>
 
 				<li class="aoi">
-				 <a href="index.html#userModal" class="" data-toggle="modal">
-					Following
-				 </a>
-				 <h5 class="alh"> {{ $user->followings_count }}</h5>
+                    <a id="following" style="cursor: pointer">
+					    Following
+				    </a>
+				    <h5 class="alh followings_count"> {{ $user->followings_count }}</h5>
 				</li>
 			 </ul>
 			</div>
@@ -487,10 +467,12 @@
 					</div>
 					@endcan
 
-					<a class="qk" href="#">
-					 <img class="qi cu round" src="{{ $chop->user->image_uri }}">
-					</a>
-					<a class="qk shift-down" href="">
+                     {{--<input class="user_id" type="password" value="{{ $chop->user->id }}" style="display: none" />--}}
+                     <span class="qk">
+                         <img class="qi cu round {{ $chop->user->id == $user->id ? '' : 'pop'}}" src="{{ $chop->user->image_uri }}">
+                         <input class="hide" value="{{ $chop->user->id }}" />
+                     </span>
+					<a class="qk shift-down" href="" >
 					 <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
 					</a>
 
@@ -525,7 +507,8 @@
 					@foreach ($chop->comments as $comment)
 					 <li class="qg">
 						<a class="qk" href="#">
-						 <img class="qi cu small-round" src="{{ $comment->user->image_uri }}">
+						 <img class="qi cu small-round {{ $comment->user->id == $user->id ? '' : 'pop-left'}}" src="{{ $comment->user->image_uri }}">
+                            <input class="hide" value="{{ $comment->user->id }}" />
 						</a>
 
 						<div class="qh">
@@ -560,9 +543,10 @@
 			 <ul class="qp all">
 				@foreach($topTen as $top_user)
 				 <li class="qg">
-					<a class="qk" href="#">
-					 <img class="qi cu small-round" src="{{ $top_user->image_uri }}">
-					</a>
+					<span class="qk">
+					 <img class="qi cu small-round {{ $top_user->id == $user->id ? '' : 'pop-left'}}" src="{{ $top_user->image_uri }}" />
+                        <input class="hide" value="{{ $top_user->id }}" />
+					</span>
 
 					<div class="qh leaderboard">
 					 <a href="#">
