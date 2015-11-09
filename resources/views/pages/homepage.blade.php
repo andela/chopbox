@@ -507,13 +507,64 @@
 				 <div class="qo">
 					@can('update-chop', $chop)
 					<div class="eg">
-					 <a href="#">
-						<i class="glyphicon glyphicon-edit"></i>
-					 </a>
+                        <a data-toggle="modal" data-target="#editModal-{{ $chop->id  }}">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
 
-					 <a href="#">
-						<i class="glyphicon glyphicon-remove-circle"></i>
-					 </a>
+                        <!-- Edit Modal -->
+                        <div id="editModal-{{ $chop->id }}" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Edit Chop</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        {!! Form::model($chop,['url' => 'editChop', 'files' => true, 'method' => 'put']) !!}
+                                        {!! Form::hidden('chop_id', $chop->id) !!}
+                                        {!! Form::textarea('about', $chop->about, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
+                                    </div>
+                                    <div class="modal-footer">
+                                        {!! Form::submit('Edit', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>   <!-- End of Edit Modal -->
+
+                        <a data-toggle="modal" data-target="#confirmDelete-{{ $chop->id  }}">
+                            <i class="glyphicon glyphicon-remove-circle"></i>
+                        </a>
+
+                        <!-- Delete Modal Dialog -->
+                        <div class="modal fade" id="confirmDelete-{{ $chop->id }}" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">Are you sure you want to delete this chop?</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
+                                        <p>{{ $chop->about }}</p>
+                                        <input name="chop_id" type="hidden" value="{{ $chop->id }}" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        {!! Form::model($chop,['url' => 'deleteChop', 'method' => 'delete']) !!}
+                                        {!! Form::hidden('about', $chop->about, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
+                                        {!! Form::hidden('chop_id', $chop->id) !!}
+                                        {!! Form::hidden('user_id', $chop->user->id) !!}
+                                        {!! Form::submit('Delete', ['class' =>'btn btn-danger pull-right delete-btn', 'name' =>'submitButton']) !!}
+                                        {!! Form::close() !!}
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>      <!-- End of Delete Modal -->
+
 					</div>
 					@endcan
 
