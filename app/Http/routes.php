@@ -56,6 +56,7 @@ Route::post('profile_complete', 'HomeController@firstProfile');
 
 Route::post('comment', 'CommentController@addComment');
 
+
 /*
  * |--------------------------------------------------------------------------
  * | User profile Routes
@@ -73,3 +74,8 @@ Route::post('profile/{id}', [
     'as'            => 'profile.update',
     'middleware'    => ['auth']
 ]);
+
+Route::put('editChop', 'ChopsController@update');
+
+Route::delete('deleteChop', 'ChopsController@destroy');
+
