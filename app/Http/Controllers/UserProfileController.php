@@ -107,11 +107,7 @@ class UserProfileController extends Controller
     private function updateUserProfile(Request $request,$id, $url)
     {
         $user = User::find($id);
-
-        if ($request->has('password')) {
-            $user->password = bcrypt($request->get('password'));
-        }
-
+        
         $user->about = $request->get('about');
         $user->location = $request->get('location');
         $user->gender = $request->get('gender');
