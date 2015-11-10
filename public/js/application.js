@@ -135,4 +135,28 @@ $('document').ready(function () {
         $('[data-toggle="tooltip"]').tooltip()
     });
 
+    $('.favourite').on('click', function(e){
+        e.preventDefault();
+
+        var chopId = $("input[name='chop_id']", this).val();
+        var chop_id = $(this).data('message');
+        $.ajax({
+            type : 'post',
+            url  : 'chops/favourite/'+chopId,
+            data : {
+                chopId: chopId
+            },
+            success: function(response){
+
+                alert(chop_id);
+                $('.favourites-count-'+chop_id).empty().append(response.count, this);
+            },
+
+            error: function(response){
+               // console.log(response);
+            }
+        });
+
+    });
+
 });
