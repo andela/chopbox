@@ -135,4 +135,32 @@ $('document').ready(function () {
         $('[data-toggle="tooltip"]').tooltip()
     });
 
+    $('.favourite').on('click', function(e){
+        e.preventDefault();
+        var chopId = $("input[name='chop_id']", this).val();
+
+        $.ajax({
+            type : 'post',
+            url  : 'chops/favourite/'+chopId,
+            data : {
+                chopId: chopId
+            },
+            success: function(response){
+                var span = $('#unpopular');
+                if ( response.count > 0) {
+                    $('#favourites-count-'+chopId).empty().append(response.count);
+
+                    span.removeAttr('id');
+                } else {
+                    $('#favourites-count-'+chopId).empty().append('0');
+                }
+
+            },
+            error: function(response){
+               // console.log(response);
+            }
+        });
+
+    });
+
 });

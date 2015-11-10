@@ -50,7 +50,7 @@ Route::post('/password/reset/{token}', 'Auth\PassWordController@postEmail');
 Route::get('login/{provider?}', 'Auth\AuthController@socialLogin');
 
 
-Route::resource('chops', 'ChopsController');
+
 
 Route::post('profile_complete', 'HomeController@firstProfile');
 
@@ -85,3 +85,17 @@ Route::put('editChop', 'ChopsController@update');
 
 Route::delete('deleteChop', 'ChopsController@destroy');
 
+
+/*
+ * |--------------------------------------------------------------------------
+ * |Chops Routes
+ * |--------------------------------------------------------------------------
+ */
+
+Route::resource('chops', 'ChopsController');
+
+Route::post('chops/favourite/{id}',[
+    'uses'      => 'ChopsController@favourite',
+    'as'        => 'chops.favourite',
+    'middleware'=> ['auth']
+]);

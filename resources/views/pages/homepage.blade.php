@@ -552,29 +552,30 @@
 					<br/>
 
 					<div>
-					 @if($chop->likes > 0)
-						<a href="#">
-						 <span class="glyphicon glyphicon-heart"></span>
-						</a>
-					 @else
-						<a href="#">
-						 <span id="unpopular" class="glyphicon glyphicon-heart"></span>
-						</a>
-					 @endif
-					 {{ $chop->likes }}
+                         @if($chop->likes > 0)
+                            <a href="#!" class="favourite">
+                                <input type="hidden" value="{{ $chop->id }}" name="chop_id"/>
+                             <span class="glyphicon glyphicon-heart"></span>
+                            </a>
+                         @else
+                            <a href="#!" class="favourite">
+                                <input type="hidden" value="{{ $chop->id }}" name="chop_id"/>
+                             <span id="unpopular" class="glyphicon glyphicon-heart"></span>
+                            </a>
+                         @endif
+                         <span id="favourites-count-{{ $chop->id }}">{{ $chop->likes }}</span>
 					</div>
-
 				 </div>
 
 				 <ul class="qp all">
 					@foreach ($chop->comments as $comment)
 					 <li class="qg">
-						<a class="qk" href="#">
+						<a class="qk" href="#!">
 						 <img class="qi cu small-round" src="{{ $comment->user->image_uri }}">
 						</a>
 
 						<div class="qh">
-						 <a href="#">
+						 <a href="#!">
 							<strong>
 							 <span class="username">{{ '@'.strtolower($comment->user->username).': ' }}</span>
 							</strong>
@@ -636,6 +637,4 @@
 	</div>
 
  </div>
-
-
 @endsection
