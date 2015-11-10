@@ -141,7 +141,7 @@ $('document').ready(function () {
 
         $.ajax({
             type : 'post',
-            url  : 'chops/favourite/'+chopId,
+            url  : '/chops/favourite/'+chopId,
             data : {
                 chopId: chopId
             },
