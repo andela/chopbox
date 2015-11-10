@@ -553,17 +553,17 @@
 
 					<div>
                          @if($chop->likes > 0)
-                            <a href="#!" class="favourite" data-message="{{ $chop->id }}">
+                            <a href="#!" class="favourite">
                                 <input type="hidden" value="{{ $chop->id }}" name="chop_id"/>
-                             <span class="glyphicon glyphicon-heart">{{ $chop->likes }}</span>
+                             <span class="glyphicon glyphicon-heart"></span>
                             </a>
                          @else
-                            <a href="#!" class="favourite" data-message="{{ $chop->id }}">
+                            <a href="#!" class="favourite">
                                 <input type="hidden" value="{{ $chop->id }}" name="chop_id"/>
-                             <span id="unpopular" class="glyphicon glyphicon-heart">{{ $chop->likes }}</span>
+                             <span id="unpopular" class="glyphicon glyphicon-heart"></span>
                             </a>
                          @endif
-                         {{--<span class="favourites-count">{{ $chop->likes }}</span>--}}
+                         <span id="favourites-count-{{ $chop->id }}">{{ $chop->likes }}</span>
 					</div>
 				 </div>
 
