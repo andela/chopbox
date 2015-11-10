@@ -81,16 +81,37 @@ class ChopsController extends Controller
      */
      public function favourite($id, Favourite $favourite, ChopsRepository $repository)
      {
-        $user = Auth::user();
+         $user = Auth::user();
 
-        $favourite->chop_id = $id;
-        $favourite->user_id = $user->id;
-        $favourite->save();
+         $isLiked = $repository->userAlreadyLiked($id,$user);
 
-        $repository->addLikeToChop($id);
-        $favouriteCount = $repository->getFavourites($id);
+         if (! $isLiked) {
+             $favourite->chop_id = $id;
+             $favourite->user_id = $user->id;
+             $favourite->save();
 
-        return response()->json(['count' => $favouriteCount]);
+             $repository->addLikeToChop($id);
+             $favouriteCount = $repository->getFavourites($id);
+
+             return response()->json(['count' => $favouriteCount]);
+         }
+
+         $favouriteCount = $this->unFavourite($id, $user, $repository);
+
+         return response()->json(['count' => $favouriteCount]);
+
+     }
+
+
+     /**
+     * @param $id
+     * @param User $user
+     * @param ChopsRepository $repository
+     * @return mixed
+     */
+     public function unFavourite($id, User $user, ChopsRepository $repository)
+     {
+        return $repository->removeFavourite($id, $user);
      }
 
 

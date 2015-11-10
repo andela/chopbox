@@ -146,9 +146,16 @@ $('document').ready(function () {
                 chopId: chopId
             },
             success: function(response){
-                $('#favourites-count-'+chopId).empty().append(response.count);
-            },
+                var span = $('#unpopular');
+                if ( response.count > 0) {
+                    $('#favourites-count-'+chopId).empty().append(response.count);
 
+                    span.removeAttr('id');
+                } else {
+                    $('#favourites-count-'+chopId).empty().append('0');
+                }
+
+            },
             error: function(response){
                // console.log(response);
             }
