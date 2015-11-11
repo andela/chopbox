@@ -35,7 +35,7 @@
     </style>
 </head>
 <body class="anf">
-    <nav class="ot">
+    <nav class="pd ot" style="background-color: #ffffff">
         <div class="by">
             <a class="chopbox navbar-brand" style="color: #286090 !important;" href="{{url('/')}}">
                 ChopBox
