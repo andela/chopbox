@@ -32,9 +32,9 @@ class UserRepository
      * @param User $user
      * @return array
      */
-    public function getFolloweeIds(User $user)
+    public function getFolloweeIds($user_id)
     {
-        $followings = Follow::where('follower_id', $user->id)->get();
+        $followings = Follow::where('follower_id', $user_id)->get();
 
         return $this->getCollectionOfId($followings, 'followee_id');
     }
@@ -42,12 +42,12 @@ class UserRepository
     /**
      * Retrieve the ID of all the users following a particular user
      *
-     * @param User $user
+     * @param $user_id
      * @return array
      */
-    public function getFollowerIds(User $user)
+    public function getFollowerIds($user_id)
     {
-        $followings = Follow::where('followee_id', $user->id)->get();
+        $followings = Follow::where('followee_id', $user_id)->get();
 
         return $this->getCollectionOfId($followings, 'follower_id');
     }

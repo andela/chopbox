@@ -29,7 +29,7 @@ class HomeController extends Controller
         $topTen = $userRepository->topUsers();
 
         // Find followee ids
-        $followeeIds = $userRepository->getFolloweeIds($user);
+        $followeeIds = $userRepository->getFolloweeIds($user->id);
 
         // Get chops of logged-in user and that of those (s)he follows
         $chops = $chopsRepository->getChops($user, $followeeIds);
@@ -58,7 +58,7 @@ class HomeController extends Controller
         $topTen = $userRepository->topUsers();
 
         // Find followee ids
-        $followeeIds = $userRepository->getFolloweeIds($user);
+        $followeeIds = $userRepository->getFolloweeIds($user->id);
 
         // Get chops of logged-in user and that of those (s)he follows
         $chops = $chopRepository->getChops($user, $followeeIds);

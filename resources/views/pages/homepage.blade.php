@@ -113,14 +113,14 @@
 			 <hr/>
 			 <ul class="aoh">
 				<li class="aoi">
-                    <a id="followers" style="cursor: pointer">
+                    <a id="followers" data-id="{{ $user->id }}" style="cursor: pointer">
 					    Followers
 				    </a>
 				    <h5 class="alh followers_count"> {{ $user->followers_count }}</h5>
 				</li>
 
 				<li class="aoi">
-                    <a id="following" style="cursor: pointer">
+                    <a id="following" data-id="{{ $user->id }}" style="cursor: pointer">
 					    Following
 				    </a>
 				    <h5 class="alh followings_count"> {{ $user->followings_count }}</h5>
@@ -252,7 +252,7 @@
 					</div>
 					@endcan
                      <a class="qk" href="#">
-                         <img data-id="{{ $chop->user->id }}" class="qi cu round {{ $chop->user->id == $user->id ? '' : 'pop'}}" src="{{ $chop->user->image_uri }}">
+                         <img data-id="{{ $chop->user->id }}" class="qi cu round {{ $chop->user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $chop->user->image_uri }}">
                      </a>
 					<a class="qk shift-down" href="" >
 					 <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
@@ -267,7 +267,7 @@
 					 </div>
 					@endforeach
 
-					<p>{{ $chop->about }}</p>
+					<p class="chops-about">{{ $chop->about }}</p>
 					<br/>
 
 					<div>
@@ -290,7 +290,7 @@
 					@foreach ($chop->comments as $comment)
 					 <li class="qg">
 						<a class="qk" href="#">
-						 <img data-id="{{ $comment->user->id }}" class="qi cu small-round {{ $comment->user->id == $user->id ? '' : 'pop'}}" src="{{ $comment->user->image_uri }}">
+						 <img data-id="{{ $comment->user->id }}" class="qi cu small-round {{ $comment->user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $comment->user->image_uri }}">
 						</a>
 
 						<div class="qh">
@@ -326,7 +326,7 @@
 				@foreach($topTen as $top_user)
 				 <li class="qg">
                      <a class="qk" href="{{ route('user.show',$top_user->id) }}">
-					 <img data-id="{{ $top_user->id }}" class="qi cu small-round {{ $top_user->id == $user->id ? '' : 'pop'}}" src="{{ $top_user->image_uri }}" />
+					 <img data-id="{{ $top_user->id }}" class="qi cu small-round {{ $top_user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $top_user->image_uri }}" />
 					</a>
 
 					<div class="qh leaderboard">

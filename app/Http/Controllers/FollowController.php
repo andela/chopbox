@@ -19,7 +19,7 @@ class FollowController extends Controller
      */
     public function getFollowees(UserRepository $userRepository)
     {
-        return User::whereIn('id', $userRepository->getFolloweeIds(Auth::user()))->get();
+        return User::whereIn('id', $userRepository->getFolloweeIds(Input::get('user_id')))->get();
     }
 
     /**
@@ -30,7 +30,7 @@ class FollowController extends Controller
      */
     public function getFollowers(UserRepository $userRepository)
     {
-        return User::whereIn('id', $userRepository->getFollowerIds(Auth::user()))->get();
+        return User::whereIn('id', $userRepository->getFollowerIds(Input::get('user_id')))->get();
     }
 
     /**
