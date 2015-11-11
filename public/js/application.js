@@ -177,12 +177,13 @@ $('#camera').click(function() {
     $( "#file" ).click();
 });
 
-var counter = 0;
-
 // Toggle between follow and unfollow button on userModal
 function toggleBetweenFollowAndUnfollow(element) {
-    counter++;
-    ((counter % 2) === 0) ? $(element).text('Unfollow').css("background-color", "#D9534F") : $(element).text('Follow').css("background-color", "#3097D1");
+    if($(element).text() == "Follow") {
+        $(element).text('Unfollow').css("background-color", "#D9534F")
+    } else if($(element).text() == "Unfollow") {
+        $(element).text('Follow').css("background-color", "#3097D1")
+    }
 }
 
 // Implement follow and Unfollow functionality
@@ -192,8 +193,8 @@ function followOrUnfollow(element) {
         url: '/follow',
         data: {'followee_id': $(element).prop('id')}
     }).done(function(response) {
-        $('.followings_count').empty();
-        $('.followings_count').append(response);
+        $('.followings-count-for-logged-in-user').empty();
+        $('.followings-count-for-logged-in-user').append(response);
     });
 }
 
@@ -215,21 +216,40 @@ function getFollowersOrFollowees(routeUrl, element) {
 // Update the userModal with ajax response for the collection of followers or followees
 function updateModal(response) {
     var htmlResponse = '';
+    var followStatuses = response['followStatuses'];
+    var follows = response['follows'];
+    var logged_in_user_id = response['logged_in_user_id'];
+    var counter = 0;
 
-    for(var followee in response) {
+    for(var follow in follows) {
         htmlResponse += '<li class="b">' +
         '<div class="qg">' +
         '<a class="qk" href="#">' +
-        '<img class="qi cu" src="' + response[followee].image_uri + '">' +
+        '<img class="qi cu" src="' + follows[follow].image_uri + '">' +
         '</a>' +
-        '<div class="qh">' +
-        '<button class="follow cg fm fx eg btn btn-danger" id="' + response[followee].id + '" onclick="toggleBetweenFollowAndUnfollow(this)">' +
-        '<span class="c aok"></span> Unfollow' +
-        '</button>' +
-        '<strong>' + response[followee].firstname + ' ' + response[followee].lastname + '</strong>' + '<p>' + '@' + response[followee].username.toLowerCase() + ' - ' + response[followee].location + '</p>' +
-        '</div>' +
-        '</div>' +
-        '</li>';
+        '<div class="qh">';
+
+        if((typeof followStatuses !== 'undefined') && (followStatuses[counter] == "YES")) {
+            if(follows[follow].id !== logged_in_user_id) {
+                htmlResponse += '<button class="follow cg fm fx eg" style="background-color: #D9534F;color: #FFFFFF" id="' + follows[follow].id + '" onclick="toggleBetweenFollowAndUnfollow(this)">' +
+                                '<span class="c aok"></span>Unfollow' +
+                                '</button>';
+            }
+        } else if((typeof followStatuses !== 'undefined') && (followStatuses[counter] == "NO")) {
+            if(follows[follow].id !== logged_in_user_id) {
+                htmlResponse += '<button class="follow cg fm fx eg" style="background-color: #3097D1;color: #FFFFFF" id="' + follows[follow].id + '" onclick="toggleBetweenFollowAndUnfollow(this)">' +
+                                '<span class="c aok"></span>Follow' +
+                                '</button>';
+            }
+        } else {
+            htmlResponse += '<button class="follow cg fm fx eg" style="background-color: #D9534F;color: #FFFFFF" id="' + follows[follow].id + '" onclick="toggleBetweenFollowAndUnfollow(this)">' +
+                            '<span class="c aok"></span>Unfollow' +
+                            '</button>';
+        }
+
+        htmlResponse += '<strong>' + follows[follow].firstname + ' ' + follows[follow].lastname + '</strong>' + '<p>' + '@' + follows[follow].username.toLowerCase() + ' - ' + follows[follow].location + '</p></div></div></li>';
+
+        counter++;
     }
 
     return htmlResponse;

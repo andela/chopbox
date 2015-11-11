@@ -9,6 +9,7 @@ class UserRepository
 {
     /**
      * Find Users by their Emails
+     *
      * @param  string $email
      * @return Collection
      */
@@ -19,6 +20,7 @@ class UserRepository
 
     /**
      * Find top 10 Users that have posted the most chops
+     *
      * @return [type] [description]
      */
     public function topUsers()
@@ -29,7 +31,7 @@ class UserRepository
     /**
      * Retrieve the ID of all the users a particular user is following
      *
-     * @param User $user
+     * @param $user_id
      * @return array
      */
     public function getFolloweeIds($user_id)

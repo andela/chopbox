@@ -116,14 +116,14 @@
                     <a id="followers" data-id="{{ $user->id }}" style="cursor: pointer">
 					    Followers
 				    </a>
-				    <h5 class="alh followers_count"> {{ $user->followers_count }}</h5>
+				    <h5 class="alh followers-count"> {{ $user->followers_count }}</h5>
 				</li>
 
 				<li class="aoi">
                     <a id="following" data-id="{{ $user->id }}" style="cursor: pointer">
 					    Following
 				    </a>
-				    <h5 class="alh followings_count"> {{ $user->followings_count }}</h5>
+				    <h5 class="alh {{ ($user->id == Auth::user()->id) ? 'followings-count-for-logged-in-user' : 'followings-count'}}" > {{ $user->followings_count }}</h5>
 				</li>
 			 </ul>
 			</div>
