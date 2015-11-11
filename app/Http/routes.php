@@ -40,9 +40,7 @@ Route::post('register', 'Auth\AuthController@postRegister');
 Route::get('social_password', 'Auth\AuthController@getSocialPassword');
 Route::post('social_password', 'Auth\AuthController@postSocialPassword');
 
-/*
- * Password reset routes.
- */
+// Password reset routes.
 Route::get('/password/email', 'Auth\PasswordController@getEmail');
 Route::post('/password/reset/{token}', 'Auth\PassWordController@postEmail');
 
@@ -56,10 +54,9 @@ Route::post('profile_complete', 'HomeController@firstProfile');
 
 Route::post('comment', 'CommentController@addComment');
 
-Route::get('followees', 'HomeController@getFollowees');
 
-Route::get('followers', 'HomeController@getFollowers');
-
-Route::get('follow', 'HomeController@follow');
-
-Route::get('follow_status', 'HomeController@checkFollowStatus');
+// Follow and Unfollow routes
+Route::get('followees', 'FollowController@getFollowees');
+Route::get('followers', 'FollowController@getFollowers');
+Route::get('follow_status', 'FollowController@checkFollowStatus');
+Route::get('follow', 'FollowController@followOrUnfollow');

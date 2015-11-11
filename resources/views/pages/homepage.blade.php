@@ -76,151 +76,13 @@
 					</div>
 				 </div>
 				</a>
-				<a href="#" class="b">
-				 <div class="qg">
-							 <span class="qk">
-                  <img class="cu qi" src="http://lorempixel.com/120/120">
-							 </span>
-
-					<div class="qh">
-					 <strong>Mark Otto</strong> and <strong>3 others</strong>
-
-					 <div class="aoe">
-						Brunch sustainable placeat vegan bicycle rights yeah…
-					 </div>
-					</div>
-				 </div>
-				</a>
-				<a href="#" class="b">
-				 <div class="qg">
-                <span class="qk">
-                  <img class="cu qi" src="http://lorempixel.com/120/120">
-                </span>
-
-					<div class="qh">
-					 <strong>Dave Gamache</strong>
-
-					 <div class="aoe">
-						Brunch sustainable placeat vegan bicycle rights yeah…
-					 </div>
-					</div>
-				 </div>
-				</a>
-				<a href="#" class="b">
-				 <div class="qg">
-                <span class="qk">
-                  <img class="cu qi" src="http://lorempixel.com/120/120">
-                </span>
-
-					<div class="qh">
-					 <strong>Jacob Thornton</strong> and <strong>1 other</strong>
-
-					 <div class="aoe">
-						Aenean eu leo quam. Pellentesque ornare sem lacinia quam &hellip;
-					 </div>
-					</div>
-				 </div>
-				</a>
-				<a href="#" class="b">
-				 <div class="qg">
-                <span class="qk">
-                  <img class="cu qi" src="assets/img/avatar-mdo.png">
-                </span>
-
-					<div class="qh">
-					 <strong>Mark Otto</strong> and <strong>3 others</strong>
-
-					 <div class="aoe">
-						Brunch sustainable placeat vegan bicycle rights yeah…
-					 </div>
-					</div>
-				 </div>
-				</a>
-				<a href="#" class="b">
-				 <div class="qg">
-                <span class="qk">
-                  <img class="cu qi" src="assets/img/avatar-dhg.png">
-                </span>
-
-					<div class="qh">
-					 <strong>Dave Gamache</strong>
-
-					 <div class="aoe">
-						Brunch sustainable placeat vegan bicycle rights yeah…
-					 </div>
-					</div>
-				 </div>
-				</a>
-				<a href="#" class="b">
-				 <div class="qg">
-                <span class="qk">
-                  <img class="cu qi" src="http://lorempixel.com/120/120">
-                </span>
-
-					<div class="qh">
-					 <strong>Jacob Thornton</strong> and <strong>1 other</strong>
-
-					 <div class="aoe">
-						Aenean eu leo quam. Pellentesque ornare sem lacinia quam &hellip;
-					 </div>
-					</div>
-				 </div>
-				</a>
-				<a href="#" class="b">
-				 <div class="qg">
-                <span class="qk">
-                  <img class="cu qi" src="http://lorempixel.com/120/120">
-                </span>
-
-					<div class="qh">
-					 <strong>Mark Otto</strong> and <strong>3 others</strong>
-
-					 <div class="aoe">
-						Brunch sustainable placeat vegan bicycle rights yeah…
-					 </div>
-					</div>
-				 </div>
-				</a>
-				<a href="#" class="b">
-				 <div class="qg">
-                <span class="qk">
-                  <img class="cu qi" src="assets/img/avatar-dhg.png">
-                </span>
-
-					<div class="qh">
-					 <strong>Dave Gamache</strong>
-
-					 <div class="aoe">
-						Brunch sustainable placeat vegan bicycle rights yeah…
-					 </div>
-					</div>
-				 </div>
-				</a>
 			 </div>
 
 			 <div class="hide ali js-conversation">
 				<ul class="qp aoa">
-				 <li class="qg aod alt">
-					<div class="qh">
-					 <div class="aob">
-						Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a
-						pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna. Morbi leo risus, porta ac
-						consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis.
-					 </div>
-					 <div class="aoc">
-						<small class="dp">
-						 <a href="#">Dave Gamache</a> at 4:20PM
-						</small>
-					 </div>
-					</div>
-					<a class="qj" href="#">
-					 <img class="cu qi" src="assets/img/avatar-dhg.png">
-					</a>
-				 </li>
-
 				 <li class="qg alt">
 					<a class="qk" href="#">
-					 <img class="cu qi" src="assets/img/avatar-fat.jpg">
+					 <img class="cu qi" src="#">
 					</a>
 
 					<div class="qh">
@@ -243,99 +105,6 @@
 					 <div class="aoc">
 						<small class="dp">
 						 <a href="#">Fat</a> at 4:28PM
-						</small>
-					 </div>
-					</div>
-				 </li>
-
-				 <li class="qg alt">
-					<a class="qk" href="#">
-					 <img class="cu qi" src="assets/img/avatar-mdo.png">
-					</a>
-
-					<div class="qh">
-					 <div class="aob">
-						Etiam porta sem malesuada magna mollis euismod. Donec id elit non mi porta gravida at eget metus. Praesent
-						commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod.
-						Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur.
-					 </div>
-					 <div class="aob">
-						Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
-						Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-					 </div>
-					 <div class="aoc">
-						<small class="dp">
-						 <a href="#">Mark Otto</a> at 4:20PM
-						</small>
-					 </div>
-					</div>
-				 </li>
-
-				 <li class="qg aod alt">
-					<div class="qh">
-					 <div class="aob">
-						Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a
-						pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna. Morbi leo risus, porta ac
-						consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis.
-					 </div>
-					 <div class="aoc">
-						<small class="dp">
-						 <a href="#">Dave Gamache</a> at 4:20PM
-						</small>
-					 </div>
-					</div>
-					<a class="qj" href="#">
-					 <img class="cu qi" src="assets/img/avatar-dhg.png">
-					</a>
-				 </li>
-
-				 <li class="qg alt">
-					<a class="qk" href="#">
-					 <img class="cu qi" src="assets/img/avatar-fat.jpg">
-					</a>
-
-					<div class="qh">
-					 <div class="aob">
-						Cras justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat
-						porttitor ligula, eget lacinia odio sem nec elit. Praesent commodo cursus magna, vel scelerisque nisl
-						consectetur et.
-					 </div>
-					 <div class="aob">
-						Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur. Cras justo
-						odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at
-						eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis
-						ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-					 </div>
-					 <div class="aob">
-						Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui. Integer posuere erat a ante venenatis
-						dapibus posuere velit aliquet. Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida
-						at eget metus.
-					 </div>
-					 <div class="aoc">
-						<small class="dp">
-						 <a href="#">Fat</a> at 4:28PM
-						</small>
-					 </div>
-					</div>
-				 </li>
-				 <li class="qg all">
-					<a class="qk" href="#">
-					 <img class="cu qi" src="assets/img/avatar-mdo.png">
-					</a>
-
-					<div class="qh">
-					 <div class="aob">
-						Etiam porta sem malesuada magna mollis euismod. Donec id elit non mi porta gravida at eget metus. Praesent
-						commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod.
-						Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur.
-					 </div>
-					 <div class="aob">
-						Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
-						Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-					 </div>
-					 <div class="aoc">
-						<small class="dp">
-						 <a href="#">Mark Otto</a> at 4:20PM
 						</small>
 					 </div>
 					</div>
@@ -347,6 +116,7 @@
 		</div>
 	 </div>
 	</div>
+
 	<div class="cd fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true">
 	 <div class="modal-dialog">
 		<div class="modal-content">
@@ -356,7 +126,7 @@
 		 </div>
 		 <div class="modal-body ame">
 			<div class="up">
-			 <ul id="followingList" class="qp cj ca"> </ul>
+			 <ul id="followingList" class="qp cj ca"></ul>
 			</div>
 		 </div>
 		</div>
@@ -466,12 +236,9 @@
 					 </a>
 					</div>
 					@endcan
-
-                     {{--<input class="user_id" type="password" value="{{ $chop->user->id }}" style="display: none" />--}}
-                     <span class="qk">
-                         <img class="qi cu round {{ $chop->user->id == $user->id ? '' : 'pop'}}" src="{{ $chop->user->image_uri }}">
-                         <input class="hide" value="{{ $chop->user->id }}" />
-                     </span>
+                     <a class="qk" href="#">
+                         <img data-id="{{ $chop->user->id }}" class="qi cu round {{ $chop->user->id == $user->id ? '' : 'pop'}}" src="{{ $chop->user->image_uri }}">
+                     </a>
 					<a class="qk shift-down" href="" >
 					 <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
 					</a>
@@ -507,8 +274,7 @@
 					@foreach ($chop->comments as $comment)
 					 <li class="qg">
 						<a class="qk" href="#">
-						 <img class="qi cu small-round {{ $comment->user->id == $user->id ? '' : 'pop-left'}}" src="{{ $comment->user->image_uri }}">
-                            <input class="hide" value="{{ $comment->user->id }}" />
+						 <img data-id="{{ $comment->user->id }}" class="qi cu small-round {{ $comment->user->id == $user->id ? '' : 'pop'}}" src="{{ $comment->user->image_uri }}">
 						</a>
 
 						<div class="qh">
@@ -543,10 +309,9 @@
 			 <ul class="qp all">
 				@foreach($topTen as $top_user)
 				 <li class="qg">
-					<span class="qk">
-					 <img class="qi cu small-round {{ $top_user->id == $user->id ? '' : 'pop-left'}}" src="{{ $top_user->image_uri }}" />
-                        <input class="hide" value="{{ $top_user->id }}" />
-					</span>
+                     <a class="qk" href="#">
+					 <img data-id="{{ $top_user->id }}" class="qi cu small-round {{ $top_user->id == $user->id ? '' : 'pop'}}" src="{{ $top_user->image_uri }}" />
+					</a>
 
 					<div class="qh leaderboard">
 					 <a href="#">
