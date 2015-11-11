@@ -207,7 +207,7 @@ function getFollowersOrFollowees(routeUrl, element) {
     }).done(function(response) {
         $('#followingList').html(updateModal(response));
         var modalTag = $('#userModal');
-        modalTag.find('.modal-title').text('Following');
+        modalTag.find('.modal-title').text((routeUrl == "/followers") ? 'Followers' : 'Following');
         modalTag.modal('handleUpdate');
         modalTag.modal('show');
     });
