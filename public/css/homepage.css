@@ -160,4 +160,7 @@ div.image-crop-resize-handler {
     border: 2px solid #F5F8FA;
 }
 
+ a:link{
+     text-decoration: none;
+ }
 

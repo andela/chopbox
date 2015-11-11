@@ -5,45 +5,7 @@
 @endsection
 
 @section('navbar')
- <div class="f collapse" id="navbar-collapse-main">
-	<ul class="nav navbar-nav st">
-	 <li>
-		<a href="#">Profile</a>
-	 </li>
-	 <li>
-		<a data-toggle="modal" href="index.html#msgModal">Messages</a>
-	 </li>
-	</ul>
-	<ul class="nav navbar-nav oh ald st">
-	 <li>
-		<a class="g" href="#">
-		 <i class="glyphicon glyphicon-bell"></i>
-		</a>
-	 </li>
-	 <li>
-		<button class="cg fm oy ank" data-toggle="popover">
-		 <img class="cu" src="{{ $user->image_uri }}">
-		</button>
-	 </li>
-	</ul>
-
-	<form class="ox oh i" role="search">
-	 <div class="et">
-		<input type="text" class="form-control" data-action="grow" placeholder="Search">
-	 </div>
-	</form>
-
-	<ul class="nav navbar-nav su sv sw">
-	 <li><a href="#">Profile</a></li>
-	 <li><a href="#">Notifications</a></li>
-	 <li><a data-toggle="modal" href="index.html#msgModal">Messages</a></li>
-	 <li><a href="logout">Logout</a></li>
-	</ul>
-
-	<ul class="nav navbar-nav hidden">
-	 <li><a href="logout">Logout</a></li>
-	</ul>
- </div>
+    @include('includes.auth-nav')
 @endsection
 
 @section('content')
@@ -133,7 +95,7 @@
 	 </div>
 	</div>
 
-	<div class="by ams">
+	<div class="by ams" id="chops-display">
 	 <div class="gd">
 		<div class="go fixLeft">
 		 <div class="qw rd aof alt tinted">
@@ -144,7 +106,7 @@
 			 </a>
 
 			 <h5 class="qz username">
-				<a class="akt" href="#">{{ '@'.strtolower($user->username) }}</a>
+				<a class="akt" href="{{ route('user.show', $user->id) }}">{{ '@'.strtolower($user->username) }}</a>
 			 </h5>
 
 			 <h5 class="alc bluecolor">{{ $user->firstname }} {{ $user->lastname }}</h5>
@@ -175,11 +137,13 @@
 		 </div>
 		    <div class="qw rd sn sq tinted">
                 <div class="qx">
-                 <div class="eg">
-                    <a href="#">
-                     <i class="glyphicon glyphicon-edit"></i>
-                    </a>
-                 </div>
+                    @can('edit-profile', $user->id)
+                    <div class="eg">
+                        <a href="{{ route('user.profile', $user->id) }}" id="profile-edit">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </div>
+                    @endcan
                  <h5 class="alc bluecolor">Bio</h5>
                  <ul class="eb tc disc-list-ul">
                     <li class="disc-list">Best food<a class="pull-right align-right" href="#">{{ $user->best_food }}</a>
@@ -227,13 +191,64 @@
 				 <div class="qo">
 					@can('update-chop', $chop)
 					<div class="eg">
-					 <a href="#">
-						<i class="glyphicon glyphicon-edit"></i>
-					 </a>
+                        <a data-toggle="modal" data-target="#editModal-{{ $chop->id  }}">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
 
-					 <a href="#">
-						<i class="glyphicon glyphicon-remove-circle"></i>
-					 </a>
+                        <!-- Edit Modal -->
+                        <div id="editModal-{{ $chop->id }}" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Edit Chop</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        {!! Form::model($chop,['url' => 'editChop', 'files' => true, 'method' => 'put']) !!}
+                                        {!! Form::hidden('chop_id', $chop->id) !!}
+                                        {!! Form::textarea('about', $chop->about, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
+                                    </div>
+                                    <div class="modal-footer">
+                                        {!! Form::submit('Edit', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>   <!-- End of Edit Modal -->
+
+                        <a data-toggle="modal" data-target="#confirmDelete-{{ $chop->id  }}">
+                            <i class="glyphicon glyphicon-remove-circle"></i>
+                        </a>
+
+                        <!-- Delete Modal Dialog -->
+                        <div class="modal fade" id="confirmDelete-{{ $chop->id }}" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">Are you sure you want to delete this chop?</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
+                                        <p>{{ $chop->about }}</p>
+                                        <input name="chop_id" type="hidden" value="{{ $chop->id }}" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        {!! Form::model($chop,['url' => 'deleteChop', 'method' => 'delete']) !!}
+                                        {!! Form::hidden('about', $chop->about, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
+                                        {!! Form::hidden('chop_id', $chop->id) !!}
+                                        {!! Form::hidden('user_id', $chop->user->id) !!}
+                                        {!! Form::submit('Delete', ['class' =>'btn btn-danger pull-right delete-btn', 'name' =>'submitButton']) !!}
+                                        {!! Form::close() !!}
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>      <!-- End of Delete Modal -->
+
 					</div>
 					@endcan
                      <a class="qk" href="#">
@@ -256,18 +271,19 @@
 					<br/>
 
 					<div>
-					 @if($chop->likes > 0)
-						<a href="#">
-						 <span class="glyphicon glyphicon-heart"></span>
-						</a>
-					 @else
-						<a href="#">
-						 <span id="unpopular" class="glyphicon glyphicon-heart"></span>
-						</a>
-					 @endif
-					 {{ $chop->likes }}
+                         @if($chop->likes > 0)
+                            <a href="#!" class="favourite">
+                                <input type="hidden" value="{{ $chop->id }}" name="chop_id"/>
+                             <span class="glyphicon glyphicon-heart"></span>
+                            </a>
+                         @else
+                            <a href="#!" class="favourite">
+                                <input type="hidden" value="{{ $chop->id }}" name="chop_id"/>
+                             <span id="unpopular" class="glyphicon glyphicon-heart"></span>
+                            </a>
+                         @endif
+                         <span id="favourites-count-{{ $chop->id }}">{{ $chop->likes }}</span>
 					</div>
-
 				 </div>
 
 				 <ul class="qp all">
@@ -278,7 +294,7 @@
 						</a>
 
 						<div class="qh">
-						 <a href="#">
+						 <a href="#!">
 							<strong>
 							 <span class="username">{{ '@'.strtolower($comment->user->username).': ' }}</span>
 							</strong>
@@ -309,12 +325,12 @@
 			 <ul class="qp all">
 				@foreach($topTen as $top_user)
 				 <li class="qg">
-                     <a class="qk" href="#">
+                     <a class="qk" href="{{ route('user.show',$top_user->id) }}">
 					 <img data-id="{{ $top_user->id }}" class="qi cu small-round {{ $top_user->id == $user->id ? '' : 'pop'}}" src="{{ $top_user->image_uri }}" />
 					</a>
 
 					<div class="qh leaderboard">
-					 <a href="#">
+					 <a href="{{ route('user.show', $top_user->id) }}">
 						<strong>
 						 <span class="username">{{ '@'.strtolower($top_user->username) }}</span>
 						</strong>
@@ -326,8 +342,6 @@
 			 </ul>
 			</div>
 		 </div>
-
-
 		 <div class="qw rd aoj tinted">
 			<div class="qx centralize">
 			 <a href="{{ url('about') }}">About</a>
@@ -340,5 +354,6 @@
 		</div>
 	 </div>
 	</div>
+
  </div>
 @endsection

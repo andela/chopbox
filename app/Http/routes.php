@@ -11,6 +11,11 @@
  * |
  */
 
+/*
+ * |--------------------------------------------------------------------------
+ * |Pages Routes
+ * |--------------------------------------------------------------------------
+ */
 Route::get('/', ['middleware'=>'home', 'uses' => 'HomeController@index']);
 
 Route::get('help', 'HelpAndPrivacyController@help');
@@ -21,42 +26,116 @@ Route::get('about', 'AboutTermsController@about');
 
 Route::get('terms', 'AboutTermsController@terms');
 
-Route::controllers([
-    'password' => 'Auth\PasswordController'
-]);
 
-// Authentication routes...
+/*
+ * |--------------------------------------------------------------------------
+ * |Authentication Routes
+ * |--------------------------------------------------------------------------
+ */
 Route::get('login', 'Auth\AuthController@getLogin');
+
 Route::post('login', 'Auth\AuthController@doLogin');
 
 Route::get('logout', 'Auth\AuthController@getLogout');
 
 
-// Registration routes...
+/*
+ * |--------------------------------------------------------------------------
+ * |Registration Routes
+ * |--------------------------------------------------------------------------
+ */
 Route::get('register', 'Auth\AuthController@getRegister');
+
 Route::post('register', 'Auth\AuthController@postRegister');
-
-// Set Social Password routes...
-Route::get('social_password', 'Auth\AuthController@getSocialPassword');
-Route::post('social_password', 'Auth\AuthController@postSocialPassword');
-
-// Password reset routes.
-Route::get('/password/email', 'Auth\PasswordController@getEmail');
-Route::post('/password/reset/{token}', 'Auth\PassWordController@postEmail');
-
 
 Route::get('login/{provider?}', 'Auth\AuthController@socialLogin');
 
 
-Route::resource('chops', 'ChopsController');
+/*
+ * |--------------------------------------------------------------------------
+ * |Social Password Routes
+ * |--------------------------------------------------------------------------
+ */
+Route::get('social_password', 'Auth\AuthController@getSocialPassword');
 
-Route::post('profile_complete', 'HomeController@firstProfile');
+Route::post('social_password', 'Auth\AuthController@postSocialPassword');
 
+
+/*
+ * |--------------------------------------------------------------------------
+ * |Password Reset Routes
+ * |--------------------------------------------------------------------------
+ */
+Route::get('/password/email', 'Auth\PasswordController@getEmail');
+
+Route::post('/password/reset/{token}', 'Auth\PassWordController@postEmail');
+
+Route::controllers([
+    'password' => 'Auth\PasswordController'
+]);
+
+
+/*
+ * |--------------------------------------------------------------------------
+ * |Comment Route
+ * |--------------------------------------------------------------------------
+ */
 Route::post('comment', 'CommentController@addComment');
 
 
-// Follow and Unfollow routes
+/*
+ * |--------------------------------------------------------------------------
+ * |Follow and Unfollow Routes
+ * |--------------------------------------------------------------------------
+ */
 Route::get('followees', 'FollowController@getFollowees');
+
 Route::get('followers', 'FollowController@getFollowers');
+
 Route::get('follow_status', 'FollowController@checkFollowStatus');
+
 Route::get('follow', 'FollowController@followOrUnfollow');
+
+
+/*
+ * |--------------------------------------------------------------------------
+ * | User Profile Routes
+ * |--------------------------------------------------------------------------
+ */
+Route::post('profile_complete', 'HomeController@firstProfile');
+
+Route::get('profile/{id}', [
+    'uses'           => 'UserProfileController@edit',
+    'as'             =>  'user.profile',
+    'middleware'     => ['auth']
+]);
+
+Route::post('profile/{id}', [
+    'uses'          => 'UserProfileController@update',
+    'as'            => 'profile.update',
+    'middleware'    => ['auth']
+]);
+
+Route::get('user/{id}', [
+    'uses'      => 'UserProfileController@show',
+    'as'        => 'user.show',
+    'middleware'=> ['auth']
+]);
+
+
+/*
+ * |--------------------------------------------------------------------------
+ * |Chops Routes
+ * |--------------------------------------------------------------------------
+ */
+Route::resource('chops', 'ChopsController');
+
+Route::post('chops/favourite/{id}',[
+    'uses'      => 'ChopsController@favourite',
+    'as'        => 'chops.favourite',
+    'middleware'=> ['auth']
+]);
+
+Route::put('editChop', 'ChopsController@update');
+
+Route::delete('deleteChop', 'ChopsController@destroy');
