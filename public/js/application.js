@@ -135,4 +135,173 @@ $('document').ready(function () {
         $('[data-toggle="tooltip"]').tooltip()
     });
 
+    $('.favourite').on('click', function(e){
+        var span = $('.glyphicon-heart', this);
+        e.preventDefault();
+        var chopId = $("input[name='chop_id']", this).val();
+
+        $.ajax({
+            type : 'post',
+            url  : '/chops/favourite/'+chopId,
+            data : {
+                chopId: chopId
+            },
+            success: function(response){
+                if ( response.count > 0) {
+                    $('#favourites-count-'+chopId).empty().append(response.count);
+                    span.removeAttr('id');
+                    span.attr('style')?span.removeAttr('style'): "";
+                } else {
+                    $('#favourites-count-'+chopId).empty().append('0');
+                    $('span.glyphicon-heart.'+chopId).css('color', 'slategray');
+                }
+
+            },
+            error: function(response){
+               // console.log(response);
+            }
+        });
+
+    });
+
+});
+
+
+// execute/clear BS loaders for docs
+$(function(){
+    if (window.BS&&window.BS.loader&&window.BS.loader.length) {
+        while(BS.loader.length){(BS.loader.pop())()}
+    }
+});
+
+$('#camera').click(function() {
+    $( "#file" ).click();
+});
+
+// Toggle between follow and unfollow button on userModal
+function toggleBetweenFollowAndUnfollow(element) {
+    if($(element).text() == "Follow") {
+        $(element).text('Unfollow').css("background-color", "#D9534F")
+    } else if($(element).text() == "Unfollow") {
+        $(element).text('Follow').css("background-color", "#3097D1")
+    }
+}
+
+// Implement follow and Unfollow functionality
+function followOrUnfollow(element) {
+    $.ajax({
+        type: 'get',
+        url: '/follow',
+        data: {'followee_id': $(element).prop('id')}
+    }).done(function(response) {
+        $('.followings-count-for-logged-in-user').empty();
+        $('.followings-count-for-logged-in-user').append(response);
+    });
+}
+
+// Retrieve followers or followees of a user
+function getFollowersOrFollowees(routeUrl, element) {
+    $.ajax({
+        type: 'get',
+        url: routeUrl,
+        data: {'user_id': $(element).data().id}
+    }).done(function(response) {
+        $('#followingList').html(updateModal(response));
+        var modalTag = $('#userModal');
+        modalTag.find('.modal-title').text((routeUrl == "/followers") ? 'Followers' : 'Following');
+        modalTag.modal('handleUpdate');
+        modalTag.modal('show');
+    });
+}
+
+// Update the userModal with ajax response for the collection of followers or followees
+function updateModal(response) {
+    var htmlResponse = '';
+    var followStatuses = response['followStatuses'];
+    var follows = response['follows'];
+    var logged_in_user_id = response['logged_in_user_id'];
+    var counter = 0;
+
+    for(var follow in follows) {
+        htmlResponse += '<li class="b">' +
+        '<div class="qg">' +
+        '<a class="qk" href="#">' +
+        '<img class="qi cu" src="' + follows[follow].image_uri + '">' +
+        '</a>' +
+        '<div class="qh">';
+
+        if((typeof followStatuses !== 'undefined') && (followStatuses[counter] == "YES")) {
+            if(follows[follow].id !== logged_in_user_id) {
+                htmlResponse += '<button class="follow cg fm fx eg" style="background-color: #D9534F;color: #FFFFFF" id="' + follows[follow].id + '" onclick="toggleBetweenFollowAndUnfollow(this)">' +
+                                '<span class="c aok"></span>Unfollow' +
+                                '</button>';
+            }
+        } else if((typeof followStatuses !== 'undefined') && (followStatuses[counter] == "NO")) {
+            if(follows[follow].id !== logged_in_user_id) {
+                htmlResponse += '<button class="follow cg fm fx eg" style="background-color: #3097D1;color: #FFFFFF" id="' + follows[follow].id + '" onclick="toggleBetweenFollowAndUnfollow(this)">' +
+                                '<span class="c aok"></span>Follow' +
+                                '</button>';
+            }
+        } else {
+            htmlResponse += '<button class="follow cg fm fx eg" style="background-color: #D9534F;color: #FFFFFF" id="' + follows[follow].id + '" onclick="toggleBetweenFollowAndUnfollow(this)">' +
+                            '<span class="c aok"></span>Unfollow' +
+                            '</button>';
+        }
+
+        htmlResponse += '<strong>' + follows[follow].firstname + ' ' + follows[follow].lastname + '</strong>' + '<p>' + '@' + follows[follow].username.toLowerCase() + ' - ' + follows[follow].location + '</p></div></div></li>';
+
+        counter++;
+    }
+
+    return htmlResponse;
+}
+
+// Retrieve all the users a particular user is following
+$('#following').on('click', function() {
+    getFollowersOrFollowees('/followees', this);
+});
+
+// Retrieve all the users following a particular user
+$('#followers').on('click', function() {
+    getFollowersOrFollowees('/followers', this);
+});
+
+// Handle follow and unfollow on userModal
+$('#userModal').on('shown.bs.modal', function() {
+    $('.follow').on('click',function() {
+        followOrUnfollow(this);
+    });
+});
+
+// Handle follow and unfollow on popover
+$('.pop').on('shown.bs.popover', function() {
+    $('.follow').on('click',function(e) {
+        e.preventDefault();
+        followOrUnfollow(this);
+    });
+});
+
+// Handle the operation of follow/unfollow popover
+$(document).ready(function() {
+    $('.pop').popover({
+        html: true,
+        trigger: "hover",
+        content: function () {
+            return "<span class='follow' style='cursor: pointer' id='" + $(this).data().id + "'></span>";
+        },
+        placement: "auto left",
+        delay: {"show": 300,"hide": 600},
+        animation: "true",
+        template: '<div class="popover" role="tooltip"><div class="popover-content"></div></div>'
+    }).on('show.bs.popover', function() {
+        $.ajax({
+            type: 'get',
+            url: '/follow_status',
+            data: {'followee_id': $(this).data().id},
+            success: function(response){
+                (response == "NO") ? $('div .popover').css("background-color", "#3097D1").css("color", "#FFFFFF") : $('div .popover').css("background-color", "#D9534F").css("color", "#FFFFFF");
+                $('div .popover-content span').append((response == "NO") ? "Follow" : "Unfollow");
+            }
+        });
+    });
 });

@@ -62,6 +62,14 @@ textarea {
     color: slategray;
 }
 
+.no-like{
+    color: slategray;
+}
+
+.liked{
+    color: #ff0000;
+}
+
 img.aog {
     height: 100px;
 }
@@ -156,9 +164,15 @@ div.image-crop-resize-handler {
     width : 7px;
 }
 
+.cu {
+    border: 2px solid #F5F8FA;
+}
 
- .cu {
-  border: 2px solid #F5F8FA;
+ a:link{
+     text-decoration: none;
  }
 
+ p.chops-about{
+     display: block !important;
+ }
 

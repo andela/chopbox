@@ -2,14 +2,13 @@
 
 namespace ChopBox\Http\Controllers;
 
-use ChopBox\ChopBox\Repository\ChopsRepository;
-use ChopBox\ChopBox\Repository\UserRepository;
-use ChopBox\Follow;
-use ChopBox\Http\Requests;
-use ChopBox\Http\Requests\ProfileRequest;
-use ChopBox\User;
-use Illuminate\Support\Facades\Auth;
 use Validator;
+use ChopBox\User;
+use ChopBox\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+use ChopBox\Http\Requests\ProfileRequest;
+use ChopBox\ChopBox\Repository\UserRepository;
+use ChopBox\ChopBox\Repository\ChopsRepository;
 
 class HomeController extends Controller
 {
@@ -30,7 +29,7 @@ class HomeController extends Controller
         $topTen = $userRepository->topUsers();
 
         // Find followee ids
-        $followeeIds = $this->getFolloweeIds($user);
+        $followeeIds = $userRepository->getFolloweeIds($user->id);
 
         // Get chops of logged-in user and that of those (s)he follows
         $chops = $chopsRepository->getChops($user, $followeeIds);
@@ -59,7 +58,7 @@ class HomeController extends Controller
         $topTen = $userRepository->topUsers();
 
         // Find followee ids
-        $followeeIds = $this->getFolloweeIds($user);
+        $followeeIds = $userRepository->getFolloweeIds($user->id);
 
         // Get chops of logged-in user and that of those (s)he follows
         $chops = $chopRepository->getChops($user, $followeeIds);
@@ -79,18 +78,6 @@ class HomeController extends Controller
         $user->best_food = trim($request ['best_food']);
         $user->image_uri = trim($this->getAvatarUrl($user));
         $user->save();
-    }
-
-    private function getFolloweeIds(User $user)
-    {
-        $followings = Follow::where('follower_id', $user->id)->get();
-        $followeeIds = [];
-
-        foreach ($followings as $followee) {
-            array_push($followeeIds, $followee->followee_id);
-        }
-
-        return $followeeIds;
     }
 
     private function getAvatarUrl(User $user)
