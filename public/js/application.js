@@ -136,6 +136,7 @@ $('document').ready(function () {
     });
 
     $('.favourite').on('click', function(e){
+        var span = $('.glyphicon-heart', this);
         e.preventDefault();
         var chopId = $("input[name='chop_id']", this).val();
 
@@ -146,13 +147,13 @@ $('document').ready(function () {
                 chopId: chopId
             },
             success: function(response){
-                var span = $('#unpopular');
                 if ( response.count > 0) {
                     $('#favourites-count-'+chopId).empty().append(response.count);
-
                     span.removeAttr('id');
+                    span.attr('style')?span.removeAttr('style'): "";
                 } else {
                     $('#favourites-count-'+chopId).empty().append('0');
+                    $('span.glyphicon-heart.'+chopId).css('color', 'slategray');
                 }
 
             },
