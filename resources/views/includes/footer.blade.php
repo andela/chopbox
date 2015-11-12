@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="container">
-        <ul class="footer-list">
+        <ul class="footer-list list-inline">
             <li class="footer-list-item">
                 <a class="footer-list-link" href="{{url('about')}}">About</a>
             </li>
