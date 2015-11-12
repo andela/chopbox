@@ -179,13 +179,13 @@ $('#camera').click(function() {
 });
 
 // Handle post of comments by AJAX
-function postComment() {
+function postComment(element) {
     event.preventDefault();
     $.ajax({
         type: 'post',
         url: '/comment',
-        data: {'chop_id': $('input[name=chop_id]').val(),
-            'comment': $('input[name=comment]').val()
+        data: {'chop_id': element.chop_id.value,
+            'comment': element.comment.value
         }
     }).done(function (response) {
         var htmlResponse = '<li class="qg">' +
@@ -201,7 +201,7 @@ function postComment() {
             '</li>';
 
         $('.comment-list-' + response.chop_id).append(htmlResponse);
-        $('input[name=comment]').val('');
+        $(element).find('input[name="comment"]').val('');
     });
 }
 
