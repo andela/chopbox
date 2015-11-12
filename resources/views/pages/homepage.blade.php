@@ -271,17 +271,10 @@
 					<br/>
 
 					<div>
-                         @if($chop->likes > 0)
-                            <a href="#!" class="favourite">
-                                <input type="hidden" value="{{ $chop->id }}" name="chop_id"/>
-                             <span class="glyphicon glyphicon-heart"></span>
-                            </a>
-                         @else
-                            <a href="#!" class="favourite">
-                                <input type="hidden" value="{{ $chop->id }}" name="chop_id"/>
-                             <span id="unpopular" class="glyphicon glyphicon-heart"></span>
-                            </a>
-                         @endif
+                        <a href="#!" class="favourite">
+                            <input type="hidden" value="{{ $chop->id }}" name="chop_id"/>
+                            <span id="{{ ($chop->likes > 0 )?'':'unpopular'}}" class="glyphicon glyphicon-heart {{ $chop->id }}"></span>
+                        </a>
                          <span id="favourites-count-{{ $chop->id }}">{{ $chop->likes }}</span>
 					</div>
 				 </div>
