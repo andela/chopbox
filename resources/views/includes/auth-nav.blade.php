@@ -15,7 +15,7 @@
         </li>
         <li>
             <button class="cg fm oy ank" data-toggle="popover">
-                <img class="cu" src="{{ $user->image_uri }}">
+                <img class="cu" src="{{ Auth::user()->image_uri }}">
             </button>
         </li>
     </ul>
