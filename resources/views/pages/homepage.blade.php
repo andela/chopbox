@@ -256,6 +256,7 @@
                      </a>
 					<a class="qk shift-down" href="" >
 					 <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
+                     <p class="time-display">{{ $chopsRepo->getPostedTime($chop->id) }}</p>
 					</a>
 
 				 </div>
@@ -273,7 +274,8 @@
 					<div>
                         <a href="#!" class="favourite">
                             <input type="hidden" value="{{ $chop->id }}" name="chop_id"/>
-                            <span id="{{ ($chop->likes > 0 )?'':'unpopular'}}" class="glyphicon glyphicon-heart {{ $chop->id }}"></span>
+                            <span id="{{ ($chop->likes > 0 )?'':'unpopular'}}" class="glyphicon glyphicon-heart {{ $chop->id
+                             }}"></span>
                         </a>
                          <span id="favourites-count-{{ $chop->id }}">{{ $chop->likes }}</span>
 					</div>
@@ -285,7 +287,6 @@
 						<a class="qk" href="#">
 						 <img data-id="{{ $comment->user->id }}" class="qi cu small-round {{ $comment->user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $comment->user->image_uri }}">
 						</a>
-
 						<div class="qh">
 						 <a href="#!">
 							<strong>
@@ -293,6 +294,7 @@
 							</strong>
 						 </a>
 						 {{ $comment->comment }}
+                            <p class="comment-time">{{ $commentRepo->getCommentTime($comment->id) }}</p>
 						</div>
 					 </li>
 					@endforeach

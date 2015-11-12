@@ -53,9 +53,9 @@ return [
     |
     */
 
-    'from' => [ 
-        'address' => null,
-        'name' => null 
+    'from' => [
+        'address' => 'no-reply@chopbox.com',
+        'name' => 'ChopBox'
     ],
 
     /*
@@ -121,6 +121,6 @@ return [
     |
     */
 
-    'pretend' => false 
+    'pretend' => false
 ]
 ;
