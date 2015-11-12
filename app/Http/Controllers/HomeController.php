@@ -2,6 +2,7 @@
 
 namespace ChopBox\Http\Controllers;
 
+use ChopBox\ChopBox\Repository\CommentsRepository;
 use Validator;
 use ChopBox\User;
 use ChopBox\Http\Requests;
@@ -12,16 +13,16 @@ use ChopBox\ChopBox\Repository\ChopsRepository;
 
 class HomeController extends Controller
 {
+
     /**
-     * Show the application dashboard to a logged-in user.
+     * Show the dashboard to a logged in user
      *
      * @param UserRepository $userRepository
-     *
-     * @param ChopsRepository $chopsRepository
-     *
+     * @param ChopsRepository $repository
+     * @param CommentsRepository $commentRepo
      * @return \Illuminate\View\View
      */
-    public function index(UserRepository $userRepository, ChopsRepository $repository)
+    public function index(UserRepository $userRepository, ChopsRepository $repository, CommentsRepository $commentRepo)
     {
         $user = Auth::user();
         // Find and order the users that have the highest number of chops
@@ -33,7 +34,7 @@ class HomeController extends Controller
         // Get chops of logged-in user and that of those (s)he follows
         $chops = $repository->getChops($user, $followeeIds);
 
-        return view('pages.homepage', compact('user', 'chops', 'topTen', 'repository'));
+        return view('pages.homepage', compact('user', 'chops', 'topTen', 'repository', 'commentRepo'));
     }
 
     /**

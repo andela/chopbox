@@ -287,7 +287,6 @@
 						<a class="qk" href="#">
 						 <img data-id="{{ $comment->user->id }}" class="qi cu small-round {{ $comment->user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $comment->user->image_uri }}">
 						</a>
-
 						<div class="qh">
 						 <a href="#!">
 							<strong>
@@ -295,6 +294,7 @@
 							</strong>
 						 </a>
 						 {{ $comment->comment }}
+                            <p class="comment-time">{{ $commentRepo->getCommentTime($comment->id) }}</p>
 						</div>
 					 </li>
 					@endforeach

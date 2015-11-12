@@ -70,11 +70,15 @@ class ChopsRepository
         return $this->getFavourites($chopId);
      }
 
-    public function getPostedTime($chopId)
-    {
+     /**
+     * @param $chopId
+     * @return mixed
+     */
+     public function getPostedTime($chopId)
+     {
         $chop = Chop::find($chopId);
 
         return $chop->created_at->diffForHumans();
 
-    }
+     }
 }

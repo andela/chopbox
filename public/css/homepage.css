@@ -177,6 +177,9 @@ div.image-crop-resize-handler {
  }
 
  .time-display{
-    display: inline-block;
+    display: inline;
  }
-
+.comment-time{
+    display: block;
+    color: #337ab7;
+}
