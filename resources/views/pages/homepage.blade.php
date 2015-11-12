@@ -300,7 +300,7 @@
 					@endforeach
 				 </ul>
 
-				 {!! Form::open(['url' => '/comment', 'method'=>'post', 'onsubmit' => 'postComment()']) !!}
+				 {!! Form::open(['url' => '/comment', 'method'=>'post', 'onsubmit' => 'postComment(this)']) !!}
 				 {!! Form::hidden('chop_id', $chop->id) !!}
 				 {!! Form::text('comment', null, ['class' => 'form-control expanding', 'required' => 'required',
 				 'placeholder'=>"comment"]) !!}
