@@ -22,7 +22,7 @@ class HomeController extends Controller
      * @param CommentsRepository $commentRepo
      * @return \Illuminate\View\View
      */
-    public function index(UserRepository $userRepository, ChopsRepository $repository, CommentsRepository $commentRepo)
+    public function index(UserRepository $userRepository, ChopsRepository $chopsRepo, CommentsRepository $commentRepo)
     {
         $user = Auth::user();
         // Find and order the users that have the highest number of chops
@@ -32,9 +32,9 @@ class HomeController extends Controller
         $followeeIds = $userRepository->getFolloweeIds($user->id);
 
         // Get chops of logged-in user and that of those (s)he follows
-        $chops = $repository->getChops($user, $followeeIds);
+        $chops = $chopsRepo->getChops($user, $followeeIds);
 
-        return view('pages.homepage', compact('user', 'chops', 'topTen', 'repository', 'commentRepo'));
+        return view('pages.homepage', compact('user', 'chops', 'topTen', 'chopsRepo', 'commentRepo'));
     }
 
     /**

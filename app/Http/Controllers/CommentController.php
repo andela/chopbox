@@ -15,6 +15,6 @@ class CommentController extends Controller
         $user = Auth::user();
 
         $comment->saveComment($user, $request);
-        return redirect()->action('HomeController@index');
+        return redirect()->back();
     }
 }

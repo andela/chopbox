@@ -256,7 +256,7 @@
                      </a>
 					<a class="qk shift-down" href="" >
 					 <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
-                     <p class="time-display">{{ $repository->getPostedTime($chop->id) }}</p>
+                     <p class="time-display">{{ $chopsRepo->getPostedTime($chop->id) }}</p>
 					</a>
 
 				 </div>
