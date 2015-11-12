@@ -2,6 +2,8 @@
 
 namespace ChopBox\Http\Controllers;
 
+use ChopBox\ChopBox\Repository\ChopsRepository;
+use ChopBox\ChopBox\Repository\CommentsRepository;
 use ChopBox\User;
 use ChopBox\Upload;
 use ChopBox\Http\Requests;
@@ -64,7 +66,7 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return Response
      */
-     public function show($id, UserRepository $repository)
+     public function show($id, UserRepository $repository, ChopsRepository $chopsRepo, CommentsRepository $commentRepo)
      {
         $user   = User::find($id);
 
@@ -72,7 +74,7 @@ class UserProfileController extends Controller
 
         $topTen = $repository->topUsers();
 
-        return view('pages.homepage', compact('chops', 'topTen', 'user'));
+        return view('pages.homepage', compact('chops', 'topTen', 'user', 'chopsRepo', 'commentRepo'));
      }
 
      /**
