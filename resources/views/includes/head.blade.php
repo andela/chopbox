@@ -9,7 +9,6 @@
 
 <!-- styles -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css' />
-<link href="//cdn.shopify.com/s/files/1/0691/5403/t/82/assets/style.scss.css?16677709998824235896" rel="stylesheet" type="text/css"  media="all"  />
 <link href="{!! asset('css/toolkit.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('css/application.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
