@@ -279,7 +279,7 @@
 					</div>
 				 </div>
 
-				 <ul class="qp all">
+				 <ul class="qp {{ 'comment-list-' . $chop->id }} all">
 					@foreach ($chop->comments as $comment)
 					 <li class="qg">
 						<a class="qk" href="#">
@@ -298,7 +298,7 @@
 					@endforeach
 				 </ul>
 
-				 {!! Form::open(['url' => '/comment', 'method'=>'post']) !!}
+				 {!! Form::open(['url' => '/comment', 'method'=>'post', 'onsubmit' => 'postComment()']) !!}
 				 {!! Form::hidden('chop_id', $chop->id) !!}
 				 {!! Form::text('comment', null, ['class' => 'form-control expanding', 'required' => 'required',
 				 'placeholder'=>"comment"]) !!}
