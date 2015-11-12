@@ -21,10 +21,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(UserRepository $userRepository, ChopsRepository $chopsRepository)
+    public function index(UserRepository $userRepository, ChopsRepository $repository)
     {
         $user = Auth::user();
-
         // Find and order the users that have the highest number of chops
         $topTen = $userRepository->topUsers();
 
@@ -32,9 +31,9 @@ class HomeController extends Controller
         $followeeIds = $userRepository->getFolloweeIds($user->id);
 
         // Get chops of logged-in user and that of those (s)he follows
-        $chops = $chopsRepository->getChops($user, $followeeIds);
+        $chops = $repository->getChops($user, $followeeIds);
 
-        return view('pages.homepage', compact('user', 'chops', 'topTen'));
+        return view('pages.homepage', compact('user', 'chops', 'topTen', 'repository'));
     }
 
     /**

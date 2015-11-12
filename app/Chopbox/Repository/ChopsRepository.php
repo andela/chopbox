@@ -2,6 +2,7 @@
 
 namespace ChopBox\ChopBox\Repository;
 
+use Carbon\Carbon;
 use ChopBox\Chop;
 use ChopBox\User;
 use ChopBox\Favourite;
@@ -68,4 +69,12 @@ class ChopsRepository
 
         return $this->getFavourites($chopId);
      }
+
+    public function getPostedTime($chopId)
+    {
+        $chop = Chop::find($chopId);
+
+        return $chop->created_at->diffForHumans();
+
+    }
 }
