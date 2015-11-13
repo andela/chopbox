@@ -48,7 +48,7 @@
             <div class="col-md-1">
 
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 hidden-md hidden-sm hidden-xs">
                 <div class="row">
 			 <span class="push-down white-text small_font dark-background">
 				<h1 class="welcome-header">Welcome to ChopBox</h1>
@@ -58,7 +58,7 @@
 			 </span>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                 <div class="row">
                     <!-- login form -->
                     <form class="form-shadow" method="post" id="login" role="form"
@@ -68,7 +68,7 @@
                         <div class="form-group">
                             <input type="text" required="" name="email" class="form-control input-sm" placeholder="email or username">
                         </div>
-                        <div class="form-inline">
+                        <div class="form-inline ">
                             <input type="password" required="" name="password" class="input-sm form-control" placeholder="password">
                             <input type="submit" name="login" class="btn btn-primary input-sm pull-right" value="Log In">
                         </div>
@@ -129,7 +129,7 @@
             </div>
         </div>
 
-        <div class="space-out">
+        <div class="space-out col-sm-12 col-md-12">
             <p>
                 <a href="{{url('about')}}">About</a>
                 <a href="{{url('terms')}}">Terms</a>
