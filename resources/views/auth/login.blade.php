@@ -11,7 +11,7 @@
       <div>&nbsp;</div>
       <div class="container">
         <div class="row ">
-          <div class="col-sm-6 col-sm-offset-2">
+          <div class="col-sm-6 col-sm-offset-3">
 					 <h2 class="white-text fancy-text"> Log In and have some fun</h2>
 					 <span class="some-space"></span>
 					</div>
@@ -57,14 +57,15 @@
                           </div>
                         </div>
                         <div class="form-group">
-												 <input type="checkbox" name="remember" class="pull-left some-space">
+                         <input type="checkbox" name="remember" class="pull-left some-space">
                           <label for="remember" style="color: #3f3f3f;"class="pull-left some-space">Remember Me</label>
-												 <span><a href="{{ url('/password/email') }}" class="small_font pull-right some-space">Forgot password?</a></span>
+                         <span><a href="{{ url('/password/email') }}" class="small_font pull-right some-space">Forgot password?</a></span>
                         </div>
 
-                        <div class="form-group">
-                          <button name="submit" type="submit"
-                            class="btn btn-primary btn-block form-control input-sm">Login</button>
+                        <div class="form-group col-lg-12">
+                            <a href="{{ url('/login/google') }}"><i class="fa fa-google fa-2x" style="color: #ff0000"></i></a>
+                            <a href="{{ url('/login/facebook') }}"><i class="fa fa-facebook fa-2x" style="color:#337ab7"></i></a>
+                          <input name="submit" type="submit" class="btn btn-primary input-sm pull-right" value="Login">
                         </div>
                       </div>
                     </div>
@@ -72,28 +73,6 @@
                 </form>
               </div>
             </div>
-					 <div class="row">
-						<div class="col-sm-12 col-md-12">
-						 <!-- social network login buttons -->
-						 <form class="form-shadow form" method="get" id="socialform">
-							<input type="hidden" name="_token"
-										 value="{{ csrf_token() }}">
-							<div class="form-group">
-							 <a class="btn btn-block btn-social btn-google" href="{{url('/login/google')}}">
-								<i class="fa fa-google"></i>
-								Sign in with google
-							 </a>
-							</div>
-							<div class="form-group form-bottom">
-							 <a class="btn btn-block btn-social btn-facebook" href="{{url('/login/facebook')}}">
-								<i class="fa fa-facebook"></i>
-								Sign in with facebook
-							 </a>
-							</div>
-						 </form>
-						 <!-- end social network login buttons -->
-						</div>
-					 </div>
           </div>
         </div>
       </div>
