@@ -251,10 +251,10 @@
 
 					</div>
 					@endcan
-                     <a class="qk" href="#">
+                     <a class="qk" href="{{ route('user.show', $chop->user->id) }}">
                          <img data-id="{{ $chop->user->id }}" class="qi cu round {{ $chop->user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $chop->user->image_uri }}">
                      </a>
-					<a class="qk shift-down" href="" >
+					<a class="qk shift-down" href="{{ route('user.show', $chop->user->id) }}" >
 					 <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
                      <p class="time-display">{{ $chopsRepo->getPostedTime($chop->id) }}</p>
 					</a>
@@ -284,11 +284,11 @@
 				 <ul class="qp {{ 'comment-list-' . $chop->id }} all">
 					@foreach ($chop->comments as $comment)
 					 <li class="qg">
-						<a class="qk" href="#">
+						<a class="qk" href="{{ route('user.show', $comment->user->id)}}">
 						 <img data-id="{{ $comment->user->id }}" class="qi cu small-round {{ $comment->user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $comment->user->image_uri }}">
 						</a>
 						<div class="qh">
-						 <a href="#!">
+						 <a href="{{ route('user.show', $comment->user->id) }}">
 							<strong>
 							 <span class="username">{{ '@'.strtolower($comment->user->username).': ' }}</span>
 							</strong>
