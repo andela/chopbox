@@ -178,6 +178,33 @@ $('#camera').click(function() {
     $( "#file" ).click();
 });
 
+// Handle post of comments by AJAX
+function postComment(element) {
+    event.preventDefault();
+    $.ajax({
+        type: 'post',
+        url: '/comment',
+        data: {'chop_id': element.chop_id.value,
+            'comment': element.comment.value
+        }
+    }).done(function (response) {
+        var htmlResponse = '<li class="qg">' +
+            '<a class="qk" href="#">' +
+            '<img data-id="' + response.user_id + '"' + ' class="qi cu small-round" src="' + response.image_uri + '">' +
+            '</a>' +
+            '<div class="qh">' +
+            '<a href="#!">' +
+            '<strong>' +
+            '<span class="username">@' + response.username.toLowerCase() + ': </span>' +
+            '</strong>' +
+            '</a>' + response.comment + '</div>' +
+            '</li>';
+
+        $('.comment-list-' + response.chop_id).append(htmlResponse);
+        $(element).find('input[name="comment"]').val('');
+    });
+}
+
 // Toggle between follow and unfollow button on userModal
 function toggleBetweenFollowAndUnfollow(element) {
     if($(element).text() == "Follow") {
