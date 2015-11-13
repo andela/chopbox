@@ -58,7 +58,7 @@
 			 </span>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-12 col-xs-12">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                 <div class="row">
                     <!-- login form -->
                     <form class="form-shadow" method="post" id="login" role="form"
