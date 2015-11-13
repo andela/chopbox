@@ -63,9 +63,15 @@
                         </div>
 
                         <div class="form-group col-lg-12">
-                            <a href="{{ url('/login/google') }}"><i class="fa fa-google fa-2x" style="color: #ff0000"></i></a>
-                            <a href="{{ url('/login/facebook') }}"><i class="fa fa-facebook fa-2x" style="color:#337ab7"></i></a>
-                          <input name="submit" type="submit" class="btn btn-primary input-sm pull-right" value="Login">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-2">
+                                <a href="{{ url('/login/google') }}"><i class="fa fa-google fa-2x" style="color: #ff0000"></i></a>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-2">
+                                <a href="{{ url('/login/facebook') }}"><i class="fa fa-facebook fa-2x" style="color:#337ab7"></i></a>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 pull-right">
+                                <input name="submit" type="submit" class="btn btn-primary input-sm login-button" value="Login">
+                            </div>
                         </div>
                       </div>
                     </div>
