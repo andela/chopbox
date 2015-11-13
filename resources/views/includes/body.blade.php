@@ -6,7 +6,7 @@
       </a>
 
       @if (Auth::check())
-      <a class="chopbox navbar-brand pull-right" id="hide" href="{{url('logout')}}">
+      <a class="chopbox navbar-brand pull-right hidden-lg hidden-md hidden-sm" href="{{url('logout')}}">
           Logout
       </a>
       @endif
