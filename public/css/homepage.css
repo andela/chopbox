@@ -206,3 +206,12 @@ div.image-crop-resize-handler {
     }
 }
 
+.main-unfollow-button {
+    background-color: #D9534F;
+    color: #FFFFFF;
+}
+
+.main-follow-button {
+    background-color: #3097D1;
+    color: #FFFFFF;
+}

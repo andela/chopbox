@@ -110,7 +110,12 @@
 			 </h5>
 
 			 <h5 class="alc bluecolor">{{ $user->firstname }} {{ $user->lastname }}</h5>
-			 <hr/>
+                @if($user->id !== Auth::user()->id)
+                    <button class="follow cg fm fx main-following-button" data-id="{{ $followStatus }}" id="{{ $user->id }}" onclick="toggleBetweenFollowAndUnfollow(this)">
+                        <span class="c aok"></span>
+                    </button>
+                @endif
+                <hr/>
 			 <ul class="aoh">
 				<li class="aoi">
                     <a id="followers" data-id="{{ $user->id }}" style="cursor: pointer">
