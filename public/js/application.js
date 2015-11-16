@@ -252,7 +252,7 @@ function updateModal(response) {
     for(var follow in follows) {
         htmlResponse += '<li class="b">' +
         '<div class="qg">' +
-        '<a class="qk" href="#">' +
+        '<a class="qk" href="/user/' + follows[follow].id + '">' +
         '<img class="qi cu" src="' + follows[follow].image_uri + '">' +
         '</a>' +
         '<div class="qh">';
@@ -300,35 +300,16 @@ $('#userModal').on('shown.bs.modal', function() {
     });
 });
 
-// Handle follow and unfollow on popover
-$('.pop').on('shown.bs.popover', function() {
+// Handle the operation of follow/unfollow
+$(document).ready(function() {
+    if ($('.main-following-button').data().id === 1) {
+        $('.main-following-button').text('Unfollow').addClass('main-unfollow-button');
+    } else if ($('.main-following-button').data().id === 0) {
+        $('.main-following-button').text('Follow').addClass('main-follow-button');
+    }
+
     $('.follow').on('click',function(e) {
         e.preventDefault();
         followOrUnfollow(this);
-    });
-});
-
-// Handle the operation of follow/unfollow popover
-$(document).ready(function() {
-    $('.pop').popover({
-        html: true,
-        trigger: "hover",
-        content: function () {
-            return "<span class='follow' style='cursor: pointer' id='" + $(this).data().id + "'></span>";
-        },
-        placement: "auto left",
-        delay: {"show": 300,"hide": 600},
-        animation: "true",
-        template: '<div class="popover" role="tooltip"><div class="popover-content"></div></div>'
-    }).on('show.bs.popover', function() {
-        $.ajax({
-            type: 'get',
-            url: '/follow_status',
-            data: {'followee_id': $(this).data().id},
-            success: function(response){
-                (response == "NO") ? $('div .popover').css("background-color", "#3097D1").css("color", "#FFFFFF") : $('div .popover').css("background-color", "#D9534F").css("color", "#FFFFFF");
-                $('div .popover-content span').append((response == "NO") ? "Follow" : "Unfollow");
-            }
-        });
     });
 });
