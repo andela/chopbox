@@ -36,5 +36,11 @@ class AuthServiceProvider extends ServiceProvider
            $userToEdit  = User::find($id);
             return $user->id == $userToEdit->id;
         });
+
+
+        $gate->define('edit-comment', function($user, $comment){
+           return $user->id = $comment->user->id;
+        });
+
     }
 }
