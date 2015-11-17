@@ -39,7 +39,7 @@ class AuthServiceProvider extends ServiceProvider
 
 
         $gate->define('edit-comment', function($user, $comment) {
-           return $user->id = $comment->user->id;
+            return $user->id = $comment->user->id;
         });
 
     }

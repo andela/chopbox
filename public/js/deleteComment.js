@@ -90,12 +90,13 @@ $(document).ready(function(){
                         cssClass: 'btn-primary',
                         id: 'edit-button',
                         action: function(dialog){
-                            var comment = dialog.getModalBody().find('input').val();
+                            var comment = dialog.getModalBody()
+                                .find('input').val();
                             updateComment(comment, id, dialog);
                         }
                     }
                 ]
-            })
+            });
         });
 
     }
@@ -118,7 +119,8 @@ $(document).ready(function(){
             type: 'post',
             data: {comment: comment},
             success: function(response){
-                $('comment#comment-body-'+id).empty().append(response.comment.comment);
+                $('comment#comment-body-'+id).empty()
+                    .append(response.comment.comment);
                 dialog.close();
             }
         });
