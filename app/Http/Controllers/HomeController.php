@@ -67,7 +67,13 @@ class HomeController extends Controller
         return redirect('/')->with(compact('user', 'chops', 'topTen'));
     }
 
-    private function saveUser(User $user, ProfileRequest $request)
+    /**
+     * Update user's profile immediately after registration
+     *
+     * @param User $user
+     * @param ProfileRequest $request
+     */
+    protected function saveUser(User $user, ProfileRequest $request)
     {
         $user->profile_state = true;
         $user->firstname = trim($request ['firstname']);
@@ -76,11 +82,21 @@ class HomeController extends Controller
         $user->about = trim($request ['about']);
         $user->gender = trim($request ['gender']);
         $user->best_food = trim($request ['best_food']);
-        $user->image_uri = trim($this->getAvatarUrl($user));
+
+        if (is_null($user->image_uri)) {
+            $user->image_uri = trim($this->getGravatar($user));
+        }
+
         $user->save();
     }
 
-    private function getAvatarUrl(User $user)
+    /**
+     * Get image from gravatar.com
+     *
+     * @param User $user
+     * @return string
+     */
+    protected function getGravatar(User $user)
     {
         return "http://www.gravatar.com/avatar/" . md5(strtolower(trim($user->email))) . "?d=mm&s=120";
     }
