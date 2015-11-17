@@ -83,7 +83,7 @@ Route::controllers([
 Route::post('comment', 'CommentController@addComment');
 
 
-Route::post('comment/delete/{id}',[
+Route::post('comment/delete/{id}', [
     'uses' => 'CommentController@destroy',
     'as'    => 'comment.delete',
     'middleware' => ['auth']

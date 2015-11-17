@@ -37,7 +37,7 @@ $(document).ready(function(){
                             url: 'comment/delete/'+id,
                             type: 'post',
                             data: {id: id},
-                            success: function(response){
+                            success: function(){
                                 $('#comment-'+id).empty();
                                 dialog.close();
 
@@ -48,7 +48,7 @@ $(document).ready(function(){
                                 })
 
                             },
-                            error: function(response){
+                            error: function(){
                                 dialog.close();
                                 $.toaster({
                                     priority : 'danger',
@@ -73,7 +73,7 @@ $(document).ready(function(){
                     "<input type='text' class='form-control' name='comment' value='"+text+"'>" +
                     "</div>");
 
-                    var footerButton = dialog.getButton('edit-button');
+                    dialog.getButton('edit-button');
 
                     return content;
                 },
@@ -121,7 +121,7 @@ $(document).ready(function(){
                 $('comment#comment-body-'+id).empty().append(response.comment.comment);
                 dialog.close();
             }
-        })
+        });
     }
 
 });
