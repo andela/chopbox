@@ -86,7 +86,7 @@ $(document).ready(function(){
                         }
                     },
                     {
-                        label: "Done",
+                        label: 'Done',
                         cssClass: 'btn-primary',
                         id: 'edit-button',
                         action: function(dialog){
@@ -104,7 +104,7 @@ $(document).ready(function(){
     function findComment(id, callback)
     {
         $.ajax({
-            'url': 'comment/'+id,
+            'url': '/comment/'+id,
             type: 'get',
             success: function(response){
                callback(response);
@@ -115,7 +115,7 @@ $(document).ready(function(){
     function updateComment(comment, id, dialog)
     {
         $.ajax({
-            url: 'comment/edit/'+id,
+            url: '/comment/edit/'+id,
             type: 'post',
             data: {comment: comment},
             success: function(response){
