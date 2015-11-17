@@ -161,15 +161,16 @@ class AuthController extends Controller
         if ($validation->fails()) {
             return redirect()->back()->withInput()->withErrors($validation->errors());
         } else {
-            $this->setAvatar($request);
-
             $user_array = array(
                 'email' => $request->session()->get('socialUser')->getEmail(),
                 'name' => $request->input('name'),
                 'password' => $request->input('password')
             );
 
-            Auth::login($this->create($user_array));
+            $user = $this->create($user_array);
+            $this->setAvatar($request, $user);
+
+            Auth::login($user);
 
             $request->session()->forget('socialUser');
 
@@ -214,12 +215,11 @@ class AuthController extends Controller
      *
      * @param Request $request
      */
-    protected function setAvatar(Request $request)
+    protected function setAvatar(Request $request, User $user)
     {
         $avatar = $request->session()->get('socialUser')->getAvatar();
 
         if (! is_null($avatar)) {
-            $user = new User;
             $user->image_uri = $avatar;
             $user->save();
         }
