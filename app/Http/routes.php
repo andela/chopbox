@@ -83,6 +83,25 @@ Route::controllers([
 Route::post('comment', 'CommentController@addComment');
 
 
+Route::post('comment/delete/{id}', [
+    'uses' => 'CommentController@destroy',
+    'as'    => 'comment.delete',
+    'middleware' => ['auth']
+]);
+
+Route::get('comment/{id}', [
+    'uses'          => 'CommentController@find',
+    'as'            => 'comment.find',
+    'middleware'    => ['auth']
+]);
+
+Route::post('comment/edit/{id}', [
+    'uses'      => 'CommentController@update',
+    'as'        => 'comment.update',
+    'middleware' => ['auth']
+]);
+
+
 /*
  * |--------------------------------------------------------------------------
  * |Follow and Unfollow Routes

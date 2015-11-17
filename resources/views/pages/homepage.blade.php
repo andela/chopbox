@@ -288,7 +288,7 @@
 
 				 <ul class="qp {{ 'comment-list-' . $chop->id }} all">
 					@foreach ($chop->comments as $comment)
-					 <li class="qg">
+					 <li class="qg" id="comment-{{ $comment->id }}">
 						<a class="qk" href="{{ route('user.show', $comment->user->id)}}">
 						 <img data-id="{{ $comment->user->id }}" class="qi cu small-round {{ $comment->user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $comment->user->image_uri }}">
 						</a>
@@ -298,7 +298,17 @@
 							 <span class="username">{{ '@'.strtolower($comment->user->username).': ' }}</span>
 							</strong>
 						 </a>
-						 {{ $comment->comment }}
+						 <comment id="comment-body-{{ $comment->id }}">{{ $comment->comment }}</comment>
+                         @can('edit-comment', $comment)
+                          <a class="delete-comment" id="comment-delete-{{ $comment->id }}"
+                             data-id="{{$comment->id}}"><i class="glyphicon glyphicon-remove-circle pull-right"
+                                                           style="padding: 2px;"></i>
+                          </a>
+                          <a class="edit-comment" id="comment-edit-{{ $comment->id }}"
+                             data-id="{{ $comment->id }}"><i class="glyphicon glyphicon-edit pull-right"
+                                                             style="padding: 2px;"></i>
+                          </a>
+                         @endcan
                             <p class="comment-time">{{ $commentRepo->getCommentTime($comment->id) }}</p>
 						</div>
 					 </li>
@@ -354,6 +364,5 @@
 		</div>
 	 </div>
 	</div>
-
  </div>
 @endsection
