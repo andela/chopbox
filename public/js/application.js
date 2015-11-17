@@ -302,10 +302,12 @@ $('#userModal').on('shown.bs.modal', function() {
 
 // Handle the operation of follow/unfollow
 $(document).ready(function() {
-    if ($('.main-following-button').data().id === 1) {
-        $('.main-following-button').text('Unfollow').addClass('main-unfollow-button');
-    } else if ($('.main-following-button').data().id === 0) {
-        $('.main-following-button').text('Follow').addClass('main-follow-button');
+    if ($('.main-following-button').length > 0) {
+        if ($('.main-following-button').data().id === 1) {
+            $('.main-following-button').text('Unfollow').addClass('main-unfollow-button');
+        } else if ($('.main-following-button').data().id === 0) {
+            $('.main-following-button').text('Follow').addClass('main-follow-button');
+        }
     }
 
     $('.follow').on('click',function(e) {
