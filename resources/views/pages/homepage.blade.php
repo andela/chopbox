@@ -298,7 +298,7 @@
 							 <span class="username">{{ '@'.strtolower($comment->user->username).': ' }}</span>
 							</strong>
 						 </a>
-						 {{ $comment->comment }}
+						 <comment id="comment-body-{{ $comment->id }}">{{ $comment->comment }}</comment>
                          @can('edit-comment', $comment)
                           <a class="delete-comment" id="comment-delete-{{ $comment->id }}"
                              data-id="{{$comment->id}}"><i class="glyphicon glyphicon-remove-circle pull-right"

@@ -6,6 +6,7 @@ use ChopBox\Comment;
 use ChopBox\Http\Requests;
 use Illuminate\Http\Request;
 use ChopBox\helpers\PostComment;
+use Illuminate\Support\Facades\Auth;
 use ChopBox\Http\Requests\CommentRequest;
 
 class CommentController extends Controller

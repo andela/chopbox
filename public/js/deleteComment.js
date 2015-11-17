@@ -118,7 +118,7 @@ $(document).ready(function(){
             type: 'post',
             data: {comment: comment},
             success: function(response){
-                
+                $('comment#comment-body-'+id).empty().append(response.comment.comment);
                 dialog.close();
             }
         })
