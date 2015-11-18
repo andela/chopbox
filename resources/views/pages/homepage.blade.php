@@ -189,141 +189,154 @@
 
 			</li>
 			<br/>
-			@foreach($chops as $chop)
-			 <li class="qg b amk curve tinted">
+             @if( $chops )
+                @foreach($chops as $chop)
+                 <li class="qg b amk curve tinted">
 
-				<div class="qh">
-				 <div class="qo">
-					@can('update-chop', $chop)
-					<div class="eg">
-                        <a data-toggle="modal" data-target="#editModal-{{ $chop->id  }}">
-                            <i class="glyphicon glyphicon-edit"></i>
-                        </a>
+                    <div class="qh">
+                     <div class="qo">
+                        @can('update-chop', $chop)
+                        <div class="eg">
+                            <a data-toggle="modal" data-target="#editModal-{{ $chop->id  }}">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
 
-                        <!-- Edit Modal -->
-                        <div id="editModal-{{ $chop->id }}" class="modal fade" role="dialog">
-                            <div class="modal-dialog">
+                            <!-- Edit Modal -->
+                            <div id="editModal-{{ $chop->id }}" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
 
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Edit Chop</h4>
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Edit Chop</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            {!! Form::model($chop,['url' => 'editChop', 'files' => true, 'method' => 'put']) !!}
+                                            {!! Form::hidden('chop_id', $chop->id) !!}
+                                            {!! Form::textarea('about', $chop->about, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
+                                        </div>
+                                        <div class="modal-footer">
+                                            {!! Form::submit('Edit', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
+                                            {!! Form::close() !!}
+                                        </div>
                                     </div>
-                                    <div class="modal-body">
-                                        {!! Form::model($chop,['url' => 'editChop', 'files' => true, 'method' => 'put']) !!}
-                                        {!! Form::hidden('chop_id', $chop->id) !!}
-                                        {!! Form::textarea('about', $chop->about, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
-                                    </div>
-                                    <div class="modal-footer">
-                                        {!! Form::submit('Edit', ['class' =>'btn btn-primary pull-right post-btn', 'name' =>'submitButton']) !!}
-                                        {!! Form::close() !!}
+
+                                </div>
+                            </div>   <!-- End of Edit Modal -->
+
+                            <a data-toggle="modal" data-target="#confirmDelete-{{ $chop->id  }}">
+                                <i class="glyphicon glyphicon-remove-circle"></i>
+                            </a>
+
+                            <!-- Delete Modal Dialog -->
+                            <div class="modal fade" id="confirmDelete-{{ $chop->id }}" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Are you sure you want to delete this chop?</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
+                                            <p>{{ $chop->about }}</p>
+                                            <input name="chop_id" type="hidden" value="{{ $chop->id }}" />
+                                        </div>
+                                        <div class="modal-footer">
+                                            {!! Form::model($chop,['url' => 'deleteChop', 'method' => 'delete']) !!}
+                                            {!! Form::hidden('about', $chop->about, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
+                                            {!! Form::hidden('chop_id', $chop->id) !!}
+                                            {!! Form::hidden('user_id', $chop->user->id) !!}
+                                            {!! Form::submit('Delete', ['class' =>'btn btn-danger pull-right delete-btn', 'name' =>'submitButton']) !!}
+                                            {!! Form::close() !!}
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>      <!-- End of Delete Modal -->
 
-                            </div>
-                        </div>   <!-- End of Edit Modal -->
-
-                        <a data-toggle="modal" data-target="#confirmDelete-{{ $chop->id  }}">
-                            <i class="glyphicon glyphicon-remove-circle"></i>
+                        </div>
+                        @endcan
+                         <a class="qk" href="{{ route('user.show', $chop->user->id) }}">
+                             <img data-id="{{ $chop->user->id }}" class="qi cu round {{ $chop->user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $chop->user->image_uri }}">
+                         </a>
+                        <a class="qk shift-down" href="{{ route('user.show', $chop->user->id) }}" >
+                         <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
+                         <p class="time-display">{{ $chopsRepo->getPostedTime($chop->id) }}</p>
                         </a>
 
-                        <!-- Delete Modal Dialog -->
-                        <div class="modal fade" id="confirmDelete-{{ $chop->id }}" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title">Are you sure you want to delete this chop?</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
-                                        <p>{{ $chop->about }}</p>
-                                        <input name="chop_id" type="hidden" value="{{ $chop->id }}" />
-                                    </div>
-                                    <div class="modal-footer">
-                                        {!! Form::model($chop,['url' => 'deleteChop', 'method' => 'delete']) !!}
-                                        {!! Form::hidden('about', $chop->about, ['class' => 'form-control expanding', 'rows'=>'4', 'required' => 'required', 'placeholder'=>"What's that special meal you ate today?"]) !!}
-                                        {!! Form::hidden('chop_id', $chop->id) !!}
-                                        {!! Form::hidden('user_id', $chop->user->id) !!}
-                                        {!! Form::submit('Delete', ['class' =>'btn btn-danger pull-right delete-btn', 'name' =>'submitButton']) !!}
-                                        {!! Form::close() !!}
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                    </div>
-                                </div>
+                     </div>
+
+                     <div class="anx" data-grid="images">
+                        @foreach($chop->uploads as $upload)
+                         <div style="display: none">
+                            <img data-action="zoom" data-width="1050" data-height="700" src="{{ $upload->file_uri }}">
+                         </div>
+                        @endforeach
+
+                        <p class="chops-about">{{ $chop->about }}</p>
+                        <br/>
+
+                        <div>
+                            <a href="#!" class="favourite">
+                                <input type="hidden" value="{{ $chop->id }}" name="chop_id"/>
+                                <span id="{{ ($chop->likes > 0 )?'':'unpopular'}}" class="glyphicon glyphicon-heart {{ $chop->id
+                                 }}"></span>
+                            </a>
+                             <span id="favourites-count-{{ $chop->id }}">{{ $chop->likes }}</span>
+                        </div>
+                     </div>
+
+                     <ul class="qp {{ 'comment-list-' . $chop->id }} all">
+                        @foreach ($chop->comments as $comment)
+                         <li class="qg" id="comment-{{ $comment->id }}">
+                            <a class="qk" href="{{ route('user.show', $comment->user->id)}}">
+                             <img data-id="{{ $comment->user->id }}" class="qi cu small-round {{ $comment->user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $comment->user->image_uri }}">
+                            </a>
+                            <div class="qh">
+                             <a href="{{ route('user.show', $comment->user->id) }}">
+                                <strong>
+                                 <span class="username">{{ '@'.strtolower($comment->user->username).': ' }}</span>
+                                </strong>
+                             </a>
+                             <comment id="comment-body-{{ $comment->id }}">{{ $comment->comment }}</comment>
+                             @can('edit-comment', $comment)
+                              <a class="delete-comment" id="comment-delete-{{ $comment->id }}"
+                                 data-id="{{$comment->id}}"><i class="glyphicon glyphicon-remove-circle pull-right"
+                                                               style="padding: 2px;"></i>
+                              </a>
+                              <a class="edit-comment" id="comment-edit-{{ $comment->id }}"
+                                 data-id="{{ $comment->id }}"><i class="glyphicon glyphicon-edit pull-right"
+                                                                 style="padding: 2px;"></i>
+                              </a>
+                             @endcan
+                                <p class="comment-time">{{ $commentRepo->getCommentTime($comment->id) }}</p>
                             </div>
-                        </div>      <!-- End of Delete Modal -->
+                         </li>
+                        @endforeach
+                     </ul>
 
-					</div>
-					@endcan
-                     <a class="qk" href="{{ route('user.show', $chop->user->id) }}">
-                         <img data-id="{{ $chop->user->id }}" class="qi cu round {{ $chop->user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $chop->user->image_uri }}">
-                     </a>
-					<a class="qk shift-down" href="{{ route('user.show', $chop->user->id) }}" >
-					 <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
-                     <p class="time-display">{{ $chopsRepo->getPostedTime($chop->id) }}</p>
-					</a>
+                     {!! Form::open(['url' => '/comment', 'method'=>'post', 'onsubmit' => 'postComment(this)']) !!}
+                     {!! Form::hidden('chop_id', $chop->id) !!}
+                     {!! Form::text('comment', null, ['class' => 'form-control expanding', 'required' => 'required',
+                     'placeholder'=>"comment"]) !!}
+                     {!! Form::close() !!}
 
-				 </div>
+                    </div>
+                 </li><br/>
+                @endforeach
+             @endif
 
-				 <div class="anx" data-grid="images">
-					@foreach($chop->uploads as $upload)
-					 <div style="display: none">
-						<img data-action="zoom" data-width="1050" data-height="700" src="{{ $upload->file_uri }}">
-					 </div>
-					@endforeach
+             @if( $chops->isEmpty() )
+                 <li class="qg b amk curve tinted">
+                     @if ( $user->id == Auth::user()->id )
+                         You currently have no chops. Post a chop today!<br/><br/>Start following people to see what chops they are uploading...
+                     @else
+                         This user currently has no chops
+                     @endif
+                 </li>
+             @endif
 
-					<p class="chops-about">{{ $chop->about }}</p>
-					<br/>
-
-					<div>
-                        <a href="#!" class="favourite">
-                            <input type="hidden" value="{{ $chop->id }}" name="chop_id"/>
-                            <span id="{{ ($chop->likes > 0 )?'':'unpopular'}}" class="glyphicon glyphicon-heart {{ $chop->id
-                             }}"></span>
-                        </a>
-                         <span id="favourites-count-{{ $chop->id }}">{{ $chop->likes }}</span>
-					</div>
-				 </div>
-
-				 <ul class="qp {{ 'comment-list-' . $chop->id }} all">
-					@foreach ($chop->comments as $comment)
-					 <li class="qg" id="comment-{{ $comment->id }}">
-						<a class="qk" href="{{ route('user.show', $comment->user->id)}}">
-						 <img data-id="{{ $comment->user->id }}" class="qi cu small-round {{ $comment->user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $comment->user->image_uri }}">
-						</a>
-						<div class="qh">
-						 <a href="{{ route('user.show', $comment->user->id) }}">
-							<strong>
-							 <span class="username">{{ '@'.strtolower($comment->user->username).': ' }}</span>
-							</strong>
-						 </a>
-						 <comment id="comment-body-{{ $comment->id }}">{{ $comment->comment }}</comment>
-                         @can('edit-comment', $comment)
-                          <a class="delete-comment" id="comment-delete-{{ $comment->id }}"
-                             data-id="{{$comment->id}}"><i class="glyphicon glyphicon-remove-circle pull-right"
-                                                           style="padding: 2px;"></i>
-                          </a>
-                          <a class="edit-comment" id="comment-edit-{{ $comment->id }}"
-                             data-id="{{ $comment->id }}"><i class="glyphicon glyphicon-edit pull-right"
-                                                             style="padding: 2px;"></i>
-                          </a>
-                         @endcan
-                            <p class="comment-time">{{ $commentRepo->getCommentTime($comment->id) }}</p>
-						</div>
-					 </li>
-					@endforeach
-				 </ul>
-
-				 {!! Form::open(['url' => '/comment', 'method'=>'post', 'onsubmit' => 'postComment(this)']) !!}
-				 {!! Form::hidden('chop_id', $chop->id) !!}
-				 {!! Form::text('comment', null, ['class' => 'form-control expanding', 'required' => 'required',
-				 'placeholder'=>"comment"]) !!}
-				 {!! Form::close() !!}
-
-				</div>
-			 </li><br/>
-			@endforeach
 		 </ul>
 		</div>
 		<div class="go fixRight">
