@@ -82,7 +82,7 @@ class FollowController extends Controller
             $this->follow($follower, $followee, $follow);
         }
 
-        return $follower->followings_count;
+        return ['followings_count' => $follower->followings_count, 'followers_count' => $followee->followers_count];
     }
 
     /**

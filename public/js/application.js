@@ -222,7 +222,9 @@ function followOrUnfollow(element) {
         data: {'followee_id': $(element).prop('id')}
     }).done(function(response) {
         $('.followings-count-for-logged-in-user').empty();
-        $('.followings-count-for-logged-in-user').append(response);
+        $('.followings-count-for-logged-in-user').append(response['followings_count']);
+        $('.followers-count').empty();
+        $('.followers-count').append(response['followers_count']);
     });
 }
 
