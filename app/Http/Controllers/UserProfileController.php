@@ -45,7 +45,11 @@ class UserProfileController extends Controller
     {
         $user = User::find($id);
 
-        return view('users.profile', compact('user'));
+        if (Auth::user() == $user) {
+            return view('users.profile', compact('user'));
+        }
+
+        return redirect()->action('HomeController@index');
     }
 
     /**
