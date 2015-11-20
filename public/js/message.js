@@ -14,12 +14,13 @@ function displayDialog(id) {
 		title: "New message",
 		message: $("<div class='form-group'>"+
 			"<textarea class='form-control' name='message' required='required'></textarea>"+
-			"</div>"),
+			"</div><div class='aob' id='messages-area'></div>"),
 		draggable:true,
 		buttons:[
 		{
 			id: 'btn-close',
 			label: 'Close',
+			cssClass: 'btn-primary',
 			action: function(dialog) {
 				dialog.close();
 			},
@@ -28,14 +29,18 @@ function displayDialog(id) {
 		{
 			id: 'btn-send',
 			label: 'Send',
-			hotKey: 13,
+			cssClass: 'btn-primary',
+			hotkey: 13,
 			action: function(dialog) {
 				var message = dialog.getModalBody().find("textarea[name='message']").val();
 
 				if (!(message.trim() === '')){
 					sendMessage(message, id, function(status){
 						if (status === "success") {
-							dialog.close();
+							dialog.getModalBody().find("textarea[name='message']").val('');
+							dialog.getModalBody().find("textarea[name='message']").focus();
+							dialog.getModalBody().find("div[id='messages-area']").append(message+"<br/>");
+
 							$.toaster({
 								priority:'success',
 								title: 'Success',
@@ -60,7 +65,6 @@ function sendMessage(message, id, callback) {
 
 		success: function(response,status, xhr) {
 			res = response;
-			 console.log(status);
 			callback(status);
 		},
 
