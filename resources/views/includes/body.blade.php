@@ -33,4 +33,5 @@
 <script src="{!! asset('js/application.js') !!}"></script>
 <script src="{!! asset('js/deleteComment.js') !!}"></script>
 <script src="{!! asset('js/jquery.toaster.js') !!}"></script>
+<script src="{!! asset('js/message.js') !!}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>

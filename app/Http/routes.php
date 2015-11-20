@@ -158,3 +158,17 @@ Route::post('chops/favourite/{id}',[
 Route::put('editChop', 'ChopsController@update');
 
 Route::delete('deleteChop', 'ChopsController@destroy');
+
+
+/*
+ * |--------------------------------------------------------------------------
+ * |Messaging Routes
+ * |--------------------------------------------------------------------------
+ */
+
+Route::post('/message', [
+    'uses'      => 'MessagesController@store',
+    'as'        => 'message.send',
+    'middleware'=> ['auth']
+]);
+

@@ -16,11 +16,11 @@
 		<div class="modal-content">
 		 <div class="d">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<button type="button" class="cg fx fp eg k js-newMsg">New message</button>
+			<button type="button" class="cg fx fp eg k js-newMsg" id="new-message">New message</button>
 			<h4 class="modal-title">Messages</h4>
 		 </div>
 
-		 <div class="modal-body ame js-modalBody">
+		 <div id="message-modal" class="modal-body ame js-modalBody">
 			<div class="up">
 			 <div class="qp cj ca js-msgGroup">
 				<a href="#" class="b">
@@ -79,6 +79,11 @@
 	 </div>
 	</div>
 
+            <!-- message text field -->
+         <div id="message-div" class="form-group">
+             <textarea class="form-control" name="message"></textarea>
+         </div>
+
 	<div class="cd fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true">
 	 <div class="modal-dialog">
 		<div class="modal-content">
@@ -111,9 +116,13 @@
 
 			 <h5 class="alc bluecolor">{{ $user->firstname }} {{ $user->lastname }}</h5>
                 @if($user->id !== Auth::user()->id)
-                    <button class="follow cg fm fx main-following-button" data-id="{{ $followStatus }}" id="{{ $user->id }}" onclick="toggleBetweenFollowAndUnfollow(this)">
-                        <span class="c aok"></span>
-                    </button>
+                
+                    <div class="form-group">
+                        <button class="follow cg fm fx main-following-button" data-id="{{ $followStatus }}" id="{{ $user->id }}" onclick="toggleBetweenFollowAndUnfollow(this)">
+                            <span class="c aok"></span>
+                        </button>
+                        <button type="button" class="cg fm fx"><span class="c oak" style="color:#286090;" id="msg-btn" data-id="{{ $user->id }}">Message</span></button>
+                    </div>
                 @endif
                 <hr/>
 			 <ul class="aoh">
