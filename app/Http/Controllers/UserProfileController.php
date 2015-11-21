@@ -2,14 +2,13 @@
 
 namespace ChopBox\Http\Controllers;
 
-use ChopBox\Follow;
 use ChopBox\User;
+use ChopBox\Follow;
 use ChopBox\Http\Requests;
 use Illuminate\Http\Request;
 use ChopBox\helpers\UploadFile;
 use Illuminate\Support\Facades\Auth;
 use ChopBox\ChopBox\Repository\UserRepository;
-use Symfony\Component\HttpFoundation\File\File;
 use ChopBox\ChopBox\Repository\ChopsRepository;
 use ChopBox\ChopBox\Repository\CommentsRepository;
 
@@ -63,8 +62,9 @@ class UserProfileController extends Controller
     public function update(Request $request, $id, UploadFile $upload)
     {
         $url = User::find($id)->image_uri;
+
         if ($request['file']) {
-            $url = $this->uploadImage($request['file']);
+            $url = $upload->uploadFile($request['file'])['url'];
         }
 
         $this->updateUserProfile($request, $id, $url);
@@ -73,17 +73,8 @@ class UserProfileController extends Controller
     }
 
     /**
-     * @param File $file
-     * @return mixed
-     */
-    private function uploadImage(File $file)
-    {
-        $result = $this->upload->uploadFile($file);
-
-        return $result['url'];
-    }
-
-    /**
+     * Handle user's profile update
+     *
      * @param Request $request
      * @param $id
      * @param $url
@@ -91,12 +82,13 @@ class UserProfileController extends Controller
     private function updateUserProfile(Request $request, $id, $url)
     {
         $user = User::find($id);
-        $user->about        = $request->get('about');
-        $user->location     = $request->get('location');
-        $user->gender       = $request->get('gender');
-        $user->best_food    = $request->get('best-food');
-        $user->about        = $request->get('about');
+
         $user->image_uri    = $url;
+        $user->username     = $request->get('username');
+        $user->location     = $request->get('location');
+        $user->best_food    = $request->get('best-food');
+        $user->gender       = $request->get('gender');
+        $user->about        = $request->get('about');
         $user->save();
     }
 }
