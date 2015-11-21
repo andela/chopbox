@@ -1,12 +1,11 @@
-<div class="f collapse" id="navbar-collapse-main">
-    <ul class="nav navbar-nav st">
-        <li>
-            <a href="#">Profile</a>
-        </li>
-        <li>
-            <a data-toggle="modal" href="index.html#msgModal">Messages</a>
-        </li>
-    </ul>
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-main">
+    <span class="sr-only">Navigation toggle</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</button>
+
+<div class="f collapse navbar-collapse" id="navbar-collapse-main">
     <ul class="nav navbar-nav oh ald st">
         <li>
             <a class="g" href="#">
@@ -26,14 +25,22 @@
         </div>
     </form>
 
+    <ul class="nav navbar-nav oh">
+        <li>
+            <a data-toggle="modal" href="index.html#msgModal">Messages</a>
+        </li>
+    </ul>
+
+    {{--------------For mobile screen display------------}}
     <ul class="nav navbar-nav su sv sw">
-        <li><a href="#">Profile</a></li>
+        <li><a href="{{ route('user.profile', Auth::user()->id) }}">Edit Profile</a></li>
         <li><a href="#">Notifications</a></li>
-        <li><a data-toggle="modal" href="index.html#msgModal">Messages</a></li>
         <li><a href="{{ url('/logout') }}">Logout</a></li>
     </ul>
 
+    {{-------------For medium and large screen displays------------}}
     <ul class="nav navbar-nav hidden">
+        <li><a href="{{ route('user.profile', Auth::user()->id) }}">Edit Profile</a></li>
         <li><a href="{{ url('/logout') }}">Logout</a></li>
     </ul>
 </div>

@@ -8,6 +8,10 @@
     <link href="{!! asset('css/fixed-footer.css') !!}" rel="stylesheet" />
 @endsection
 
+@section('navbar')
+    @include('includes.logout-nav')
+@endsection
+
 @section('content')
     <h1 class="rte-heading text-center">About Chopbox</h1><br />
     <div class="row">

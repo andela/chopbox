@@ -9,6 +9,10 @@
     <link href="{!! asset('css/footer.css') !!}" rel="stylesheet" />
 @endsection
 
+@section('navbar')
+    @include('includes.logout-nav')
+@endsection
+
 @section('content')
     <div class="help-body">
         <div class="container">
