@@ -28,7 +28,7 @@
                     <input type="text" id="location" name="location" class="form-control input-sm" value="{{ $user->location }}" placeholder="location">
                 </div>
                 <div class="form-group">
-                    <input type="text" name="best-food" class="form-control input-sm" id="best-food" value="{{ $user->best_food }}">
+                    <input type="text" name="best-food" class="form-control input-sm" id="best-food" value="{{ $user->best_food }}" placeholder="favourite food">
                 </div>
 
                 <div class="form-group">

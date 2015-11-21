@@ -13,7 +13,7 @@
 <link href="{!! asset('css/application.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('css/homepage.css') !!}" media="all" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" media="all" rel="stylesheet" type="text/css">
 @yield('custom-css')
 
 <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css" />
