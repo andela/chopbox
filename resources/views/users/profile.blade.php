@@ -33,8 +33,13 @@
 
                 <div class="form-group">
                     <select name="gender" class="form-control input-sm">
-                        <option value="M">Male</option>
-                        <option value="F">Female</option>
+                        @if($user->gender == 'M')
+                            <option value="M" selected>Male</option>
+                            <option value="F">Female</option>
+                        @else
+                            <option value="M">Male</option>
+                            <option value="F" selected>Female</option>
+                        @endif
                     </select>
                 </div>
 
