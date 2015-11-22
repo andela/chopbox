@@ -178,6 +178,18 @@ $('#camera').click(function() {
     $( "#file" ).click();
 });
 
+// Handle display of more comments
+function viewMoreComments(element) {
+    event.preventDefault();
+    $('.hidden-comments').toggleClass('show-more-comments');
+
+    if ($(element).text() == 'View more comments') {
+        $(element).text('Show less comments');
+    } else {
+        $(element).text('View more comments');
+    }
+}
+
 // Handle post of comments by AJAX
 function postComment(element) {
     event.preventDefault();

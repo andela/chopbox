@@ -178,10 +178,13 @@ div.image-crop-resize-handler {
 
  .time-display{
     display: inline;
+     font-weight: inherit;
  }
+
 .comment-time{
     display: block;
     color: #337ab7;
+    font-weight: inherit;
 }
 
 .login-button{
@@ -218,4 +221,12 @@ div.image-crop-resize-handler {
 
 .icon-bar {
     background-color: #ffffff;
+}
+
+.hidden-comments {
+    display: none;
+}
+
+.show-more-comments {
+    display: initial;
 }
