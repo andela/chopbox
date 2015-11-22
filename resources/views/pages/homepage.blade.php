@@ -262,7 +262,7 @@
                          </a>
                         <a class="qk shift-down" href="{{ route('user.show', $chop->user->id) }}" >
                          <h5 class="username"> {{ '@'.strtolower($chop->user->username) }} </h5>
-                         <p class="time-display">{{ $chopsRepo->getPostedTime($chop->id) }}</p>
+                         <h6 class="time-display">{{ $chopsRepo->getPostedTime($chop->id) }}</h6>
                         </a>
 
                      </div>
@@ -273,23 +273,20 @@
                             <img data-action="zoom" data-width="1050" data-height="700" src="{{ $upload->file_uri }}">
                          </div>
                         @endforeach
-
-                        <p class="chops-about">{{ $chop->about }}</p>
-                        <br/>
-
+                     </div>
                         <div>
+                            <p class="chops-about">{{ $chop->about }}</p>
                             <a href="#!" class="favourite">
                                 <input type="hidden" value="{{ $chop->id }}" name="chop_id"/>
-                                <span id="{{ ($chop->likes > 0 )?'':'unpopular'}}" class="glyphicon glyphicon-heart {{ $chop->id
-                                 }}"></span>
+                                <span id="{{ ($chop->likes > 0 )?'':'unpopular'}}" class="glyphicon glyphicon-heart {{ $chop->id }}"></span>
                             </a>
-                             <span id="favourites-count-{{ $chop->id }}">{{ $chop->likes }}</span>
+                            <span id="favourites-count-{{ $chop->id }}">{{ $chop->likes }}</span>
                         </div>
-                     </div>
 
                      <ul class="qp {{ 'comment-list-' . $chop->id }} all">
+                         <p class="hidden">{{ $counter = 0 }}</p>
                         @foreach ($chop->comments as $comment)
-                         <li class="qg" id="comment-{{ $comment->id }}">
+                         <li class="qg {{ $counter > 2 ? 'hidden-comments' : ''}}" id="comment-{{ $comment->id }}">
                             <a class="qk" href="{{ route('user.show', $comment->user->id)}}">
                              <img data-id="{{ $comment->user->id }}" class="qi cu small-round {{ $comment->user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $comment->user->image_uri }}">
                             </a>
@@ -310,10 +307,15 @@
                                                                  style="padding: 2px;"></i>
                               </a>
                              @endcan
-                                <p class="comment-time">{{ $commentRepo->getCommentTime($comment->id) }}</p>
+                                <h6 class="comment-time">{{ $commentRepo->getCommentTime($comment->id) }}</h6>
                             </div>
                          </li>
+                            <p class="hidden">{{ $counter++ }}</p>
                         @endforeach
+
+                         @if($chop->comments->count() > 3)
+                            <a style="text-decoration: underline" href="#" id="more-comments" onclick="viewMoreComments(this)">View more comments</a>
+                         @endif
                      </ul>
 
                      {!! Form::open(['url' => '/comment', 'method'=>'post', 'onsubmit' => 'postComment(this)']) !!}
