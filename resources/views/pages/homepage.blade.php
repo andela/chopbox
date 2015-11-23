@@ -288,7 +288,7 @@
                         @foreach ($chop->comments as $comment)
                          <li class="qg {{ $counter > 2 ? 'hidden-comments' : ''}}" id="comment-{{ $comment->id }}">
                             <a class="qk" href="{{ route('user.show', $comment->user->id)}}">
-                             <img data-id="{{ $comment->user->id }}" class="qi cu small-round {{ $comment->user->id == Auth::user()->id ? '' : 'pop'}}" src="{{ $comment->user->image_uri }}">
+                             <img data-id="{{ $comment->user->id }}" class="qi cu small-round" src="{{ $comment->user->image_uri }}">
                             </a>
                             <div class="qh">
                              <a href="{{ route('user.show', $comment->user->id) }}">
@@ -312,12 +312,11 @@
                          </li>
                             <p class="hidden">{{ $counter++ }}</p>
                         @endforeach
-
-                         @if($chop->comments->count() > 3)
-                            <a style="text-decoration: underline" href="#" id="more-comments" onclick="viewMoreComments(this)">View more comments</a>
-                         @endif
                      </ul>
 
+                        @if($chop->comments->count() > 3)
+                            <a style="text-decoration: underline" href="#" id="more-comments" onclick="viewMoreComments(this)">View more comments</a><br />
+                        @endif
                      {!! Form::open(['url' => '/comment', 'method'=>'post', 'onsubmit' => 'postComment(this)']) !!}
                      {!! Form::hidden('chop_id', $chop->id) !!}
                      {!! Form::text('comment', null, ['class' => 'form-control expanding', 'required' => 'required',

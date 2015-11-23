@@ -200,16 +200,21 @@ function postComment(element) {
             'comment': element.comment.value
         }
     }).done(function (response) {
-        var htmlResponse = '<li class="qg">' +
-            '<a class="qk" href="#">' +
+        var htmlResponse = '<li class="qg" id="comment-' + response.comment_id + '">' +
+            '<a class="qk" href="user/' + response.user_id + '">' +
             '<img data-id="' + response.user_id + '"' + ' class="qi cu small-round" src="' + response.image_uri + '">' +
             '</a>' +
             '<div class="qh">' +
-            '<a href="#!">' +
+            '<a href="user/' + response.user_id + '">' +
             '<strong>' +
             '<span class="username">@' + response.username.toLowerCase() + ': </span>' +
             '</strong>' +
-            '</a>' + response.comment + '</div>' +
+            '</a>' +
+            '<comment id="comment-body-' + response.comment_id + '">' + response.comment + '</comment>' +
+            '<a class="delete-comment" id="comment-delete-' + response.comment_id + '" data-id="' + response.comment_id + '"><i class="glyphicon glyphicon-remove-circle pull-right" style="padding: 2px;"></i></a>' +
+            '<a class="edit-comment" id="comment-edit-' + response.comment_id + '"data-id="' + response.comment_id + '"><i class="glyphicon glyphicon-edit pull-right" style="padding: 2px;"></i></a>' +
+            '<h6 class="comment-time">' + response.comment_time + '</h6>' +
+            '</div>' +
             '</li>';
 
         $('.comment-list-' + response.chop_id).append(htmlResponse);
