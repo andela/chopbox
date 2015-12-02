@@ -17,7 +17,17 @@ class CreateMessagesTable extends Migration
             $table->integer('sender_id')->unsigned();
             $table->integer('receiver_id')->unsigned();
             $table->string('message_body');
+            $table->integer('status')->unsigned()->default(0);
             $table->timestamps();
+
+
+            $table->foreign('sender_id')
+                ->references('id')
+                ->on('users');
+
+            $table->foreign('receiver_id')
+                ->references('id')
+                ->on('users');
         });
     }
 

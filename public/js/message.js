@@ -7,6 +7,20 @@ $(document).ready(function(){
 			var id = $(this).data(id);
 			displayDialog(id);
 		});
+
+
+
+    $('#msgModal').on('show.bs.modal', function(){
+        fetchMessages(function(response){
+            console.log(response);
+            var imageUrl = fetchSenderImage(1, function(imageUrl){
+                return imageUrl;
+            });
+            var senderImage = "<img class='cu qi' src='"+imageUrl+"'>"
+            $('span#sender-image').empty();
+            $('span#sender-image').append(senderImage);
+        });
+    });
 });
 
 function displayDialog(id) {
@@ -23,7 +37,7 @@ function displayDialog(id) {
 			cssClass: 'btn-primary',
 			action: function(dialog) {
 				dialog.close();
-			},
+			}
 
 		},
 		{
@@ -72,4 +86,27 @@ function sendMessage(message, id, callback) {
 			callback(status);
 		}
 	});
+}
+
+
+
+function fetchMessages(callback) {
+    $.ajax({
+        url:'/messages',
+        type:'get',
+        success: function(response, status, xhr) {
+            callback(response);
+        }
+    })
+}
+
+function fetchSenderImage(id, callback) {
+    $.ajax({
+        url: '/messages/image',
+        type:'get',
+        data: {id: id},
+        success: function(response, status, xhr) {
+            callback(response);
+        }
+    })
 }

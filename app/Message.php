@@ -13,4 +13,10 @@ class Message extends Model
     	'receiver_id',
     	'message_body'
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo('ChopBox\User');
+    }
 }

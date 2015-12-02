@@ -172,3 +172,15 @@ Route::post('/message', [
     'middleware'=> ['auth']
 ]);
 
+Route::get('messages', [
+    'uses'      => 'MessagesController@show',
+    'as'        => 'messages.get',
+    'middleware'=> ['auth']
+]);
+
+Route::get('messages/image', [
+    'uses'      => 'MessagesController@senderImage',
+    'as'        => 'sender.image',
+    'middleware'=> ['auth']
+]);
+

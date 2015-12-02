@@ -3,6 +3,7 @@
 namespace ChopBox\Http\Controllers;
 
 use ChopBox\ChopBox\Repository\CommentsRepository;
+use ChopBox\ChopBox\Repository\MessagesRepository;
 use Validator;
 use ChopBox\User;
 use ChopBox\Http\Requests;
@@ -14,11 +15,18 @@ use ChopBox\ChopBox\Repository\ChopsRepository;
 class HomeController extends Controller
 {
 
+    private $messagesRepo;
+
+    public function __construct(MessagesRepository $messagesRepository)
+    {
+        $this->messagesRepo = $messagesRepository;
+    }
+
     /**
      * Show the dashboard to a logged in user
      *
      * @param UserRepository $userRepository
-     * @param ChopsRepository $repository
+     * @param ChopsRepository $chopsRepo
      * @param CommentsRepository $commentRepo
      * @return \Illuminate\View\View
      */
@@ -34,7 +42,7 @@ class HomeController extends Controller
         // Get chops of logged-in user and that of those (s)he follows
         $chops = $chopsRepo->getChops($user, $followeeIds);
 
-        return view('pages.homepage', compact('user', 'chops', 'topTen', 'chopsRepo', 'commentRepo'));
+        return view('pages.homepage', compact('user', 'chops', 'topTen', 'chopsRepo', 'commentRepo', 'messagesRepo'));
     }
 
     /**

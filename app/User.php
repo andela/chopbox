@@ -64,4 +64,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return $this->hasMany('ChopBox\Chop');
     }
+
+    public function messages()
+    {
+        return $this->hasMany('ChopBox\Message');
+    }
 }

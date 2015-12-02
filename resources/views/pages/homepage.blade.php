@@ -11,12 +11,11 @@
 @section('content')
  <div>
 	<div class="anp" id="app-growl"></div>
-	<div class="cd fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="msgModal" aria-hidden="true">
-	 <div class="modal-dialog">
+	<div class="modal cd fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="msgModal" aria-hidden="true">
+	 <div class="modal-dialog" id="messages-modal">
 		<div class="modal-content">
 		 <div class="d">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<button type="button" class="cg fx fp eg k js-newMsg" id="new-message">New message</button>
 			<h4 class="modal-title">Messages</h4>
 		 </div>
 
@@ -25,8 +24,8 @@
 			 <div class="qp cj ca js-msgGroup">
 				<a href="#" class="b">
 				 <div class="qg">
-							 <span class="qk">
-							 <img class="cu qi" src="http://lorempixel.com/120/120">
+							 <span class="qk" id="sender-image">
+							 <img class="cu qi" src="http://lorempixel.com/120/120" >
 							 </span>
 
 					<div class="qh">
@@ -79,10 +78,6 @@
 	 </div>
 	</div>
 
-            <!-- message text field -->
-         <div id="message-div" class="form-group">
-             <textarea class="form-control" name="message"></textarea>
-         </div>
 
 	<div class="cd fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true">
 	 <div class="modal-dialog">

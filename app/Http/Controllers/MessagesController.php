@@ -2,6 +2,7 @@
 
 namespace ChopBox\Http\Controllers;
 
+use ChopBox\ChopBox\Repository\MessagesRepository;
 use ChopBox\Message;
 use ChopBox\Http\Requests;
 use Illuminate\Http\Request;
@@ -31,35 +32,28 @@ class MessagesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
+     * @param Request $request
+     * @param MessagesRepository $messagesRepository
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request, Message $message)
+    public function store(Request $request, MessagesRepository $messagesRepository)
     {
         if ($request->ajax()) {
 
-            $senderId = Auth::user()->id;
-            $message->sender_id = $senderId;
-            $message->receiver_id = $request->get('receiverId');
-            $message->message_body = $request->get('message');
-
-            $message->save();
+            $message = $messagesRepository->sendMessage($request);
 
             return response()->json($message);
         }
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
+     * @param MessagesRepository $repo
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function show(MessagesRepository $repo)
     {
-        //
+        $messages = $repo->findUserMessage();
+        return response()->json($messages->toArray());
     }
 
     /**
@@ -94,5 +88,10 @@ class MessagesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function senderImage(Request $request)
+    {
+        return response()->json(['id'=> $request->get('id') ]);
     }
 }
